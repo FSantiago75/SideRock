@@ -10,7 +10,7 @@ export const HomePage = () => {
 	return (
 		<>
 			<div className={styles.ProjectSelector}>
-				<div className={`${styles.ProjectSelectorItem} ${styles.Acoustic}`} onClick={() => navigate('/Acoustic')}>
+				<div className={`${styles.ProjectSelectorItem} ${styles.Acoustic}`} onClick={() => navigate('/acoustic')}>
 					<div className={styles.AcousticItem}>
 						<div className={styles.ItemTitle}>
 							Acoustic
@@ -20,7 +20,7 @@ export const HomePage = () => {
 						</div>
 					</div>
 				</div>
-				<div className={`${styles.ProjectSelectorItem} ${styles.SideRock}`} onClick={() => navigate('/SideRock')}>
+				<div className={`${styles.ProjectSelectorItem} ${styles.SideRock}`} onClick={() => navigate('/side-rock')}>
 					<div className={styles.SideRockItem}>
 					<div className={styles.ItemTitle}>
 							Side Rock
@@ -30,7 +30,7 @@ export const HomePage = () => {
 						</div>
 					</div>
 				</div>
-				<div className={`${styles.ProjectSelectorItem} ${styles.Ozzborns}`} onClick={() => navigate('/Ozzborns')}>
+				<div className={`${styles.ProjectSelectorItem} ${styles.Ozzborns}`} onClick={() => navigate('/ozzborns')}>
 					<div className={styles.OzzbornsItem}>
 						<div className={styles.ItemTitle}>
 							Ozzborn

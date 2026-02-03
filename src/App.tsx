@@ -7,12 +7,12 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter basename="/Home/">
+    <BrowserRouter basename="/SideRock/">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/Acoustic" element={<AcousticPage />} />
-        <Route path="/Ozzborns" element={<OzzbornsPage />} />
-        <Route path="/SideRock" element={<SideRockPage />} />
+        <Route path="/acoustic" element={<AcousticPage />} />
+        <Route path="/ozzborns" element={<OzzbornsPage />} />
+        <Route path="/side-rock" element={<SideRockPage />} />
       </Routes>
     </BrowserRouter>
   )
