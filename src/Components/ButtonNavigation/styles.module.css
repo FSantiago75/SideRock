@@ -1,0 +1,42 @@
+.Root {
+	display: flex;
+	background-color: rgb(24, 24, 24);
+	border: 4px double #ffffff;
+	padding: 3px;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around
+}
+
+.Trigger {
+	all: unset;
+	border-right: 1px solid #000000;
+	padding: 8px 12px;
+	font-weight: 500;
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	gap: 2px;
+	width: 100%;
+}
+
+.Trigger:last-child {
+	border-right: none;
+}
+
+.SideRock:hover {
+	background-color: rgb(255, 0, 0, 0.200);
+	color: rgb(255, 255, 255);
+}
+.Acoustic:hover {
+	background-color: rgb(255, 251, 0, 0.200);
+	color: rgb(255, 255, 255);
+}
+.Ozzborns:hover {
+	background-color: rgba(255, 0, 234, 0.200);
+	color: rgb(255, 255, 255);
+}
+.Home:hover {
+	background-color: rgb(255, 255, 255, 0.200);
+	color: rgb(0, 0, 0);
+}
