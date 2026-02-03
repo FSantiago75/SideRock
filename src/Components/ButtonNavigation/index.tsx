@@ -11,15 +11,15 @@ const ButtonNavigation = () => {
 			</Menubar.Menu>
 
 			<Menubar.Menu>
-				<Menubar.Trigger onClick={() => navigate('/acoustic')} className={`${styles.Trigger} ${styles.Acoustic}`}>Acoustic</Menubar.Trigger>
+				<Menubar.Trigger onClick={() => navigate('/Acoustic')} className={`${styles.Trigger} ${styles.Acoustic}`}>Acoustic</Menubar.Trigger>
 			</Menubar.Menu>
 
 			<Menubar.Menu>
-				<Menubar.Trigger onClick={() => navigate('/ozzborns')} className={`${styles.Trigger} ${styles.Ozzborns}`}>Ozzborns</Menubar.Trigger>
+				<Menubar.Trigger onClick={() => navigate('/Ozzborns')} className={`${styles.Trigger} ${styles.Ozzborns}`}>Ozzborns</Menubar.Trigger>
 			</Menubar.Menu>
 
 			<Menubar.Menu>
-				<Menubar.Trigger onClick={() => navigate('/siderock')} className={`${styles.Trigger} ${styles.SideRock}`}>Side Rock</Menubar.Trigger>
+				<Menubar.Trigger onClick={() => navigate('/SideRock')} className={`${styles.Trigger} ${styles.SideRock}`}>Side Rock</Menubar.Trigger>
 			</Menubar.Menu>
 		</Menubar.Root>
 	);
