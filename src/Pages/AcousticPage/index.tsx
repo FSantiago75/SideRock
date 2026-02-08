@@ -1,5 +1,6 @@
 import ButtonNavigation from "../../Components/ButtonNavigation";
 import { InfoDialog } from "../../Components/InfoDialog/InfoDialog";
+import Contacts from "../../Components/Contacts";
 
 export const AcousticPage = () => {
 	return (
@@ -8,7 +9,8 @@ export const AcousticPage = () => {
 			<InfoDialog
 				title="Acoustic"
 				message="Conteudo do projeto 'Side Rock Acoustic'"
-			/>
+			/>	
+			<Contacts />
 		</>
 	);
 };
