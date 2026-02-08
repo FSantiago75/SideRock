@@ -1,5 +1,5 @@
 import { Dialog } from 'radix-ui'
-import { X } from 'lucide-react'
+import { FaTimes } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import styles from './InfoDialog.module.css'
 
@@ -33,7 +33,7 @@ export function InfoDialog({ title, message, open: controlledOpen, onOpenChange 
             {message}
           </Dialog.Description>
           <Dialog.Close className={styles.close} aria-label="Fechar">
-            <X size={20} />
+            <FaTimes size={20} />
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>
