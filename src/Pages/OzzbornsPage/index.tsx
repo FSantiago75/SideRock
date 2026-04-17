@@ -1,7 +1,7 @@
 import ButtonNavigation from "../../Components/ButtonNavigation";
 import { InfoDialog } from "../../Components/InfoDialog/InfoDialog";
 import Contacts from "../../Components/Contacts";
-
+import { MembersImage } from "../../Components/MembersImage/index.tsx";
 export const OzzbornsPage = () => {
 	return (
 		<>
@@ -11,6 +11,7 @@ export const OzzbornsPage = () => {
 				message="Conteudo do projeto 'Ozzborns'"
 			/>
 			<Contacts />
+			<MembersImage />
 		</>
 	);
 };

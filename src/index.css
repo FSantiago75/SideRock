@@ -24,11 +24,11 @@ body::before {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: url('./assets/bgCaveiras.jpg');
+  background-image: url('./assets/bgCaveiras2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.1;
+  opacity: 0.04;
   z-index: -1;
   pointer-events: none;
 }
