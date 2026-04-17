@@ -38,6 +38,34 @@
     box-shadow: 0 0 12px rgba(209, 0, 0, 0.7);
 }
 
+.MembersImagePulse {
+    animation: pulseContainerBoxShadow 3s infinite ease-in-out;
+    transition: box-shadow 3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.MembersImageLayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+        visibility 0s linear 1.2s;
+}
+
+.MembersImageVisible {
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+        visibility 0s;
+}
+
 .Hitmap {
     position: absolute;
     inset: 0;
@@ -74,4 +102,41 @@
     border: 2px solid #a80000;
 
     padding: 5px;
+
+    box-shadow: 0 -2px 12px rgba(209, 0, 0, 0.7);
+    transition: box-shadow 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.BurningSkullHover {
+    box-shadow: 0 -4px 12px 2px rgba(209, 0, 0, 0.7);
+}
+
+.BurningSkullPulse {
+    animation: pulseIconBoxShadow 3s infinite ease-in-out;
+    transition: box-shadow 3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+
+@keyframes pulseIconBoxShadow {
+    0% {
+        box-shadow: 0 -2px 12px rgba(209, 0, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 -4px 12px 2px rgba(209, 0, 0, 0.7);
+    }
+    100% {
+        box-shadow: 0 -2px 12px rgba(209, 0, 0, 0.7);
+    }
+}
+
+@keyframes pulseContainerBoxShadow {
+    0% {
+        box-shadow: 0 0 12px rgba(209, 0, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 12px 2px rgba(209, 0, 0, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(209, 0, 0, 0.7);
+    }
 }

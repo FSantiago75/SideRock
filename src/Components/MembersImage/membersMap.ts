@@ -1,11 +1,11 @@
-import Marcelo from "../../assets/MembersImages/MembersNull.jpeg";
-import Victor from "../../assets/MembersImages/MembersNull.jpeg";
-import Drums from "../../assets/MembersImages/MembersNull.jpeg";
-import Bass from "../../assets/MembersImages/MembersNull.jpeg";
+import Vocal from "../../assets/MembersImages/vocal.png";
+import Guitar from "../../assets/MembersImages/guitar.png";
+import Drums from "../../assets/MembersImages/drums.png";
+import Bass from "../../assets/MembersImages/bass.png";
 
 export const membersMap = {
-  marcelo: Marcelo,
-  victor: Victor,
+  vocal: Vocal,
+  guitar: Guitar,
   drums: Drums,
   bass: Bass,
 } as const;
