@@ -1,6 +1,6 @@
 import { Dialog } from 'radix-ui'
 import { FaTimes } from 'react-icons/fa'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from './InfoDialog.module.css'
 
 interface InfoDialogProps {
@@ -16,12 +16,6 @@ export function InfoDialog({ title, message, open: controlledOpen, onOpenChange 
   const isControlled = controlledOpen !== undefined
   const open = isControlled ? controlledOpen : internalOpen
   const setOpen = isControlled ? onOpenChange || (() => {}) : setInternalOpen
-
-  useEffect(() => {
-    if (!isControlled) {
-      setInternalOpen(true)
-    }
-  }, [isControlled])
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

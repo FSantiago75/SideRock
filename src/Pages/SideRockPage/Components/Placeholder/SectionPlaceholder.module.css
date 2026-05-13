@@ -1,0 +1,23 @@
+.placeholder {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  max-width: 36rem;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.35);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
