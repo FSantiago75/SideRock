@@ -2,7 +2,7 @@ import { SectionPlaceholder } from '../../Components/Placeholder/SectionPlacehol
 import { SideRockNavbar } from '../../Components/NavBar/SideRockNavbar'
 import { SIDE_ROCK_SECTION_LABELS } from '../../sectionConstants'
 import styles from './MusicaPage.module.css'
-import bg from '../../../../SiderockAssets/Backgrounds/BGMusica.png'
+import bg from '../../../../SiderockAssets/Bgs2/BGMusica.png'
 
 export function MusicaPage() {
   return (

@@ -1,6 +1,6 @@
 import { SideRockNavbar } from '../../Components/NavBar/SideRockNavbar'
 import styles from './IntegrantesPage.module.css'
-import bg from '../../../../SiderockAssets/Backgrounds/BGIntegrantes.png'
+import bg from '../../../../SiderockAssets/Bgs2/BGIntegrantes.png'
 
 export function IntegrantesPage() {
   return (

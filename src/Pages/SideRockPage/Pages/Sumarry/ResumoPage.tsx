@@ -2,7 +2,7 @@ import { SectionPlaceholder } from '../../Components/Placeholder/SectionPlacehol
 import { SideRockNavbar } from '../../Components/NavBar/SideRockNavbar'
 import { SIDE_ROCK_SECTION_LABELS } from '../../sectionConstants'
 import styles from './ResumoPage.module.css'
-import bg from '../../../../SiderockAssets/Backgrounds/BGResumo.png'
+import bg from '../../../../SiderockAssets/Bgs2/BGResumo.png'
 
 export function ResumoPage() {
   return (
