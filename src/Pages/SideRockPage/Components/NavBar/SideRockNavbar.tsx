@@ -1,13 +1,10 @@
-import { Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
 import { FaInstagram, FaFacebook, FaYoutube, FaSpotify } from 'react-icons/fa'
 import {
-  SIDE_ROCK_SECTION_LABELS,
   SIDE_ROCK_SECTION_ORDER,
-  sideRockPath,
-  type SideRockSectionId,
 } from '../../sectionConstants'
 import styles from './SideRockNavbar.module.css'
+import { Tabs } from './Components/Tabs/Tabs'
+import { SocialIcon } from './Components/SocialIcon/SocialIcon'
 
 const SOCIAL_LINKS = [
   {
@@ -40,41 +37,19 @@ export function SideRockNavbar() {
       <div className={styles.tabsRegion}>
         <div className={styles.tabsScroll}>
           {SIDE_ROCK_SECTION_ORDER.map((id, index) => (
-            <Fragment key={id}>
-              {index > 0 ? (
-                <span className={styles.separator} aria-hidden>
-                  ●
-                </span>
-              ) : null}
-              <div className={styles.tabCell}>
-                <NavLink
-                  to={sideRockPath(id)}
-                  end
-                  className={({ isActive }) =>
-                    `${styles.tab} ${isActive ? styles.tabActive : ''}`
-                  }
-                >
-                  {SIDE_ROCK_SECTION_LABELS[id as SideRockSectionId]}
-                </NavLink>
-                <div className={styles.activeLine} aria-hidden />
-              </div>
-            </Fragment>
+              <Tabs key={id} id={id} index={index} />
           ))}
         </div>
       </div>
 
       <div className={styles.social}>
         {SOCIAL_LINKS.map(({ href, label, Icon }) => (
-          <a
+          <SocialIcon
             key={label}
+            Icon={Icon}
+            label={label}
             href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialLink}
-            aria-label={label}
-          >
-            <Icon aria-hidden />
-          </a>
+          />
         ))}
       </div>
     </nav>
