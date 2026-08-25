@@ -189,10 +189,46 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
 
+### 5.2 Home — catálogo de experiências
+
+- **Estado ativo**: `HomeExperienceId | null`. `null` é o estado institucional neutro (carvão, grafite, prata envelhecida). Não usar Side Rock como fallback visual.
+- **Tema**: cores de identidade (acento + scrollbar) vivem em `homeExperiences.ts` (`theme` / `CATALOG_NEUTRAL_THEME`). O CSS só consome `--catalog-accent`, `--card-accent` e `--ambient-accent`. Não acrescentar seletores por `id` para uma experiência nova.
+- **Desktop (hover fino)**: a página inicia neutra; hover e foco no conjunto de cards aplicam a identidade correspondente; sair da região ou do foco restaura `null`.
+- **Toque / viewport ≤760px**: `useCatalogExperienceRotation` percorre `HOME_EXPERIENCES` a cada 5s. A condição é `(hover: none)`, `(pointer: coarse)` **ou** `max-width: 760px` — não depender só de hover, porque o preview estreito no desktop (Chrome/Cursor) continua a reportar `hover: hover` + `pointer: fine`. Pausar durante o toque e com a aba oculta. Ao sair deste modo (resize para desktop), voltar a `null`. Desktop largo com mouse permanece no hover.
+- **Scrollbar**: cores só na home, via variáveis em `html` (`useCatalogScrollbarTheme`). Sem experiência ativa e nas demais rotas, cinza neutro (`CATALOG_NEUTRAL_THEME`, também default em `index.css`). Remover as variáveis inline ao desmontar a home. Registrar cores com `@property` (`<color>`, `inherits: true`, inicial neutro) e interpolar com `--catalog-motion-duration` / `--catalog-motion-ease`.
+- **Movimento**: transições coordenadas em CSS (sem biblioteca). Curva padrão em `--catalog-motion-ease`. `prefers-reduced-motion` desliga só as animações de entrada, não a interpolação de identidade.
+- **Medalhão**: tamanho via `--medallion-size` / `--orbit-size`, centralizado. Deve caber dentro da moldura interna mesmo com scale no hover. Sem índices 01/02/03 nos cards.
+- **Copy editorial**: o rodapé (“Três experiências…”) é texto fixo; o contador do intro deriva de `HOME_EXPERIENCES.length`. Não forçar o rodapé a gerar o numeral por código.
+
 ---
 
-## 6. Changelog deste documento
+## 6. Review de qualidade na entrega
 
+Ao concluir qualquer alteração, revisar **cada ficheiro tocado** nestes pilares e corrigir o que falhar **antes** de considerar a entrega feita. Não esperar o utilizador pedir a review.
+
+### 6.1 Pilares
+
+1. **Padronização** — alinhado a este documento, a `docs/PROJETO_ATUAL.md` / `docs/ARQUITETURA_ALVO.md`, e aos padrões já existentes na pasta (nomes, tokens, `utils/viewport.ts`, CSS modules).
+2. **Simplicidade** — sem dados mortos, duplicação de cores/seletores, abstrações prematuras ou props que o próprio componente já pode ler da fonte de verdade.
+3. **Organização** — um ficheiro, uma responsabilidade: dados/tema em config; página orquestra; hooks isolam efeitos; componentes só apresentam.
+4. **Legibilidade** — nomes que dizem o porquê; handlers extraídos; constantes para intervalos e delays; evitar “truques” opacos (ex.: passar função de `setState` sem ser óbvio).
+5. **Componentização** — páginas não embutem markup de card/intro/footer; efeitos de DOM global (scrollbar, media query) não ficam no JSX da página.
+6. **Escalabilidade** — acrescentar um item deve ser dados, não copiar CSS/TS por `id`. Listas e contagens derivam do array. Breakpoints de layout vs. comportamento (ex.: 980 vs 760) ficam documentados quando forem deliberadamente distintos.
+7. **Estabilidade** — cleanup de listeners, intervalos e estilos/atributos no `document`; guarda para `window` quando o valor corre em init; resize/hover/rotação não corrompem o estado; `prefers-reduced-motion` respeitado nas entradas.
+
+### 6.2 O que não conta
+
+Não reescrever copy nem layout visual só para “passar” no checklist. Se um pilar conflituar com o visual pedido, manter o visual e anotar o trade-off neste documento.
+
+---
+
+## 7. Changelog deste documento
+
+- **2026-08-25**: Entrega — review obrigatória nos 7 pilares (padronização, simplicidade, organização, legibilidade, componentização, escalabilidade, estabilidade) em cada ficheiro tocado.
+- **2026-08-25**: Home — identidade (acento + scrollbar) em `homeExperiences.ts`; CSS só com variáveis; sem seletores de cor por `id`; resize para desktop restaura estado neutro.
+- **2026-08-25**: Home — medalhão e órbita limitados por `clamp` e centralizados para não invadir a moldura no hover; removidos os índices 01/02/03 dos cards.
+- **2026-08-25**: Home — rotação de 5s também em viewport ≤760px, mesmo com mouse/`hover: fine` (preview desktop); não usar só `(hover: none)`.
+- **2026-08-25**: Home — estado ativo `HomeExperienceId | null`; paleta institucional neutra; transições de cor via `@property`; scrollbar cinza fora do catálogo ativo; footer só com “Três experiências. Uma só estrutura”.
 - **2026-05-28**: Tabs — `.tabsTrack` dentro de `.tabsScroll`; scroller sem `justify-content: center`; escala mais forte ≤590/480/340; `.navOverlay` com `overflow-x: visible` e `min-width: 0` nas páginas Side Rock.
 - **2026-05-28**: `src/utils/viewport.ts` — classificação celular/desktop (760px) e empilhamento nav (590px); CSS da navbar empilha tabs + redes em `max-width: 590px` (alinha com `VIEWPORT_NAV_STACK_MAX_PX`).
 - **2026-05-28**: NavBar — removido `logoSlot` (grid só `tabs | social`); tokens `--tab-*` centralizados na `.root` com escala agressiva (1100 / 992 / 860 / 760 / 640 / 560 / 480 / 380); ícones sociais encolhem em sincronia; `.tabsScroll` com `justify-content: safe center` + scroll horizontal sem cortar início; separadores com `font-size: 0.55em` e `--tab-separator-pad` por faixa.

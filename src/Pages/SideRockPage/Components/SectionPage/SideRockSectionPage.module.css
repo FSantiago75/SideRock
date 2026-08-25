@@ -22,9 +22,10 @@
   overflow-y: auto;
   scrollbar-gutter: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(196, 30, 30, 0.55) transparent;
+  scrollbar-color: var(--scrollbar-thumb-start) transparent;
 }
 
+/* Matches VIEWPORT_MOBILE_MAX_PX in src/utils/viewport.ts */
 @media (max-width: 760px) {
   .main {
     --side-rock-nav-clearance: clamp(6.1rem, 21vw, 8.1rem);
@@ -40,12 +41,12 @@
 }
 
 .main::-webkit-scrollbar-thumb {
-  background: rgba(196, 30, 30, 0.45);
+  background: var(--scrollbar-thumb-start);
   border-radius: 999px;
 }
 
 .main::-webkit-scrollbar-thumb:hover {
-  background: rgba(196, 30, 30, 0.7);
+  background: var(--scrollbar-thumb-hover-start);
 }
 
 .navOverlay {

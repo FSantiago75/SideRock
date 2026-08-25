@@ -1,8 +1,38 @@
+@property --catalog-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a39b90;
+}
+
+@property --scrollbar-thumb-start {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #737373;
+}
+
+@property --scrollbar-thumb-end {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #3f3f3f;
+}
+
+@property --scrollbar-thumb-hover-start {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #969696;
+}
+
+@property --scrollbar-thumb-hover-end {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #575757;
+}
+
 :root {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  
+
   color: rgba(255, 255, 255, 0.87);
   background-color: #0a0a0a;
 
@@ -10,11 +40,64 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+
+  --catalog-motion-duration: 560ms;
+  --catalog-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  /* Keep in sync with CATALOG_NEUTRAL_THEME in homeExperiences.ts */
+  --scrollbar-thumb-start: #737373;
+  --scrollbar-thumb-end: #3f3f3f;
+  --scrollbar-thumb-hover-start: #969696;
+  --scrollbar-thumb-hover-end: #575757;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-start) #080808;
+  transition:
+    --scrollbar-thumb-start var(--catalog-motion-duration) var(--catalog-motion-ease),
+    --scrollbar-thumb-end var(--catalog-motion-duration) var(--catalog-motion-ease),
+    --scrollbar-thumb-hover-start var(--catalog-motion-duration) var(--catalog-motion-ease),
+    --scrollbar-thumb-hover-end var(--catalog-motion-duration) var(--catalog-motion-ease);
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+html::-webkit-scrollbar-thumb {
+  min-height: 3rem;
+  border: 2px solid #080808;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--scrollbar-thumb-start),
+    var(--scrollbar-thumb-end)
+  );
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--scrollbar-thumb-hover-start),
+    var(--scrollbar-thumb-hover-end)
+  );
+}
+
+html::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -32,4 +115,3 @@ body::before {
   z-index: -1;
   pointer-events: none;
 }
-

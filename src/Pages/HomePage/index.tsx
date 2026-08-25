@@ -1,50 +1,86 @@
-import { Link } from 'react-router-dom'
-import AcousticImage from '../../assets/SideRockAcoustic.png'
-import SideRockImage from '../../assets/SideRock.jpg'
-import OzzbornImage from '../../assets/SideRockOzzborn.png'
-import { EXPERIENCE_ROUTES } from '../../config/experiences'
+import { useState, type CSSProperties, type FocusEvent } from 'react'
+import { AmbientBackdrop } from './Components/AmbientBackdrop'
+import { CatalogFooter } from './Components/CatalogFooter'
+import { CatalogIntro } from './Components/CatalogIntro'
+import { ExperienceCard } from './Components/ExperienceCard'
+import {
+  getCatalogTheme,
+  HOME_EXPERIENCES,
+  type ActiveHomeExperienceId,
+  type HomeExperience,
+} from './homeExperiences'
 import styles from './styles.module.css'
+import {
+  getInitialCatalogExperience,
+  useCatalogExperienceRotation,
+} from './useCatalogExperienceRotation'
+import { useCatalogScrollbarTheme } from './useCatalogScrollbarTheme'
 
-const experiences = [
-  {
-    id: 'acoustic',
-    name: 'Acústico',
-    path: EXPERIENCE_ROUTES.acoustic,
-    image: AcousticImage,
-  },
-  {
-    id: 'side-rock',
-    name: 'Side Rock',
-    path: EXPERIENCE_ROUTES.sideRock,
-    image: SideRockImage,
-  },
-  {
-    id: 'ozzborn',
-    name: 'Ozzborn',
-    path: EXPERIENCE_ROUTES.ozzborn,
-    image: OzzbornImage,
-  },
-] as const
+type CatalogStyle = CSSProperties & {
+  '--catalog-accent': string
+}
 
 export const HomePage = () => {
+  const [activeExperience, setActiveExperience] =
+    useState<ActiveHomeExperienceId>(getInitialCatalogExperience)
+  const catalogTheme = getCatalogTheme(activeExperience)
+  const catalogStyle: CatalogStyle = {
+    '--catalog-accent': catalogTheme.accent,
+  }
+
+  const { isAutomaticRotation, pauseRotation } = useCatalogExperienceRotation({
+    onChange: setActiveExperience,
+  })
+
+  useCatalogScrollbarTheme(catalogTheme.scrollbar)
+
+  const activateExperience = (experience: HomeExperience) => {
+    setActiveExperience(experience.id)
+  }
+
+  const restoreNeutralExperience = () => {
+    if (!isAutomaticRotation) {
+      setActiveExperience(null)
+    }
+  }
+
+  const handleExperienceListBlur = (event: FocusEvent<HTMLElement>) => {
+    const nextFocus = event.relatedTarget
+
+    if (
+      nextFocus instanceof Node &&
+      event.currentTarget.contains(nextFocus)
+    ) {
+      return
+    }
+
+    restoreNeutralExperience()
+  }
+
   return (
-    <main className={styles.ProjectSelector} aria-label="Experiências musicais">
-      {experiences.map((experience) => (
-        <Link
-          key={experience.id}
-          to={experience.path}
-          className={styles.ProjectSelectorItem}
-          data-experience={experience.id}
-          aria-label={`Conhecer ${experience.name}`}
-        >
-          <div>
-            <h2 className={styles.ItemTitle}>{experience.name}</h2>
-            <div className={styles.ItemImage}>
-              <img src={experience.image} alt="" />
-            </div>
-          </div>
-        </Link>
-      ))}
+    <main className={styles.catalog} style={catalogStyle}>
+      <AmbientBackdrop activeExperience={activeExperience} />
+      <CatalogIntro />
+
+      <section
+        className={styles.experienceList}
+        aria-label="Nossas experiências"
+        onPointerDown={pauseRotation}
+        onPointerLeave={restoreNeutralExperience}
+        onBlur={handleExperienceListBlur}
+      >
+        {HOME_EXPERIENCES.map((experience, order) => (
+          <ExperienceCard
+            key={experience.id}
+            experience={experience}
+            order={order}
+            isActive={activeExperience === experience.id}
+            onActivate={activateExperience}
+          />
+        ))}
+      </section>
+
+      <CatalogFooter />
     </main>
   )
 }
