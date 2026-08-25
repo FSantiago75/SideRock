@@ -186,6 +186,8 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Não usar `background-size: cover`** nestes BGs de arte completa: o objectivo é ver **toda a imagem** com scroll no `<main>`.
 - **Navbar**: `SideRockHeader` orquestra `SideRockNavbar` + `SideRockSocialRail`; **sem** imagem de fundo no strip; **sobre o BG** dentro de `<main>` (`.navOverlay` `sticky`); `NavLink` com `to={sideRockPath(id)}`. Redes em `socialLinks.ts`: Facebook, Instagram, YouTube, Spotify. Detecção compacto: `VIEWPORT_MOBILE_MAX_PX = 760` + `useElementOverflow` nas tabs (com latch para não oscilar wide↔compact).
 - **Navbar — evolução intencional**: remoções no CSS (keyframes, pseudo-elementos, blur, linhas decorativas, etc.) feitas pelo autor são **deliberadas**; o assistente **não** deve voltar a acrescentar esses trechos salvo pedido explícito — limitar-se a alinhar o que restar (grid, `grid-area`, overflow mínimo, variáveis em uso).
+- **Scrollbar Side Rock**: o mesmo sistema da home (`useScrollbarTheme` → `--scrollbar-thumb-*` no `html`). Nas rotas Side Rock o thumb é vermelho (`SIDE_ROCK_SCROLLBAR`, `#c52b31`). Home sem seleção continua cinza. Sem interpolar essas variáveis no `html`. O `.main` do shell usa a mesma receita visual da home (8px, botões ocultos, cor sólida, track na cor do fundo) — não uma barra nativa cinza à parte.
+- **Foto da banda no Resumo**: `MembersNull.png` é recorte com alpha; o tamanho vive em `summaryContent.heroPhoto.scale`. Em `cutout`, não pintar overlay preto (`::after` com `#050505` / fade no fundo da figure) — no letterbox isso vira um quadrado preto em cima do palco. Halo/órbita ficam atrás da PNG, não por cima.
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
 - **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Só texto + URL (`https://n2codeworks.com.br/`), sem ícone. Mesmo `font-size` do meta do catálogo (0.68rem / 0.6rem ≤680px). Centrado, discreto, sem cor de identidade. Reutilizar nas páginas; não copiar o markup.
@@ -229,6 +231,8 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: Resumo — foto da banda em cutout sem overlay preto na figure; escala só em `heroPhoto.scale`.
+- **2026-08-25**: Side Rock — scrollbar vermelha padronizada (`useScrollbarTheme` + `SIDE_ROCK_SCROLLBAR`); home continua cinza no estado neutro.
 - **2026-08-25**: `DeveloperCredit` só com texto (sem ícone N2), mesmo tamanho do footer editorial.
 - **2026-08-25**: `DeveloperCredit` partilhado (logo + link N2); home só o consome, um pouco maior que o footer editorial.
 - **2026-08-25**: Home — crédito discreto “Desenvolvido por N2 CodeWorks” abaixo do footer, link externo; `CatalogFooter` intacto.

@@ -21,3 +21,10 @@ export const SIDE_ROCK_SECTION_LABELS: Record<SideRockSectionId, string> = {
 export function sideRockPath(section: SideRockSectionId): string {
   return `${SIDE_ROCK_BASE_PATH}/${section}`
 }
+
+export const SIDE_ROCK_SCROLLBAR = {
+  start: '#c52b31',
+  end: '#59171b',
+  hoverStart: '#d4434a',
+  hoverEnd: '#7b2025',
+} as const

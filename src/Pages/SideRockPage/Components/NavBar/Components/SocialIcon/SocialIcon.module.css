@@ -68,3 +68,11 @@
     transform: none;
   }
 }
+
+@media (max-width: 590px) {
+  .link {
+    animation: none;
+    background: rgba(0, 0, 0, 0.22);
+    box-shadow: none;
+  }
+}

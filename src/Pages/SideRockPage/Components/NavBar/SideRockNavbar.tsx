@@ -1,4 +1,5 @@
-import { SIDE_ROCK_SECTION_ORDER } from '../../sectionConstants'
+import { Link } from 'react-router-dom'
+import { SIDE_ROCK_SECTION_ORDER, sideRockPath } from '../../sectionConstants'
 import { Tabs } from './Components/Tabs/Tabs'
 import { SocialIcon } from './Components/SocialIcon/SocialIcon'
 import { SIDE_ROCK_SOCIAL_LINKS } from './socialLinks'
@@ -7,6 +8,10 @@ import styles from './SideRockNavbar.module.css'
 export function SideRockNavbar() {
   return (
     <nav className={styles.root} aria-label="Side Rock">
+      <Link className={styles.mobileBrand} to={sideRockPath('resumo')}>
+        Side Rock
+      </Link>
+
       <div className={styles.tabsScroll}>
         <div className={styles.tabsTrack}>
           {SIDE_ROCK_SECTION_ORDER.map((id, index) => (

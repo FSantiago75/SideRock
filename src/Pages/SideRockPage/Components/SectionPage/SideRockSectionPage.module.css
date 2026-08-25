@@ -11,9 +11,9 @@
 
 .main {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  --side-rock-nav-clearance: clamp(4.05rem, 10vw, 5.95rem);
+  display: flex;
+  flex-direction: column;
+  --side-rock-nav-clearance: clamp(3.6rem, 5vw, 4.15rem);
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
@@ -22,7 +22,7 @@
   overflow-y: auto;
   scrollbar-gutter: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb-start) transparent;
+  scrollbar-color: var(--scrollbar-thumb-start, #c52b31) #050505;
 }
 
 /* Matches VIEWPORT_MOBILE_MAX_PX in src/utils/viewport.ts */
@@ -33,46 +33,58 @@
 }
 
 .main::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
+  height: 8px;
 }
 
 .main::-webkit-scrollbar-track {
-  background: transparent;
+  background: #050505;
 }
 
 .main::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-start);
+  min-height: 3rem;
+  border: 2px solid #050505;
   border-radius: 999px;
+  background-color: #c52b31;
+  background-color: var(--scrollbar-thumb-start, #c52b31);
 }
 
 .main::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover-start);
+  background-color: #d4434a;
+  background-color: var(--scrollbar-thumb-hover-start, #d4434a);
+}
+
+.main::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .navOverlay {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: start;
-  justify-self: stretch;
+  position: sticky;
+  top: 0;
+  flex: 0 0 auto;
   width: 100%;
   max-width: 100%;
   min-width: 0;
   overflow-x: visible;
-  position: sticky;
-  top: 0;
   z-index: 20;
+  background:
+    linear-gradient(180deg, rgba(4, 4, 4, 0.99), rgba(4, 4, 4, 0.94)),
+    linear-gradient(90deg, transparent 12%, rgba(172, 28, 34, 0.07) 50%, transparent 88%);
+  border-bottom: 1px solid rgba(211, 47, 53, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .bgStack {
-  grid-column: 1;
-  grid-row: 1;
+  flex: 0 0 auto;
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
   align-items: stretch;
   justify-items: stretch;
   width: 100%;
-  min-width: 320px;
+  min-width: 0;
   aspect-ratio: var(--side-rock-art-ratio);
   background: #050505;
 }
@@ -95,6 +107,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  min-width: 0;
   height: 100%;
   align-self: stretch;
   box-sizing: border-box;
@@ -104,14 +117,49 @@
   position: absolute;
   inset: 0;
   width: 100%;
+  min-width: 0;
   height: 100%;
   box-sizing: border-box;
   padding: clamp(0.75rem, 2vw, 1.75rem);
-  padding-top: max(
-    env(safe-area-inset-top, 0px),
-    calc(clamp(0.75rem, 2vw, 1.75rem) + var(--side-rock-nav-clearance))
-  );
+  padding-top: max(env(safe-area-inset-top, 0px), clamp(0.75rem, 2vw, 1.75rem));
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.bgStack[data-layout='flow'] {
+  min-height: 100%;
+  aspect-ratio: auto;
+}
+
+.bgStack[data-layout='flow']::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--side-rock-bg-overlay);
+}
+
+.bgStack[data-layout='flow'] .bgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.bgStack[data-layout='flow'] .fgLayer {
+  min-height: 100%;
+}
+
+.bgStack[data-layout='flow'] .inner {
+  position: relative;
+  inset: auto;
+  min-height: 100%;
+  height: auto;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-inline: 0;
+  padding-bottom: 0;
 }
