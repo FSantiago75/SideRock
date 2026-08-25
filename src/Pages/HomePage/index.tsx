@@ -1,46 +1,50 @@
-// import ButtonNavigation from "../../Components/ButtonNavigation";
-// import { InfoDialog } from "../../Components/InfoDialog/InfoDialog";
-import styles from "./styles.module.css";
-import SideRockImage from "../../assets/SideRock.jpg";
-import AcousticImage from "../../assets/SideRockAcoustic.png";
-import OzzbornsImage from "../../assets/SideRockOzzborn.png";
-import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import AcousticImage from '../../assets/SideRockAcoustic.png'
+import SideRockImage from '../../assets/SideRock.jpg'
+import OzzbornImage from '../../assets/SideRockOzzborn.png'
+import { EXPERIENCE_ROUTES } from '../../config/experiences'
+import styles from './styles.module.css'
+
+const experiences = [
+  {
+    id: 'acoustic',
+    name: 'Acústico',
+    path: EXPERIENCE_ROUTES.acoustic,
+    image: AcousticImage,
+  },
+  {
+    id: 'side-rock',
+    name: 'Side Rock',
+    path: EXPERIENCE_ROUTES.sideRock,
+    image: SideRockImage,
+  },
+  {
+    id: 'ozzborn',
+    name: 'Ozzborn',
+    path: EXPERIENCE_ROUTES.ozzborn,
+    image: OzzbornImage,
+  },
+] as const
+
 export const HomePage = () => {
-	const navigate = useNavigate();
-	return (
-		<>
-			<div className={styles.ProjectSelector}>
-				<div className={`${styles.ProjectSelectorItem} ${styles.Acoustic}`} onClick={() => navigate('/acoustic')}>
-					<div className={styles.AcousticItem}>
-						<div className={styles.ItemTitle}>
-							Acoustic
-						</div>
-						<div className={styles.ItemImage}>
-							<img src={AcousticImage}/>
-						</div>
-					</div>
-				</div>
-				<div className={`${styles.ProjectSelectorItem} ${styles.SideRock}`} onClick={() => navigate('/side-rock')}>
-					<div className={styles.SideRockItem}>
-					<div className={styles.ItemTitle}>
-							Side Rock
-						</div>
-						<div className={styles.ItemImage}>
-							<img src={SideRockImage}/>
-						</div>
-					</div>
-				</div>
-				<div className={`${styles.ProjectSelectorItem} ${styles.Ozzborns}`} onClick={() => navigate('/ozzborns')}>
-					<div className={styles.OzzbornsItem}>
-						<div className={styles.ItemTitle}>
-							Ozzborn
-						</div>
-						<div className={styles.ItemImage}>
-							<img src={OzzbornsImage}/>
-						</div>
-					</div>
-				</div>
-			</div>
-		</>
-	);
-};
+  return (
+    <main className={styles.ProjectSelector} aria-label="Experiências musicais">
+      {experiences.map((experience) => (
+        <Link
+          key={experience.id}
+          to={experience.path}
+          className={styles.ProjectSelectorItem}
+          data-experience={experience.id}
+          aria-label={`Conhecer ${experience.name}`}
+        >
+          <div>
+            <h2 className={styles.ItemTitle}>{experience.name}</h2>
+            <div className={styles.ItemImage}>
+              <img src={experience.image} alt="" />
+            </div>
+          </div>
+        </Link>
+      ))}
+    </main>
+  )
+}

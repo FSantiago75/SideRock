@@ -1,6 +1,6 @@
 import { HomePage } from './Pages/HomePage'
 import { AcousticPage } from './Pages/AcousticPage'
-import { OzzbornsPage } from './Pages/OzzbornsPage'
+import { OzzbornPage } from './Pages/OzzbornPage'
 import { ResumoPage } from './Pages/SideRockPage/Pages/Sumarry/ResumoPage'
 import { IntegrantesPage } from './Pages/SideRockPage/Pages/Members/IntegrantesPage'
 import { MusicaPage } from './Pages/SideRockPage/Pages/Music/MusicaPage'
@@ -11,15 +11,22 @@ import {
   SIDE_ROCK_BASE_PATH,
   sideRockPath,
 } from './Pages/SideRockPage/sectionConstants'
-import './App.css'
+import {
+  EXPERIENCE_ROUTES,
+  LEGACY_EXPERIENCE_ROUTES,
+} from './config/experiences'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/acoustic" element={<AcousticPage />} />
-        <Route path="/ozzborns" element={<OzzbornsPage />} />
+        <Route path={EXPERIENCE_ROUTES.catalog} element={<HomePage />} />
+        <Route path={EXPERIENCE_ROUTES.acoustic} element={<AcousticPage />} />
+        <Route path={EXPERIENCE_ROUTES.ozzborn} element={<OzzbornPage />} />
+        <Route
+          path={LEGACY_EXPERIENCE_ROUTES.ozzborn}
+          element={<Navigate to={EXPERIENCE_ROUTES.ozzborn} replace />}
+        />
         <Route
           path={SIDE_ROCK_BASE_PATH}
           element={<Navigate to={sideRockPath('resumo')} replace />}

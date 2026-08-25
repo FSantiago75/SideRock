@@ -1,6 +1,8 @@
+import { EXPERIENCE_ROUTES } from '../../config/experiences'
+
 export type SideRockSectionId = 'resumo' | 'integrantes' | 'musica' | 'galeria'
 
-export const SIDE_ROCK_BASE_PATH = '/side-rock'
+export const SIDE_ROCK_BASE_PATH = EXPERIENCE_ROUTES.sideRock
 
 export const SIDE_ROCK_SECTION_ORDER: readonly SideRockSectionId[] = [
   'resumo',

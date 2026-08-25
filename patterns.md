@@ -1,6 +1,6 @@
 # SideRock — Padrões e inventário visual (MVP)
 
-Documento vivo: decisões de UI, tokens implícitos nos mockups e notas técnicas extraídas das telas MVP em `src/SiderockAssets/MVPStyles/`.
+Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/MVPStyles/`. Para contexto de produto e arquitetura atual, prevalecem `docs/PROJETO_ATUAL.md` e `docs/ARQUITETURA_ALVO.md`.
 
 ---
 
@@ -175,12 +175,12 @@ Documento vivo: decisões de UI, tokens implícitos nos mockups e notas técnica
 
 ## 5. Assets e implementação
 
-- **Backgrounds por rota**: projeto já referencia PNGs em `src/SiderockAssets/Backgrounds/` — alinhar tom e watermark aos mockups.
+- **Fundos temporários por rota**: o protótipo referencia PNGs em `src/SiderockAssets/Bgs2/`. Eles permanecem somente até a migração para a composição responsiva em camadas descrita em `docs/PROJETO_ATUAL.md`.
 
 ### 5.1 Side Rock — rotas, páginas e fundo (implementado)
 
 - **Rotas planas** em `App.tsx`: `SIDE_ROCK_BASE_PATH` redireciona para `sideRockPath('resumo')`; cada secção tem `<Route path={sideRockPath(...)} element={<...Page />} />`. **Sem** rota-pai com `<Outlet />` nem componente de layout dedicado.
-- **Páginas autossuficientes**: `ResumoPage`, `IntegrantesPage`, `MusicaPage`, `GaleriaPage` repetem o mesmo padrão em TSX e CSS: `.shell` (`100dvh`, coluna, overflow oculto) → `SideRockHeader` em `.navOverlay` → `<main className={...main}>` com `overflow-y: auto` → `.bgStack` em grid com `<img className={...bgImg}>` (largura 100%, altura automática, sem crop) + `.fgLayer` / `.inner` para o conteúdo. **Duplicação intencional** entre ficheiros. Vars de página: `--side-rock-nav-clearance`, `--side-rock-content-pad-*`, `--side-rock-social-rail-width` (valores fixos por breakpoint, sem `clamp()`); em compacto, `.inner` ganha `padding-right` extra via `html[data-side-rock-layout='compact']`.
+- **Shell temporário compartilhado**: `SideRockSectionPage` concentra o padrão do protótipo atual (`100dvh`, fundo em artboard, navbar sobreposta e área de conteúdo). As páginas de Resumo, Integrantes, Música e Galeria apenas fornecem fundo e conteúdo. Esse shell deve ser substituído pela landing contínua planejada, não expandido como arquitetura definitiva.
 - **Artboard proporcional**: `.bgStack` deve declarar a proporção real do asset (`aspect-ratio`) e `.fgLayer` / `.inner` devem ocupar exatamente a mesma área da imagem. Posicionar conteúdo futuro por grid ou percentuais dentro dessa área, preservando os highlights do BG.
 - **Véu cinza sobre o BG**: `.fgLayer::before` com `background: rgba(180, 180, 180, 0.1)` entre a imagem e o conteúdo — suaviza contraste agressivo sem alterar o PNG; ajustar só a opacidade se precisar mais ou menos “neutro”.
 - **Não usar `background-size: cover`** nestes BGs de arte completa: o objectivo é ver **toda a imagem** com scroll no `<main>`.

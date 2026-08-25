@@ -1,16 +1,18 @@
 import ButtonNavigation from '../../Components/ButtonNavigation'
 import Contacts from '../../Components/Contacts'
 import { InfoDialog } from '../../Components/InfoDialog/InfoDialog'
+import { MembersImage } from '../../Components/MembersImage'
 
-export const AcousticPage = () => {
+export const OzzbornPage = () => {
   return (
     <>
       <ButtonNavigation />
       <InfoDialog
-        title="Side Rock Acústico"
-        message="Conteúdo da experiência Side Rock Acústico"
+        title="Ozzborn"
+        message="Conteúdo da experiência Ozzborn"
       />
       <Contacts />
+      <MembersImage />
     </>
   )
 }
