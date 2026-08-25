@@ -1,13 +1,14 @@
-.socialLink {
+.link {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: clamp(1.95rem, 4.2vw, 2.28rem);
-  height: clamp(1.95rem, 4.2vw, 2.28rem);
+  width: var(--social-link-size, 2.28rem);
+  height: var(--social-link-size, 2.28rem);
   border-radius: 50%;
   border: 1px solid var(--nav-accent);
   color: var(--nav-accent);
-  font-size: clamp(0.92rem, 2.1vw, 1.05rem);
+  font-size: var(--social-icon-font-size, 1.05rem);
   background: rgba(0, 0, 0, 0.45);
   transition:
     color 0.2s ease,
@@ -15,46 +16,55 @@
     background-color 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  animation: socialIconLoop 2s ease-in-out infinite;
+  animation: socialIconGlow 2s ease-in-out infinite;
 }
 
-.socialLink:nth-child(1) {
+.link[data-chase-index='0'],
+.link[data-chase-index='2'] {
   animation-delay: 0s;
 }
 
-.socialLink:nth-child(2) {
+.link[data-chase-index='1'],
+.link[data-chase-index='3'] {
   animation-delay: 1s;
 }
 
-.socialLink:nth-child(3) {
-  animation-delay: 0s;
-}
-
-.socialLink:nth-child(4) {
-  animation-delay: 1s;
-}
-
-.socialLink:hover,
-.socialLink:focus-visible {
+.link:hover,
+.link:focus-visible {
   color: var(--nav-accent-hot);
   border-color: #ff6b6b;
   background: rgba(196, 30, 30, 0.12);
   transform: scale(1.08) translateY(-2px);
   box-shadow: 0 0 14px rgba(196, 30, 30, 0.45);
+  animation-play-state: paused;
 }
 
-.socialLink:active {
+.link:active {
   transform: scale(1.02) translateY(0);
 }
 
-@keyframes socialIconLoop {
+@keyframes socialIconGlow {
   from {
     box-shadow: 0 0 14px rgba(196, 30, 30, 0.45);
   }
+
   50% {
     box-shadow: 0 0 14px 2px rgba(196, 30, 30, 0.795);
   }
+
   to {
     box-shadow: 0 0 14px rgba(196, 30, 30, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    animation: none;
+    transition-duration: 0.01ms;
+  }
+
+  .link:hover,
+  .link:focus-visible {
+    transform: none;
   }
 }

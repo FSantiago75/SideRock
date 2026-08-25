@@ -1,23 +1,31 @@
-import { FaFacebook, FaInstagram, FaYoutube, FaSpotify } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import styles from './SocialIcon.module.css'
-interface SocialIconProps {
-  Icon: typeof FaFacebook | typeof FaInstagram | typeof FaYoutube | typeof FaSpotify
+
+type SocialIconProps = {
+  Icon: IconType
   label: string
   href: string
+  chaseIndex: number
   className?: string
 }
 
-export function SocialIcon({ Icon, label, href, className }: SocialIconProps) {
+export function SocialIcon({
+  Icon,
+  label,
+  href,
+  chaseIndex,
+  className,
+}: SocialIconProps) {
   return (
     <a
-    key={label}
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`${styles.socialLink} ${className}`}
-    aria-label={label}
-  >
-    {Icon && <Icon aria-hidden />}
-  </a>
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className ? `${styles.link} ${className}` : styles.link}
+      aria-label={label}
+      data-chase-index={chaseIndex}
+    >
+      <Icon aria-hidden />
+    </a>
   )
 }

@@ -2,62 +2,213 @@
   --nav-accent: #c41e1e;
   --nav-accent-hot: #ff5050;
   --nav-text: rgba(230, 230, 230, 0.92);
+
+  --nav-pad-block: 1rem;
+  --nav-pad-inline: 1.5rem;
+  --nav-tabs-social-gap: 0.65rem;
+
+  --tab-font-size: 1.42rem;
+  --tab-letter-spacing: 0.06em;
+  --tab-pad-block: 0.48rem;
+  --tab-pad-inline: 0.68rem;
+  --tab-separator-pad: 1rem;
+  --tabs-scroll-gap: 0.45rem;
+
+  --social-gap: 0.95rem;
+  --social-link-size: 2.28rem;
+  --social-icon-font-size: 1.05rem;
+
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
   isolation: isolate;
   overflow: visible;
   display: grid;
-  grid-template-columns: minmax(3.5rem, 8rem) minmax(0, 1fr) auto;
-  grid-template-areas: 'logo tabs social';
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'tabs social';
   align-items: center;
+  column-gap: var(--nav-tabs-social-gap);
   flex-shrink: 0;
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
   background-color: transparent;
-  padding: 1rem 1.5rem;
+  padding: var(--nav-pad-block) var(--nav-pad-inline);
 }
 
-.logoSlot {
-  position: relative;
-  z-index: 1;
-  grid-area: logo;
-  width: min(100%, clamp(3.5rem, 12vw, 8rem));
-  min-height: 2.1rem;
-  align-self: center;
-}
-
-.tabsRegion {
-  position: relative;
-  z-index: 1;
+/* Scroller: nunca cortar — overflow horizontal + alinhamento no .tabsTrack */
+.tabsScroll {
   grid-area: tabs;
   min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.tabsScroll {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.2rem 0.45rem;
   max-width: 100%;
-  min-width: 0;
   overflow-x: auto;
+  overflow-y: visible;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
+  scroll-padding-inline: var(--nav-pad-inline);
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabsScroll::-webkit-scrollbar {
   display: none;
 }
 
-.social {
-  position: relative;
-  z-index: 1;
-  grid-area: social;
+.tabsTrack {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.2rem var(--tabs-scroll-gap);
+  width: max-content;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 0.125rem;
+}
+
+.social {
+  grid-area: social;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
   justify-content: flex-end;
-  gap: clamp(0.55rem, 1.8vw, 0.95rem);
+  gap: var(--social-gap);
+}
+
+@media (max-width: 1100px) {
+  .root {
+    --tab-font-size: 1.28rem;
+    --tab-pad-inline: 0.62rem;
+    --tab-separator-pad: 0.82rem;
+    --social-link-size: 2.15rem;
+    --social-icon-font-size: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .root {
+    --tab-font-size: 1.2rem;
+    --tab-pad-inline: 0.55rem;
+    --tab-separator-pad: 0.7rem;
+    --tabs-scroll-gap: 0.35rem;
+    --social-gap: 0.8rem;
+    --social-link-size: 2.05rem;
+    --social-icon-font-size: 0.96rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .root {
+    --tab-font-size: 1.1rem;
+    --tab-pad-block: 0.44rem;
+    --tab-pad-inline: 0.48rem;
+    --tab-separator-pad: 0.55rem;
+    --tab-letter-spacing: 0.05em;
+    --nav-tabs-social-gap: 0.5rem;
+    --social-gap: 0.68rem;
+    --social-link-size: 1.95rem;
+    --social-icon-font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .root {
+    --nav-pad-inline: 1rem;
+    --tab-font-size: 1.02rem;
+    --tab-pad-inline: 0.42rem;
+    --tab-separator-pad: 0.45rem;
+    --tabs-scroll-gap: 0.28rem;
+    --social-gap: 0.58rem;
+    --social-link-size: 1.85rem;
+    --social-icon-font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .root {
+    --nav-pad-block: 0.85rem;
+    --nav-pad-inline: 0.85rem;
+    --tab-font-size: 0.94rem;
+    --tab-pad-block: 0.38rem;
+    --tab-pad-inline: 0.36rem;
+    --tab-separator-pad: 0.36rem;
+    --tab-letter-spacing: 0.04em;
+    --social-gap: 0.5rem;
+    --social-link-size: 1.75rem;
+    --social-icon-font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .root {
+    --tab-font-size: 0.88rem;
+    --tab-pad-inline: 0.3rem;
+    --tab-separator-pad: 0.24rem;
+    --nav-tabs-social-gap: 0.35rem;
+    --social-gap: 0.48rem;
+    --social-link-size: 1.68rem;
+    --social-icon-font-size: 0.78rem;
+  }
+}
+
+/* VIEWPORT_NAV_STACK_MAX_PX */
+@media (max-width: 590px) {
+  .root {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'tabs'
+      'social';
+    row-gap: 0.55rem;
+    column-gap: 0;
+    --nav-pad-block: 0.7rem;
+    --nav-pad-inline: 0.65rem;
+    --tab-font-size: 0.78rem;
+    --tab-pad-inline: 0.28rem;
+    --tab-separator-pad: 0.22rem;
+    --tabs-scroll-gap: 0.22rem;
+    --social-gap: 0.55rem;
+    --social-link-size: 1.72rem;
+    --social-icon-font-size: 0.8rem;
+  }
+
+  .tabsScroll {
+    width: 100%;
+    scroll-padding-inline: 0.5rem;
+  }
+
+  .social {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .root {
+    --nav-pad-block: 0.65rem;
+    --nav-pad-inline: 0.5rem;
+    --tab-font-size: 0.72rem;
+    --tab-pad-inline: 0.24rem;
+    --tab-separator-pad: 0.18rem;
+    --tab-letter-spacing: 0.03em;
+    --social-gap: 0.42rem;
+    --social-link-size: 1.58rem;
+    --social-icon-font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .root {
+    --nav-pad-inline: 0.4rem;
+    --tab-font-size: 0.68rem;
+    --tab-pad-block: 0.3rem;
+    --tab-pad-inline: 0.2rem;
+    --tab-separator-pad: 0.14rem;
+    --tabs-scroll-gap: 0.15rem;
+    --social-link-size: 1.5rem;
+    --social-icon-font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .root {
+    --tab-font-size: 0.62rem;
+    --tab-pad-inline: 0.16rem;
+    --tab-separator-pad: 0.1rem;
+  }
 }

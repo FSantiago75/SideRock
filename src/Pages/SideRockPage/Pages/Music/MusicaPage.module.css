@@ -54,6 +54,9 @@
   align-self: start;
   justify-self: stretch;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: visible;
   position: sticky;
   top: 0;
   z-index: 20;
