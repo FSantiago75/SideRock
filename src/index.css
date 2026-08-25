@@ -52,6 +52,8 @@ html {
   --scrollbar-thumb-end: #3f3f3f;
   --scrollbar-thumb-hover-start: #969696;
   --scrollbar-thumb-hover-end: #575757;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb-start) #080808;
   transition:

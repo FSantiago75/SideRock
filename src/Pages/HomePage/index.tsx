@@ -75,6 +75,7 @@ export const HomePage = () => {
             experience={experience}
             order={order}
             isActive={activeExperience === experience.id}
+            enableHover={!isAutomaticRotation}
             onActivate={activateExperience}
           />
         ))}

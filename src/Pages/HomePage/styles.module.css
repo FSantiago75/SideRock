@@ -4,7 +4,9 @@
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
+  touch-action: pan-y;
   box-sizing: border-box;
   padding: clamp(1.25rem, 2.2vw, 2.5rem) clamp(1rem, 3vw, 3.5rem) 1.25rem;
   color: #f4f0e9;
@@ -172,10 +174,12 @@
 }
 
 .experienceList {
+  --experience-list-gap: clamp(0.65rem, 1.2vw, 1.25rem);
   display: flex;
   width: min(100%, 94rem);
   margin-inline: auto;
-  gap: clamp(0.65rem, 1.2vw, 1.25rem);
+  gap: var(--experience-list-gap);
+  touch-action: pan-y;
 }
 
 .experienceCard {
@@ -188,6 +192,8 @@
   min-width: 0;
   min-height: clamp(28rem, 54vh, 38rem);
   overflow: hidden;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
   padding: clamp(1rem, 1.6vw, 1.5rem);
   border: 1px solid rgba(255, 255, 255, 0.11);
   color: #f4f0e9;
@@ -230,9 +236,7 @@
 }
 
 .experienceCard[data-active='true'] {
-  flex-grow: 1.18;
   border-color: color-mix(in srgb, var(--card-accent) 68%, transparent);
-  transform: translateY(-0.45rem);
   box-shadow:
     0 1.8rem 4rem rgba(0, 0, 0, 0.44),
     0 0 2rem color-mix(in srgb, var(--card-accent) 13%, transparent);
@@ -570,18 +574,16 @@
 
   .experienceList {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .experienceCard {
+    grid-column: span 2;
     min-height: 34rem;
   }
 
-  .experienceCard:last-child {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(15rem, 0.8fr) minmax(18rem, 1fr);
-    grid-template-rows: 1fr;
-    min-height: 24rem;
+  .experienceCard:last-child:nth-child(odd) {
+    grid-column: 2 / span 2;
   }
 }
 
@@ -624,13 +626,17 @@
   }
 
   .experienceList {
+    --experience-list-gap: 0.85rem;
     grid-template-columns: 1fr;
-    gap: 0.85rem;
   }
 
   .experienceCard,
-  .experienceCard:last-child {
+  .experienceCard:last-child,
+  .experienceCard:last-child:nth-child(odd) {
     grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+    max-width: none;
     grid-template-columns: 1fr;
     grid-template-rows: minmax(13rem, 1fr) auto;
     min-height: 30rem;
@@ -691,7 +697,21 @@
   }
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (hover: hover) and (pointer: fine) and (min-width: 981px) {
+  .experienceCard[data-active='true'] {
+    flex-grow: 1.18;
+    transform: translateY(-0.45rem);
+  }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 980px) {
+  .experienceCard {
+    transition:
+      border-color var(--catalog-motion-duration) var(--catalog-motion-ease),
+      box-shadow var(--catalog-motion-duration) var(--catalog-motion-ease),
+      opacity var(--catalog-motion-duration) var(--catalog-motion-ease);
+  }
+
   .experienceCard[data-active='true'] {
     flex-grow: 1;
     transform: none;

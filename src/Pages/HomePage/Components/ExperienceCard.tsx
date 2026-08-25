@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, FocusEvent, PointerEvent } from 'react'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import type { HomeExperience } from '../homeExperiences'
@@ -11,6 +11,7 @@ type ExperienceCardProps = {
   experience: HomeExperience
   order: number
   isActive: boolean
+  enableHover: boolean
   onActivate: (experience: HomeExperience) => void
 }
 
@@ -23,11 +24,28 @@ export function ExperienceCard({
   experience,
   order,
   isActive,
+  enableHover,
   onActivate,
 }: ExperienceCardProps) {
   const style: ExperienceCardStyle = {
     '--card-accent': experience.theme.accent,
     '--card-reveal-delay': `${CARD_REVEAL_BASE_DELAY_MS + order * CARD_REVEAL_STAGGER_MS}ms`,
+  }
+
+  const handlePointerEnter = (event: PointerEvent<HTMLAnchorElement>) => {
+    if (!enableHover || event.pointerType !== 'mouse') {
+      return
+    }
+
+    onActivate(experience)
+  }
+
+  const handleFocus = (event: FocusEvent<HTMLAnchorElement>) => {
+    if (!enableHover || !event.currentTarget.matches(':focus-visible')) {
+      return
+    }
+
+    onActivate(experience)
   }
 
   return (
@@ -36,8 +54,8 @@ export function ExperienceCard({
       className={styles.experienceCard}
       data-experience={experience.id}
       data-active={isActive ? 'true' : undefined}
-      onPointerEnter={() => onActivate(experience)}
-      onFocus={() => onActivate(experience)}
+      onPointerEnter={handlePointerEnter}
+      onFocus={handleFocus}
       aria-label={`Conhecer ${experience.name}`}
       style={style}
     >

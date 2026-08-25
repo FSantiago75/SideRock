@@ -194,7 +194,9 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Estado ativo**: `HomeExperienceId | null`. `null` é o estado institucional neutro (carvão, grafite, prata envelhecida). Não usar Side Rock como fallback visual.
 - **Tema**: cores de identidade (acento + scrollbar) vivem em `homeExperiences.ts` (`theme` / `CATALOG_NEUTRAL_THEME`). O CSS só consome `--catalog-accent`, `--card-accent` e `--ambient-accent`. Não acrescentar seletores por `id` para uma experiência nova.
 - **Desktop (hover fino)**: a página inicia neutra; hover e foco no conjunto de cards aplicam a identidade correspondente; sair da região ou do foco restaura `null`.
-- **Toque / viewport ≤760px**: `useCatalogExperienceRotation` percorre `HOME_EXPERIENCES` a cada 5s. A condição é `(hover: none)`, `(pointer: coarse)` **ou** `max-width: 760px` — não depender só de hover, porque o preview estreito no desktop (Chrome/Cursor) continua a reportar `hover: hover` + `pointer: fine`. Pausar durante o toque e com a aba oculta. Ao sair deste modo (resize para desktop), voltar a `null`. Desktop largo com mouse permanece no hover.
+- **Toque / viewport ≤760px**: `useCatalogExperienceRotation` percorre `HOME_EXPERIENCES` a cada 5s. **Sem hover**: o dedo só rola ou entra no card; a identidade vem da rotação, não do toque. `enableHover={!isAutomaticRotation}` nos cards — Safari ainda dispara `mouseenter` falso após o toque, então `pointerType` sozinho não basta. Pausar a rotação durante o toque e com a aba oculta. Ao sair deste modo (resize para desktop), voltar a `null`. Desktop largo com mouse permanece no hover + lift.
+- **Scroll no toque**: o catálogo não usa `overflow: hidden` (quebra o scroll no Safari/Chrome móvel). `overflow-x: clip` + `touch-action: pan-y`. Lift de layout (`flex-grow`, `translateY`) só em `(hover: hover) and (pointer: fine) and (min-width: 981px)`.
+- **Grid 2+1 (≤980px e >680px)**: lista em 4 colunas; cada card ocupa 2. Se o último for ímpar, `grid-column: 2 / span 2` — mesma largura dos de cima, centrado. Não esticar nas duas colunas.
 - **Scrollbar**: cores só na home, via variáveis em `html` (`useCatalogScrollbarTheme`). Sem experiência ativa e nas demais rotas, cinza neutro (`CATALOG_NEUTRAL_THEME`, também default em `index.css`). Remover as variáveis inline ao desmontar a home. Registrar cores com `@property` (`<color>`, `inherits: true`, inicial neutro) e interpolar com `--catalog-motion-duration` / `--catalog-motion-ease`.
 - **Movimento**: transições coordenadas em CSS (sem biblioteca). Curva padrão em `--catalog-motion-ease`. `prefers-reduced-motion` desliga só as animações de entrada, não a interpolação de identidade.
 - **Medalhão**: tamanho via `--medallion-size` / `--orbit-size`, centralizado. Deve caber dentro da moldura interna mesmo com scale no hover. Sem índices 01/02/03 nos cards.
@@ -224,6 +226,8 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: Home — no mobile, sem hover de identidade (só rotação + tap para entrar); lift continua só no desktop 3 colunas.
+- **2026-08-25**: Home — scroll móvel em qualquer browser (`overflow-x: clip`, `touch-action: pan-y`); hover de layout só no desktop 3 colunas; grid 2+1 com o terceiro card centrado na largura de uma coluna.
 - **2026-08-25**: Entrega — review obrigatória nos 7 pilares (padronização, simplicidade, organização, legibilidade, componentização, escalabilidade, estabilidade) em cada ficheiro tocado.
 - **2026-08-25**: Home — identidade (acento + scrollbar) em `homeExperiences.ts`; CSS só com variáveis; sem seletores de cor por `id`; resize para desktop restaura estado neutro.
 - **2026-08-25**: Home — medalhão e órbita limitados por `clamp` e centralizados para não invadir a moldura no hover; removidos os índices 01/02/03 dos cards.
