@@ -193,6 +193,7 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
 - **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Só texto + URL (`https://n2codeworks.com.br/`), sem ícone. Mesmo `font-size` do meta do catálogo (0.68rem / 0.6rem ≤680px). Centrado, discreto, sem cor de identidade. Reutilizar nas páginas; não copiar o markup.
+- **SPA no Vercel**: o React Router só existe no cliente. Sem rewrite, um link direto a `/side-rock/resumo` devolve 404. `vercel.json` reescreve rotas da app para `/index.html`; ficheiros reais (`/assets/…`) continuam a ser servidos. Após alterar, precisa de um deploy novo.
 
 ### 5.2 Home — catálogo de experiências
 
@@ -233,6 +234,7 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: Vercel — rewrite SPA para `/index.html` para links diretos (`/side-rock/resumo`, etc.) não darem 404.
 - **2026-08-25**: Contratação — títulos dos vídeos sempre com `href`; `'href' in video` com `as const` gerava `never` no `tsc`.
 - **2026-08-25**: Navbar — ícones sociais no telemóvel com mais espaço e círculo maior (não colapsar o gap em 590/480/380).
 - **2026-08-25**: Side Rock — no mobile, o documento não faz bounce além da página (não revela o fundo de caveiras); home continua a rolar o `html`.
