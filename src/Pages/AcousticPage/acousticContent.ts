@@ -1,13 +1,17 @@
 import ambientImage from '../../assets/acoustic/ambient.webp'
 import detailImage from '../../assets/acoustic/detail.webp'
+import hero640Image from '../../assets/acoustic/hero-640.webp'
+import hero960Image from '../../assets/acoustic/hero-960.webp'
 import heroImage from '../../assets/acoustic/hero.webp'
 import { EXPERIENCE_ROUTES } from '../../config/experiences'
-import { HOME_EXPERIENCES } from '../HomePage/homeExperiences'
 
 const WHATSAPP_NUMBER = '5511971632992'
 
-const DEFAULT_BOOKING_MESSAGE =
-  'Olá, Vanessa! Gostaria de consultar disponibilidade e orçamento do Side Rock Acústico para um evento.'
+const DEFAULT_BOOKING_MESSAGE = `Olá, Vanessa! Gostaria de informações sobre o Side Rock Acústico.
+
+Data do evento:
+Cidade:
+Tipo de evento:`
 
 function buildWhatsAppUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
@@ -20,14 +24,12 @@ const ACOUSTIC_SCROLLBAR_FALLBACK = {
   hoverEnd: '#8A5428',
 } as const
 
-export const ACOUSTIC_SCROLLBAR =
-  HOME_EXPERIENCES.find((experience) => experience.id === 'acoustic')?.theme
-    .scrollbar ?? ACOUSTIC_SCROLLBAR_FALLBACK
+export const ACOUSTIC_SCROLLBAR = ACOUSTIC_SCROLLBAR_FALLBACK
 
 export const ACOUSTIC_PAGE_META = {
   title: 'Side Rock Acústico — Música ao vivo para eventos',
   description:
-    'Victor e Marcelo levam música nacional e internacional em formato acústico intimista, elegante e preparado para bares, celebrações e eventos.',
+    'Show acústico ao vivo com músicas brasileiras e clássicos do rock para bares, celebrações e eventos particulares.',
 } as const
 
 export const ACOUSTIC_LINKS = {
@@ -36,11 +38,53 @@ export const ACOUSTIC_LINKS = {
   instagramUrl: 'https://www.instagram.com/bandasiderock',
 } as const
 
+/**
+ * Perguntas frequentes — estrutura preparada para publicação futura.
+ * Não renderizar enquanto `answer` for null.
+ */
+export const ACOUSTIC_FAQ_PENDING = [
+  {
+    id: 'formacao',
+    question: 'Qual é a formação do show?',
+    answer: null as string | null,
+  },
+  {
+    id: 'instrumentos',
+    question: 'Quais instrumentos entram na apresentação?',
+    answer: null as string | null,
+  },
+  {
+    id: 'duracao',
+    question: 'Quanto tempo dura o show?',
+    answer: null as string | null,
+  },
+  {
+    id: 'som',
+    question: 'O projeto leva equipamento de som?',
+    answer: null as string | null,
+  },
+  {
+    id: 'regioes',
+    question: 'Quais cidades e regiões são atendidas?',
+    answer: null as string | null,
+  },
+  {
+    id: 'repertorio',
+    question: 'É possível adaptar o repertório ao evento?',
+    answer: null as string | null,
+  },
+  {
+    id: 'antecedencia',
+    question: 'Com quanta antecedência devo reservar a data?',
+    answer: null as string | null,
+  },
+] as const
+
 export const ACOUSTIC_NAV = [
-  { id: 'formato', label: 'Formato' },
-  { id: 'experiencia', label: 'Experiência' },
-  { id: 'repertorio', label: 'Repertório' },
-  { id: 'contratacao', label: 'Contratação', shortLabel: 'Contratar' },
+  { id: 'formato', label: 'O show' },
+  { id: 'experiencia', label: 'Para seu evento' },
+  { id: 'repertorio', label: 'Músicas' },
+  { id: 'como-contratar', label: 'Como contratar' },
 ] as const
 
 export type AcousticNavId = (typeof ACOUSTIC_NAV)[number]['id']
@@ -48,6 +92,9 @@ export type AcousticNavId = (typeof ACOUSTIC_NAV)[number]['id']
 export const ACOUSTIC_ASSETS = {
   hero: {
     src: heroImage,
+    srcSet: `${hero640Image} 640w, ${hero960Image} 960w, ${heroImage} 1672w`,
+    sizes:
+      '(max-width: 640px) 100vw, (max-width: 960px) 100vw, min(50vw, 42rem)',
     width: 1672,
     height: 941,
     alt: 'Imagem ilustrativa de apresentação acústica com luz âmbar — placeholder até fotos oficiais do Side Rock Acústico',
@@ -69,22 +116,31 @@ export const ACOUSTIC_ASSETS = {
 const APPLICATION_ITEMS = [
   {
     label: 'Bares e espaços intimistas',
+    description:
+      'Música ao vivo para criar ambiente sem afastar a conversa.',
     eventType: 'bares e espaços intimistas',
   },
   {
     label: 'Celebrações',
+    description: 'Uma trilha ao vivo para encontros e momentos especiais.',
     eventType: 'celebrações',
   },
   {
     label: 'Eventos particulares',
+    description:
+      'Apresentação adaptada ao espaço e ao perfil dos convidados.',
     eventType: 'eventos particulares',
   },
   {
     label: 'Programações especiais',
+    description:
+      'Um formato flexível para noites temáticas e ocasiões específicas.',
     eventType: 'programações especiais',
   },
   {
     label: 'Recepções e experiências de marca',
+    description:
+      'Música ao vivo para receber convidados e valorizar a atmosfera.',
     eventType: 'recepções e experiências de marca',
   },
 ] as const
@@ -92,76 +148,87 @@ const APPLICATION_ITEMS = [
 export const ACOUSTIC_CONTENT = {
   brand: 'Side Rock Acústico',
   manager: 'Vanessa',
+  headerCta: 'Pedir orçamento',
   hero: {
-    kicker: 'Victor + Marcelo · Nacional + internacional',
+    kicker: 'Victor + Marcelo · Brasil + internacional',
     title: 'Side Rock Acústico',
-    headline: 'Do Brasil ao rock internacional. Em formato acústico.',
+    headline:
+      'Músicas brasileiras e clássicos do rock em um show acústico ao vivo, adaptado ao clima do seu evento.',
     description:
-      'Um repertório reconhecível, conduzido de forma próxima e preparado para conectar públicos diferentes ao ritmo de cada evento.',
-    primaryCta: 'Consultar data e orçamento',
-    secondaryCta: 'Conhecer o formato',
+      'Para bares, celebrações e eventos particulares, com músicas que o público reconhece e aproveita do início ao fim.',
+    primaryCta: 'Consultar minha data',
+    secondaryCta: 'Ver como é o show',
     facts: [
       {
         term: 'Victor + Marcelo',
-        description: 'À frente da experiência',
+        description: 'Músicos do projeto',
       },
       {
-        term: 'Nacional + internacional',
-        description: 'Repertório reconhecível',
+        term: 'Brasil + internacional',
+        description: 'Músicas para públicos diferentes',
       },
       {
-        term: 'Ao vivo',
-        description: 'Formato acústico',
+        term: 'Show ao vivo',
+        description: 'Adaptado ao seu evento',
       },
     ],
   },
   format: {
+    kicker: 'O show',
     title: 'Um show que se adapta ao seu evento.',
     lead: 'O Side Rock Acústico aproxima músicas nacionais e internacionais em uma apresentação construída para criar conexão sem perder presença.',
     body: 'O formato reduz a distância entre músicos e público, adapta volume e dinâmica ao ambiente e mantém o repertório reconhecível do primeiro ao último acorde.',
     differentials: [
       {
-        title: 'Repertório reconhecível',
-        copy: 'Música nacional e internacional escolhida para conversar com públicos diferentes.',
+        title: 'Músicas que o público conhece',
+        copy: 'Sucessos nacionais e internacionais para diferentes idades e perfis.',
       },
       {
-        title: 'Formato versátil',
-        copy: 'Uma apresentação que se adapta ao espaço, ao momento e ao perfil do evento.',
+        title: 'Show adaptado ao ambiente',
+        copy: 'Volume e dinâmica ajustados ao espaço e ao momento do evento.',
       },
       {
-        title: 'Experiência próxima',
-        copy: 'Interação natural, presença musical e uma atmosfera que convida o público a permanecer.',
+        title: 'Proximidade com os convidados',
+        copy: 'Uma apresentação ao vivo que cria atmosfera sem perder naturalidade.',
       },
     ],
   },
   artists: {
     kicker: 'Quem conduz essa experiência',
     title: 'Victor e Marcelo.',
+    // TODO: substituir por bio confirmada de Victor (função, formação, experiência)
+    // TODO: substituir por bio confirmada de Marcelo (função, formação, experiência)
     paragraphs: [
-      'O Side Rock Acústico nasceu como uma forma mais próxima e versátil de levar música nacional e internacional a diferentes públicos e ambientes.',
-      'O formato preserva presença musical, repertório reconhecível e contato direto com quem está no evento.',
+      'Victor e Marcelo conduzem o Side Rock Acústico com uma apresentação próxima, dinâmica e ajustada a cada ambiente.',
+      'O repertório reúne músicas brasileiras e referências internacionais em uma experiência pensada para públicos diferentes.',
     ],
   },
   applications: {
+    kicker: 'Para seu evento',
     title: 'Na medida certa para cada ambiente.',
-    actionLabel: 'Consultar para este formato',
+    actionLabel: 'Consultar pelo WhatsApp',
     items: APPLICATION_ITEMS.map((item) => ({
       label: item.label,
+      description: item.description,
       whatsappUrl: buildWhatsAppUrl(
         `Olá, Vanessa! Gostaria de consultar o Side Rock Acústico para ${item.eventType}.`,
       ),
     })),
   },
   repertoire: {
+    kicker: 'Músicas',
     title: 'Reconhecível para cantar. Interessante para ouvir.',
-    body: 'O repertório aproxima a memória afetiva da música nacional de referências internacionais conhecidas, criando uma seleção acessível para o público e musicalmente consistente.',
+    body: 'Músicas brasileiras, pop rock, clássicos e sucessos internacionais que ajudam diferentes gerações a se reconhecer no repertório.',
+    categoriesLabel: 'Estilos presentes no show',
     categories: [
       'Música nacional',
       'Pop rock',
-      'Classic rock',
+      'Clássicos do rock',
       'Hits internacionais',
       'Canções para cantar junto',
     ],
+    /** TODO: preencher com artistas confirmados; renderizar só quando houver itens */
+    featuredArtists: [] as readonly string[],
   },
   media: {
     label: 'Vídeo oficial em produção',
@@ -180,8 +247,8 @@ export const ACOUSTIC_CONTENT = {
       },
       {
         index: '02',
-        title: 'Receba a recomendação',
-        copy: 'A equipe indica o formato mais adequado para a ocasião.',
+        title: 'Receba a melhor indicação',
+        copy: 'A equipe confirma a disponibilidade e orienta a melhor opção para o seu evento.',
       },
       {
         index: '03',
@@ -192,10 +259,10 @@ export const ACOUSTIC_CONTENT = {
   },
   booking: {
     kicker: 'Leve essa experiência para o seu evento',
-    title: 'Vamos encontrar o formato certo para a sua data.',
-    body: 'Conte a cidade, a data e o perfil do evento. O atendimento retorna com disponibilidade, formato e próximos passos.',
-    cta: 'Consultar disponibilidade',
-    note: 'Atendimento direto com Vanessa · Manager',
+    title: 'Vamos encontrar o show ideal para o seu evento.',
+    body: 'Conte a cidade, a data e como será o evento. Você recebe a disponibilidade, a indicação mais adequada e os próximos passos.',
+    cta: 'Falar com Vanessa no WhatsApp',
+    note: 'Você fala diretamente com Vanessa, responsável pelo atendimento.',
   },
   footer: {
     catalogLabel: 'Voltar ao catálogo de experiências',
