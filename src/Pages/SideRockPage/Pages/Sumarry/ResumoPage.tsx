@@ -1,10 +1,13 @@
 import type { CSSProperties } from 'react'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { HiArrowRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import bg from '../../../../assets/side-rock-summary-atmosphere-v2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import { sideRockPath } from '../../sectionConstants'
 import { BandHeroVisual } from './BandHeroVisual'
+import { BookingSection } from './BookingSection'
+import { SIDE_ROCK_BOOKING } from './bookingContent'
 import styles from './ResumoPage.module.css'
 import { SIDE_ROCK_SUMMARY_CONTENT } from './summaryContent'
 
@@ -47,17 +50,24 @@ export function ResumoPage() {
             </p>
 
             <div className={styles.heroActions}>
-              <Link className={styles.primaryAction} to={sideRockPath('musica')}>
+              <a
+                className={styles.primaryAction}
+                href={SIDE_ROCK_BOOKING.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp aria-hidden />
+                Consultar data e orçamento
+              </a>
+              <Link className={styles.secondaryAction} to={sideRockPath('musica')}>
                 Ver repertório
                 <HiArrowRight aria-hidden />
               </Link>
-              <Link
-                className={styles.secondaryAction}
-                to={sideRockPath('integrantes')}
-              >
-                Ver integrantes
-              </Link>
             </div>
+
+            <p className={styles.heroContact}>
+              Atendimento direto com <strong>Vanessa</strong> · Manager
+            </p>
 
             <dl className={styles.heroFacts}>
               {summaryFacts.map(({ value, label }) => (
@@ -100,6 +110,8 @@ export function ResumoPage() {
             </strong>
           </aside>
         </section>
+
+        <BookingSection />
 
         <section
           className={styles.repertoire}

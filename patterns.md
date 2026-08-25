@@ -188,6 +188,7 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Navbar — evolução intencional**: remoções no CSS (keyframes, pseudo-elementos, blur, linhas decorativas, etc.) feitas pelo autor são **deliberadas**; o assistente **não** deve voltar a acrescentar esses trechos salvo pedido explícito — limitar-se a alinhar o que restar (grid, `grid-area`, overflow mínimo, variáveis em uso).
 - **Scrollbar Side Rock**: o mesmo sistema da home (`useScrollbarTheme` → `--scrollbar-thumb-*` no `html`). Nas rotas Side Rock o thumb é vermelho (`SIDE_ROCK_SCROLLBAR`, `#c52b31`). Home sem seleção continua cinza. Sem interpolar essas variáveis no `html`. O `.main` do shell usa a mesma receita visual da home (8px, botões ocultos, cor sólida, track na cor do fundo) — não uma barra nativa cinza à parte.
 - **Foto da banda no Resumo**: `MembersNull.png` é recorte com alpha; o tamanho vive em `summaryContent.heroPhoto.scale`. Em `cutout`, não pintar overlay preto (`::after` com `#050505` / fade no fundo da figure) — no letterbox isso vira um quadrado preto em cima do palco. Halo/órbita ficam atrás da PNG, não por cima.
+- **Vídeo de contratação**: lista em `bookingContent.ts` (`videos`); ficheiros locais em `src/assets/promotionalVideo*.mp4`; player nativo lado a lado. Não hotlinkar CDN do Instagram. CTA “Ver apresentações” aponta para o perfil Instagram (`instagramUrl`). Player simples (`controls`, `playsInline`, sem autoplay); ao tocar um, pausar os outros da fila.
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
 - **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Só texto + URL (`https://n2codeworks.com.br/`), sem ícone. Mesmo `font-size` do meta do catálogo (0.68rem / 0.6rem ≤680px). Centrado, discreto, sem cor de identidade. Reutilizar nas páginas; não copiar o markup.
@@ -231,6 +232,9 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: Contratação — “Ver apresentações” vai para o Instagram da banda, com ícone da rede.
+- **2026-08-25**: Contratação — dois vídeos locais lado a lado (`videos` em `bookingContent.ts`).
+- **2026-08-25**: Contratação — player nativo com `promotionalVideo.mp4`; Instagram só como link do reel.
 - **2026-08-25**: Resumo — foto da banda em cutout sem overlay preto na figure; escala só em `heroPhoto.scale`.
 - **2026-08-25**: Side Rock — scrollbar vermelha padronizada (`useScrollbarTheme` + `SIDE_ROCK_SCROLLBAR`); home continua cinza no estado neutro.
 - **2026-08-25**: `DeveloperCredit` só com texto (sem ícone N2), mesmo tamanho do footer editorial.

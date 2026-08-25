@@ -406,6 +406,19 @@
   mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 
+.heroContact {
+  margin: 0.8rem 0 0;
+  color: rgba(241, 237, 230, 0.38);
+  font-size: 0.62rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.heroContact strong {
+  color: rgba(241, 237, 230, 0.7);
+  font-weight: 700;
+}
+
 .repertoireTrack::-webkit-scrollbar {
   display: none;
 }
