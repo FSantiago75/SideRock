@@ -36,7 +36,7 @@ export function SideRockSectionPage({
   }
 
   return (
-    <div className={styles.shell} style={style}>
+    <div className={styles.shell} data-app-scroll="inner" style={style}>
       <main className={styles.main}>
         <div className={styles.navOverlay}>
           <SideRockNavbar />

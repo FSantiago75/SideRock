@@ -118,9 +118,9 @@
     --tab-pad-inline: 0.36rem;
     --tab-separator-pad: 0.36rem;
     --tabs-scroll-gap: 0.28rem;
-    --social-gap: 0.5rem;
-    --social-link-size: 1.7rem;
-    --social-icon-font-size: 0.76rem;
+    --social-gap: 0.58rem;
+    --social-link-size: 1.82rem;
+    --social-icon-font-size: 0.82rem;
   }
 }
 
@@ -133,9 +133,9 @@
     --tab-pad-inline: 0.36rem;
     --tab-separator-pad: 0.36rem;
     --tab-letter-spacing: 0.04em;
-    --social-gap: 0.5rem;
-    --social-link-size: 1.75rem;
-    --social-icon-font-size: 0.82rem;
+    --social-gap: 0.58rem;
+    --social-link-size: 1.82rem;
+    --social-icon-font-size: 0.84rem;
   }
 }
 
@@ -144,10 +144,10 @@
     --tab-font-size: 0.88rem;
     --tab-pad-inline: 0.3rem;
     --tab-separator-pad: 0.24rem;
-    --nav-tabs-social-gap: 0.35rem;
-    --social-gap: 0.48rem;
-    --social-link-size: 1.68rem;
-    --social-icon-font-size: 0.78rem;
+    --nav-tabs-social-gap: 0.45rem;
+    --social-gap: 0.56rem;
+    --social-link-size: 1.8rem;
+    --social-icon-font-size: 0.82rem;
   }
 }
 
@@ -159,16 +159,16 @@
       'brand social'
       'tabs tabs';
     row-gap: 0.35rem;
-    column-gap: 0.75rem;
+    column-gap: 0.85rem;
     --nav-pad-block: 0.5rem;
-    --nav-pad-inline: 0.7rem;
+    --nav-pad-inline: 0.85rem;
     --tab-font-size: 0.71rem;
     --tab-pad-block: 0.3rem;
     --tab-pad-inline: 0.12rem;
     --tabs-scroll-gap: 0;
-    --social-gap: 0.34rem;
-    --social-link-size: 1.68rem;
-    --social-icon-font-size: 0.74rem;
+    --social-gap: 0.62rem;
+    --social-link-size: 1.95rem;
+    --social-icon-font-size: 0.86rem;
   }
 
   .mobileBrand {
@@ -204,26 +204,27 @@
 
 @media (max-width: 480px) {
   .root {
-    --nav-pad-inline: 0.6rem;
+    --nav-pad-inline: 0.75rem;
     --tab-font-size: 0.68rem;
     --tab-pad-inline: 0.1rem;
     --tab-letter-spacing: 0.03em;
-    --social-gap: 0.3rem;
-    --social-link-size: 1.58rem;
-    --social-icon-font-size: 0.7rem;
+    --social-gap: 0.55rem;
+    --social-link-size: 1.88rem;
+    --social-icon-font-size: 0.84rem;
   }
 }
 
 @media (max-width: 380px) {
   .root {
-    --nav-pad-inline: 0.4rem;
+    --nav-pad-inline: 0.55rem;
     --tab-font-size: 0.68rem;
     --tab-pad-block: 0.3rem;
     --tab-pad-inline: 0.2rem;
     --tab-separator-pad: 0.14rem;
     --tabs-scroll-gap: 0.15rem;
-    --social-link-size: 1.5rem;
-    --social-icon-font-size: 0.7rem;
+    --social-gap: 0.48rem;
+    --social-link-size: 1.78rem;
+    --social-icon-font-size: 0.8rem;
   }
 }
 

@@ -78,17 +78,13 @@ export function BookingSection() {
                 </div>
                 <div className={styles.videoCaption}>
                   <span>Ao vivo</span>
-                  {'href' in video ? (
-                    <a
-                      href={video.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {video.title}
-                    </a>
-                  ) : (
-                    <strong>{video.title}</strong>
-                  )}
+                  <a
+                    href={video.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {video.title}
+                  </a>
                 </div>
               </div>
             ))}

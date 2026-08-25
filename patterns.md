@@ -49,7 +49,7 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Logo**: “OZZBORNS” (no projeto: nome da banda real) em vermelho; em Integrantes há **crânio em medalhão** sob o logotipo — reforço de marca opcional.
 - **Links**: uppercase, sans; inativo cinza/branco; **ativo em vermelho** com **sublinhado decorativo** (linha + elemento central: crânio ou losango); opcional **pulso lento** no texto e no glow da linha ativa; respeitar `prefers-reduced-motion`.
 - **Separadores**: em Galeria aparecem **pontos vermelhos** entre itens — padronizar se usar ou não em todas as rotas.
-- **Social**: quatro círculos com borda vermelha — Facebook, Instagram, YouTube, Spotify (SVG ou sprite consistente); na navbar pode haver **chase** em loop (brilho sequencial f→i→y→s) com `prefers-reduced-motion` a desligar.
+- **Social**: quatro círculos com borda vermelha — Facebook, Instagram, YouTube, Spotify (SVG ou sprite consistente); na navbar pode haver **chase** em loop (brilho sequencial f→i→y→s) com `prefers-reduced-motion` a desligar. No telemóvel (≤590px) o `--social-gap` e o `--social-link-size` não devem colapsar abaixo de ~0.48rem / ~1.78rem — os ícones ficam ilegíveis e difíceis de tocar.
 
 ### 2.5 Micro-decoração
 
@@ -187,8 +187,9 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Navbar**: `SideRockHeader` orquestra `SideRockNavbar` + `SideRockSocialRail`; **sem** imagem de fundo no strip; **sobre o BG** dentro de `<main>` (`.navOverlay` `sticky`); `NavLink` com `to={sideRockPath(id)}`. Redes em `socialLinks.ts`: Facebook, Instagram, YouTube, Spotify. Detecção compacto: `VIEWPORT_MOBILE_MAX_PX = 760` + `useElementOverflow` nas tabs (com latch para não oscilar wide↔compact).
 - **Navbar — evolução intencional**: remoções no CSS (keyframes, pseudo-elementos, blur, linhas decorativas, etc.) feitas pelo autor são **deliberadas**; o assistente **não** deve voltar a acrescentar esses trechos salvo pedido explícito — limitar-se a alinhar o que restar (grid, `grid-area`, overflow mínimo, variáveis em uso).
 - **Scrollbar Side Rock**: o mesmo sistema da home (`useScrollbarTheme` → `--scrollbar-thumb-*` no `html`). Nas rotas Side Rock o thumb é vermelho (`SIDE_ROCK_SCROLLBAR`, `#c52b31`). Home sem seleção continua cinza. Sem interpolar essas variáveis no `html`. O `.main` do shell usa a mesma receita visual da home (8px, botões ocultos, cor sólida, track na cor do fundo) — não uma barra nativa cinza à parte.
+- **Scroll interno Side Rock**: o shell marca `data-app-scroll="inner"`. Com isso, `html`/`body`/`#root` ficam `overflow: hidden` (via `:has`) para o bounce do telemóvel não mostrar o fundo de caveiras do `body`. O scroll real é só no `.main`, com `overscroll-behavior: none`. A home **não** usa este atributo — continua a rolar o documento.
 - **Foto da banda no Resumo**: `MembersNull.png` é recorte com alpha; o tamanho vive em `summaryContent.heroPhoto.scale`. Em `cutout`, não pintar overlay preto (`::after` com `#050505` / fade no fundo da figure) — no letterbox isso vira um quadrado preto em cima do palco. Halo/órbita ficam atrás da PNG, não por cima.
-- **Vídeo de contratação**: lista em `bookingContent.ts` (`videos`); ficheiros locais em `src/assets/promotionalVideo*.mp4`; player nativo lado a lado. Não hotlinkar CDN do Instagram. CTA “Ver apresentações” aponta para o perfil Instagram (`instagramUrl`). Player simples (`controls`, `playsInline`, sem autoplay); ao tocar um, pausar os outros da fila.
+- **Vídeo de contratação**: lista em `bookingContent.ts` (`videos`); ficheiros locais em `src/assets/promotionalVideo*.mp4`; player nativo lado a lado. Não hotlinkar CDN do Instagram. CTA “Ver apresentações” aponta para o perfil Instagram (`instagramUrl`). Player simples (`controls`, `playsInline`, sem autoplay); ao tocar um, pausar os outros da fila. Com `as const`, se todos os itens tiverem `href`, não usar `'href' in video` com ramo else — o TypeScript estreita para `never` e o `tsc -b` falha.
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
 - **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Só texto + URL (`https://n2codeworks.com.br/`), sem ícone. Mesmo `font-size` do meta do catálogo (0.68rem / 0.6rem ≤680px). Centrado, discreto, sem cor de identidade. Reutilizar nas páginas; não copiar o markup.
@@ -232,6 +233,9 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: Contratação — títulos dos vídeos sempre com `href`; `'href' in video` com `as const` gerava `never` no `tsc`.
+- **2026-08-25**: Navbar — ícones sociais no telemóvel com mais espaço e círculo maior (não colapsar o gap em 590/480/380).
+- **2026-08-25**: Side Rock — no mobile, o documento não faz bounce além da página (não revela o fundo de caveiras); home continua a rolar o `html`.
 - **2026-08-25**: Contratação — “Ver apresentações” vai para o Instagram da banda, com ícone da rede.
 - **2026-08-25**: Contratação — dois vídeos locais lado a lado (`videos` em `bookingContent.ts`).
 - **2026-08-25**: Contratação — player nativo com `promotionalVideo.mp4`; Instagram só como link do reel.
