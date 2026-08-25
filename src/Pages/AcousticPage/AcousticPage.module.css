@@ -66,9 +66,26 @@
   backdrop-filter: blur(12px);
 }
 
+@media (max-width: 768px) {
+  .header[data-scrolled='true'] {
+    background: rgba(18, 10, 5, 0.93);
+    backdrop-filter: blur(7px);
+  }
+}
+
 .headerSpacer {
   height: var(--acoustic-header-offset);
   pointer-events: none;
+}
+
+.headerScrollSentinel {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .headerInner {
@@ -217,13 +234,15 @@
 }
 
 .navLink[data-active='true'] {
-  color: var(--acoustic-accent-light);
-  text-shadow: 0 0 14px rgba(223, 122, 34, 0.16);
+  color: var(--acoustic-paper);
+  font-weight: 800;
+  text-shadow: 0 0 14px rgba(223, 122, 34, 0.22);
 }
 
 .navLink[data-active='true'] .navActiveLine {
   opacity: 1;
   transform: scaleX(1);
+  box-shadow: 0 0 12px rgba(223, 122, 34, 0.35);
 }
 
 .navLink:hover,
@@ -327,9 +346,15 @@
 .applications,
 .repertoire,
 .media,
+.process,
 .booking,
 .footer {
   scroll-margin-top: calc(var(--acoustic-header-offset) + 0.75rem);
+}
+
+.deferredSection {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
 }
 
 .kicker,
@@ -357,9 +382,11 @@
 .bodyLead,
 .bodyText,
 .differentialCopy,
-.bookingBody {
+.bookingBody,
+.applicationsDescription,
+.processStepText {
   color: var(--acoustic-muted);
-  font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
   line-height: 1.7;
 }
 
@@ -413,6 +440,15 @@
   position: absolute;
   inset: 14% auto 20% 3%;
   width: min(32%, 16rem);
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, transparent, #000 20%, #000 80%, transparent);
+  opacity: 0.75;
+}
+
+.stringLines::before {
+  content: '';
+  position: absolute;
+  inset: -1.2rem 0 0;
   background: repeating-linear-gradient(
     180deg,
     transparent 0,
@@ -421,9 +457,12 @@
     rgba(223, 122, 34, 0.14) 1.18rem
   );
   background-size: 100% 2.4rem;
-  mask-image: linear-gradient(180deg, transparent, #000 20%, #000 80%, transparent);
-  opacity: 0.75;
-  animation: acousticStringGlow 18s ease-in-out infinite alternate;
+  animation: acousticStringDrift 18s ease-in-out infinite alternate;
+}
+
+.page:not([data-ambient-active='true']) .resonanceSvg,
+.page:not([data-ambient-active='true']) .stringLines::before {
+  animation-play-state: paused;
 }
 
 .hero::after {
@@ -558,6 +597,12 @@
   overflow: hidden;
   border: 1px solid rgba(244, 240, 233, 0.1);
   background: var(--acoustic-surface);
+}
+
+.heroMedia picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .heroImage {
@@ -1021,6 +1066,13 @@
     transform 240ms ease;
 }
 
+.applicationsCopy {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  transition: transform 240ms ease;
+}
+
 .applicationsLabel {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
@@ -1029,23 +1081,31 @@
   transition: transform 240ms ease;
 }
 
+.applicationsDescription {
+  max-width: 34rem;
+  color: var(--acoustic-muted);
+  font-size: clamp(1rem, 1.05vw, 1.02rem);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
 .applicationsAction {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   min-height: 2.75rem;
   color: var(--acoustic-accent-light);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0.92;
   transition: transform 240ms ease, opacity 240ms ease;
 }
 
-.applicationsArrow {
-  display: inline-block;
-  transition: transform 240ms ease;
+.applicationsAction svg {
+  flex-shrink: 0;
+  font-size: 0.95rem;
 }
 
 .applicationsItem {
@@ -1073,8 +1133,8 @@
   transform: translateY(-50%) rotate(45deg) scale(1.08);
 }
 
-.applicationsLink:hover .applicationsLabel,
-.applicationsLink:focus-visible .applicationsLabel {
+.applicationsLink:hover .applicationsCopy,
+.applicationsLink:focus-visible .applicationsCopy {
   transform: translateX(4px);
 }
 
@@ -1082,11 +1142,6 @@
 .applicationsLink:focus-visible .applicationsAction {
   opacity: 1;
   transform: translateX(2px);
-}
-
-.applicationsLink:hover .applicationsArrow,
-.applicationsLink:focus-visible .applicationsArrow {
-  transform: translateX(4px);
 }
 
 .applicationsItem:has(.applicationsLink:hover),
@@ -1126,6 +1181,58 @@
 .repertoireIntro {
   max-width: 44rem;
   margin: 0 var(--acoustic-content-pad-end) 1.75rem var(--acoustic-content-pad);
+}
+
+.repertoireCategories {
+  min-width: 0;
+}
+
+.repertoireCategoriesLabel {
+  margin: 0 var(--acoustic-content-pad-end) 0.85rem var(--acoustic-content-pad);
+  color: var(--acoustic-accent-light);
+  font-size: clamp(0.65rem, 0.8vw, 0.76rem);
+  font-weight: 750;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.repertoireCategories[data-repertoire-mode='wrap'] .repertoireShell {
+  display: block;
+  padding-inline: 0;
+}
+
+.repertoireCategories[data-repertoire-mode='wrap'] .repertoireRail {
+  border: none;
+  background: transparent;
+}
+
+.repertoireCategories[data-repertoire-mode='wrap'] .repertoireRail::before,
+.repertoireCategories[data-repertoire-mode='wrap'] .repertoireRail::after {
+  display: none;
+}
+
+.repertoireCategories[data-repertoire-mode='wrap'] .repertoireTrack {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.55rem 0.85rem;
+  overflow: visible;
+  scroll-snap-type: none;
+  padding:
+    0.35rem
+    var(--acoustic-content-pad-end)
+    0.15rem
+    var(--acoustic-content-pad);
+}
+
+.repertoireCategories[data-repertoire-mode='wrap'] .repertoireItem {
+  flex: 0 1 auto;
+  scroll-snap-align: unset;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(223, 122, 34, 0.28);
+  font-size: clamp(0.95rem, 2.8vw, 1.05rem);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  white-space: normal;
 }
 
 .repertoireShell {
@@ -1799,13 +1906,26 @@
 
   .applicationsLink {
     grid-template-columns: 1fr;
-    gap: 0.35rem;
+    gap: 0.55rem;
     min-height: 44px;
-    padding-block: 0.95rem;
+    padding-block: 1rem;
   }
 
-  .applicationsArrow {
-    transform: none;
+  .applicationsAction {
+    justify-self: start;
+    min-height: 44px;
+    padding-inline: 0.15rem;
+  }
+
+  .bodyLead,
+  .bodyText,
+  .heroLead,
+  .differentialCopy,
+  .bookingBody,
+  .applicationsDescription,
+  .processStepText,
+  .mediaCaption {
+    font-size: 1rem;
   }
 
   .processSteps {
@@ -1845,10 +1965,14 @@
   }
 
   .navLink {
-    min-height: 2.5rem;
-    padding: 0.22rem 0.2rem 0.35rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
+    min-height: 2.75rem;
+    padding: 0.28rem 0.18rem 0.38rem;
+    font-size: clamp(0.6875rem, 2.6vw, 0.75rem);
+    letter-spacing: 0.06em;
+  }
+
+  .navLink[data-active='true'] {
+    color: var(--acoustic-accent-light);
   }
 
   .navActiveLine {
@@ -1906,23 +2030,15 @@
 
   .headerCta {
     min-height: 2.75rem;
-    padding: 0.4rem 0.75rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
   }
 
   .navLink {
-    padding-inline: 0.12rem;
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
-  }
-
-  .navLink[data-has-short='true'] .navLabelFull {
-    display: none;
-  }
-
-  .navLink[data-has-short='true'] .navLabelShort {
-    display: inline;
+    padding-inline: 0.1rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
   }
 
   .heroActions {
@@ -1961,8 +2077,8 @@
   }
 
   .navLink {
-    font-size: 0.56rem;
-    letter-spacing: 0.05em;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -1980,15 +2096,15 @@
   }
 }
 
-@keyframes acousticStringGlow {
+@keyframes acousticStringDrift {
   from {
     opacity: 0.55;
-    background-position: 0 0;
+    transform: translateY(0);
   }
 
   to {
     opacity: 0.85;
-    background-position: 0 1.2rem;
+    transform: translateY(1.2rem);
   }
 }
 
@@ -2123,19 +2239,8 @@
 }
 
 @media (max-width: 768px) {
-  .repertoireShell {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 0.35rem;
-    padding-inline: 0.35rem;
-  }
-
-  .repertoireControl {
-    width: 2.75rem;
-    height: 2.75rem;
-  }
-
-  .repertoireTrack {
-    padding-inline: 1.1rem;
+  .repertoireCategoriesLabel {
+    margin-bottom: 0.65rem;
   }
 }
 
@@ -2153,8 +2258,8 @@
   .footerSocial,
   .applicationsLink,
   .applicationsLabel,
+  .applicationsCopy,
   .applicationsAction,
-  .applicationsArrow,
   .differential,
   .differentialIndex,
   .differentialTitle,
@@ -2169,6 +2274,7 @@
   .mediaSheen,
   .resonanceSvg,
   .stringLines,
+  .stringLines::before,
   .bookingStrings {
     transition: none !important;
     animation: none !important;

@@ -11,6 +11,7 @@ import { AcousticFooter } from './Components/AcousticFooter'
 import { AcousticHeader } from './Components/AcousticHeader'
 import { AcousticRepertoireRail } from './Components/AcousticRepertoireRail'
 import styles from './AcousticPage.module.css'
+import { useAcousticAmbientMotion } from './useAcousticAmbientMotion'
 import { useAcousticDocumentMeta } from './useAcousticDocumentMeta'
 import { useAcousticReveal } from './useAcousticReveal'
 import { useSmoothDocumentScroll } from './useSmoothDocumentScroll'
@@ -80,6 +81,7 @@ export const AcousticPage = () => {
   useAcousticDocumentMeta()
   useSmoothDocumentScroll()
   useAcousticReveal({ rootRef: pageRef })
+  useAcousticAmbientMotion({ rootRef: pageRef })
 
   const {
     hero,
@@ -98,7 +100,11 @@ export const AcousticPage = () => {
       <div className={styles.headerSpacer} aria-hidden="true" />
 
       <main>
-        <section className={styles.hero} aria-labelledby="acoustic-title">
+        <section
+          className={styles.hero}
+          aria-labelledby="acoustic-title"
+          data-ambient-hero
+        >
           <div className={styles.heroResonance} aria-hidden="true">
             <ResonanceMotif className={styles.resonanceSvg} />
             <div className={styles.stringLines} />
@@ -109,16 +115,20 @@ export const AcousticPage = () => {
             data-reveal="image"
             data-reveal-delay="0"
           >
-            <img
-              className={styles.heroImage}
-              src={ACOUSTIC_ASSETS.hero.src}
-              alt={ACOUSTIC_ASSETS.hero.alt}
-              width={ACOUSTIC_ASSETS.hero.width}
-              height={ACOUSTIC_ASSETS.hero.height}
-              decoding="async"
-              loading="eager"
-              fetchPriority="high"
-            />
+            <picture>
+              <img
+                className={styles.heroImage}
+                src={ACOUSTIC_ASSETS.hero.src}
+                srcSet={ACOUSTIC_ASSETS.hero.srcSet}
+                sizes={ACOUSTIC_ASSETS.hero.sizes}
+                alt={ACOUSTIC_ASSETS.hero.alt}
+                width={ACOUSTIC_ASSETS.hero.width}
+                height={ACOUSTIC_ASSETS.hero.height}
+                decoding="async"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </picture>
             <div className={styles.heroWash} aria-hidden="true" />
           </div>
 
@@ -205,7 +215,7 @@ export const AcousticPage = () => {
             data-reveal="rise"
             data-reveal-delay="0"
           >
-            <p className={styles.sectionIndex}>Formato</p>
+            <p className={styles.sectionIndex}>{format.kicker}</p>
             <h2 id="format-title" className={styles.sectionTitle}>
               {format.title}
             </h2>
@@ -275,7 +285,10 @@ export const AcousticPage = () => {
           <span className={styles.sectionDividerGem} />
         </div>
 
-        <section className={styles.artists} aria-labelledby="artists-title">
+        <section
+          className={`${styles.artists} ${styles.deferredSection}`}
+          aria-labelledby="artists-title"
+        >
           <div className={styles.artistsResonance} aria-hidden="true">
             <ResonanceMotif className={styles.artistsResonanceSvg} />
           </div>
@@ -329,7 +342,7 @@ export const AcousticPage = () => {
         </div>
 
         <section
-          className={styles.applications}
+          className={`${styles.applications} ${styles.deferredSection}`}
           id="experiencia"
           aria-labelledby="applications-title"
         >
@@ -338,7 +351,7 @@ export const AcousticPage = () => {
             data-reveal="rise"
             data-reveal-delay="0"
           >
-            <p className={styles.sectionIndex}>Experiência</p>
+            <p className={styles.sectionIndex}>{applications.kicker}</p>
             <h2 id="applications-title" className={styles.sectionTitle}>
               {applications.title}
             </h2>
@@ -357,13 +370,17 @@ export const AcousticPage = () => {
                   href={item.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${item.label} — ${applications.actionLabel} (abre em nova janela)`}
                 >
-                  <span className={styles.applicationsLabel}>{item.label}</span>
-                  <span className={styles.applicationsAction}>
-                    {applications.actionLabel}
-                    <span className={styles.applicationsArrow} aria-hidden="true">
-                      →
+                  <span className={styles.applicationsCopy}>
+                    <span className={styles.applicationsLabel}>{item.label}</span>
+                    <span className={styles.applicationsDescription}>
+                      {item.description}
                     </span>
+                  </span>
+                  <span className={styles.applicationsAction}>
+                    <FaWhatsapp aria-hidden />
+                    {applications.actionLabel}
                   </span>
                 </a>
               </li>
@@ -381,7 +398,7 @@ export const AcousticPage = () => {
             data-reveal="rise"
             data-reveal-delay="0"
           >
-            <p className={styles.sectionIndex}>Repertório</p>
+            <p className={styles.sectionIndex}>{repertoire.kicker}</p>
             <h2 id="repertoire-title" className={styles.sectionTitle}>
               {repertoire.title}
             </h2>
@@ -389,11 +406,17 @@ export const AcousticPage = () => {
           </div>
 
           <div data-reveal="fade" data-reveal-delay="1">
-            <AcousticRepertoireRail categories={repertoire.categories} />
+            <AcousticRepertoireRail
+              categories={repertoire.categories}
+              categoriesLabel={repertoire.categoriesLabel}
+            />
           </div>
         </section>
 
-        <section className={styles.media} aria-labelledby="media-title">
+        <section
+          className={`${styles.media} ${styles.deferredSection}`}
+          aria-labelledby="media-title"
+        >
           {media.videoUrl ? (
             <button
               type="button"
@@ -467,7 +490,7 @@ export const AcousticPage = () => {
         </section>
 
         <section
-          className={styles.process}
+          className={`${styles.process} ${styles.deferredSection}`}
           id="como-contratar"
           aria-labelledby="process-title"
         >
@@ -503,7 +526,7 @@ export const AcousticPage = () => {
         </section>
 
         <section
-          className={styles.booking}
+          className={`${styles.booking} ${styles.deferredSection}`}
           id="contratacao"
           aria-labelledby="booking-title"
         >
