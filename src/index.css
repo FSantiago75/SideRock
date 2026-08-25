@@ -96,20 +96,6 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-image: url('./assets/bgCaveiras2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.04;
-  z-index: -1;
-  pointer-events: none;
-}
-
 html:has([data-app-scroll='inner']) {
   height: 100dvh;
   max-height: 100dvh;
@@ -128,8 +114,4 @@ html:has([data-app-scroll='inner']) #root {
 
 html:has([data-app-scroll='inner']) body {
   min-height: 0;
-}
-
-html:has([data-app-scroll='inner']) body::before {
-  display: none;
 }
