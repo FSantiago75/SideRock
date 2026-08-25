@@ -1,4 +1,5 @@
 import { useCallback, useState, type CSSProperties, type FocusEvent } from 'react'
+import { DeveloperCredit } from '../../Components/DeveloperCredit'
 import { AmbientBackdrop } from './Components/AmbientBackdrop'
 import { CatalogFooter } from './Components/CatalogFooter'
 import { CatalogIntro } from './Components/CatalogIntro'
@@ -81,6 +82,7 @@ export const HomePage = () => {
       </section>
 
       <CatalogFooter />
+      <DeveloperCredit />
     </main>
   )
 }

@@ -188,20 +188,22 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Navbar — evolução intencional**: remoções no CSS (keyframes, pseudo-elementos, blur, linhas decorativas, etc.) feitas pelo autor são **deliberadas**; o assistente **não** deve voltar a acrescentar esses trechos salvo pedido explícito — limitar-se a alinhar o que restar (grid, `grid-area`, overflow mínimo, variáveis em uso).
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
+- **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Texto, URL (`https://n2codeworks.com.br/`) e `n2.png` vivem no componente. Centrado, discreto, sem cor de identidade da página. Reutilizar nas páginas; não copiar o markup.
 
 ### 5.2 Home — catálogo de experiências
 
 - **Estado ativo**: `HomeExperienceId | null`. `null` é o estado institucional neutro (carvão, grafite, prata envelhecida). Não usar Side Rock como fallback visual.
 - **Tema**: cores de identidade (acento + scrollbar) vivem em `homeExperiences.ts` (`theme` / `CATALOG_NEUTRAL_THEME`). O CSS só consome `--catalog-accent`, `--card-accent` e `--ambient-accent`. Não acrescentar seletores por `id` para uma experiência nova.
 - **Desktop (hover fino)**: a página inicia neutra; hover e foco no conjunto de cards aplicam a identidade correspondente; sair da região ou do foco restaura `null`.
-- **Toque / viewport ≤760px**: `useCatalogExperienceRotation` percorre `HOME_EXPERIENCES` a cada 5s. **Sem hover**: o dedo só rola ou entra no card; a identidade vem da rotação, não do toque. `enableHover={!isAutomaticRotation}` nos cards — Safari ainda dispara `mouseenter` falso após o toque, então `pointerType` sozinho não basta. Pausar a rotação durante o toque e com a aba oculta. Ao sair deste modo (resize para desktop), voltar a `null`. Desktop largo com mouse permanece no hover + lift.
+- **Toque / viewport ≤760px**: `useCatalogExperienceRotation` percorre `HOME_EXPERIENCES` a cada 4s. **Sem hover**: o dedo só rola ou entra no card; a identidade vem da rotação, não do toque. `enableHover={!isAutomaticRotation}` nos cards — Safari ainda dispara `mouseenter` falso após o toque, então `pointerType` sozinho não basta. Pausar a rotação durante o toque e com a aba oculta. Ao sair deste modo (resize para desktop), voltar a `null`. Desktop largo com mouse permanece no hover + lift.
 - **Scroll no toque**: o catálogo não usa `overflow: hidden` (quebra o scroll no Safari/Chrome móvel). `overflow-x: clip` + `touch-action: pan-y`. Lift de layout (`flex-grow`, `translateY`) só em `(hover: hover) and (pointer: fine) and (min-width: 981px)`.
 - **Grid 2+1 (≤980px e >680px)**: lista em 4 colunas; cada card ocupa 2. Se o último for ímpar, `grid-column: 2 / span 2` — mesma largura dos de cima, centrado. Não esticar nas duas colunas.
 - **Scrollbar**: cores sólidas com fallback `#737373` (sem `linear-gradient` nem transição de `@property` no `html` — no Internet/Samsung isso interpola para valor inválido e a barra fica branca). Variáveis ainda vêm de `useCatalogScrollbarTheme`. `color-scheme: dark` e `background-color` no `html`.
-- **Rotação sem piscar**: no toque/≤980px, sem keyframes de entrada, sem scale/rotate/filter, sem `mix-blend-mode`, sem interpolar `--catalog-accent`. Card ativo só muda cor de borda — sem `isolation`, glow com `blur`, `clip-path` por cima do texto nem `box-shadow` (no Internet/Samsung isso rasteriza o título e fica serrilhado).
-- **Movimento**: transições coordenadas em CSS (sem biblioteca). Curva padrão em `--catalog-motion-ease`. `prefers-reduced-motion` desliga só as animações de entrada, não a interpolação de identidade.
+- **Rotação sem piscar**: no toque/≤980px, sem keyframes de entrada, sem scale/rotate/filter, sem `mix-blend-mode`. Card ativo só muda cor de borda — sem `isolation`, glow com `blur`, `clip-path` por cima do texto nem `box-shadow` (no Internet/Samsung isso rasteriza o título e fica serrilhado). A troca interpola `--catalog-accent` **no `.catalog`** (~900ms, ease-in-out) e `color`/`border-color`/`background-color` nos consumidores; **não** interpolar `--scrollbar-thumb-*` no `html`.
+- **Movimento**: transições coordenadas em CSS (sem biblioteca). Layout/lift usam `--catalog-motion-duration` / `--catalog-motion-ease`. Cor de identidade usa `--catalog-identity-duration` / `--catalog-identity-ease` (no mobile, mais longos e menos agressivos). `prefers-reduced-motion` desliga só as animações de entrada, não a interpolação de identidade.
 - **Medalhão**: tamanho via `--medallion-size` / `--orbit-size`. A órbita centra com `inset: 0` + `margin: auto` (largura e altura iguais a `--orbit-size`); **não** usar `translate(-50%, -50%)` para layout — no toque o CSS zera `transform` (texto serrilhado) e o círculo saía do centro. Rotate/scale da órbita só no desktop hover. Deve caber na moldura interna. Sem índices 01/02/03 nos cards.
 - **Copy editorial**: o rodapé (“Três experiências…”) é texto fixo; o contador do intro deriva de `HOME_EXPERIENCES.length`. Não forçar o rodapé a gerar o numeral por código.
+- **Crédito N2**: a home só coloca `DeveloperCredit` abaixo do `CatalogFooter`. Não duplicar o markup no catálogo.
 
 ---
 
@@ -227,6 +229,10 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: `DeveloperCredit` partilhado (logo + link N2); home só o consome, um pouco maior que o footer editorial.
+- **2026-08-25**: Home — crédito discreto “Desenvolvido por N2 CodeWorks” abaixo do footer, link externo; `CatalogFooter` intacto.
+- **2026-08-25**: Home — troca de identidade no mobile mais suave (900ms, ease-in-out) só em cor; sem voltar scale/blur.
+- **2026-08-25**: Home — rotação de identidade no mobile a cada 4s.
 - **2026-08-25**: Home — órbita do medalhão centrada por margem, não por `translate`; o `transform: none` do mobile deixava o círculo deslocado.
 - **2026-08-25**: Home — no mobile, card ativo sem glow/blur/isolation para o texto não ficar serrilhado.
 - **2026-08-25**: Home — troca de identidade no mobile sem reanimar os cards; scrollbar sólida com fallback escuro (Internet/Samsung não pinta branco).
