@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 
 import { VIEWPORT_MOBILE_MAX_PX } from '../../utils/viewport'
 import { HOME_EXPERIENCES, type HomeExperienceId } from './homeExperiences'
 
-const ROTATION_INTERVAL_MS = 5000
+const ROTATION_INTERVAL_MS = 4000
 const TOUCH_CATALOG_QUERY = '(hover: none), (pointer: coarse)'
 const NARROW_CATALOG_QUERY = `(max-width: ${VIEWPORT_MOBILE_MAX_PX}px)`
 

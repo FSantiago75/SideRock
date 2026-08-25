@@ -1,6 +1,8 @@
 .catalog {
   /* Fallback matches CATALOG_NEUTRAL_THEME; HomePage overrides via --catalog-accent */
   --catalog-accent: #a39b90;
+  --catalog-identity-duration: var(--catalog-motion-duration);
+  --catalog-identity-ease: var(--catalog-motion-ease);
   position: relative;
   isolation: isolate;
   min-height: 100svh;
@@ -722,7 +724,7 @@
 
 @media (hover: hover) and (pointer: fine) and (min-width: 981px) {
   .catalog {
-    transition: --catalog-accent var(--catalog-motion-duration) var(--catalog-motion-ease);
+    transition: --catalog-accent var(--catalog-identity-duration) var(--catalog-identity-ease);
   }
 
   .experienceCard[data-active='true'] {
@@ -732,6 +734,12 @@
 }
 
 @media (hover: none), (pointer: coarse), (max-width: 980px) {
+  .catalog {
+    --catalog-identity-duration: 900ms;
+    --catalog-identity-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: --catalog-accent var(--catalog-identity-duration) var(--catalog-identity-ease);
+  }
+
   .introMeta,
   .title,
   .lead,
@@ -749,18 +757,32 @@
   .ambientLight {
     filter: none;
     transform: none;
-    transition: opacity var(--catalog-motion-duration) var(--catalog-motion-ease);
+    transition: opacity var(--catalog-identity-duration) var(--catalog-identity-ease);
+  }
+
+  .eyebrow::before,
+  .experienceCount > span:first-child,
+  .titleQuestion,
+  .lead,
+  .footerLine {
+    transition:
+      color var(--catalog-identity-duration) var(--catalog-identity-ease),
+      border-color var(--catalog-identity-duration) var(--catalog-identity-ease),
+      background-color var(--catalog-identity-duration) var(--catalog-identity-ease);
   }
 
   .experienceCard {
     isolation: auto;
     box-shadow: none;
-    transition: border-color var(--catalog-motion-duration) var(--catalog-motion-ease);
+    transition:
+      border-color var(--catalog-identity-duration) var(--catalog-identity-ease),
+      background-color var(--catalog-identity-duration) var(--catalog-identity-ease);
   }
 
   .experienceCard::before {
     z-index: 0;
     clip-path: none;
+    transition: border-color var(--catalog-identity-duration) var(--catalog-identity-ease);
   }
 
   .cardGlow {
@@ -775,8 +797,9 @@
     transform: none;
     filter: none;
     transition:
-      border-color var(--catalog-motion-duration) var(--catalog-motion-ease),
-      background-color var(--catalog-motion-duration) var(--catalog-motion-ease);
+      color var(--catalog-identity-duration) var(--catalog-identity-ease),
+      border-color var(--catalog-identity-duration) var(--catalog-identity-ease),
+      background-color var(--catalog-identity-duration) var(--catalog-identity-ease);
   }
 
   .experienceCard[data-active='true'],
