@@ -1,15 +1,13 @@
 .credit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  display: block;
   width: fit-content;
   max-width: 100%;
   margin: 1.65rem auto 0;
   color: rgba(244, 240, 233, 0.46);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-align: center;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -24,9 +22,8 @@
   outline-offset: 4px;
 }
 
-.credit img {
-  width: 1.35rem;
-  height: 1.35rem;
-  object-fit: contain;
-  opacity: 0.85;
+@media (max-width: 680px) {
+  .credit {
+    font-size: 0.6rem;
+  }
 }

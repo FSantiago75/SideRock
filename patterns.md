@@ -188,7 +188,7 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 - **Navbar — evolução intencional**: remoções no CSS (keyframes, pseudo-elementos, blur, linhas decorativas, etc.) feitas pelo autor são **deliberadas**; o assistente **não** deve voltar a acrescentar esses trechos salvo pedido explícito — limitar-se a alinhar o que restar (grid, `grid-area`, overflow mínimo, variáveis em uso).
 - **Molduras “ornamentadas”**: PNG com alpha, `border-image`, ou SVG; fallback: `border` sólido + `box-shadow` vermelho.
 - **Ícones**: preferir SVG inline ou sprite único para cor `#currentColor` ou `fill` vermelho fixo.
-- **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Texto, URL (`https://n2codeworks.com.br/`) e `n2.png` vivem no componente. Centrado, discreto, sem cor de identidade da página. Reutilizar nas páginas; não copiar o markup.
+- **Crédito de desenvolvimento**: `DeveloperCredit` em `src/Components/DeveloperCredit`. Só texto + URL (`https://n2codeworks.com.br/`), sem ícone. Mesmo `font-size` do meta do catálogo (0.68rem / 0.6rem ≤680px). Centrado, discreto, sem cor de identidade. Reutilizar nas páginas; não copiar o markup.
 
 ### 5.2 Home — catálogo de experiências
 
@@ -229,6 +229,7 @@ Não reescrever copy nem layout visual só para “passar” no checklist. Se um
 
 ## 7. Changelog deste documento
 
+- **2026-08-25**: `DeveloperCredit` só com texto (sem ícone N2), mesmo tamanho do footer editorial.
 - **2026-08-25**: `DeveloperCredit` partilhado (logo + link N2); home só o consome, um pouco maior que o footer editorial.
 - **2026-08-25**: Home — crédito discreto “Desenvolvido por N2 CodeWorks” abaixo do footer, link externo; `CatalogFooter` intacto.
 - **2026-08-25**: Home — troca de identidade no mobile mais suave (900ms, ease-in-out) só em cor; sem voltar scale/blur.
