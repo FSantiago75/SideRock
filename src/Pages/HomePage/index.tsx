@@ -1,4 +1,4 @@
-import { useState, type CSSProperties, type FocusEvent } from 'react'
+import { useCallback, useState, type CSSProperties, type FocusEvent } from 'react'
 import { AmbientBackdrop } from './Components/AmbientBackdrop'
 import { CatalogFooter } from './Components/CatalogFooter'
 import { CatalogIntro } from './Components/CatalogIntro'
@@ -34,9 +34,9 @@ export const HomePage = () => {
 
   useCatalogScrollbarTheme(catalogTheme.scrollbar)
 
-  const activateExperience = (experience: HomeExperience) => {
+  const activateExperience = useCallback((experience: HomeExperience) => {
     setActiveExperience(experience.id)
-  }
+  }, [])
 
   const restoreNeutralExperience = () => {
     if (!isAutomaticRotation) {
@@ -69,11 +69,10 @@ export const HomePage = () => {
         onPointerLeave={restoreNeutralExperience}
         onBlur={handleExperienceListBlur}
       >
-        {HOME_EXPERIENCES.map((experience, order) => (
+        {HOME_EXPERIENCES.map((experience) => (
           <ExperienceCard
             key={experience.id}
             experience={experience}
-            order={order}
             isActive={activeExperience === experience.id}
             enableHover={!isAutomaticRotation}
             onActivate={activateExperience}

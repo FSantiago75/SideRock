@@ -1,15 +1,11 @@
-import type { CSSProperties, FocusEvent, PointerEvent } from 'react'
+import { memo, type CSSProperties, type FocusEvent, type PointerEvent } from 'react'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import type { HomeExperience } from '../homeExperiences'
 import styles from '../styles.module.css'
 
-const CARD_REVEAL_BASE_DELAY_MS = 180
-const CARD_REVEAL_STAGGER_MS = 95
-
 type ExperienceCardProps = {
   experience: HomeExperience
-  order: number
   isActive: boolean
   enableHover: boolean
   onActivate: (experience: HomeExperience) => void
@@ -17,19 +13,16 @@ type ExperienceCardProps = {
 
 type ExperienceCardStyle = CSSProperties & {
   '--card-accent': string
-  '--card-reveal-delay': string
 }
 
-export function ExperienceCard({
+function ExperienceCardComponent({
   experience,
-  order,
   isActive,
   enableHover,
   onActivate,
 }: ExperienceCardProps) {
   const style: ExperienceCardStyle = {
     '--card-accent': experience.theme.accent,
-    '--card-reveal-delay': `${CARD_REVEAL_BASE_DELAY_MS + order * CARD_REVEAL_STAGGER_MS}ms`,
   }
 
   const handlePointerEnter = (event: PointerEvent<HTMLAnchorElement>) => {
@@ -84,3 +77,5 @@ export function ExperienceCard({
     </Link>
   )
 }
+
+export const ExperienceCard = memo(ExperienceCardComponent)

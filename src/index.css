@@ -44,23 +44,21 @@
 
   --catalog-motion-duration: 560ms;
   --catalog-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-html {
-  /* Keep in sync with CATALOG_NEUTRAL_THEME in homeExperiences.ts */
   --scrollbar-thumb-start: #737373;
   --scrollbar-thumb-end: #3f3f3f;
   --scrollbar-thumb-hover-start: #969696;
   --scrollbar-thumb-hover-end: #575757;
+}
+
+html {
+  /* Keep in sync with CATALOG_NEUTRAL_THEME in homeExperiences.ts */
+  color-scheme: dark;
+  background-color: #0a0a0a;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb-start) #080808;
-  transition:
-    --scrollbar-thumb-start var(--catalog-motion-duration) var(--catalog-motion-ease),
-    --scrollbar-thumb-end var(--catalog-motion-duration) var(--catalog-motion-ease),
-    --scrollbar-thumb-hover-start var(--catalog-motion-duration) var(--catalog-motion-ease),
-    --scrollbar-thumb-hover-end var(--catalog-motion-duration) var(--catalog-motion-ease);
+  scrollbar-color: #737373 #080808;
+  scrollbar-color: var(--scrollbar-thumb-start, #737373) #080808;
 }
 
 html::-webkit-scrollbar {
@@ -76,19 +74,13 @@ html::-webkit-scrollbar-thumb {
   min-height: 3rem;
   border: 2px solid #080808;
   border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    var(--scrollbar-thumb-start),
-    var(--scrollbar-thumb-end)
-  );
+  background-color: #737373;
+  background-color: var(--scrollbar-thumb-start, #737373);
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    var(--scrollbar-thumb-hover-start),
-    var(--scrollbar-thumb-hover-end)
-  );
+  background-color: #969696;
+  background-color: var(--scrollbar-thumb-hover-start, #969696);
 }
 
 html::-webkit-scrollbar-button {

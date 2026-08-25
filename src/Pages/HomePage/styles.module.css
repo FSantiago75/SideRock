@@ -13,7 +13,6 @@
   background:
     radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.075), transparent 38%),
     linear-gradient(145deg, #111 0%, #070707 45%, #020202 100%);
-  transition: --catalog-accent var(--catalog-motion-duration) var(--catalog-motion-ease);
 }
 
 .backdrop {
@@ -204,13 +203,37 @@
     #090909;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.28);
   opacity: 1;
-  animation: revealCard 780ms var(--card-reveal-delay) backwards cubic-bezier(0.16, 1, 0.3, 1);
+  animation: revealCard 780ms var(--card-reveal-delay, 180ms) backwards cubic-bezier(0.16, 1, 0.3, 1);
   transition:
     flex var(--catalog-motion-duration) var(--catalog-motion-ease),
     border-color var(--catalog-motion-duration) var(--catalog-motion-ease),
     transform var(--catalog-motion-duration) var(--catalog-motion-ease),
     box-shadow var(--catalog-motion-duration) var(--catalog-motion-ease),
     opacity var(--catalog-motion-duration) var(--catalog-motion-ease);
+}
+
+.experienceCard:nth-child(1) {
+  --card-reveal-delay: 180ms;
+}
+
+.experienceCard:nth-child(2) {
+  --card-reveal-delay: 275ms;
+}
+
+.experienceCard:nth-child(3) {
+  --card-reveal-delay: 370ms;
+}
+
+.experienceCard:nth-child(4) {
+  --card-reveal-delay: 465ms;
+}
+
+.experienceCard:nth-child(5) {
+  --card-reveal-delay: 560ms;
+}
+
+.experienceCard:nth-child(6) {
+  --card-reveal-delay: 655ms;
 }
 
 .experienceCard::before,
@@ -329,16 +352,16 @@
 
 .orbit {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
+  margin: auto;
   width: var(--orbit-size);
-  aspect-ratio: 1;
+  height: var(--orbit-size);
   border: 1px solid color-mix(in srgb, var(--card-accent) 17%, transparent);
   border-radius: 50%;
   box-shadow:
     inset 0 0 0 2rem rgba(0, 0, 0, 0.08),
     0 0 3rem color-mix(in srgb, var(--card-accent) 8%, transparent);
-  transform: translate(-50%, -50%);
+  transform-origin: center;
   transition:
     border-color var(--catalog-motion-duration) var(--catalog-motion-ease),
     transform calc(var(--catalog-motion-duration) + 80ms) var(--catalog-motion-ease);
@@ -360,7 +383,7 @@
 
 .experienceCard[data-active='true'] .orbit {
   border-color: color-mix(in srgb, var(--card-accent) 38%, transparent);
-  transform: translate(-50%, -50%) rotate(12deg) scale(1.03);
+  transform: rotate(12deg) scale(1.03);
 }
 
 .cardContent {
@@ -698,6 +721,10 @@
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 981px) {
+  .catalog {
+    transition: --catalog-accent var(--catalog-motion-duration) var(--catalog-motion-ease);
+  }
+
   .experienceCard[data-active='true'] {
     flex-grow: 1.18;
     transform: translateY(-0.45rem);
@@ -705,16 +732,78 @@
 }
 
 @media (hover: none), (pointer: coarse), (max-width: 980px) {
+  .introMeta,
+  .title,
+  .lead,
+  .experienceCard,
+  .catalogFooter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .texture {
+    mix-blend-mode: normal;
+  }
+
+  .ambientLight {
+    filter: none;
+    transform: none;
+    transition: opacity var(--catalog-motion-duration) var(--catalog-motion-ease);
+  }
+
   .experienceCard {
+    isolation: auto;
+    box-shadow: none;
+    transition: border-color var(--catalog-motion-duration) var(--catalog-motion-ease);
+  }
+
+  .experienceCard::before {
+    z-index: 0;
+    clip-path: none;
+  }
+
+  .cardGlow {
+    display: none;
+  }
+
+  .experienceCard,
+  .cardVisual img,
+  .orbit,
+  .cardContent,
+  .arrow {
+    transform: none;
+    filter: none;
     transition:
       border-color var(--catalog-motion-duration) var(--catalog-motion-ease),
-      box-shadow var(--catalog-motion-duration) var(--catalog-motion-ease),
-      opacity var(--catalog-motion-duration) var(--catalog-motion-ease);
+      background-color var(--catalog-motion-duration) var(--catalog-motion-ease);
+  }
+
+  .experienceCard[data-active='true'],
+  .experienceCard[data-active='true'] .cardVisual img,
+  .experienceCard[data-active='true'] .orbit,
+  .experienceCard[data-active='true'] .cardContent,
+  .experienceCard[data-active='true'] .arrow {
+    transform: none;
+    filter: none;
+    box-shadow: none;
   }
 
   .experienceCard[data-active='true'] {
     flex-grow: 1;
-    transform: none;
+    box-shadow: none;
+  }
+
+  .experienceCard[data-active='true'] .cardVisual img {
+    opacity: 0.74;
+  }
+
+  .cardTitle,
+  .cardDescription,
+  .cardEyebrow,
+  .idealFor,
+  .cardCta {
+    text-rendering: geometricPrecision;
   }
 }
 
