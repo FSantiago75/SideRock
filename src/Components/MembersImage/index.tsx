@@ -1,47 +1,66 @@
-import MembersNull from "../../assets/MembersImages/MembersNull.png";
-import styles from "./membersImage.module.css";
-import { useState } from "react";
-import { MembersHitmap } from "./membersHitmap";
-import { membersMap } from "./membersMap";
+import { useState } from 'react'
+import MembersNull from '../../assets/MembersImages/MembersNull.png'
+import { MembersHitmap } from './membersHitmap'
+import { membersMap } from './membersMap'
+import styles from './membersImage.module.css'
 
-const memberKeys = Object.keys(membersMap) as (keyof typeof membersMap)[];
+const memberKeys = ['vocal', 'guitar', 'drums', 'bass'] as const
 
-export const MembersImage = () => {
-    const [hovered, setHovered] = useState<string | null>(null);
-    const [selected, setSelected] = useState<string | null>(null);
+export type MembersImageMemberId = (typeof memberKeys)[number]
 
-    const selectFunction = (hovered: string | null, selected: string | null) => {
-        if(selected != null) {
-            return selected;
-        }
-        if(hovered != null) {
-            return hovered;
-        }
-        return null;
-    };
+function isMemberId(id: string | null): id is MembersImageMemberId {
+  return id !== null && memberKeys.includes(id as MembersImageMemberId)
+}
 
-    const activeKey = selectFunction(hovered, selected);
+type MembersImageProps = {
+  activeId?: MembersImageMemberId | null
+  alt?: string
+  className?: string
+  onHover?: (id: MembersImageMemberId | null) => void
+  onSelect?: (id: MembersImageMemberId | null) => void
+}
 
-    return (
-        <div className={styles.CardContainer}>
-            <div className={styles.MembersImageContainer}>
-                <div className={styles.PhotoStack}>
-                    <img
-                        className={`${styles.MembersImage} ${activeKey === null ? styles.MembersImageVisible : ""}`}
-                        src={MembersNull}
-                        alt="membersImage"
-                    />
-                    {memberKeys.map((key) => (
-                        <img
-                            key={key}
-                            className={`${styles.MembersImage} ${styles.MembersImageLayer} ${activeKey === key ? styles.MembersImageVisible : ""}`}
-                            src={membersMap[key]}
-                            alt=""
-                        />
-                    ))}
-                    <MembersHitmap onHover={setHovered} onSelect={setSelected} />
-                </div>
-            </div>
-        </div>
-    );
-};
+export function MembersImage({
+  activeId,
+  alt = 'Integrantes da banda',
+  className,
+  onHover,
+  onSelect,
+}: MembersImageProps) {
+  const [hoveredId, setHoveredId] = useState<MembersImageMemberId | null>(null)
+  const [selectedId, setSelectedId] = useState<MembersImageMemberId | null>(null)
+  const isControlled = activeId !== undefined
+  const activeKey = isControlled ? activeId : (selectedId ?? hoveredId)
+
+  const handleHover = (id: string | null) => {
+    const memberId = isMemberId(id) ? id : null
+    if (!isControlled) setHoveredId(memberId)
+    onHover?.(memberId)
+  }
+
+  const handleSelect = (id: string | null) => {
+    const memberId = isMemberId(id) ? id : null
+    if (!isControlled) {
+      setSelectedId((currentId) => (currentId === memberId ? null : memberId))
+    }
+    onSelect?.(memberId)
+  }
+
+  const rootClassName = className ? `${styles.root} ${className}` : `${styles.root} ${styles.standalone}`
+
+  return (
+    <figure className={rootClassName}>
+      <img className={styles.base} src={MembersNull} alt={alt} />
+      {memberKeys.map((key) => (
+        <img
+          key={key}
+          className={`${styles.layer} ${activeKey === key ? styles.layerVisible : ''}`}
+          src={membersMap[key]}
+          alt=""
+          aria-hidden
+        />
+      ))}
+      <MembersHitmap onHover={handleHover} onSelect={handleSelect} />
+    </figure>
+  )
+}
