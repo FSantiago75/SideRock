@@ -1,0 +1,5 @@
+.fallback {
+  min-height: 100svh;
+  min-height: 100dvh;
+  background-color: #050505;
+}
