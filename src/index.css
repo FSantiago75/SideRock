@@ -96,8 +96,11 @@ body {
   overflow-x: hidden;
 }
 
-html:has([data-app-scroll='inner']) {
+html:has([data-app-scroll='inner']),
+html[data-app-scroll='inner'] {
+  height: 100vh;
   height: 100dvh;
+  max-height: 100vh;
   max-height: 100dvh;
   overflow: hidden;
   overscroll-behavior: none;
@@ -105,13 +108,16 @@ html:has([data-app-scroll='inner']) {
 }
 
 html:has([data-app-scroll='inner']) body,
-html:has([data-app-scroll='inner']) #root {
+html:has([data-app-scroll='inner']) #root,
+html[data-app-scroll='inner'] body,
+html[data-app-scroll='inner'] #root {
   height: 100%;
   max-height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
 }
 
-html:has([data-app-scroll='inner']) body {
+html:has([data-app-scroll='inner']) body,
+html[data-app-scroll='inner'] body {
   min-height: 0;
 }

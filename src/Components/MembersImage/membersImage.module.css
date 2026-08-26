@@ -55,6 +55,7 @@
   display: block;
   width: 100%;
   height: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .Hitmap path {
@@ -62,4 +63,6 @@
   stroke: none;
   cursor: pointer;
   pointer-events: all;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }

@@ -3,6 +3,7 @@
   --reveal-distance: 24px;
   --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
+  overflow-x: hidden;
   overflow-x: clip;
   overflow-y: visible;
   scroll-margin-top: calc(var(--side-rock-nav-clearance) + 0.75rem);
@@ -320,15 +321,6 @@
   margin: 2rem 0 0;
   padding: 0.55rem var(--summary-page-gutter);
   border-top: 1px solid rgba(241, 237, 230, 0.08);
-}
-
-.legalReveal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 0;
-  min-height: inherit;
 }
 
 .legal {

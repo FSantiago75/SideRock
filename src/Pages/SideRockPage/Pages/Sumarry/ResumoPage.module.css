@@ -540,9 +540,10 @@
     padding-block: 1rem;
   }
 
-
   .repertoireTrack {
     justify-content: flex-start;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 

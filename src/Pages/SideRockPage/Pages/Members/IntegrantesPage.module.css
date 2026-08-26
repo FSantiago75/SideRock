@@ -13,6 +13,7 @@
     clamp(1.75rem, 4.2vw, 3.5rem),
     calc((100% - 88rem) / 2 + 1.75rem)
   );
+  -webkit-tap-highlight-color: transparent;
   position: relative;
   isolation: isolate;
   display: grid;
@@ -673,9 +674,10 @@
   .page {
     --members-page-gutter: clamp(1.15rem, 5.5vw, 1.5rem);
     grid-template-rows: auto auto auto;
-    gap: 0.75rem;
+    align-content: start;
+    gap: 0.45rem;
     height: auto;
-    min-height: calc(100svh - var(--side-rock-nav-clearance));
+    min-height: 0;
     overflow-y: visible;
     padding: 1rem var(--members-page-gutter) 1.2rem;
   }
@@ -708,13 +710,14 @@
   }
 
   .experience {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 0;
   }
 
   .portrait {
     height: min(70svh, 38rem);
-    padding-bottom: 2.9rem;
+    padding-bottom: 0;
     box-sizing: border-box;
   }
 
@@ -729,8 +732,12 @@
 
   .details {
     z-index: 4;
-    align-self: stretch;
-    margin-top: -1rem;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    margin-top: calc(-8rem - 5svh);
+    grid-template-rows: auto auto auto;
     --member-card-pad: 0.95rem 1rem 1rem;
   }
 

@@ -120,22 +120,20 @@ export function ResumoPage() {
 
         <BookingSection />
 
-        <ScrollReveal from="none">
-          <section
-            className={styles.repertoire}
-            aria-label="Referências do repertório"
+        <section
+          className={styles.repertoire}
+          aria-label="Referências do repertório"
+        >
+          <div
+            className={styles.repertoireTrack}
+            tabIndex={0}
+            aria-label="Deslize para explorar as referências do repertório"
           >
-            <div
-              className={styles.repertoireTrack}
-              tabIndex={0}
-              aria-label="Deslize para explorar as referências do repertório"
-            >
-              {repertoire.map((artist) => (
-                <span key={artist}>{artist}</span>
-              ))}
-            </div>
-          </section>
-        </ScrollReveal>
+            {repertoire.map((artist) => (
+              <span key={artist}>{artist}</span>
+            ))}
+          </div>
+        </section>
       </article>
     </SideRockSectionPage>
   )

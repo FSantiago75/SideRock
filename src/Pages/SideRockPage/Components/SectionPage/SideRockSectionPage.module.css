@@ -1,5 +1,7 @@
 .shell {
+  height: 100vh;
   height: 100dvh;
+  max-height: 100vh;
   max-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -10,7 +12,8 @@
   background: #050505;
 }
 
-:global(html:has([data-app-scroll='inner'])) .shell {
+:global(html:has([data-app-scroll='inner'])) .shell,
+:global(html[data-app-scroll='inner']) .shell {
   height: 100%;
   max-height: 100%;
 }
@@ -26,6 +29,7 @@
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
   scrollbar-gutter: auto;
   scrollbar-width: thin;
@@ -135,7 +139,7 @@
 }
 
 .bgStack[data-layout='flow'] {
-  min-height: calc(100% - var(--side-rock-nav-clearance));
+  min-height: 0;
   aspect-ratio: auto;
 }
 
@@ -158,13 +162,13 @@
 }
 
 .bgStack[data-layout='flow'] .fgLayer {
-  min-height: 100%;
+  min-height: 0;
 }
 
 .bgStack[data-layout='flow'] .inner {
   position: relative;
   inset: auto;
-  min-height: 100%;
+  min-height: 0;
   height: auto;
   padding-top: env(safe-area-inset-top, 0px);
   padding-inline: 0;

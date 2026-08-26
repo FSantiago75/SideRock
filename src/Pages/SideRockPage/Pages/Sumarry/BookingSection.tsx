@@ -119,11 +119,9 @@ export function BookingSection() {
       </ScrollReveal>
 
       <div className={styles.legalBar}>
-        <ScrollReveal className={styles.legalReveal} from="none">
-          <p className={styles.legal}>
-            {booking.company} · {booking.document} · {booking.location}
-          </p>
-        </ScrollReveal>
+        <p className={styles.legal}>
+          {booking.company} · {booking.document} · {booking.location}
+        </p>
       </div>
     </section>
   )

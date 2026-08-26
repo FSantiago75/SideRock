@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react'
+import { useLayoutEffect, type CSSProperties, type ReactNode } from 'react'
 import { useScrollbarTheme } from '../../../../hooks/useScrollbarTheme'
 import { SIDE_ROCK_SCROLLBAR } from '../../sectionConstants'
 import { SideRockNavbar } from '../NavBar/SideRockNavbar'
@@ -28,6 +28,12 @@ export function SideRockSectionPage({
   children,
 }: SideRockSectionPageProps) {
   useScrollbarTheme(SIDE_ROCK_SCROLLBAR)
+
+  useLayoutEffect(() => {
+    const root = document.documentElement
+    root.setAttribute('data-app-scroll', 'inner')
+    return () => root.removeAttribute('data-app-scroll')
+  }, [])
 
   const style: SideRockSectionStyle = {
     '--side-rock-art-ratio': backgroundAspectRatio,
