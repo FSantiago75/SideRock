@@ -1,7 +1,12 @@
 .section {
+  --reveal-duration: 600ms;
+  --reveal-distance: 24px;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
-  overflow: clip;
-  padding: clamp(5rem, 9vw, 9rem) max(1rem, calc((100% - 88rem) / 2)) 2rem;
+  overflow-x: clip;
+  overflow-y: visible;
+  scroll-margin-top: calc(var(--side-rock-nav-clearance) + 0.75rem);
+  padding: clamp(5rem, 9vw, 9rem) 0 0;
   border-top: 1px solid rgba(241, 237, 230, 0.08);
   background:
     radial-gradient(circle at 82% 18%, rgba(211, 47, 53, 0.16), transparent 32rem),
@@ -28,6 +33,9 @@
   grid-template-columns: minmax(18rem, 0.78fr) minmax(28rem, 1.22fr);
   gap: clamp(3rem, 8vw, 8rem);
   align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: var(--summary-page-gutter);
 }
 
 .intro {
@@ -163,6 +171,11 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   width: min(100%, 46rem);
+  outline: none;
+}
+
+.videoRow:focus-visible {
+  box-shadow: inset 0 0 0 1px rgba(211, 47, 53, 0.38);
 }
 
 .videoCard {
@@ -223,6 +236,12 @@
   list-style: none;
 }
 
+.steps > li {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
 .step {
   display: grid;
   grid-template-columns: 3.5rem 1fr;
@@ -267,17 +286,92 @@
   line-height: 1.65;
 }
 
-.legal {
+.closing {
   position: relative;
   z-index: 1;
-  margin: clamp(4rem, 8vw, 7rem) 0 0;
-  padding-top: 1.25rem;
+  display: none;
+  justify-items: start;
+  gap: 1rem;
+  width: auto;
+  box-sizing: border-box;
+  margin: 1.25rem var(--summary-page-gutter) 0;
+  padding: 1.35rem 1.4rem;
+  border: 1px solid rgba(211, 47, 53, 0.28);
+  background: linear-gradient(145deg, rgba(211, 47, 53, 0.1), rgba(0, 0, 0, 0.42));
+}
+
+.closing p {
+  margin: 0;
+  max-width: 36rem;
+  color: rgba(241, 237, 230, 0.72);
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  line-height: 1.6;
+}
+
+.legalBar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 2.4rem;
+  margin: 2rem 0 0;
+  padding: 0.55rem var(--summary-page-gutter);
   border-top: 1px solid rgba(241, 237, 230, 0.08);
-  color: rgba(241, 237, 230, 0.3);
-  font-size: 0.61rem;
-  letter-spacing: 0.14em;
+}
+
+.legalReveal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: inherit;
+}
+
+.legal {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  color: rgba(241, 237, 230, 0.38);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  line-height: 1.55;
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .section {
+    --reveal-duration: 480ms;
+    --reveal-distance: 16px;
+  }
+
+  .videoRow {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .videoRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .videoCard {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 960px) {
@@ -287,6 +381,10 @@
 
   .intro {
     position: static;
+  }
+
+  .closing {
+    display: grid;
   }
 
   .intro h2 {
@@ -308,19 +406,32 @@
     width: 100%;
   }
 
-  .videoRow {
-    gap: 0.65rem;
-  }
-
   .videoCaption {
     align-items: flex-start;
     flex-direction: column;
     padding: 0.75rem 0.85rem;
   }
 
+  .closing {
+    justify-items: stretch;
+  }
+
+  .closing .primaryAction {
+    width: 100%;
+  }
+
   .step {
     grid-template-columns: 2rem 1fr;
     gap: 0.75rem;
+  }
+
+  .legalBar {
+    padding-inline: 0.75rem;
+  }
+
+  .legal {
+    font-size: 0.52rem;
+    letter-spacing: 0.07em;
   }
 
   .manager {
@@ -332,10 +443,23 @@
   }
 }
 
+@media (max-width: 340px) {
+  .legal {
+    font-size: 0.48rem;
+    letter-spacing: 0.055em;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .primaryAction,
   .secondaryAction,
   .step {
     transition: none;
+  }
+
+  .primaryAction:hover,
+  .secondaryAction:hover,
+  .step:hover {
+    transform: none;
   }
 }

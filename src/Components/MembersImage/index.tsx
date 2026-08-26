@@ -1,6 +1,5 @@
-import MembersNull from "../../assets/MembersImages/MembersNull.jpeg";
+import MembersNull from "../../assets/MembersImages/MembersNull.png";
 import styles from "./membersImage.module.css";
-import { GiDeathSkull } from "react-icons/gi";
 import { useState } from "react";
 import { MembersHitmap } from "./membersHitmap";
 import { membersMap } from "./membersMap";
@@ -26,10 +25,9 @@ export const MembersImage = () => {
     return (
         <div className={styles.CardContainer}>
             <div className={styles.MembersImageContainer}>
-                <GiDeathSkull className={`${styles.BurningSkull} ${activeKey ? styles.BurningSkullHover : ""} ${selected ? styles.BurningSkullPulse : ""}`} />
                 <div className={styles.PhotoStack}>
                     <img
-                        className={`${styles.MembersImage} ${activeKey === null ? styles.MembersImageVisible : ""} ${selected ? styles.MembersImagePulse : ""}`}
+                        className={`${styles.MembersImage} ${activeKey === null ? styles.MembersImageVisible : ""}`}
                         src={MembersNull}
                         alt="membersImage"
                     />

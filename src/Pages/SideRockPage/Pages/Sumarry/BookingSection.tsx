@@ -1,7 +1,9 @@
 import type { SyntheticEvent } from 'react'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa6'
 import { HiArrowUpRight } from 'react-icons/hi2'
+import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SIDE_ROCK_BOOKING } from './bookingContent'
+import { BookingVideo } from './BookingVideo'
 import styles from './BookingSection.module.css'
 
 function pauseOtherVideos(event: SyntheticEvent<HTMLVideoElement>) {
@@ -25,91 +27,104 @@ export function BookingSection() {
     >
       <div className={styles.layout}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>Contratação</p>
-          <h2 id="booking-title">Do primeiro contato ao palco.</h2>
-          <p className={styles.lead}>
-            Conte a data, a cidade e o perfil do evento. A Side Rock retorna com
-            disponibilidade, formato e próximos passos de forma objetiva.
-          </p>
+          <ScrollReveal from="left">
+            <p className={styles.eyebrow}>{booking.intro.eyebrow}</p>
+            <h2 id="booking-title">{booking.intro.title}</h2>
+            <p className={styles.lead}>{booking.intro.lead}</p>
 
-          <div className={styles.actions}>
-            <a
-              className={styles.primaryAction}
-              href={booking.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaWhatsapp aria-hidden />
-              Consultar data e orçamento
-            </a>
-            <a
-              className={styles.secondaryAction}
-              href={booking.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram aria-hidden />
-              Ver apresentações
-              <HiArrowUpRight aria-hidden />
-            </a>
-          </div>
+            <div className={styles.actions}>
+              <a
+                className={styles.primaryAction}
+                href={booking.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp aria-hidden />
+                {booking.intro.primaryAction}
+              </a>
+              <a
+                className={styles.secondaryAction}
+                href={booking.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram aria-hidden />
+                {booking.intro.secondaryAction}
+                <HiArrowUpRight aria-hidden />
+              </a>
+            </div>
 
-          <div className={styles.manager}>
-            <span>Atendimento comercial</span>
-            <strong>{booking.manager} · Manager</strong>
-            <small>{booking.location}</small>
-          </div>
+            <div className={styles.manager}>
+              <span>{booking.intro.managerLabel}</span>
+              <strong>{booking.manager} · Manager</strong>
+              <small>{booking.location}</small>
+            </div>
+          </ScrollReveal>
         </div>
 
         <div className={styles.proof}>
-          <div className={styles.videoRow} data-video-row>
-            {booking.videos.map((video) => (
-              <div className={styles.videoCard} key={video.src}>
-                <div className={styles.videoFrame}>
-                  <video
-                    controls
-                    playsInline
-                    preload="metadata"
-                    aria-label={video.title}
-                    onPlay={pauseOtherVideos}
-                  >
-                    <source src={video.src} type="video/mp4" />
-                  </video>
-                </div>
-                <div className={styles.videoCaption}>
-                  <span>Ao vivo</span>
-                  <a
-                    href={video.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {video.title}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollReveal from="right" delayMs={80}>
+            <div
+              className={styles.videoRow}
+              data-video-row
+              tabIndex={0}
+              aria-label="Apresentações ao vivo. Deslize para o próximo vídeo."
+            >
+              {booking.videos.map((video) => (
+                <BookingVideo
+                  key={video.src}
+                  src={video.src}
+                  poster={video.poster}
+                  title={video.title}
+                  href={video.href}
+                  onPlay={pauseOtherVideos}
+                />
+              ))}
+            </div>
+          </ScrollReveal>
 
           <ol className={styles.steps}>
             {booking.cards.map(({ eyebrow, title, copy }, index) => (
-              <li className={styles.step} key={title}>
-                <span className={styles.stepNumber}>
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <p>{eyebrow}</p>
-                  <h3>{title}</h3>
-                  <span>{copy}</span>
-                </div>
+              <li key={title}>
+                <ScrollReveal
+                  className={styles.step}
+                  delayMs={Math.min(index * 70, 140)}
+                >
+                  <span className={styles.stepNumber}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <p>{eyebrow}</p>
+                    <h3>{title}</h3>
+                    <span>{copy}</span>
+                  </div>
+                </ScrollReveal>
               </li>
             ))}
           </ol>
         </div>
       </div>
 
-      <p className={styles.legal}>
-        {booking.company} · {booking.document} · {booking.location}
-      </p>
+      <ScrollReveal className={styles.closing}>
+        <p>{booking.closing.copy}</p>
+        <a
+          className={styles.primaryAction}
+          href={booking.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaWhatsapp aria-hidden />
+          {booking.closing.action}
+        </a>
+      </ScrollReveal>
+
+      <div className={styles.legalBar}>
+        <ScrollReveal className={styles.legalReveal} from="none">
+          <p className={styles.legal}>
+            {booking.company} · {booking.document} · {booking.location}
+          </p>
+        </ScrollReveal>
+      </div>
     </section>
   )
 }

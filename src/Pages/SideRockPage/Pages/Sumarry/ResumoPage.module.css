@@ -2,6 +2,13 @@
   --summary-accent: #d32f35;
   --summary-accent-hot: #ff5258;
   --summary-paper: #f1ede6;
+  --summary-page-gutter: max(
+    clamp(1rem, 2.5vw, 2.5rem),
+    calc((100% - 88rem) / 2 + 1.5rem)
+  );
+  --reveal-duration: 600ms;
+  --reveal-distance: 24px;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
   width: 100%;
   min-width: 0;
   max-width: 100%;
@@ -24,7 +31,7 @@
   overflow: hidden;
   padding:
     clamp(0.85rem, 2vw, 1.75rem)
-    max(1rem, calc((100% - 94rem) / 2))
+    var(--summary-page-gutter)
     2rem;
   box-sizing: border-box;
 }
@@ -56,8 +63,15 @@
   position: relative;
   z-index: 3;
   max-width: 43rem;
+  min-width: 0;
   align-self: center;
   padding-block: clamp(1rem, 2.5vh, 2rem);
+}
+
+.heroVisual {
+  align-self: stretch;
+  min-width: 0;
+  display: grid;
 }
 
 .kicker,
@@ -318,10 +332,10 @@
   display: grid;
   grid-template-columns: minmax(17rem, 0.8fr) minmax(20rem, 1.15fr) minmax(15rem, 0.65fr);
   gap: clamp(1.5rem, 4vw, 4.5rem);
-  width: min(calc(100% - 2rem), 88rem);
+  width: 100%;
   box-sizing: border-box;
   margin-inline: auto;
-  padding: clamp(4rem, 8vw, 8rem) clamp(0.25rem, 2vw, 1.5rem);
+  padding: clamp(4rem, 8vw, 8rem) var(--summary-page-gutter);
 }
 
 .storyHeading h2 {
@@ -468,16 +482,22 @@
 }
 
 @media (max-width: 760px) {
+  .page {
+    --reveal-duration: 480ms;
+    --reveal-distance: 16px;
+    --summary-page-gutter: clamp(1rem, 4vw, 1.25rem);
+  }
+
   .hero {
     grid-template-columns: 1fr;
     gap: 0;
     width: 100%;
     min-height: auto;
-    padding: 0.75rem max(0.625rem, calc((100% - 42rem) / 2)) 2rem;
+    padding: 0.75rem var(--summary-page-gutter) 2rem;
   }
 
   .heroCopy {
-    padding-inline: 0.35rem;
+    padding-inline: 0;
   }
 
   .heroTitle {
@@ -509,7 +529,6 @@
 
   .story {
     grid-template-columns: 1fr;
-    width: min(calc(100% - 1.25rem), 42rem);
     padding-block: 4rem;
   }
 
@@ -565,5 +584,10 @@
   .primaryAction,
   .secondaryAction {
     transition: none;
+  }
+
+  .primaryAction:hover,
+  .secondaryAction:hover {
+    transform: none;
   }
 }

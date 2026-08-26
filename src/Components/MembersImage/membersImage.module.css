@@ -12,7 +12,6 @@
     flex-direction: column;
     align-items: center;
     width: fit-content;
-    border-radius: 6px;
 }
 
 .PhotoStack {
@@ -31,16 +30,6 @@
 .MembersImage {
     max-width: 100%;
     height: auto;
-
-    border: 2px solid #a80000;
-    border-radius: 6px;
-
-    box-shadow: 0 0 12px rgba(209, 0, 0, 0.7);
-}
-
-.MembersImagePulse {
-    animation: pulseContainerBoxShadow 3s infinite ease-in-out;
-    transition: box-shadow 3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .MembersImageLayer {
@@ -80,63 +69,4 @@
 
 .Hitmap path {
     cursor: pointer;
-}
-
-
-.BurningSkull {
-    position: absolute;
-    top: 0;
-    transform: translateY(-50%);
-    z-index: 3;
-
-    font-size: 34px;
-    color: #000000c4;
-
-    background: radial-gradient(
-        circle,
-        #f50000 0%,
-        rgb(36, 0, 0) 70%
-    );
-
-    border-radius: 50%;
-    border: 2px solid #a80000;
-
-    padding: 5px;
-
-    box-shadow: 0 -2px 12px rgba(209, 0, 0, 0.7);
-    transition: box-shadow 1.2s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-.BurningSkullHover {
-    box-shadow: 0 -4px 12px 2px rgba(209, 0, 0, 0.7);
-}
-
-.BurningSkullPulse {
-    animation: pulseIconBoxShadow 3s infinite ease-in-out;
-    transition: box-shadow 3s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-
-@keyframes pulseIconBoxShadow {
-    0% {
-        box-shadow: 0 -2px 12px rgba(209, 0, 0, 0.7);
-    }
-    50% {
-        box-shadow: 0 -4px 12px 2px rgba(209, 0, 0, 0.7);
-    }
-    100% {
-        box-shadow: 0 -2px 12px rgba(209, 0, 0, 0.7);
-    }
-}
-
-@keyframes pulseContainerBoxShadow {
-    0% {
-        box-shadow: 0 0 12px rgba(209, 0, 0, 0.7);
-    }
-    50% {
-        box-shadow: 0 0 12px 2px rgba(209, 0, 0, 0.7);
-    }
-    100% {
-        box-shadow: 0 0 12px rgba(209, 0, 0, 0.7);
-    }
 }
