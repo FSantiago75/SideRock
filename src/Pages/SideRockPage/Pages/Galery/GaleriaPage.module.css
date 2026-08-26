@@ -7,8 +7,8 @@
     calc((100% - 88rem) / 2 + 1.75rem)
   );
   --motion: cubic-bezier(0.22, 1, 0.36, 1);
-  --reveal-duration: 600ms;
-  --reveal-distance: 24px;
+  --reveal-duration: 720ms;
+  --reveal-distance: 36px;
   --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
   -webkit-tap-highlight-color: transparent;
   position: relative;
@@ -22,7 +22,7 @@
     var(--gallery-page-gutter)
     3.5rem;
   color: var(--gallery-paper);
-  background: #050505;
+  background: transparent;
 }
 
 .intro {
@@ -129,8 +129,8 @@
 @media (max-width: 760px) {
   .page {
     --gallery-page-gutter: clamp(1.15rem, 5.5vw, 1.5rem);
-    --reveal-duration: 480ms;
-    --reveal-distance: 16px;
+    --reveal-duration: 560ms;
+    --reveal-distance: 24px;
     padding: 1rem var(--gallery-page-gutter) 2.5rem;
   }
 

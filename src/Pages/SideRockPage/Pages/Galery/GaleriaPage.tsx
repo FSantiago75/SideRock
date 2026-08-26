@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import background from '../../../../SiderockAssets/Bgs2/BGGaleria.png'
+import background from '../../../../assets/side-rock-standard-background.png'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import { GalleryAlbumSection } from './GalleryAlbumSection'
@@ -22,11 +22,11 @@ export function GaleriaPage() {
     <SideRockSectionPage
       layout="flow"
       background={background}
-      backgroundGrayscale="70%"
+      backgroundGrayscale="0%"
+      backgroundPosition="left center"
       backgroundOverlay="
-        radial-gradient(ellipse at 50% 18%, rgba(5, 5, 5, 0.12), rgba(5, 5, 5, 0.78) 58%),
-        radial-gradient(ellipse at 88% 6%, rgba(211, 47, 53, 0.12), transparent 36%),
-        linear-gradient(180deg, rgba(5, 5, 5, 0.42) 0%, rgba(5, 5, 5, 0.78) 46%, #050505 100%)
+        radial-gradient(ellipse at 14% 42%, rgba(211, 47, 53, 0.1), transparent 38%),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.38) 0%, rgba(5, 5, 5, 0.72) 48%, #050505 100%)
       "
     >
       <article className={styles.page}>

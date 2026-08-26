@@ -8,7 +8,7 @@ type GalleryAlbumSectionProps = {
 }
 
 const MAX_STAGGER_INDEX = 7
-const STAGGER_STEP_MS = 45
+const STAGGER_STEP_MS = 70
 
 export function GalleryAlbumSection({ photos, onOpen }: GalleryAlbumSectionProps) {
   return (

@@ -24,6 +24,8 @@ export function BookingVideo({
           playsInline
           preload="none"
           poster={poster}
+          width={1080}
+          height={1920}
           aria-label={title}
           onPlay={onPlay}
         >

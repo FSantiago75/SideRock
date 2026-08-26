@@ -22,8 +22,24 @@ type RevealStyle = CSSProperties & {
 
 type RevealState = 'idle' | 'ready' | 'in'
 
+const REVEAL_RATIO = 0.1
+const ROOT_MARGIN_BOTTOM = 0.06
+
 function getScrollRoot(node: Element): Element | null {
   return node.closest('main')
+}
+
+function shouldRevealNode(node: Element, root: Element | null): boolean {
+  const rootRect = (root ?? node.ownerDocument.documentElement).getBoundingClientRect()
+  const viewTop = rootRect.top
+  const viewBottom = rootRect.bottom - rootRect.height * ROOT_MARGIN_BOTTOM
+  const rect = node.getBoundingClientRect()
+
+  if (rect.bottom <= viewTop) return true
+
+  const overlap = Math.min(rect.bottom, viewBottom) - Math.max(rect.top, viewTop)
+  if (overlap <= 0) return false
+  return overlap / Math.max(rect.height, 1) >= REVEAL_RATIO
 }
 
 function getInitialRevealState(): RevealState {
@@ -48,32 +64,40 @@ export function ScrollReveal({
       return () => window.cancelAnimationFrame(frame)
     }
 
+    const target = node
+    const root = getScrollRoot(target)
+    let frame = 0
+
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return
-
-        const passedViewport = Boolean(
-          entry.rootBounds &&
-            entry.boundingClientRect.top < entry.rootBounds.top,
-        )
-
-        if (!entry.isIntersecting && !passedViewport) return
-        observer.disconnect()
-        setState('in')
+      () => {
+        revealIfVisible()
       },
       {
-        root: getScrollRoot(node),
-        threshold: 0.1,
+        root,
+        threshold: REVEAL_RATIO,
         rootMargin: '0px 0px -6% 0px',
       },
     )
 
-    const frame = window.requestAnimationFrame(() => observer.observe(node))
-
-    return () => {
+    function cleanup() {
       window.cancelAnimationFrame(frame)
       observer.disconnect()
+      root?.removeEventListener('scroll', revealIfVisible)
     }
+
+    function revealIfVisible() {
+      if (!shouldRevealNode(target, root)) return
+      cleanup()
+      setState('in')
+    }
+
+    frame = window.requestAnimationFrame(() => {
+      observer.observe(target)
+      root?.addEventListener('scroll', revealIfVisible, { passive: true })
+      revealIfVisible()
+    })
+
+    return cleanup
   }, [])
 
   const style: RevealStyle = {

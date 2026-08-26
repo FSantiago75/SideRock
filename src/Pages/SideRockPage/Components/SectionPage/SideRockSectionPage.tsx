@@ -9,6 +9,7 @@ type SideRockSectionPageProps = {
   backgroundAspectRatio?: string
   backgroundGrayscale?: string
   backgroundOverlay?: string
+  backgroundPosition?: string
   layout?: 'artboard' | 'flow'
   children?: ReactNode
 }
@@ -17,6 +18,7 @@ type SideRockSectionStyle = CSSProperties & {
   '--side-rock-art-ratio': string
   '--side-rock-bg-grayscale': string
   '--side-rock-bg-overlay': string
+  '--side-rock-bg-position': string
 }
 
 export function SideRockSectionPage({
@@ -24,6 +26,7 @@ export function SideRockSectionPage({
   backgroundAspectRatio = '1536 / 1024',
   backgroundGrayscale = '20%',
   backgroundOverlay = 'transparent',
+  backgroundPosition = 'center top',
   layout = 'artboard',
   children,
 }: SideRockSectionPageProps) {
@@ -39,6 +42,7 @@ export function SideRockSectionPage({
     '--side-rock-art-ratio': backgroundAspectRatio,
     '--side-rock-bg-grayscale': backgroundGrayscale,
     '--side-rock-bg-overlay': backgroundOverlay,
+    '--side-rock-bg-position': backgroundPosition,
   }
 
   return (

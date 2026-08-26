@@ -18,7 +18,7 @@ export function GalleryPhotoCard({
 }: GalleryPhotoCardProps) {
   return (
     <li className={styles.item}>
-      <ScrollReveal className={styles.reveal} from="scale" delayMs={staggerDelayMs}>
+      <ScrollReveal className={styles.reveal} from="up" delayMs={staggerDelayMs}>
         <button
           type="button"
           className={styles.card}

@@ -158,7 +158,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: var(--side-rock-bg-position, center top);
 }
 
 .bgStack[data-layout='flow'] .fgLayer {
