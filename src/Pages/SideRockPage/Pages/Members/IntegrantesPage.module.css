@@ -6,8 +6,8 @@
   --motion-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-exit: cubic-bezier(0.4, 0, 1, 1);
   --member-outline-duration: 800ms;
-  --member-card-exit: 460ms;
-  --member-card-enter: 480ms;
+  --member-card-exit: 400ms;
+  --member-card-enter: 400ms;
   --member-selector-duration: 800ms;
   --members-page-gutter: max(
     clamp(1.75rem, 4.2vw, 3.5rem),
