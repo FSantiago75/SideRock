@@ -13,6 +13,7 @@ import { AcousticRepertoireRail } from './Components/AcousticRepertoireRail'
 import styles from './AcousticPage.module.css'
 import { useAcousticAmbientMotion } from './useAcousticAmbientMotion'
 import { useAcousticDocumentMeta } from './useAcousticDocumentMeta'
+import { useAcousticInitialHashScroll } from './useAcousticInitialHashScroll'
 import { useAcousticReveal } from './useAcousticReveal'
 import { useSmoothDocumentScroll } from './useSmoothDocumentScroll'
 
@@ -80,6 +81,7 @@ export const AcousticPage = () => {
   useScrollbarTheme(ACOUSTIC_SCROLLBAR)
   useAcousticDocumentMeta()
   useSmoothDocumentScroll()
+  useAcousticInitialHashScroll()
   useAcousticReveal({ rootRef: pageRef })
   useAcousticAmbientMotion({ rootRef: pageRef })
 
@@ -285,10 +287,7 @@ export const AcousticPage = () => {
           <span className={styles.sectionDividerGem} />
         </div>
 
-        <section
-          className={`${styles.artists} ${styles.deferredSection}`}
-          aria-labelledby="artists-title"
-        >
+        <section className={styles.artists} aria-labelledby="artists-title">
           <div className={styles.artistsResonance} aria-hidden="true">
             <ResonanceMotif className={styles.artistsResonanceSvg} />
           </div>
@@ -342,7 +341,7 @@ export const AcousticPage = () => {
         </div>
 
         <section
-          className={`${styles.applications} ${styles.deferredSection}`}
+          className={styles.applications}
           id="experiencia"
           aria-labelledby="applications-title"
         >
@@ -413,10 +412,7 @@ export const AcousticPage = () => {
           </div>
         </section>
 
-        <section
-          className={`${styles.media} ${styles.deferredSection}`}
-          aria-labelledby="media-title"
-        >
+        <section className={styles.media} aria-labelledby="media-title">
           {media.videoUrl ? (
             <button
               type="button"
@@ -490,7 +486,7 @@ export const AcousticPage = () => {
         </section>
 
         <section
-          className={`${styles.process} ${styles.deferredSection}`}
+          className={styles.process}
           id="como-contratar"
           aria-labelledby="process-title"
         >
@@ -526,7 +522,7 @@ export const AcousticPage = () => {
         </section>
 
         <section
-          className={`${styles.booking} ${styles.deferredSection}`}
+          className={styles.booking}
           id="contratacao"
           aria-labelledby="booking-title"
         >
