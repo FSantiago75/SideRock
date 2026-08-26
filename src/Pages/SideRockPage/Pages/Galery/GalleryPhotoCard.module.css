@@ -2,8 +2,10 @@
   width: 100%;
   margin: 0 0 0.9rem;
   break-inside: avoid;
-  animation: cardEnter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--stagger-delay, 0ms);
+}
+
+.reveal {
+  width: 100%;
 }
 
 .card {
@@ -179,24 +181,9 @@
   }
 }
 
-@keyframes cardEnter {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 10px, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .item,
   .card,
-  .frame img,
-  .overlay {
-    animation: none;
+  .frame img {
     transition: none;
   }
 

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import background from '../../../../SiderockAssets/Bgs2/BGGaleria.png'
+import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import { GalleryAlbumSection } from './GalleryAlbumSection'
 import { GalleryLightbox } from './GalleryLightbox'
@@ -30,19 +31,36 @@ export function GaleriaPage() {
     >
       <article className={styles.page}>
         <header className={styles.intro}>
-          <p className={styles.eyebrow}>{GALLERY_COPY.eyebrow}</p>
-          <h1>{GALLERY_COPY.title}</h1>
-          <p className={styles.introLead}>{GALLERY_COPY.lead}</p>
-          <p className={styles.count}>{formatRecordCount(GALLERY_PHOTOS.length)}</p>
+          <ScrollReveal from="up">
+            <p className={styles.eyebrow}>{GALLERY_COPY.eyebrow}</p>
+          </ScrollReveal>
+
+          <ScrollReveal delayMs={70} from="up">
+            <h1>{GALLERY_COPY.title}</h1>
+          </ScrollReveal>
+
+          <ScrollReveal delayMs={120} from="up">
+            <p className={styles.introLead}>{GALLERY_COPY.lead}</p>
+          </ScrollReveal>
+
+          <ScrollReveal delayMs={160} from="none">
+            <p className={styles.count}>
+              {formatRecordCount(GALLERY_PHOTOS.length)}
+            </p>
+          </ScrollReveal>
         </header>
 
-        <div className={styles.divider} aria-hidden />
+        <ScrollReveal delayMs={180} from="none">
+          <div className={styles.divider} aria-hidden />
+        </ScrollReveal>
 
         {GALLERY_PHOTOS.length === 0 ? (
-          <section className={styles.empty} aria-labelledby="gallery-empty-title">
-            <h2 id="gallery-empty-title">{GALLERY_COPY.emptyTitle}</h2>
-            <p>{GALLERY_COPY.emptyBody}</p>
-          </section>
+          <ScrollReveal from="up">
+            <section className={styles.empty} aria-labelledby="gallery-empty-title">
+              <h2 id="gallery-empty-title">{GALLERY_COPY.emptyTitle}</h2>
+              <p>{GALLERY_COPY.emptyBody}</p>
+            </section>
+          </ScrollReveal>
         ) : (
           <GalleryAlbumSection photos={GALLERY_PHOTOS} onOpen={setActivePhotoId} />
         )}
