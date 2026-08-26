@@ -352,11 +352,6 @@
   scroll-margin-top: calc(var(--acoustic-header-offset) + 0.75rem);
 }
 
-.deferredSection {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 720px;
-}
-
 .kicker,
 .sectionIndex,
 .bookingKicker {
@@ -1881,7 +1876,7 @@
 
 @media (max-width: 768px) {
   .page {
-    --acoustic-header-height: 5.85rem;
+    --acoustic-header-height: 6.95rem;
   }
 
   .headerInner {
