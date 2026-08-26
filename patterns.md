@@ -243,10 +243,20 @@ Ao concluir qualquer alteração, revisar **cada ficheiro tocado** nestes pilare
 
 Não reescrever copy nem layout visual só para “passar” no checklist. Se um pilar conflituar com o visual pedido, manter o visual e anotar o trade-off neste documento.
 
+### 6.3 Quem testa — sempre o autor
+
+A verificação visual e de UX fica **sempre** com o autor. O assistente implementa, revisa o código pelos pilares 6.1 e entrega para o autor testar no próprio browser.
+
+- **Não** abrir, bloquear, recarregar, clicar, fazer scroll nem tirar screenshots no browser embutido do Cursor para “validar” a UI.
+- **Não** emular viewports nem declarar a tarefa como verificada no browser.
+- Só usar o browser se o autor pedir explicitamente (“abre no browser”, “reproduz o bug”).
+- No fim da entrega: dizer o que mudou e que está pronto para o autor testar.
+
 ---
 
 ## 7. Changelog deste documento
 
+- **2026-08-26**: Entrega — o autor testa sempre no próprio browser; o assistente não usa o browser embutido para validar UI salvo pedido explícito.
 - **2026-08-26**: Galeria — ScrollReveal no cabeçalho e em cada foto (mesmo observer do Resumo); sem `cardEnter` paralelo; lightbox sem reveal.
 - **2026-08-26**: Galeria — portfólio por álbuns com `import.meta.glob`; lightbox em portal; estado vazio seguro.
 - **2026-08-26**: Resumo — ScrollReveal original (root `.main`, `-6%`); sem vazio após as bandas (`flow` sem min-height 100%, sem padding extra).
