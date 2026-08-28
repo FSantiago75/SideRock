@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import MembersNull from '../../assets/MembersImages/MembersNull.png'
+import { useState, type ImgHTMLAttributes } from 'react'
+import MembersNull from '../../assets/MembersImages/MembersNull.webp'
 import { MembersHitmap } from './membersHitmap'
 import { membersMap } from './membersMap'
 import styles from './membersImage.module.css'
@@ -16,6 +16,11 @@ type MembersImageProps = {
   activeId?: MembersImageMemberId | null
   alt?: string
   className?: string
+  loading?: ImgHTMLAttributes<HTMLImageElement>['loading']
+  decoding?: ImgHTMLAttributes<HTMLImageElement>['decoding']
+  fetchPriority?: ImgHTMLAttributes<HTMLImageElement>['fetchPriority']
+  /** When false, only the neutral base is mounted (highlight layers deferred). Default true. */
+  mountHighlightLayers?: boolean
   onHover?: (id: MembersImageMemberId | null) => void
   onSelect?: (id: MembersImageMemberId | null) => void
 }
@@ -24,6 +29,10 @@ export function MembersImage({
   activeId,
   alt = 'Integrantes da banda',
   className,
+  loading,
+  decoding = 'async',
+  fetchPriority,
+  mountHighlightLayers = true,
   onHover,
   onSelect,
 }: MembersImageProps) {
@@ -46,20 +55,37 @@ export function MembersImage({
     onSelect?.(memberId)
   }
 
-  const rootClassName = className ? `${styles.root} ${className}` : `${styles.root} ${styles.standalone}`
+  const rootClassName = className
+    ? `${styles.root} ${className}`
+    : `${styles.root} ${styles.standalone}`
 
   return (
     <figure className={rootClassName}>
-      <img className={styles.base} src={MembersNull} alt={alt} />
-      {memberKeys.map((key) => (
-        <img
-          key={key}
-          className={`${styles.layer} ${activeKey === key ? styles.layerVisible : ''}`}
-          src={membersMap[key]}
-          alt=""
-          aria-hidden
-        />
-      ))}
+      <img
+        className={styles.base}
+        src={MembersNull}
+        alt={alt}
+        width={1024}
+        height={1536}
+        loading={loading}
+        decoding={decoding}
+        fetchPriority={fetchPriority}
+      />
+      {mountHighlightLayers
+        ? memberKeys.map((key) => (
+            <img
+              key={key}
+              className={`${styles.layer} ${activeKey === key ? styles.layerVisible : ''}`}
+              src={membersMap[key]}
+              alt=""
+              aria-hidden
+              width={1024}
+              height={1536}
+              loading={loading}
+              decoding={decoding}
+            />
+          ))
+        : null}
       <MembersHitmap onHover={handleHover} onSelect={handleSelect} />
     </figure>
   )
