@@ -1,5 +1,5 @@
 import { FaInstagram } from 'react-icons/fa6'
-import { OZZBORN_CONTENT, OZZBORN_LINKS } from '../ozzbornContent'
+import { OZZBORN_ASSETS, OZZBORN_CONTENT, OZZBORN_LINKS } from '../ozzbornContent'
 import styles from '../OzzbornPage.module.css'
 
 export function OzzbornMedia() {
@@ -45,9 +45,15 @@ export function OzzbornMedia() {
         data-has-video="false"
       >
         <div className={styles.mediaCardAtmosphere} aria-hidden="true">
-          <span className={styles.mediaWingLeft} />
-          <span className={styles.mediaWingRight} />
-          <span className={styles.mediaCore} />
+          <img
+            className={styles.mediaCrest}
+            src={OZZBORN_ASSETS.crest.src}
+            width={OZZBORN_ASSETS.crest.width}
+            height={OZZBORN_ASSETS.crest.height}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <div className={styles.mediaCardContent}>

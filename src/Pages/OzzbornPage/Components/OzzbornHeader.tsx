@@ -46,6 +46,27 @@ export function OzzbornHeader() {
       >
         <div className={styles.headerInner}>
           <a className={styles.brand} href="#topo">
+            <span className={styles.brandCrown} aria-hidden="true">
+              <svg
+                viewBox="0 0 32 14"
+                fill="none"
+                focusable="false"
+              >
+                <path
+                  d="M3 11.5 8 3.2l4.2 4.4L16 1.5l3.8 6.1L24 3.2l5 8.3"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M4.2 11.5h23.6"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
             <span className={styles.brandMark}>{OZZBORN_CONTENT.brand}</span>
           </a>
 

@@ -175,6 +175,9 @@ export function OzzbornFormation() {
                   onFocus={() => spotlight.hover(item.id)}
                   onClick={() => spotlight.select(item.id)}
                 >
+                  <span className={styles.formationTabIndex} aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <span className={styles.formationTabName}>{item.name}</span>
                   <span className={styles.formationTabRole}>{item.role}</span>
                 </button>
@@ -254,6 +257,7 @@ export function OzzbornFormation() {
       </div>
 
       <div className={styles.formationSpotlight}>
+        <div className={styles.formationPortal} aria-hidden="true" />
         <div className={styles.formationGlow} aria-hidden="true" />
         <div className={styles.formationPhotoWrap}>
           <MembersImage

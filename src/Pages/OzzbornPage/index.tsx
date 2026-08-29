@@ -11,6 +11,7 @@ import { useOzzbornInitialHashScroll } from './hooks/useOzzbornInitialHashScroll
 import { useOzzbornReveal } from './hooks/useOzzbornReveal'
 import { useOzzbornSmoothScroll } from './hooks/useOzzbornSmoothScroll'
 import {
+  OZZBORN_ASSETS,
   OZZBORN_CONTENT,
   OZZBORN_LINKS,
   OZZBORN_SCROLLBAR,
@@ -111,22 +112,22 @@ export const OzzbornPage = () => {
             >
               {hero.note}
             </p>
-
-            <dl
-              className={styles.heroFacts}
-              data-reveal="fade"
-              data-reveal-delay="5"
-            >
-              {hero.facts.map((fact) => (
-                <div key={fact.term} className={styles.heroFact}>
-                  <dt>{fact.term}</dt>
-                  <dd>{fact.description}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
           <OzzbornHeroVisual />
+
+          <dl
+            className={styles.heroFacts}
+            data-reveal="fade"
+            data-reveal-delay="5"
+          >
+            {hero.facts.map((fact) => (
+              <div key={fact.term} className={styles.heroFact}>
+                <dt>{fact.term}</dt>
+                <dd>{fact.description}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section
@@ -134,7 +135,11 @@ export const OzzbornPage = () => {
           id="tributo"
           aria-labelledby="manifesto-title"
         >
+          <p className={styles.manifestoSeal} aria-hidden="true">
+            I
+          </p>
           <div className={styles.manifestoRail} aria-hidden="true" />
+          <div className={styles.manifestoFragment} aria-hidden="true" />
           <div
             className={styles.manifestoIntro}
             data-reveal="rise"
@@ -168,6 +173,7 @@ export const OzzbornPage = () => {
           id="experiencia"
           aria-labelledby="experience-title"
         >
+          <span className={styles.sectionOrnament} aria-hidden="true" />
           <div
             className={styles.sectionIntro}
             data-reveal="rise"
@@ -184,6 +190,7 @@ export const OzzbornPage = () => {
               <li
                 key={point.title}
                 className={styles.experienceItem}
+                data-act={point.index}
                 data-reveal="rise"
                 data-reveal-delay={String(Math.min(index + 1, 4))}
               >
@@ -220,9 +227,13 @@ export const OzzbornPage = () => {
               <li
                 key={pillar.title}
                 className={styles.repertoirePillar}
+                data-movement={String(index + 1)}
                 data-reveal="rise"
                 data-reveal-delay={String(Math.min(index + 1, 4))}
               >
+                <span className={styles.repertoireIndex} aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
                 <h3 className={styles.repertoirePillarTitle}>{pillar.title}</h3>
                 <p className={styles.repertoirePillarCopy}>{pillar.copy}</p>
               </li>
@@ -357,8 +368,16 @@ export const OzzbornPage = () => {
           className={styles.booking}
           aria-labelledby="booking-title"
         >
-          <div className={styles.bookingWings} aria-hidden="true" />
           <div className={styles.bookingGlow} aria-hidden="true" />
+          <img
+            className={styles.bookingCrest}
+            src={OZZBORN_ASSETS.crest.src}
+            width={OZZBORN_ASSETS.crest.width}
+            height={OZZBORN_ASSETS.crest.height}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
 
           <p
             className={styles.bookingKicker}

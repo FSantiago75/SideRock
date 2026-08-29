@@ -12,6 +12,7 @@ export function OzzbornFooter() {
       <div className={styles.footerInner}>
         <div className={styles.footerBrand}>
           <p className={styles.footerName}>{brand}</p>
+          <span className={styles.footerFillet} aria-hidden="true" />
           <p className={styles.footerMeta}>
             {brandSubtitle}
             <span aria-hidden="true"> · </span>
