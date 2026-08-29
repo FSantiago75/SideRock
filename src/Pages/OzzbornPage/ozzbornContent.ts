@@ -1,4 +1,5 @@
 import MembersNull from '../../assets/MembersImages/MembersNull.webp'
+import ozzbornCrest from '../../assets/ozzborn-crest.webp'
 import type { MembersImageMemberId } from '../../Components/MembersImage'
 import { EXPERIENCE_ROUTES } from '../../config/experiences'
 
@@ -15,10 +16,10 @@ function buildWhatsAppUrl(message: string) {
 }
 
 export const OZZBORN_SCROLLBAR = {
-  start: '#8243a8',
-  end: '#432257',
-  hoverStart: '#a963cf',
-  hoverEnd: '#62327d',
+  start: '#7d32c4',
+  end: '#150b1d',
+  hoverStart: '#edc96a',
+  hoverEnd: '#7d32c4',
 } as const
 
 export const OZZBORN_PAGE_META = {
@@ -52,6 +53,11 @@ export const OZZBORN_ASSETS = {
     width: 1024,
     height: 1536,
     alt: 'Formação do OzzBorn: Marcelo, Victor, Adriano e Todynho em ensaio fotográfico',
+  },
+  crest: {
+    src: ozzbornCrest,
+    width: 640,
+    height: 689,
   },
 } as const
 
