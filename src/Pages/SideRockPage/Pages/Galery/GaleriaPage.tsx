@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import background from '../../../../assets/side-rock-standard-background.png'
+import background from '../../../../assets/sideRock/sideRockStandardBackground.png'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import { GalleryAlbumSection } from './GalleryAlbumSection'

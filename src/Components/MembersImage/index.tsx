@@ -1,5 +1,5 @@
 import { useState, type ImgHTMLAttributes } from 'react'
-import MembersNull from '../../assets/MembersImages/MembersNull.webp'
+import MembersNull from '../../assets/sideRock/membersImages/membersNull.webp'
 import { MembersHitmap } from './membersHitmap'
 import { membersMap } from './membersMap'
 import styles from './membersImage.module.css'

@@ -30,7 +30,7 @@
   inset: 0;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.9)),
-    url('../../assets/bgCaveiras2.jpg');
+    url('../../assets/general/bgCaveiras2.jpg');
   background-size: auto, 420px 420px;
   opacity: 0.34;
   mix-blend-mode: luminosity;

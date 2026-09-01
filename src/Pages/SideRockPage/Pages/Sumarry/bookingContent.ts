@@ -1,7 +1,7 @@
-import promotionalVideo from '../../../../assets/promotionalVideo.web.mp4'
-import promotionalVideoPoster from '../../../../assets/promotionalVideo.webp'
-import promotionalVideo2 from '../../../../assets/promotionalVideo2.web.mp4'
-import promotionalVideo2Poster from '../../../../assets/promotionalVideo2.webp'
+import promotionalVideo from '../../../../assets/sideRock/promotionalVideo.web.mp4'
+import promotionalVideoPoster from '../../../../assets/sideRock/promotionalVideo.webp'
+import promotionalVideo2 from '../../../../assets/sideRock/promotionalVideo2.web.mp4'
+import promotionalVideo2Poster from '../../../../assets/sideRock/promotionalVideo2.webp'
 
 const BOOKING_MESSAGE =
   'Olá, Vanessa! Gostaria de consultar disponibilidade e orçamento da Side Rock para um evento.'

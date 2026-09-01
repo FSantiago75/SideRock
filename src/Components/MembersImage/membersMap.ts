@@ -1,7 +1,7 @@
-import Vocal from "../../assets/MembersImages/vocal.webp";
-import Guitar from "../../assets/MembersImages/guitar.webp";
-import Drums from "../../assets/MembersImages/drums.webp";
-import Bass from "../../assets/MembersImages/bass.webp";
+import Vocal from "../../assets/sideRock/membersImages/vocal.webp";
+import Guitar from "../../assets/sideRock/membersImages/guitar.webp";
+import Drums from "../../assets/sideRock/membersImages/drums.webp";
+import Bass from "../../assets/sideRock/membersImages/bass.webp";
 
 export const membersMap = {
   vocal: Vocal,

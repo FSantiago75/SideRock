@@ -1,7 +1,7 @@
 import ambientImage from '../../assets/acoustic/ambient.webp'
 import detailImage from '../../assets/acoustic/detail.webp'
-import hero640Image from '../../assets/acoustic/hero-640.webp'
-import hero960Image from '../../assets/acoustic/hero-960.webp'
+import hero640Image from '../../assets/acoustic/hero640.webp'
+import hero960Image from '../../assets/acoustic/hero960.webp'
 import heroImage from '../../assets/acoustic/hero.webp'
 import { EXPERIENCE_ROUTES } from '../../config/experiences'
 

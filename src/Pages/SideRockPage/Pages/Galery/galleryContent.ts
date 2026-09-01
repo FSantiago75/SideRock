@@ -23,7 +23,7 @@ export const GALLERY_COPY = {
 } as const
 
 const IMAGE_EXTENSIONS = /\.(?:avif|gif|jpeg|jpg|png|webp)$/i
-const GALLERY_MARKER = '/assets/gallery/'
+const GALLERY_MARKER = '/assets/sideRock/gallery/'
 const LEADING_DATE =
   /^(?:\d{4}-\d{2}-\d{2}|\d{8}|\d{4}-\d{2}|\d{4})[-_]?/i
 const LEADING_INDEX = /^\d+\s*[-_.]\s*/
@@ -32,7 +32,7 @@ const ALBUM_LABEL_OVERRIDES: Record<string, string> = {
 }
 
 const imageModules = import.meta.glob<string>(
-  '../../../../assets/gallery/**/*.{avif,gif,jpeg,jpg,png,webp}',
+  '../../../../assets/sideRock/gallery/**/*.{avif,gif,jpeg,jpg,png,webp}',
   {
     eager: true,
     import: 'default',

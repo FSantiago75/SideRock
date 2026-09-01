@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { MembersImage } from '../../../../Components/MembersImage'
-import background from '../../../../assets/side-rock-members-atmosphere-v2.png'
+import background from '../../../../assets/sideRock/sideRockMembersAtmosphereV2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import styles from './IntegrantesPage.module.css'
 import { MemberDetails } from './MemberDetails'

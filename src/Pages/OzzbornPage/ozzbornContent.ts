@@ -1,5 +1,5 @@
-import MembersNull from '../../assets/MembersImages/MembersNull.webp'
-import ozzbornCrest from '../../assets/ozzborn-crest.webp'
+import MembersNull from '../../assets/sideRock/membersImages/membersNull.webp'
+import ozzbornCrest from '../../assets/ozzborn/ozzbornCrest.webp'
 import type { MembersImageMemberId } from '../../Components/MembersImage'
 import { EXPERIENCE_ROUTES } from '../../config/experiences'
 
