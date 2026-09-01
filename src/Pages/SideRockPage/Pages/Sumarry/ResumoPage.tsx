@@ -69,7 +69,7 @@ export function ResumoPage() {
                 </a>
                 <Link
                   className={styles.secondaryAction}
-                  to={sideRockPath('musica')}
+                  to={sideRockPath('repertorio')}
                 >
                   Ver repertório
                   <HiArrowRight aria-hidden />

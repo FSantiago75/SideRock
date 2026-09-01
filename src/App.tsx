@@ -33,9 +33,9 @@ const IntegrantesPage = lazy(() =>
     (module) => ({ default: module.IntegrantesPage }),
   ),
 )
-const MusicaPage = lazy(() =>
+const RepertorioPage = lazy(() =>
   import('./Pages/SideRockPage/Pages/Music/MusicaPage').then((module) => ({
-    default: module.MusicaPage,
+    default: module.RepertorioPage,
   })),
 )
 const GaleriaPage = lazy(() =>
@@ -68,7 +68,14 @@ function App() {
             path={sideRockPath('integrantes')}
             element={<IntegrantesPage />}
           />
-          <Route path={sideRockPath('musica')} element={<MusicaPage />} />
+          <Route
+            path={`${SIDE_ROCK_BASE_PATH}/musica`}
+            element={<Navigate to={sideRockPath('repertorio')} replace />}
+          />
+          <Route
+            path={sideRockPath('repertorio')}
+            element={<RepertorioPage />}
+          />
           <Route path={sideRockPath('galeria')} element={<GaleriaPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
