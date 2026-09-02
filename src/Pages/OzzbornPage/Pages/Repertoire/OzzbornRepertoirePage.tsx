@@ -46,7 +46,7 @@ export function OzzbornRepertoirePage() {
             <ScrollReveal delayMs={55} from="up">
               <h1>
                 Cinco eras.
-                <span>Um verdadeiro show</span>
+                <span>Um show</span>
               </h1>
             </ScrollReveal>
             <ScrollReveal delayMs={110} from="up">
