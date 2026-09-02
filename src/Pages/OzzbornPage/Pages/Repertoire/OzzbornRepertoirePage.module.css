@@ -968,14 +968,19 @@
   }
 
   .journeyRange {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto minmax(2rem, 1fr) auto;
+    align-items: center;
+    gap: .75rem;
     margin-top: .8rem
   }
 
   .journeyRange .journeyLine {
-    width: 1px;
-    height: 2.75rem;
-    margin: .55rem 0;
-    background: linear-gradient(var(--violet-hot), rgba(139, 92, 246, .12))
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    background: linear-gradient(90deg, var(--violet-hot), rgba(139, 92, 246, .12))
   }
 
   .intro {
@@ -1097,4 +1102,54 @@
 .closing h2 {
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 500
+}
+
+@media (min-width:681px) and (max-width:920px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 2rem
+  }
+
+  .introJourney {
+    display: block;
+    padding: 1rem 0 0;
+    border-top: 1px solid rgba(196, 181, 253, .2);
+    border-left: 0
+  }
+
+  .journeyRange {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto minmax(2rem, 1fr) auto;
+    align-items: center;
+    gap: .9rem;
+    margin-top: .8rem
+  }
+
+  .journeyRange .journeyLine {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    background: linear-gradient(90deg, var(--violet-hot), rgba(139, 92, 246, .12))
+  }
+
+  .introJourney>p:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1.25rem
+  }
+
+  .introJourney>p:last-child span:nth-child(2) {
+    display: none
+  }
+
+  .introJourney>p:last-child span:first-child {
+    text-align: left
+  }
+
+  .introJourney>p:last-child span:last-child {
+    text-align: right
+  }
 }
