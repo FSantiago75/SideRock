@@ -41,7 +41,7 @@ export function OzzbornRepertoirePage() {
         <header className={styles.intro}>
           <div className={styles.introCopy}>
             <ScrollReveal from="up">
-              <p className={styles.introEyebrow}>Repertório Ozzborn · Ao vivo</p>
+              <p className={styles.introEyebrow}>Repertório Ozzborn</p>
             </ScrollReveal>
             <ScrollReveal delayMs={55} from="up">
               <h1>

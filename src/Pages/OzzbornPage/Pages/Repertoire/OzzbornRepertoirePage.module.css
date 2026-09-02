@@ -19,7 +19,7 @@
 .page::before {
   content: '';
   position: fixed;
-  inset: var(--side-rock-nav-clearance) 0 0;
+  inset: 0;
   z-index: -2;
   pointer-events: none;
   background: linear-gradient(180deg, rgba(2, 2, 3, .18), rgba(2, 2, 3, .72) 72%, #030304), linear-gradient(90deg, rgba(0, 0, 0, .42), transparent 25%, transparent 75%, rgba(0, 0, 0, .42)), var(--repertoire-background) center/cover no-repeat;
@@ -56,6 +56,11 @@
   font-weight: 800;
   letter-spacing: .22em;
   text-transform: uppercase
+}
+
+.introEyebrow {
+  font-size: .63rem;
+  letter-spacing: .18em
 }
 
 .intro h1 {
@@ -741,7 +746,7 @@
     min-height: 0;
     grid-template-columns: minmax(0, 1.35fr) minmax(13rem, .5fr);
     gap: 1.5rem clamp(2rem, 5vw, 5rem);
-    padding: clamp(2.5rem, 5vh, 4rem) 0 1.25rem
+    padding: clamp(.9rem, 2vw, 1.6rem) 0 1.25rem
   }
 
   .intro h1 {
@@ -1107,7 +1112,8 @@
 @media (min-width:681px) and (max-width:920px) {
   .intro {
     grid-template-columns: 1fr;
-    gap: 2rem
+    gap: 2rem;
+    padding-top: 1rem
   }
 
   .introJourney {
@@ -1151,5 +1157,11 @@
 
   .introJourney>p:last-child span:last-child {
     text-align: right
+  }
+}
+
+@media (max-width:680px) {
+  .intro {
+    padding-top: 1rem
   }
 }
