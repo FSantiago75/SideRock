@@ -1,0 +1,42 @@
+.page {
+  display: grid;
+  min-height: calc(100svh - var(--side-rock-nav-clearance));
+  place-items: center;
+  box-sizing: border-box;
+  padding: clamp(2rem, 7vw, 7rem);
+  color: var(--side-rock-paper);
+  background:
+    radial-gradient(circle at 70% 35%, rgba(124, 58, 237, 0.14), transparent 32rem),
+    #050505;
+}
+
+.content {
+  width: min(100%, 50rem);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--side-rock-accent-hot);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.content h1 {
+  margin: 1rem 0 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.content p:last-child {
+  max-width: 34rem;
+  margin: 1.5rem auto 0;
+  color: rgba(241, 237, 230, 0.58);
+  line-height: 1.7;
+}

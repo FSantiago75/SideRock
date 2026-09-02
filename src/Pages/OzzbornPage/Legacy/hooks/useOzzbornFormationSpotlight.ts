@@ -5,7 +5,7 @@ import {
   useState,
   type RefObject,
 } from 'react'
-import { VIEWPORT_MOBILE_MAX_PX } from '../../../utils/viewport'
+import { VIEWPORT_MOBILE_MAX_PX } from '../../../../utils/viewport'
 import {
   getOzzbornMemberById,
   OZZBORN_MEMBERS,

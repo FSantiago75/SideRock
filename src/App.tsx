@@ -9,6 +9,10 @@ import {
   EXPERIENCE_ROUTES,
   LEGACY_EXPERIENCE_ROUTES,
 } from './config/experiences'
+import {
+  OZZBORN_BASE_PATH,
+  ozzbornPath,
+} from './Pages/OzzbornPage/sectionConstants'
 
 const HomePage = lazy(() =>
   import('./Pages/HomePage').then((module) => ({ default: module.HomePage })),
@@ -18,9 +22,14 @@ const AcousticPage = lazy(() =>
     default: module.AcousticPage,
   })),
 )
-const OzzbornPage = lazy(() =>
-  import('./Pages/OzzbornPage').then((module) => ({
-    default: module.OzzbornPage,
+const OzzbornSummaryPage = lazy(() =>
+  import('./Pages/OzzbornPage/Pages/Summary/OzzbornSummaryPage').then((module) => ({
+    default: module.OzzbornSummaryPage,
+  })),
+)
+const OzzbornPlaceholderPage = lazy(() =>
+  import('./Pages/OzzbornPage/Pages/Placeholder/OzzbornPlaceholderPage').then((module) => ({
+    default: module.OzzbornPlaceholderPage,
   })),
 )
 const SummaryPage = lazy(() =>
@@ -54,7 +63,14 @@ function App() {
         <Routes>
           <Route path={EXPERIENCE_ROUTES.catalog} element={<HomePage />} />
           <Route path={EXPERIENCE_ROUTES.acoustic} element={<AcousticPage />} />
-          <Route path={EXPERIENCE_ROUTES.ozzborn} element={<OzzbornPage />} />
+          <Route
+            path={OZZBORN_BASE_PATH}
+            element={<Navigate to={ozzbornPath('resumo')} replace />}
+          />
+          <Route path={ozzbornPath('resumo')} element={<OzzbornSummaryPage />} />
+          <Route path={ozzbornPath('integrantes')} element={<OzzbornPlaceholderPage section="integrantes" />} />
+          <Route path={ozzbornPath('repertorio')} element={<OzzbornPlaceholderPage section="repertorio" />} />
+          <Route path={ozzbornPath('galeria')} element={<OzzbornPlaceholderPage section="galeria" />} />
           <Route
             path={LEGACY_EXPERIENCE_ROUTES.ozzborn}
             element={<Navigate to={EXPERIENCE_ROUTES.ozzborn} replace />}

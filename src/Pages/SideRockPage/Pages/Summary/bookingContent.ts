@@ -9,8 +9,6 @@ const BOOKING_MESSAGE =
 export const SIDE_ROCK_BOOKING = {
   manager: 'Vanessa',
   location: 'Jundiaí / SP',
-  company: 'Side Rock Ltda.',
-  document: 'CNPJ 47.070.989/0001-73',
   whatsappUrl: `https://wa.me/5511971632992?text=${encodeURIComponent(BOOKING_MESSAGE)}`,
   instagramUrl: 'https://www.instagram.com/bandasiderock',
   intro: {

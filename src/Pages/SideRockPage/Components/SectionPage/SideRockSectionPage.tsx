@@ -1,5 +1,8 @@
 import { useLayoutEffect, type CSSProperties, type ReactNode } from 'react'
-import { useScrollbarTheme } from '../../../../hooks/useScrollbarTheme'
+import {
+  useScrollbarTheme,
+  type ScrollbarTheme,
+} from '../../../../hooks/useScrollbarTheme'
 import { SIDE_ROCK_SCROLLBAR } from '../../sectionConstants'
 import { SideRockNavbar } from '../NavBar/SideRockNavbar'
 import styles from './SideRockSectionPage.module.css'
@@ -12,6 +15,10 @@ type SideRockSectionPageProps = {
   backgroundPosition?: string
   layout?: 'artboard' | 'flow'
   children?: ReactNode
+  navbar?: ReactNode
+  accent?: string
+  accentHot?: string
+  scrollbarTheme?: ScrollbarTheme
 }
 
 type SideRockSectionStyle = CSSProperties & {
@@ -19,6 +26,8 @@ type SideRockSectionStyle = CSSProperties & {
   '--side-rock-bg-grayscale': string
   '--side-rock-bg-overlay': string
   '--side-rock-bg-position': string
+  '--side-rock-accent': string
+  '--side-rock-accent-hot': string
 }
 
 export function SideRockSectionPage({
@@ -29,8 +38,12 @@ export function SideRockSectionPage({
   backgroundPosition = 'center top',
   layout = 'artboard',
   children,
+  navbar,
+  accent = '#d32f35',
+  accentHot = '#ff5258',
+  scrollbarTheme = SIDE_ROCK_SCROLLBAR,
 }: SideRockSectionPageProps) {
-  useScrollbarTheme(SIDE_ROCK_SCROLLBAR)
+  useScrollbarTheme(scrollbarTheme)
 
   useLayoutEffect(() => {
     const root = document.documentElement
@@ -43,13 +56,15 @@ export function SideRockSectionPage({
     '--side-rock-bg-grayscale': backgroundGrayscale,
     '--side-rock-bg-overlay': backgroundOverlay,
     '--side-rock-bg-position': backgroundPosition,
+    '--side-rock-accent': accent,
+    '--side-rock-accent-hot': accentHot,
   }
 
   return (
     <div className={styles.shell} data-app-scroll="inner" style={style}>
       <main className={styles.main}>
         <div className={styles.navOverlay}>
-          <SideRockNavbar />
+          {navbar ?? <SideRockNavbar />}
         </div>
         <div className={styles.bgStack} data-layout={layout}>
           {background ? (

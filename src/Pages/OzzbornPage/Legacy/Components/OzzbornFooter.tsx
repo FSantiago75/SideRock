@@ -1,6 +1,6 @@
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
-import { DeveloperCredit } from '../../../Components/DeveloperCredit'
+import { DeveloperCredit } from '../../../../Components/DeveloperCredit'
 import { OZZBORN_CONTENT, OZZBORN_LINKS } from '../ozzbornContent'
 import styles from '../OzzbornPage.module.css'
 

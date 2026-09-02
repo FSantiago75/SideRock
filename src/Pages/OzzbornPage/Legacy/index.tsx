@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
-import { useScrollbarTheme } from '../../hooks/useScrollbarTheme'
+import { useScrollbarTheme } from '../../../hooks/useScrollbarTheme'
 import { OzzbornFooter } from './Components/OzzbornFooter'
 import { OzzbornFormation } from './Components/OzzbornFormation'
 import { OzzbornHeader } from './Components/OzzbornHeader'

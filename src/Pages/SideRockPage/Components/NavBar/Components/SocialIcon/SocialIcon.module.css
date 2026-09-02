@@ -32,10 +32,10 @@
 .link:hover,
 .link:focus-visible {
   color: var(--nav-accent-hot);
-  border-color: #ff6b6b;
-  background: rgba(196, 30, 30, 0.12);
+  border-color: var(--nav-accent-hot);
+  background: var(--nav-glow-soft, rgba(196, 30, 30, 0.12));
   transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 0 14px rgba(196, 30, 30, 0.45);
+  box-shadow: 0 0 14px var(--nav-glow-medium, rgba(196, 30, 30, 0.45));
   animation-play-state: paused;
 }
 
@@ -45,15 +45,15 @@
 
 @keyframes socialIconGlow {
   from {
-    box-shadow: 0 0 14px rgba(196, 30, 30, 0.45);
+    box-shadow: 0 0 14px var(--nav-glow-medium, rgba(196, 30, 30, 0.45));
   }
 
   50% {
-    box-shadow: 0 0 14px 2px rgba(196, 30, 30, 0.795);
+    box-shadow: 0 0 14px 2px var(--nav-glow-strong, rgba(196, 30, 30, 0.795));
   }
 
   to {
-    box-shadow: 0 0 14px rgba(196, 30, 30, 0.45);
+    box-shadow: 0 0 14px var(--nav-glow-medium, rgba(196, 30, 30, 0.45));
   }
 }
 

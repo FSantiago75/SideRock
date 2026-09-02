@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import {
   MembersImage,
   type MembersImageMemberId,
-} from '../../../Components/MembersImage'
+} from '../../../../Components/MembersImage'
 import {
   formatOzzbornMemberIndex,
   OZZBORN_CONTENT,
