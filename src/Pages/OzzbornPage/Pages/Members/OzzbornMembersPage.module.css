@@ -1,0 +1,742 @@
+.page {
+  --members-accent: var(--side-rock-accent);
+  --members-accent-hot: var(--side-rock-accent-hot);
+  --members-paper: var(--side-rock-paper);
+  --motion-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-exit: cubic-bezier(0.4, 0, 1, 1);
+  --member-outline-duration: 800ms;
+  --member-card-exit: 400ms;
+  --member-card-enter: 400ms;
+  --member-selector-duration: 800ms;
+  --members-page-gutter: var(--side-rock-page-gutter);
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(0.7rem, 1.4vh, 1.1rem);
+  width: 100%;
+  min-width: 0;
+  height: calc(100svh - var(--side-rock-nav-clearance));
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-x: clip;
+  overflow-y: hidden;
+  padding:
+    clamp(0.9rem, 2vw, 1.6rem)
+    var(--members-page-gutter)
+    1.1rem;
+  color: var(--members-paper);
+  background: #050505;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 5, 0.08) 0%, transparent 38%, rgba(5, 5, 5, 0.34) 70%, rgba(5, 5, 5, 0.62) 100%),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.12), transparent 34%, rgba(5, 5, 5, 0.46) 100%),
+    var(--members-background) center / cover no-repeat;
+}
+
+.mobileGuide {
+  display: none;
+}
+
+.experience {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(20rem, 0.72fr);
+  align-items: stretch;
+  gap: clamp(1rem, 3vw, 3.5rem);
+  min-height: 0;
+}
+
+.portrait {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.photoStack {
+  --portrait-shift: 15%;
+  --portrait-offset-x: 0;
+  position: relative;
+  width: auto;
+  height: 100%;
+  max-width: 118%;
+  max-height: 100%;
+  aspect-ratio: 2 / 3;
+  scale: 1.544;
+  translate: var(--portrait-offset-x) var(--portrait-shift);
+  transform-origin: center 82%;
+  line-height: 0;
+  filter: drop-shadow(0 2.2rem 2.6rem rgba(0, 0, 0, 0.62));
+}
+
+.photoStack img {
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.details {
+  --member-card-pad: clamp(1rem, 2vw, 1.6rem);
+  position: relative;
+  container-type: inline-size;
+  container-name: member-card;
+  align-self: center;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-width: 0;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: var(--member-card-pad);
+  border: 1px solid rgba(124, 58, 237, 0.28);
+  background:
+    linear-gradient(145deg, rgba(124, 58, 237, 0.1), rgba(0, 0, 0, 0.42)),
+    rgba(8, 8, 8, 0.82);
+  box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(16px);
+  touch-action: pan-y;
+  animation: detailsEntrance 760ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.details::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--members-accent-hot) 18%,
+    rgba(124, 58, 237, 0.28) 82%,
+    transparent
+  );
+}
+
+.detailsWatermark {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 2.6rem;
+  z-index: 0;
+  color: rgba(124, 58, 237, 0.07);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(4.5rem, 18cqi, 8rem);
+  line-height: 0.7;
+  pointer-events: none;
+}
+
+.watermarkEnter {
+  animation: fadeSwapIn var(--member-card-enter) var(--motion-enter) both;
+}
+
+.watermarkExit {
+  animation: fadeSwapOut var(--member-card-exit) var(--motion-exit) both;
+}
+
+.detailsTopline,
+.detailsFooter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.detailsIndexViewport {
+  position: relative;
+  display: grid;
+  grid-template-areas: 'index';
+  min-width: 0;
+  overflow: hidden;
+}
+
+.detailsIndexViewport > span {
+  grid-area: index;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  color: rgba(241, 237, 230, 0.42);
+  font-size: clamp(0.52rem, 2.6cqi, 0.63rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.detailsIndexEnter {
+  animation: fadeSwapIn var(--member-card-enter) var(--motion-enter) both;
+}
+
+.detailsIndexExit {
+  animation: fadeSwapOut var(--member-card-exit) var(--motion-exit) both;
+}
+
+.lockButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(241, 237, 230, 0.14);
+  color: rgba(241, 237, 230, 0.55);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: color 240ms ease, border-color 240ms ease, background-color 240ms ease;
+}
+
+.lockButton:hover,
+.lockButton:focus-visible,
+.details[data-locked='true'] .lockButton {
+  border-color: rgba(124, 58, 237, 0.55);
+  color: var(--members-accent-hot);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.lockButton:focus-visible,
+.arrowControls button:focus-visible,
+.memberSelector button:focus-visible {
+  outline: 2px solid var(--members-accent-hot);
+  outline-offset: 3px;
+}
+
+.detailsStage {
+  --swap-in-from: 1.25rem;
+  --swap-out-to: -0.85rem;
+  --motion-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-exit: cubic-bezier(0.4, 0, 1, 1);
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas: 'swap';
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.detailsStage[data-dir='-1'] {
+  --swap-in-from: -1.25rem;
+  --swap-out-to: 0.85rem;
+}
+
+.detailsContent {
+  grid-area: swap;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  padding: clamp(0.85rem, 2.4vh, 1.6rem) 0;
+}
+
+.detailsContentEnter {
+  animation: cardSwapIn var(--member-card-enter) var(--motion-enter) both;
+}
+
+.detailsContentExit {
+  animation: cardSwapOut var(--member-card-exit) var(--motion-exit) both;
+  pointer-events: none;
+}
+
+.memberHeading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.memberHeading > div {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.instrumentIcon {
+  display: grid;
+  place-items: center;
+  width: clamp(2.4rem, 9cqi, 3.4rem);
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  border: 1px solid rgba(124, 58, 237, 0.55);
+  border-radius: 50%;
+  color: var(--members-accent-hot);
+  font-size: clamp(1rem, 4.4cqi, 1.45rem);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.memberHeading h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.7rem, 11cqi, 3.5rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.memberHeading p {
+  margin: 0.45rem 0 0;
+  color: var(--members-accent-hot);
+  font-size: clamp(0.62rem, 2.8cqi, 0.74rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.signature {
+  margin: clamp(0.8rem, 1.8vh, 1.35rem) 0 0;
+  overflow-wrap: anywhere;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.05rem, 4.6cqi, 1.55rem);
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 38rem;
+  margin: 0.7rem 0 0;
+  overflow-wrap: anywhere;
+  color: rgba(241, 237, 230, 0.58);
+  font-size: clamp(0.8rem, 3.1cqi, 0.95rem);
+  line-height: 1.58;
+}
+
+.memberFacts {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  margin: clamp(0.9rem, 2.2vh, 1.5rem) 0 0;
+  border-top: 1px solid rgba(241, 237, 230, 0.1);
+  border-bottom: 1px solid rgba(241, 237, 230, 0.1);
+}
+
+.memberFacts div {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 0.58rem 0;
+}
+
+.memberFacts div + div {
+  border-top: 1px solid rgba(241, 237, 230, 0.075);
+}
+
+.factIcon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(124, 58, 237, 0.24);
+  color: var(--members-accent-hot);
+  background: rgba(124, 58, 237, 0.055);
+  font-size: 0.78rem;
+}
+
+.memberFacts dt {
+  color: rgba(241, 237, 230, 0.38);
+  font-size: 0.54rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.memberFacts dd {
+  margin: 0.22rem 0 0;
+  overflow-wrap: anywhere;
+  color: rgba(241, 237, 230, 0.76);
+  font-size: clamp(0.7rem, 2.8cqi, 0.8rem);
+  line-height: 1.35;
+}
+
+.rotationTrack {
+  position: relative;
+  width: min(10rem, 38%);
+  height: 2px;
+  overflow: hidden;
+  background: rgba(241, 237, 230, 0.1);
+}
+
+.rotationTrack span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--members-accent-hot);
+  transform-origin: left;
+  transform: scaleX(0.22);
+}
+
+.details[data-auto='true'] .rotationTrack span {
+  animation: rotationProgress 8s linear both;
+}
+
+.arrowControls {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.arrowControls button {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(241, 237, 230, 0.16);
+  color: rgba(241, 237, 230, 0.66);
+  background: rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+  transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.arrowControls button:hover {
+  border-color: var(--members-accent);
+  color: #fff;
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.memberSelector {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.memberSelector button {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  padding: 0.7rem 0.85rem;
+  overflow: hidden;
+  border: 1px solid rgba(241, 237, 230, 0.1);
+  color: rgba(241, 237, 230, 0.45);
+  text-align: left;
+  background: rgba(4, 4, 4, 0.6);
+  cursor: pointer;
+  transition:
+    color var(--member-selector-duration) var(--motion-fluid),
+    border-color var(--member-selector-duration) var(--motion-fluid),
+    transform var(--member-selector-duration) var(--motion-fluid),
+    box-shadow var(--member-selector-duration) var(--motion-fluid);
+}
+
+.memberSelector button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.memberSelector button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(124, 58, 237, 0.13), rgba(4, 4, 4, 0.72));
+  opacity: 0;
+  transition: opacity var(--member-selector-duration) var(--motion-fluid);
+}
+
+.memberSelector button::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 2px;
+  background: var(--members-accent-hot);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--member-selector-duration) var(--motion-fluid);
+}
+
+.memberSelector button:hover::before,
+.memberSelector .memberButtonActive::before {
+  opacity: 1;
+}
+
+.memberSelector button:hover,
+.memberSelector .memberButtonActive {
+  border-color: rgba(124, 58, 237, 0.4);
+  color: var(--members-paper);
+  box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.24);
+}
+
+.memberSelector .memberButtonActive::after {
+  transform: scaleX(1);
+}
+
+.memberSelector button:active::before {
+  opacity: 1;
+}
+
+.memberNumber {
+  color: rgba(196, 181, 253, 0.7);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.78rem;
+}
+
+.memberSelector button > svg {
+  color: var(--members-accent);
+  font-size: 1rem;
+  transition: color var(--member-selector-duration) var(--motion-fluid);
+}
+
+.memberSelector button:hover > svg,
+.memberSelector .memberButtonActive > svg {
+  color: var(--members-accent-hot);
+}
+
+.memberSelector strong,
+.memberSelector small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memberSelector strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.memberSelector small {
+  margin-top: 0.16rem;
+  color: rgba(241, 237, 230, 0.34);
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--member-selector-duration) var(--motion-fluid);
+}
+
+.memberSelector button:hover small,
+.memberSelector .memberButtonActive small {
+  color: rgba(241, 237, 230, 0.52);
+}
+
+@keyframes detailsEntrance {
+  from { opacity: 0; translate: 1.2rem 0; }
+  to { opacity: 1; translate: 0; }
+}
+
+@keyframes cardSwapIn {
+  from { opacity: 0; translate: var(--swap-in-from) 0; }
+  to { opacity: 1; translate: 0; }
+}
+
+@keyframes cardSwapOut {
+  from { opacity: 1; translate: 0; }
+  to { opacity: 0; translate: var(--swap-out-to) 0; }
+}
+
+@keyframes fadeSwapIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeSwapOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes rotationProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .memberSelector button:hover,
+  .memberSelector .memberButtonActive {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 1040px) {
+  .experience {
+    grid-template-columns: minmax(0, 1.1fr) minmax(19rem, 0.9fr);
+    gap: 1.15rem;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 761px) {
+  .page {
+    padding-block: 0.7rem;
+    gap: 0.55rem;
+  }
+
+  .details {
+    --member-card-pad: 0.95rem 1.15rem;
+  }
+
+  .detailsContent {
+    padding-block: 0.65rem;
+  }
+
+  .memberFacts div {
+    padding-block: 0.4rem;
+  }
+
+  .memberSelector button {
+    padding-block: 0.5rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    --members-page-gutter: clamp(1.15rem, 5.5vw, 1.5rem);
+    grid-template-rows: auto auto auto;
+    align-content: start;
+    gap: 0.45rem;
+    height: auto;
+    min-height: 0;
+    overflow-y: visible;
+    padding: 1rem var(--members-page-gutter) 1.2rem;
+  }
+
+  .page::before {
+    background-position: 46% 38%;
+  }
+
+  .desktopGuide {
+    display: none;
+  }
+
+  .mobileGuide {
+    display: inline;
+  }
+
+  .experience {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .portrait {
+    height: min(70svh, 38rem);
+    padding-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  .photoStack {
+    --portrait-shift: 0;
+    --portrait-offset-x: -3%;
+    width: auto;
+    height: 100%;
+    max-width: 128%;
+    scale: 1.32;
+  }
+
+  .details {
+    z-index: 4;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    margin-top: calc(-8rem - 5svh);
+    grid-template-rows: auto auto auto;
+    --member-card-pad: 0.95rem 1rem 1rem;
+  }
+
+  .detailsWatermark {
+    font-size: clamp(3.4rem, 28cqi, 5.5rem);
+    bottom: 2.2rem;
+  }
+
+  .detailsFooter {
+    margin-top: 0.15rem;
+  }
+
+  .memberSelector {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.15rem 0 0.4rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .memberSelector::-webkit-scrollbar {
+    display: none;
+  }
+
+  .memberSelector button {
+    flex: 0 0 min(48%, 11.5rem);
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    --members-page-gutter: 1.1rem;
+  }
+
+  .portrait {
+    height: min(66svh, 34rem);
+  }
+
+  .memberSelector button {
+    flex-basis: 56%;
+  }
+}
+
+@media (max-width: 360px) {
+  .page {
+    --members-page-gutter: 0.95rem;
+  }
+
+  .portrait {
+    height: min(60svh, 30rem);
+  }
+
+  .lockButton {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.5rem;
+  }
+
+  .memberFacts div {
+    grid-template-columns: 1.9rem minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details {
+    animation: none;
+  }
+
+  .detailsStage {
+    --swap-in-from: 0;
+    --swap-out-to: 0;
+  }
+
+  .memberSelector button:hover,
+  .memberSelector .memberButtonActive {
+    transform: none;
+  }
+}
+

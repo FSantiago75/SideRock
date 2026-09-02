@@ -27,6 +27,11 @@ const OzzbornSummaryPage = lazy(() =>
     default: module.OzzbornSummaryPage,
   })),
 )
+const OzzbornMembersPage = lazy(() =>
+  import('./Pages/OzzbornPage/Pages/Members/OzzbornMembersPage').then((module) => ({
+    default: module.OzzbornMembersPage,
+  })),
+)
 const OzzbornPlaceholderPage = lazy(() =>
   import('./Pages/OzzbornPage/Pages/Placeholder/OzzbornPlaceholderPage').then((module) => ({
     default: module.OzzbornPlaceholderPage,
@@ -68,7 +73,7 @@ function App() {
             element={<Navigate to={ozzbornPath('resumo')} replace />}
           />
           <Route path={ozzbornPath('resumo')} element={<OzzbornSummaryPage />} />
-          <Route path={ozzbornPath('integrantes')} element={<OzzbornPlaceholderPage section="integrantes" />} />
+          <Route path={ozzbornPath('integrantes')} element={<OzzbornMembersPage />} />
           <Route path={ozzbornPath('repertorio')} element={<OzzbornPlaceholderPage section="repertorio" />} />
           <Route path={ozzbornPath('galeria')} element={<OzzbornPlaceholderPage section="galeria" />} />
           <Route
