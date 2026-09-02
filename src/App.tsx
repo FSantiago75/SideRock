@@ -32,6 +32,11 @@ const OzzbornMembersPage = lazy(() =>
     default: module.OzzbornMembersPage,
   })),
 )
+const OzzbornGalleryPage = lazy(() =>
+  import('./Pages/OzzbornPage/Pages/Gallery/OzzbornGalleryPage').then((module) => ({
+    default: module.OzzbornGalleryPage,
+  })),
+)
 const OzzbornPlaceholderPage = lazy(() =>
   import('./Pages/OzzbornPage/Pages/Placeholder/OzzbornPlaceholderPage').then((module) => ({
     default: module.OzzbornPlaceholderPage,
@@ -75,7 +80,7 @@ function App() {
           <Route path={ozzbornPath('resumo')} element={<OzzbornSummaryPage />} />
           <Route path={ozzbornPath('integrantes')} element={<OzzbornMembersPage />} />
           <Route path={ozzbornPath('repertorio')} element={<OzzbornPlaceholderPage section="repertorio" />} />
-          <Route path={ozzbornPath('galeria')} element={<OzzbornPlaceholderPage section="galeria" />} />
+          <Route path={ozzbornPath('galeria')} element={<OzzbornGalleryPage />} />
           <Route
             path={LEGACY_EXPERIENCE_ROUTES.ozzborn}
             element={<Navigate to={EXPERIENCE_ROUTES.ozzborn} replace />}

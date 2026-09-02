@@ -1,0 +1,213 @@
+.root {
+  --gallery-accent: var(--side-rock-accent, #7c3aed);
+  --gallery-accent-hot: var(--side-rock-accent-hot, #c4b5fd);
+  --gallery-paper: var(--side-rock-paper, #f1ede6);
+  --motion: cubic-bezier(0.22, 1, 0.36, 1);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: stretch;
+  animation: fadeIn 220ms var(--motion) both;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(5, 5, 5, 0.78);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(100%, 92rem);
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding:
+    max(0.85rem, env(safe-area-inset-top, 0px))
+    max(1rem, env(safe-area-inset-right, 0px))
+    max(1rem, env(safe-area-inset-bottom, 0px))
+    max(1rem, env(safe-area-inset-left, 0px));
+  box-sizing: border-box;
+  animation: riseIn 260ms var(--motion) both;
+}
+
+.topBar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  margin-bottom: 0.75rem;
+  color: var(--gallery-paper);
+}
+
+.topBar p {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.counter {
+  color: rgba(241, 237, 230, 0.56);
+  font-variant-numeric: tabular-nums;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 0;
+  touch-action: pan-y;
+}
+
+.figure {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+}
+
+.figure img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 11rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #050505;
+  border: 1px solid rgba(241, 237, 230, 0.12);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gallery-accent) 22%, transparent),
+    0 2.4rem 4rem rgba(0, 0, 0, 0.5);
+  animation: imageIn 180ms var(--motion) both;
+}
+
+.figure figcaption {
+  max-width: 100%;
+  margin-top: 0.85rem;
+  color: rgba(241, 237, 230, 0.72);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.iconButton {
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(241, 237, 230, 0.16);
+  color: var(--gallery-paper);
+  background: rgba(5, 5, 5, 0.62);
+  cursor: pointer;
+  transition:
+    border-color 240ms var(--motion),
+    background-color 240ms var(--motion);
+}
+
+.iconButton svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.iconButton:hover,
+.iconButton:focus-visible {
+  border-color: color-mix(in srgb, var(--gallery-accent-hot) 70%, transparent);
+  background: color-mix(in srgb, var(--gallery-accent) 16%, transparent);
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--gallery-accent-hot);
+  outline-offset: 3px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes imageIn {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .dialog {
+    padding-bottom: max(5.5rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .figure {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .figure img {
+    max-height: calc(100dvh - 14rem);
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    bottom: 0.15rem;
+    z-index: 2;
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .dialog,
+  .figure img,
+  .iconButton {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
