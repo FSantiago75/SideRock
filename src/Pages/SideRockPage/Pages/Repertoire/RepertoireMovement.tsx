@@ -1,7 +1,7 @@
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { BandLogoGrid } from './BandLogoGrid'
 import type { RepertoireMovement as Movement } from './repertoireContent'
-import styles from './MusicaPage.module.css'
+import styles from './RepertoirePage.module.css'
 
 export function RepertoireMovement({ movement }: { movement: Movement }) {
   return (

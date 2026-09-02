@@ -1,0 +1,96 @@
+.root {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+  max-width: 36rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--section-intro-accent, #ff5258);
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.root h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.4rem, 4vw, 4.6rem);
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.root h1::after {
+  content: '';
+  display: block;
+  width: clamp(4.5rem, 10vw, 9rem);
+  height: 2px;
+  margin-top: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--section-intro-accent, #ff5258),
+    rgba(211, 47, 53, 0.08)
+  );
+  box-shadow: 0 0 1rem rgba(211, 47, 53, 0.42);
+  transform-origin: left;
+  animation: sectionIntroLineReveal 700ms 180ms
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lead {
+  max-width: 32rem;
+  margin: 0.35rem 0 0;
+  color: rgba(241, 237, 230, 0.56);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+@keyframes sectionIntroLineReveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-height: 720px) and (min-width: 761px) {
+  .root h1 {
+    font-size: 2.4rem;
+  }
+
+  .lead {
+    margin-top: 0.2rem;
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .root {
+    max-width: none;
+  }
+
+  .root h1 {
+    width: fit-content;
+    max-width: 100%;
+    font-size: clamp(2rem, 10vw, 3.1rem);
+  }
+
+  .lead {
+    max-width: 22rem;
+    font-size: 0.74rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root h1::after {
+    animation: none;
+  }
+}

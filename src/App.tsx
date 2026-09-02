@@ -23,24 +23,24 @@ const OzzbornPage = lazy(() =>
     default: module.OzzbornPage,
   })),
 )
-const ResumoPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Sumarry/ResumoPage').then((module) => ({
-    default: module.ResumoPage,
+const SummaryPage = lazy(() =>
+  import('./Pages/SideRockPage/Pages/Summary/SummaryPage').then((module) => ({
+    default: module.SummaryPage,
   })),
 )
-const IntegrantesPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Members/IntegrantesPage').then(
-    (module) => ({ default: module.IntegrantesPage }),
+const MembersPage = lazy(() =>
+  import('./Pages/SideRockPage/Pages/Members/MembersPage').then(
+    (module) => ({ default: module.MembersPage }),
   ),
 )
-const RepertorioPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Music/MusicaPage').then((module) => ({
-    default: module.RepertorioPage,
+const RepertoirePage = lazy(() =>
+  import('./Pages/SideRockPage/Pages/Repertoire/RepertoirePage').then((module) => ({
+    default: module.RepertoirePage,
   })),
 )
-const GaleriaPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Galery/GaleriaPage').then((module) => ({
-    default: module.GaleriaPage,
+const GalleryPage = lazy(() =>
+  import('./Pages/SideRockPage/Pages/Gallery/GalleryPage').then((module) => ({
+    default: module.GalleryPage,
   })),
 )
 const NotFound = lazy(() =>
@@ -63,10 +63,10 @@ function App() {
             path={SIDE_ROCK_BASE_PATH}
             element={<Navigate to={sideRockPath('resumo')} replace />}
           />
-          <Route path={sideRockPath('resumo')} element={<ResumoPage />} />
+          <Route path={sideRockPath('resumo')} element={<SummaryPage />} />
           <Route
             path={sideRockPath('integrantes')}
-            element={<IntegrantesPage />}
+            element={<MembersPage />}
           />
           <Route
             path={`${SIDE_ROCK_BASE_PATH}/musica`}
@@ -74,9 +74,9 @@ function App() {
           />
           <Route
             path={sideRockPath('repertorio')}
-            element={<RepertorioPage />}
+            element={<RepertoirePage />}
           />
-          <Route path={sideRockPath('galeria')} element={<GaleriaPage />} />
+          <Route path={sideRockPath('galeria')} element={<GalleryPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

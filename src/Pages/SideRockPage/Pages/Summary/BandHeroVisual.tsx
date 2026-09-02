@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import styles from './ResumoPage.module.css'
+import styles from './SummaryPage.module.css'
 
 type BandHeroVisualProps = {
   src: string

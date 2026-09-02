@@ -1,7 +1,7 @@
 .page {
-  --summary-accent: #d32f35;
-  --summary-accent-hot: #ff5258;
-  --summary-paper: #f1ede6;
+  --summary-accent: var(--side-rock-accent);
+  --summary-accent-hot: var(--side-rock-accent-hot);
+  --summary-paper: var(--side-rock-paper);
   --summary-page-gutter: max(
     clamp(1rem, 2.5vw, 2.5rem),
     calc((100% - 88rem) / 2 + 1.5rem)

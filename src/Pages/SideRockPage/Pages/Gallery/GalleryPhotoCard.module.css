@@ -9,9 +9,9 @@
 }
 
 .card {
-  --gallery-accent: #d32f35;
-  --gallery-accent-hot: #ff5258;
-  --gallery-paper: #f1ede6;
+  --gallery-accent: var(--side-rock-accent);
+  --gallery-accent-hot: var(--side-rock-accent-hot);
+  --gallery-paper: var(--side-rock-paper);
   -webkit-tap-highlight-color: transparent;
   position: relative;
   display: block;

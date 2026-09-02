@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import background from '../../../../assets/sideRock/sideRockStandardBackground.png'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
+import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import { GalleryAlbumSection } from './GalleryAlbumSection'
 import { GalleryLightbox } from './GalleryLightbox'
@@ -10,9 +11,9 @@ import {
   GALLERY_PHOTOS,
   getPhotoById,
 } from './galleryContent'
-import styles from './GaleriaPage.module.css'
+import styles from './GalleryPage.module.css'
 
-export function GaleriaPage() {
+export function GalleryPage() {
   const [activePhotoId, setActivePhotoId] = useState<string | null>(null)
   const activePhoto = activePhotoId
     ? getPhotoById(activePhotoId, GALLERY_PHOTOS)
@@ -30,25 +31,17 @@ export function GaleriaPage() {
       "
     >
       <article className={styles.page}>
-        <header className={styles.intro}>
-          <ScrollReveal from="up">
-            <p className={styles.eyebrow}>{GALLERY_COPY.eyebrow}</p>
-          </ScrollReveal>
-
-          <ScrollReveal delayMs={70} from="up">
-            <h1>{GALLERY_COPY.title}</h1>
-          </ScrollReveal>
-
-          <ScrollReveal delayMs={120} from="up">
-            <p className={styles.introLead}>{GALLERY_COPY.lead}</p>
-          </ScrollReveal>
-
+        <SectionIntro
+          eyebrow={GALLERY_COPY.eyebrow}
+          title={GALLERY_COPY.title}
+          lead={GALLERY_COPY.lead}
+        >
           <ScrollReveal delayMs={160} from="none">
             <p className={styles.count}>
               {formatRecordCount(GALLERY_PHOTOS.length)}
             </p>
           </ScrollReveal>
-        </header>
+        </SectionIntro>
 
         <ScrollReveal delayMs={180} from="none">
           <div className={styles.divider} aria-hidden />

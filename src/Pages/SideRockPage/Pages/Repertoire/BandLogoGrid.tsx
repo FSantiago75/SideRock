@@ -1,6 +1,6 @@
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import type { BandReference } from './repertoireContent'
-import styles from './MusicaPage.module.css'
+import styles from './RepertoirePage.module.css'
 
 type BandLogoGridProps = {
   bands: readonly BandReference[]

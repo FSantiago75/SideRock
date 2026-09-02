@@ -7,7 +7,7 @@ import {
   FaLock,
   FaUnlockAlt,
 } from 'react-icons/fa'
-import styles from './IntegrantesPage.module.css'
+import styles from './MembersPage.module.css'
 import {
   formatMemberIndex,
   SIDE_ROCK_MEMBERS,

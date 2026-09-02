@@ -1,7 +1,7 @@
 .root {
-  --gallery-accent: #d32f35;
-  --gallery-accent-hot: #ff5258;
-  --gallery-paper: #f1ede6;
+  --gallery-accent: var(--side-rock-accent, #d32f35);
+  --gallery-accent-hot: var(--side-rock-accent-hot, #ff5258);
+  --gallery-paper: var(--side-rock-paper, #f1ede6);
   --motion: cubic-bezier(0.22, 1, 0.36, 1);
   position: fixed;
   inset: 0;

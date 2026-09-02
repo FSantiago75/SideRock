@@ -1,7 +1,7 @@
 .page {
-  --repertoire-accent: #d32f35;
-  --repertoire-paper: #f1ede6;
-  --repertoire-gutter: max(clamp(1.75rem, 4.2vw, 3.5rem), calc((100% - 88rem) / 2 + 1.75rem));
+  --repertoire-accent: var(--side-rock-accent);
+  --repertoire-paper: var(--side-rock-paper);
+  --repertoire-gutter: var(--side-rock-page-gutter);
   --reveal-duration: 600ms;
   --reveal-distance: 20px;
   position: relative;
@@ -39,50 +39,14 @@
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.58), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.58));
 }
 
-.hero {
-  position: relative;
-  z-index: 5;
-  display: grid;
-  gap: 0.4rem;
-  min-width: 0;
-  max-width: 36rem;
-  padding: 0;
-}
-
-.heroEyebrow,
 .closingEyebrow {
   margin: 0;
-  color: #ff5258;
+  color: var(--side-rock-accent-hot);
   font-size: 0.63rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-
-.heroTitle {
-  width: fit-content;
-  margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.4rem, 4vw, 4.6rem);
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 0.86;
-  text-transform: uppercase;
-}
-
-.heroTitle::after {
-  content: '';
-  display: block;
-  width: clamp(4.5rem, 10vw, 9rem);
-  height: 2px;
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, #ff5258, rgba(211, 47, 53, 0.08));
-  box-shadow: 0 0 1rem rgba(211, 47, 53, 0.42);
-  transform-origin: left;
-  animation: lineReveal 700ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.heroLead { max-width: 32rem; margin: 0.35rem 0 0; color: rgba(241, 237, 230, 0.56); font-size: 0.82rem; line-height: 1.5; }
 
 .movements {
   width: 100%;
@@ -196,9 +160,6 @@
 @media (max-width: 760px) {
   .page { --repertoire-gutter: clamp(1rem, 4vw, 1.25rem); --reveal-duration: 480ms; --reveal-distance: 16px; }
   .page::before { background-size: auto 72rem; background-repeat: no-repeat; }
-  .hero { max-width: none; }
-  .heroTitle { max-width: 100%; font-size: clamp(2rem, 10vw, 3.1rem); }
-  .heroLead { max-width: 22rem; font-size: 0.74rem; }
   .movementInner {
     min-height: 0;
     grid-template-columns: 1fr;
@@ -231,11 +192,6 @@
   .closing { padding: 2.4rem 0 2.8rem; }
   .closing h2 { font-size: clamp(1.8rem, 8.2vw, 2.7rem); }
   .closing > div > p:not(.closingEyebrow) { max-width: 23rem; font-size: 0.78rem; }
-}
-
-@keyframes lineReveal {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
 }
 
 @media (max-width: 430px) {

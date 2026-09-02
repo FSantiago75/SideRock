@@ -1,8 +1,9 @@
 import type { CSSProperties } from 'react'
 import { MembersImage } from '../../../../Components/MembersImage'
+import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import background from '../../../../assets/sideRock/sideRockMembersAtmosphereV2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
-import styles from './IntegrantesPage.module.css'
+import styles from './MembersPage.module.css'
 import { MemberDetails } from './MemberDetails'
 import { MemberSelector } from './MemberSelector'
 import {
@@ -26,7 +27,7 @@ type MembersPageStyle = CSSProperties & {
   '--member-selector-duration': string
 }
 
-export function IntegrantesPage() {
+export function MembersPage() {
   const spotlight = useMemberSpotlight()
   const member = getMemberById(spotlight.activeId)
   const currentIndex = SIDE_ROCK_MEMBERS.findIndex(
@@ -43,18 +44,21 @@ export function IntegrantesPage() {
   return (
     <SideRockSectionPage layout="flow">
       <article className={styles.page} style={pageStyle}>
-        <header className={styles.intro}>
-          <p className={styles.eyebrow}>{SIDE_ROCK_MEMBERS_COPY.eyebrow}</p>
-          <h1>{SIDE_ROCK_MEMBERS_COPY.title}</h1>
-          <p className={styles.introLead}>
+        <SectionIntro
+          eyebrow={SIDE_ROCK_MEMBERS_COPY.eyebrow}
+          title={SIDE_ROCK_MEMBERS_COPY.title}
+          reveal={false}
+          lead={
+            <>
             <span className={styles.desktopGuide}>
               {SIDE_ROCK_MEMBERS_COPY.desktopGuide}
             </span>
             <span className={styles.mobileGuide}>
               {SIDE_ROCK_MEMBERS_COPY.mobileGuide}
             </span>
-          </p>
-        </header>
+            </>
+          }
+        />
 
         <div className={styles.experience}>
           <div className={styles.portrait}>

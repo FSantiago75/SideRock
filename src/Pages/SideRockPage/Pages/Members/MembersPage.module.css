@@ -1,7 +1,7 @@
 .page {
-  --members-accent: #d32f35;
-  --members-accent-hot: #ff5258;
-  --members-paper: #f1ede6;
+  --members-accent: var(--side-rock-accent);
+  --members-accent-hot: var(--side-rock-accent-hot);
+  --members-paper: var(--side-rock-paper);
   --motion-fluid: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-exit: cubic-bezier(0.4, 0, 1, 1);
@@ -9,10 +9,7 @@
   --member-card-exit: 400ms;
   --member-card-enter: 400ms;
   --member-selector-duration: 800ms;
-  --members-page-gutter: max(
-    clamp(1.75rem, 4.2vw, 3.5rem),
-    calc((100% - 88rem) / 2 + 1.75rem)
-  );
+  --members-page-gutter: var(--side-rock-page-gutter);
   -webkit-tap-highlight-color: transparent;
   position: relative;
   isolation: isolate;
@@ -44,54 +41,6 @@
     linear-gradient(90deg, rgba(5, 5, 5, 0.08) 0%, transparent 38%, rgba(5, 5, 5, 0.34) 70%, rgba(5, 5, 5, 0.62) 100%),
     linear-gradient(180deg, rgba(5, 5, 5, 0.12), transparent 34%, rgba(5, 5, 5, 0.46) 100%),
     var(--members-background) center / cover no-repeat;
-}
-
-.intro {
-  position: relative;
-  z-index: 5;
-  display: grid;
-  gap: 0.4rem;
-  min-width: 0;
-  max-width: 36rem;
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--members-accent-hot);
-  font-size: 0.63rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.intro h1 {
-  margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.4rem, 4vw, 4.6rem);
-  font-weight: 500;
-  line-height: 0.86;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-}
-
-.intro h1::after {
-  content: '';
-  display: block;
-  width: clamp(4.5rem, 10vw, 9rem);
-  height: 2px;
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, var(--members-accent-hot), rgba(211, 47, 53, 0.08));
-  box-shadow: 0 0 1rem rgba(211, 47, 53, 0.42);
-  transform-origin: left;
-  animation: lineReveal 700ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.introLead {
-  max-width: 32rem;
-  margin: 0.35rem 0 0;
-  color: rgba(241, 237, 230, 0.56);
-  font-size: 0.82rem;
-  line-height: 1.5;
 }
 
 .mobileGuide {
@@ -614,11 +563,6 @@
   to { opacity: 0; }
 }
 
-@keyframes lineReveal {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
 @keyframes rotationProgress {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
@@ -642,15 +586,6 @@
   .page {
     padding-block: 0.7rem;
     gap: 0.55rem;
-  }
-
-  .intro h1 {
-    font-size: 2.4rem;
-  }
-
-  .introLead {
-    margin-top: 0.2rem;
-    font-size: 0.74rem;
   }
 
   .details {
@@ -684,21 +619,6 @@
 
   .page::before {
     background-position: 46% 38%;
-  }
-
-  .intro {
-    max-width: none;
-  }
-
-  .intro h1 {
-    width: fit-content;
-    max-width: 100%;
-    font-size: clamp(2rem, 10vw, 3.1rem);
-  }
-
-  .introLead {
-    max-width: 22rem;
-    font-size: 0.74rem;
   }
 
   .desktopGuide {

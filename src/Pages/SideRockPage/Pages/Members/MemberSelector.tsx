@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import styles from './IntegrantesPage.module.css'
+import styles from './MembersPage.module.css'
 import { SIDE_ROCK_MEMBERS, type MemberId } from './membersContent'
 
 type MemberSelectorProps = {

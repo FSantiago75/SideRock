@@ -1,4 +1,12 @@
 .shell {
+  --side-rock-accent: #d32f35;
+  --side-rock-accent-hot: #ff5258;
+  --side-rock-paper: #f1ede6;
+  --side-rock-page-gutter: max(
+    clamp(1.75rem, 4.2vw, 3.5rem),
+    calc((100% - 88rem) / 2 + 1.75rem)
+  );
+  --section-intro-accent: var(--side-rock-accent-hot);
   height: 100vh;
   height: 100dvh;
   max-height: 100vh;

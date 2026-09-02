@@ -9,7 +9,7 @@ import { sideRockPath } from '../../sectionConstants'
 import { BandHeroVisual } from './BandHeroVisual'
 import { BookingSection } from './BookingSection'
 import { SIDE_ROCK_BOOKING } from './bookingContent'
-import styles from './ResumoPage.module.css'
+import styles from './SummaryPage.module.css'
 import { SIDE_ROCK_SUMMARY_CONTENT } from './summaryContent'
 
 const summaryFacts = [
@@ -22,7 +22,7 @@ type SummaryPageStyle = CSSProperties & {
   '--summary-hero-image': string
 }
 
-export function ResumoPage() {
+export function SummaryPage() {
   const { heroPhoto, repertoire, story } = SIDE_ROCK_SUMMARY_CONTENT
   const pageStyle: SummaryPageStyle = {
     '--summary-hero-image': `url(${bg})`,

@@ -3,11 +3,12 @@ import { FaWhatsapp } from 'react-icons/fa6'
 import { HiArrowRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
+import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import background from '../../../../assets/sideRock/sideRockRepertoireAtmosphere.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import { sideRockPath } from '../../sectionConstants'
-import { SIDE_ROCK_BOOKING } from '../Sumarry/bookingContent'
-import styles from './MusicaPage.module.css'
+import { SIDE_ROCK_BOOKING } from '../Summary/bookingContent'
+import styles from './RepertoirePage.module.css'
 import { RepertoireMovement } from './RepertoireMovement'
 import { REPERTOIRE_INTRO, REPERTOIRE_MOVEMENTS } from './repertoireContent'
 
@@ -15,21 +16,17 @@ const pageStyle = {
   '--repertoire-background': `url(${background})`,
 } as CSSProperties
 
-export function RepertorioPage() {
+export function RepertoirePage() {
   return (
     <SideRockSectionPage layout="flow">
       <article className={styles.page} style={pageStyle}>
-        <header className={styles.hero}>
-          <ScrollReveal from="up">
-            <p className={styles.heroEyebrow}>{REPERTOIRE_INTRO.eyebrow}</p>
-          </ScrollReveal>
-          <ScrollReveal delayMs={45} from="up">
-            <h1 className={styles.heroTitle}>{REPERTOIRE_INTRO.title}</h1>
-          </ScrollReveal>
-          <ScrollReveal delayMs={110} from="up">
-            <p className={styles.heroLead}>{REPERTOIRE_INTRO.lead}</p>
-          </ScrollReveal>
-        </header>
+        <SectionIntro
+          eyebrow={REPERTOIRE_INTRO.eyebrow}
+          title={REPERTOIRE_INTRO.title}
+          lead={REPERTOIRE_INTRO.lead}
+          titleDelayMs={45}
+          leadDelayMs={110}
+        />
 
         <div className={styles.movements}>
           {REPERTOIRE_MOVEMENTS.map((movement) => (
