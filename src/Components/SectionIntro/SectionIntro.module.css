@@ -35,9 +35,10 @@
   background: linear-gradient(
     90deg,
     var(--section-intro-accent, #ff5258),
-    rgba(211, 47, 53, 0.08)
+    color-mix(in srgb, var(--section-intro-accent, #ff5258) 8%, transparent)
   );
-  box-shadow: 0 0 1rem rgba(211, 47, 53, 0.42);
+  box-shadow: 0 0 1rem
+    color-mix(in srgb, var(--section-intro-accent, #ff5258) 42%, transparent);
   transform-origin: left;
   animation: sectionIntroLineReveal 700ms 180ms
     cubic-bezier(0.22, 1, 0.36, 1) both;

@@ -2,6 +2,7 @@
   --members-accent: var(--side-rock-accent);
   --members-accent-hot: var(--side-rock-accent-hot);
   --members-paper: var(--side-rock-paper);
+  --section-intro-accent: var(--members-accent-hot);
   --motion-fluid: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-exit: cubic-bezier(0.4, 0, 1, 1);
