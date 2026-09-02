@@ -1,20 +1,9 @@
-import type { SyntheticEvent } from 'react'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa6'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SIDE_ROCK_BOOKING } from './bookingContent'
-import { BookingVideo } from './BookingVideo'
+import { BookingVideoCarousel } from './BookingVideoCarousel'
 import styles from './BookingSection.module.css'
-
-function pauseOtherVideos(event: SyntheticEvent<HTMLVideoElement>) {
-  const current = event.currentTarget
-  const row = current.closest('[data-video-row]')
-  if (!row) return
-
-  row.querySelectorAll('video').forEach((video) => {
-    if (video !== current) video.pause()
-  })
-}
 
 export function BookingSection() {
   const booking = SIDE_ROCK_BOOKING
@@ -64,23 +53,7 @@ export function BookingSection() {
 
         <div className={styles.proof}>
           <ScrollReveal from="right" delayMs={80}>
-            <div
-              className={styles.videoRow}
-              data-video-row
-              tabIndex={0}
-              aria-label="Apresentações ao vivo. Deslize para o próximo vídeo."
-            >
-              {booking.videos.map((video) => (
-                <BookingVideo
-                  key={video.src}
-                  src={video.src}
-                  poster={video.poster}
-                  title={video.title}
-                  href={video.href}
-                  onPlay={pauseOtherVideos}
-                />
-              ))}
-            </div>
+            <BookingVideoCarousel videos={booking.videos} />
           </ScrollReveal>
 
           <ol className={styles.steps}>

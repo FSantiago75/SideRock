@@ -121,7 +121,10 @@ export function MemberDetails({
   const [direction, setDirection] = useState<1 | -1>(1)
 
   useLayoutEffect(() => {
-    if (member.id === displayedRef.current.member.id) return
+    if (member.id === displayedRef.current.member.id) {
+      const idleTimer = window.setTimeout(() => setPhase('idle'), 0)
+      return () => window.clearTimeout(idleTimer)
+    }
 
     const fromIndex = displayedRef.current.currentIndex
     setDirection(getSwapDirection(fromIndex, currentIndex, SIDE_ROCK_MEMBERS.length))

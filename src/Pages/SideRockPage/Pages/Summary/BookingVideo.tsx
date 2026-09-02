@@ -7,6 +7,8 @@ type BookingVideoProps = {
   title: string
   href: string
   onPlay: (event: SyntheticEvent<HTMLVideoElement>) => void
+  onPause: () => void
+  onEnded: () => void
 }
 
 export function BookingVideo({
@@ -15,6 +17,8 @@ export function BookingVideo({
   title,
   href,
   onPlay,
+  onPause,
+  onEnded,
 }: BookingVideoProps) {
   return (
     <article className={styles.videoCard}>
@@ -28,6 +32,8 @@ export function BookingVideo({
           height={1920}
           aria-label={title}
           onPlay={onPlay}
+          onPause={onPause}
+          onEnded={onEnded}
         >
           <source src={src} type="video/mp4" />
         </video>

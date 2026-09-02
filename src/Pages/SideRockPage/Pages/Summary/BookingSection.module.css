@@ -167,12 +167,20 @@
   gap: 1rem;
 }
 
+.videoCarousel {
+  width: min(100%, 46rem);
+}
+
 .videoRow {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   width: min(100%, 46rem);
   outline: none;
+}
+
+.videoPagination {
+  display: none;
 }
 
 .videoRow:focus-visible {
@@ -374,10 +382,57 @@
     display: none;
   }
 
+  .videoRow[data-animating='true'] {
+    scroll-snap-type: none;
+  }
+
   .videoCard {
-    flex: 0 0 82%;
-    min-width: 82%;
+    flex: 0 0 100%;
+    min-width: 100%;
     scroll-snap-align: start;
+  }
+
+  .videoPagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    color: rgba(241, 237, 230, 0.44);
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .videoPagination > div {
+    display: flex;
+    align-items: center;
+    gap: 0.42rem;
+  }
+
+  .videoPagination button {
+    width: 1.65rem;
+    height: 0.22rem;
+    padding: 0;
+    border: 0;
+    background: rgba(241, 237, 230, 0.2);
+    cursor: pointer;
+    transition: background-color 220ms ease, transform 220ms ease;
+  }
+
+  .videoPagination .videoDotActive {
+    background: var(--summary-accent-hot);
+    transform: scaleY(1.6);
+  }
+
+  .videoPagination button:hover {
+    background: rgba(241, 237, 230, 0.42);
+  }
+
+  .videoPagination button:focus-visible {
+    outline: 1px solid var(--summary-paper);
+    outline-offset: 3px;
   }
 }
 
