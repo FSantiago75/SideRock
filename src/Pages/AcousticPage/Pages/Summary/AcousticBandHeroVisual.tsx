@@ -14,7 +14,7 @@ type PhotoStyle = CSSProperties & {
 }
 
 export function AcousticBandHeroVisual({ format, duoSrc, trioSrc }: Props) {
-  const duoStyle: PhotoStyle = { '--band-photo-position': '50% 52%', '--band-photo-scale': 1.3 }
+  const duoStyle: PhotoStyle = { '--band-photo-position': '50% 52%', '--band-photo-scale': 1.4 }
   const trioStyle: PhotoStyle = { '--band-photo-position': '50% 48%', '--band-photo-scale': 1.08 }
   const duoClassName = `${styles.bandPhotoCrossfade} ${format === 'duo' ? styles.bandPhotoActive : styles.bandPhotoInactive}`
   const trioClassName = `${styles.bandPhotoCrossfade} ${format === 'trio' ? styles.bandPhotoActive : styles.bandPhotoInactive}`
