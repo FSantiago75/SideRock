@@ -1,0 +1,62 @@
+.page {
+  --summary-accent: #d97706;
+  --summary-accent-hot: #fbbf24;
+  --summary-paper: #f4efe7;
+}
+
+.formatSelector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(8rem, 1fr));
+  width: min(100%, 28rem);
+  margin-top: clamp(.75rem, 1.6vh, 1.15rem);
+  padding: .25rem;
+  border: 1px solid rgba(251, 191, 36, .25);
+  background: rgba(8, 7, 5, .72);
+  backdrop-filter: blur(12px);
+}
+
+.formatOption,
+.formatOptionActive {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: .6rem;
+  min-height: 2.8rem;
+  padding: .6rem .75rem;
+  border: 0;
+  color: rgba(244, 239, 231, .45);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.formatOption strong,
+.formatOptionActive strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; font-weight: 500; }
+.formatOption span,
+.formatOptionActive span { font-size: .52rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.formatOptionActive { color: #fff; background: linear-gradient(120deg, rgba(217, 119, 6, .42), rgba(245, 158, 11, .12)); box-shadow: inset 0 0 0 1px rgba(251, 191, 36, .4); }
+.formatOption:focus-visible,
+.formatOptionActive:focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; }
+.heroTitle { margin-top: clamp(.75rem, 1.6vh, 1.15rem); }
+
+.promise strong {
+  font-size: clamp(1.05rem, 1.55vw, 1.45rem);
+  line-height: 1.26;
+}
+
+.promise {
+  padding-top: 1.05rem;
+  padding-bottom: 1.15rem;
+}
+
+@media (max-width: 760px) {
+  .formatSelector { width: 100%; }
+  .formatOption,
+  .formatOptionActive { grid-template-columns: 1fr; gap: .1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formatOption,
+  .formatOptionActive { transition: none; }
+}

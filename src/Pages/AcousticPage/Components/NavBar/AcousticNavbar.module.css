@@ -1,0 +1,11 @@
+.theme {
+  --nav-accent: #d97706;
+  --nav-accent-hot: #fbbf24;
+  --nav-glow-soft: rgba(217, 119, 6, 0.18);
+  --nav-glow-medium: rgba(245, 158, 11, 0.48);
+  --nav-glow-strong: rgba(251, 191, 36, 0.72);
+}
+
+.tabItem {
+  display: contents;
+}

@@ -13,13 +13,22 @@ import {
   OZZBORN_BASE_PATH,
   ozzbornPath,
 } from './Pages/OzzbornPage/sectionConstants'
+import {
+  ACOUSTIC_BASE_PATH,
+  acousticPath,
+} from './Pages/AcousticPage/sectionConstants'
 
 const HomePage = lazy(() =>
   import('./Pages/HomePage').then((module) => ({ default: module.HomePage })),
 )
-const AcousticPage = lazy(() =>
-  import('./Pages/AcousticPage').then((module) => ({
-    default: module.AcousticPage,
+const AcousticShellPage = lazy(() =>
+  import('./Pages/AcousticPage/AcousticShellPage').then((module) => ({
+    default: module.AcousticShellPage,
+  })),
+)
+const AcousticSummaryPage = lazy(() =>
+  import('./Pages/AcousticPage/Pages/Summary/AcousticSummaryPage').then((module) => ({
+    default: module.AcousticSummaryPage,
   })),
 )
 const OzzbornSummaryPage = lazy(() =>
@@ -72,7 +81,14 @@ function App() {
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path={EXPERIENCE_ROUTES.catalog} element={<HomePage />} />
-          <Route path={EXPERIENCE_ROUTES.acoustic} element={<AcousticPage />} />
+          <Route
+            path={ACOUSTIC_BASE_PATH}
+            element={<Navigate to={acousticPath('resumo')} replace />}
+          />
+          <Route path={acousticPath('resumo')} element={<AcousticSummaryPage />} />
+          <Route path={acousticPath('integrantes')} element={<AcousticShellPage />} />
+          <Route path={acousticPath('repertorio')} element={<AcousticShellPage />} />
+          <Route path={acousticPath('galeria')} element={<AcousticShellPage />} />
           <Route
             path={OZZBORN_BASE_PATH}
             element={<Navigate to={ozzbornPath('resumo')} replace />}

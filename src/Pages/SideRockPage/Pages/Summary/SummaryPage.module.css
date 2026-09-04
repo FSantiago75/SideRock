@@ -56,7 +56,7 @@
   inset: auto 0 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--summary-accent), transparent);
-  box-shadow: 0 0 1.5rem rgba(211, 47, 53, 0.32);
+  box-shadow: 0 0 1.5rem color-mix(in srgb, var(--summary-accent) 32%, transparent);
 }
 
 .heroCopy {
@@ -126,7 +126,7 @@
   max-width: 40rem;
   margin: clamp(1.3rem, 3vh, 2.2rem) 0 0;
   padding-left: 1.15rem;
-  border-left: 1px solid rgba(211, 47, 53, 0.7);
+  border-left: 1px solid color-mix(in srgb, var(--summary-accent) 70%, transparent);
   color: rgba(241, 237, 230, 0.68);
   font-size: clamp(0.92rem, 1.1vw, 1.08rem);
   line-height: 1.65;
@@ -148,7 +148,7 @@
   justify-content: center;
   gap: 0.7rem;
   padding: 0.75rem 1.1rem;
-  border: 1px solid rgba(211, 47, 53, 0.64);
+  border: 1px solid color-mix(in srgb, var(--summary-accent) 64%, transparent);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -290,15 +290,15 @@
 }
 
 .bandHalo {
-  background: radial-gradient(circle, rgba(211, 47, 53, 0.46), rgba(119, 12, 18, 0.1) 42%, transparent 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--summary-accent) 46%, transparent), color-mix(in srgb, var(--summary-accent) 10%, transparent) 42%, transparent 68%);
   filter: blur(22px);
 }
 
 .bandOrbit {
-  border: 1px solid rgba(211, 47, 53, 0.22);
+  border: 1px solid color-mix(in srgb, var(--summary-accent) 22%, transparent);
   box-shadow:
     inset 0 0 0 3rem rgba(0, 0, 0, 0.08),
-    0 0 4rem rgba(211, 47, 53, 0.12);
+    0 0 4rem color-mix(in srgb, var(--summary-accent) 12%, transparent);
 }
 
 .bandVisual figcaption {
@@ -365,8 +365,8 @@
 .promise {
   align-self: center;
   padding: 1.25rem;
-  border: 1px solid rgba(211, 47, 53, 0.3);
-  background: linear-gradient(145deg, rgba(211, 47, 53, 0.1), rgba(0, 0, 0, 0.42));
+  border: 1px solid color-mix(in srgb, var(--summary-accent) 30%, transparent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--summary-accent) 10%, transparent), rgba(0, 0, 0, 0.42));
 }
 
 .promise span {
@@ -442,7 +442,7 @@
 }
 
 .repertoireTrack:focus-visible {
-  box-shadow: inset 0 0 0 1px rgba(211, 47, 53, 0.38);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--summary-accent) 38%, transparent);
 }
 
 .repertoireTrack span {
