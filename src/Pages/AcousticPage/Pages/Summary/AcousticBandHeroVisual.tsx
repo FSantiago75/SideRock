@@ -4,26 +4,27 @@ import type { AcousticFormatId } from './acousticSummaryContent'
 
 type Props = {
   format: AcousticFormatId
-  src: string
-  alt: string
+  duoSrc: string
+  trioSrc: string
 }
 
-type VisualStyle = CSSProperties & {
+type PhotoStyle = CSSProperties & {
   '--band-photo-position': string
   '--band-photo-scale': number
 }
 
-export function AcousticBandHeroVisual({ format, src, alt }: Props) {
-  const style: VisualStyle = {
-    '--band-photo-position': format === 'duo' ? '50% 52%' : '50% 48%',
-    '--band-photo-scale': format === 'duo' ? 1.16 : 1.08,
-  }
+export function AcousticBandHeroVisual({ format, duoSrc, trioSrc }: Props) {
+  const duoStyle: PhotoStyle = { '--band-photo-position': '50% 52%', '--band-photo-scale': 1.3 }
+  const trioStyle: PhotoStyle = { '--band-photo-position': '50% 48%', '--band-photo-scale': 1.08 }
+  const duoClassName = `${styles.bandPhotoCrossfade} ${format === 'duo' ? styles.bandPhotoActive : styles.bandPhotoInactive}`
+  const trioClassName = `${styles.bandPhotoCrossfade} ${format === 'trio' ? styles.bandPhotoActive : styles.bandPhotoInactive}`
 
   return (
-    <figure className={styles.bandVisual} data-photo-mode="cutout" style={style}>
+    <figure className={styles.bandVisual} data-photo-mode="cutout">
       <span className={styles.bandHalo} aria-hidden />
       <span className={styles.bandOrbit} aria-hidden />
-      <img key={format} src={src} alt={alt} />
+      <img className={duoClassName} style={duoStyle} src={duoSrc} alt="Formação Duo do Side Rock Acústico" />
+      <img className={trioClassName} style={trioStyle} src={trioSrc} alt="Formação Trio do Side Rock Acústico" />
       <figcaption>
         <span>Formação {format}</span>
         <strong>Side Rock Acústico</strong>

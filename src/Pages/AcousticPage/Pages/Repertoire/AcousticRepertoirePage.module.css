@@ -6,6 +6,7 @@
   --repertoire-heavy-logo-max-width: 13rem;
   --repertoire-heavy-logo-max-height: 6.2rem;
   --repertoire-closing-background: transparent;
+  --section-intro-accent: var(--side-rock-accent-hot);
 }
 
 .page::before {

@@ -26,8 +26,7 @@
   text-transform: uppercase;
 }
 
-.root h1::after {
-  content: '';
+.titleLine {
   display: block;
   width: clamp(4.5rem, 10vw, 9rem);
   height: 2px;
@@ -40,9 +39,15 @@
   box-shadow: 0 0 1rem
     color-mix(in srgb, var(--section-intro-accent, #ff5258) 42%, transparent);
   transform-origin: left;
-  animation: sectionIntroLineReveal 700ms 180ms
-    cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform: scaleX(0);
 }
+
+.root :global([data-reveal='in']) .titleLine {
+  transform: scaleX(1);
+  transition: transform 760ms 210ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.titleLineStatic { transform: scaleX(1); }
 
 .lead {
   max-width: 32rem;
@@ -50,16 +55,6 @@
   color: rgba(241, 237, 230, 0.56);
   font-size: 0.82rem;
   line-height: 1.5;
-}
-
-@keyframes sectionIntroLineReveal {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
 }
 
 @media (max-height: 720px) and (min-width: 761px) {
@@ -87,11 +82,5 @@
   .lead {
     max-width: 22rem;
     font-size: 0.74rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .root h1::after {
-    animation: none;
   }
 }

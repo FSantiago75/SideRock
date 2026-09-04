@@ -36,6 +36,7 @@ export function SectionIntro({
       <header className={rootClassName}>
         <p className={styles.eyebrow}>{eyebrow}</p>
         <h1 id={titleId}>{title}</h1>
+        <span className={`${styles.titleLine} ${styles.titleLineStatic}`} aria-hidden="true" />
         <p className={styles.lead}>{lead}</p>
         {children}
       </header>
@@ -49,6 +50,7 @@ export function SectionIntro({
       </ScrollReveal>
       <ScrollReveal delayMs={titleDelayMs} from="up">
         <h1 id={titleId}>{title}</h1>
+        <span className={styles.titleLine} aria-hidden="true" />
       </ScrollReveal>
       <ScrollReveal delayMs={leadDelayMs} from="up">
         <p className={styles.lead}>{lead}</p>

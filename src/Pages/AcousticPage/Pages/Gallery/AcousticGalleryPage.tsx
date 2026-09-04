@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import galleryBackground from '../../../../assets/acoustic/acousticGalleryAtmosphere.png'
+import galleryBackground from '../../../../assets/acoustic/acousticGalleryAtmosphereV2.png'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'
@@ -13,6 +13,7 @@ import {
 import galleryStyles from '../../../SideRockPage/Pages/Gallery/GalleryPage.module.css'
 import { AcousticNavbar } from '../../Components/NavBar/AcousticNavbar'
 import { ACOUSTIC_SCROLLBAR } from '../../sectionConstants'
+import styles from './AcousticGalleryPage.module.css'
 
 const photos = GALLERY_PHOTOS.map((photo) => ({
   ...photo,
@@ -42,7 +43,7 @@ export function AcousticGalleryPage() {
         linear-gradient(180deg, rgba(5, 5, 5, 0.3) 0%, rgba(5, 5, 5, 0.74) 50%, #050505 100%)
       "
     >
-      <article className={galleryStyles.page}>
+      <article className={`${galleryStyles.page} ${styles.page}`}>
         <SectionIntro
           eyebrow="Arquivo acústico"
           title="Galeria"
