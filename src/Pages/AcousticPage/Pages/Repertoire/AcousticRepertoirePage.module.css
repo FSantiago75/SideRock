@@ -1,0 +1,55 @@
+.page {
+  --repertoire-tone-arena: 245 158 11;
+  --repertoire-tone-alternative: 217 119 6;
+  --repertoire-tone-heavy: 251 191 36;
+  --repertoire-atmosphere-opacity: 0.9;
+  --repertoire-heavy-logo-max-width: 13rem;
+  --repertoire-heavy-logo-max-height: 6.2rem;
+  --repertoire-closing-background: transparent;
+}
+
+.page::before {
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.2), rgba(5, 5, 5, 0.62) 52%, rgba(5, 5, 5, 0.82)),
+    var(--repertoire-background) center / cover no-repeat;
+  filter: saturate(0.82) contrast(1.08);
+}
+
+.page::after {
+  background:
+    radial-gradient(circle at 74% 26%, rgba(245, 158, 11, 0.1), transparent 22%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.48), transparent 34%, transparent 76%, rgba(0, 0, 0, 0.28));
+}
+
+.page :global(section[data-tone='arena']) {
+  backdrop-filter: brightness(1.02);
+}
+
+.page :global(section[data-tone='alternative']) {
+  backdrop-filter: saturate(1.08) brightness(0.96);
+}
+
+.page :global(section[data-tone='heavy']) {
+  backdrop-filter: brightness(1.08);
+}
+
+.page :global(section[data-tone='heavy']) img {
+  opacity: 0.94;
+  filter: grayscale(1) brightness(2.05) contrast(0.86);
+}
+
+.page :global(section[aria-labelledby='acoustic-repertoire-closing-title']) {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 760px) {
+  .page {
+    --repertoire-heavy-logo-max-width: 7.4rem;
+    --repertoire-heavy-logo-max-height: 5.1rem;
+  }
+
+  .page::before {
+    background-size: auto 100%;
+    background-position: 62% top;
+  }
+}
