@@ -96,7 +96,7 @@
   background: #050505;
   border: 1px solid rgba(241, 237, 230, 0.12);
   box-shadow:
-    0 0 0 1px rgba(211, 47, 53, 0.22),
+    0 0 0 1px color-mix(in srgb, var(--gallery-accent) 22%, transparent),
     0 2.4rem 4rem rgba(0, 0, 0, 0.5);
   animation: imageIn 180ms var(--motion) both;
 }
@@ -135,8 +135,8 @@
 
 .iconButton:hover,
 .iconButton:focus-visible {
-  border-color: rgba(211, 47, 53, 0.7);
-  background: rgba(211, 47, 53, 0.16);
+  border-color: color-mix(in srgb, var(--gallery-accent) 70%, transparent);
+  background: color-mix(in srgb, var(--gallery-accent) 16%, transparent);
 }
 
 .iconButton:focus-visible {

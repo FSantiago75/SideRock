@@ -119,10 +119,10 @@
 @media (hover: hover) and (pointer: fine) {
   .card:hover,
   .card:focus-visible {
-    border-color: rgba(211, 47, 53, 0.62);
+    border-color: color-mix(in srgb, var(--gallery-accent) 62%, transparent);
     box-shadow:
       0 1.2rem 2.6rem rgba(0, 0, 0, 0.46),
-      0 0 1.6rem rgba(211, 47, 53, 0.18),
+      0 0 1.6rem color-mix(in srgb, var(--gallery-accent) 18%, transparent),
       inset 0 0 0 1px rgba(241, 237, 230, 0.04);
   }
 
@@ -139,7 +139,7 @@
 
 @media (hover: none) {
   .card:active {
-    border-color: rgba(211, 47, 53, 0.5);
+    border-color: color-mix(in srgb, var(--gallery-accent) 50%, transparent);
   }
 }
 

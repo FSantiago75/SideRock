@@ -31,6 +31,11 @@ const AcousticSummaryPage = lazy(() =>
     default: module.AcousticSummaryPage,
   })),
 )
+const AcousticGalleryPage = lazy(() =>
+  import('./Pages/AcousticPage/Pages/Gallery/AcousticGalleryPage').then((module) => ({
+    default: module.AcousticGalleryPage,
+  })),
+)
 const OzzbornSummaryPage = lazy(() =>
   import('./Pages/OzzbornPage/Pages/Summary/OzzbornSummaryPage').then((module) => ({
     default: module.OzzbornSummaryPage,
@@ -88,7 +93,7 @@ function App() {
           <Route path={acousticPath('resumo')} element={<AcousticSummaryPage />} />
           <Route path={acousticPath('integrantes')} element={<AcousticShellPage />} />
           <Route path={acousticPath('repertorio')} element={<AcousticShellPage />} />
-          <Route path={acousticPath('galeria')} element={<AcousticShellPage />} />
+          <Route path={acousticPath('galeria')} element={<AcousticGalleryPage />} />
           <Route
             path={OZZBORN_BASE_PATH}
             element={<Navigate to={ozzbornPath('resumo')} replace />}
