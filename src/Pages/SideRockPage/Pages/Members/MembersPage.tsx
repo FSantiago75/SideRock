@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import { MembersImage } from '../../../../Components/MembersImage'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
-import background from '../../../../assets/sideRock/sideRockMembersAtmosphereV2.png'
+import background from '../../../../assets/sideRock/backgrounds/sideRockMembersAtmosphereV2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
 import styles from './MembersPage.module.css'
 import { MemberDetails } from './MemberDetails'

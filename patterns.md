@@ -180,9 +180,9 @@ Inventário histórico das decisões de UI e dos mockups em `src/SiderockAssets/
 ## 5. Assets — `src/assets/` (por escopo)
 
 - **`general/`** — identidade partilhada (cards da home, `bgCaveiras2.jpg`). Imports explícitos.
-- **`sideRock/`** — rotas `/side-rock/*`: `gallery/`, `membersImages/`, atmosferas, `promotionalVideo*`. Galeria via `import.meta.glob` em `galleryContent.ts` (caminho literal `assets/sideRock/gallery/**`).
+- **`sideRock/`** — rotas `/side-rock/*`: `backgrounds/`, `gallery/` e `media/booking/`. Galeria via `import.meta.glob` em `galleryContent.ts` (caminho literal `assets/sideRock/gallery/**`).
 - **`acoustic/`** — experiência Acoustic; imports em `acousticContent.ts`.
-- **`ozzborn/`** — assets exclusivos (ex.: `ozzbornCrest.webp`). Partilhas futuras com Side Rock resolvem-se no código, sem duplicar ficheiros.
+- **`ozzborn/`** — assets exclusivos, separados em `albums/`, `backgrounds/`, `branding/`, `gallery/` e `membersImages/`. Partilhas futuras com Side Rock resolvem-se no código, sem duplicar ficheiros.
 - **Convenção de nomes**: pastas e ficheiros em **camelCase** (`sideRock/`, `membersImages/`, `sideRockStandardBackground.png`). Álbuns da galeria mantêm prefixo numérico (`01-shows/`); fotos dentro do álbum seguem a convenção editorial (`001 - Ensaio 1.jpg`).
 - **`SiderockAssets/`** — mockups e BGs temporários de protótipo (`Bgs2/`), fora de `src/assets/`.
 - Ver `src/assets/README.md` para inventário.

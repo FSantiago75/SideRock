@@ -1,7 +1,7 @@
-import promotionalVideo from '../../../../assets/sideRock/promotionalVideo.web.mp4'
-import promotionalVideoPoster from '../../../../assets/sideRock/promotionalVideo.webp'
-import promotionalVideo2 from '../../../../assets/sideRock/promotionalVideo2.web.mp4'
-import promotionalVideo2Poster from '../../../../assets/sideRock/promotionalVideo2.webp'
+import promotionalVideo from '../../../../assets/sideRock/media/booking/promotionalVideo.web.mp4'
+import promotionalVideoPoster from '../../../../assets/sideRock/media/booking/promotionalVideo.webp'
+import promotionalVideo2 from '../../../../assets/sideRock/media/booking/promotionalVideo2.web.mp4'
+import promotionalVideo2Poster from '../../../../assets/sideRock/media/booking/promotionalVideo2.webp'
 import { getAcousticBookingUrl, type AcousticFormatId } from './acousticSummaryContent'
 
 export function getAcousticBooking(format: AcousticFormatId) {

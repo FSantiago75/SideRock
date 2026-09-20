@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import background from '../../../../assets/ozzborn/ozzbornGalleryAtmosphere.png'
+import background from '../../../../assets/ozzborn/backgrounds/ozzbornGalleryAtmosphere.png'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'

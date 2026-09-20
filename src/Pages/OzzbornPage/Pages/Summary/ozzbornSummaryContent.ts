@@ -1,4 +1,4 @@
-import bandPortrait from '../../../../assets/sideRock/membersImages/membersNull.webp'
+import bandPortrait from '../../../../assets/ozzborn/membersImages/membersNull.webp'
 
 export const OZZBORN_SUMMARY_CONTENT = {
   heroPhoto: {

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import { MembersImage } from '../../../../Components/MembersImage'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
-import background from '../../../../assets/ozzborn/ozzbornMembersAtmosphere.png'
+import background from '../../../../assets/ozzborn/backgrounds/ozzbornMembersAtmosphere.png'
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'
 import { OzzbornNavbar } from '../../Components/NavBar/OzzbornNavbar'
 import { OZZBORN_SCROLLBAR } from '../../sectionConstants'
