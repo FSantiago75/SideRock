@@ -1,18 +1,29 @@
-import { useState, type ImgHTMLAttributes } from 'react'
-import MembersNull from '../../assets/ozzborn/membersImages/membersNull.webp'
-import { MembersHitmap } from './membersHitmap'
-import { membersMap } from './membersMap'
+import {
+  useState,
+  type ImgHTMLAttributes,
+  type MouseEvent,
+  type PointerEvent,
+} from 'react'
+import {
+  memberImageIds,
+  type MembersImageMemberId,
+  type MembersImageSource,
+} from './membersImageSources'
 import styles from './membersImage.module.css'
 
-const memberKeys = ['vocal', 'guitar', 'drums', 'bass'] as const
-
-export type MembersImageMemberId = (typeof memberKeys)[number]
+export {
+  OZZBORN_MEMBERS_IMAGE,
+  SIDE_ROCK_MEMBERS_IMAGE,
+  type MembersImageMemberId,
+  type MembersImageSource,
+} from './membersImageSources'
 
 function isMemberId(id: string | null): id is MembersImageMemberId {
-  return id !== null && memberKeys.includes(id as MembersImageMemberId)
+  return id !== null && memberImageIds.includes(id as MembersImageMemberId)
 }
 
 type MembersImageProps = {
+  source: MembersImageSource
   activeId?: MembersImageMemberId | null
   alt?: string
   className?: string
@@ -26,6 +37,7 @@ type MembersImageProps = {
 }
 
 export function MembersImage({
+  source,
   activeId,
   alt = 'Integrantes da banda',
   className,
@@ -41,6 +53,14 @@ export function MembersImage({
   const isControlled = activeId !== undefined
   const activeKey = isControlled ? activeId : (selectedId ?? hoveredId)
 
+  const getMemberId = (target: EventTarget | null) => {
+    if (!(target instanceof Element)) return null
+
+    const hitmapId = target.closest<SVGPathElement>('path[data-id]')?.dataset.id
+    const memberId = hitmapId ? source.hitmapIds[hitmapId] : undefined
+    return memberId && isMemberId(memberId) ? memberId : null
+  }
+
   const handleHover = (id: string | null) => {
     const memberId = isMemberId(id) ? id : null
     if (!isControlled) setHoveredId(memberId)
@@ -55,6 +75,14 @@ export function MembersImage({
     onSelect?.(memberId)
   }
 
+  const handlePointerOver = (event: PointerEvent<HTMLDivElement>) => {
+    handleHover(getMemberId(event.target))
+  }
+
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    handleSelect(getMemberId(event.target))
+  }
+
   const rootClassName = className
     ? `${styles.root} ${className}`
     : `${styles.root} ${styles.standalone}`
@@ -63,30 +91,37 @@ export function MembersImage({
     <figure className={rootClassName}>
       <img
         className={styles.base}
-        src={MembersNull}
+        src={source.neutral}
         alt={alt}
-        width={1024}
-        height={1536}
+        width={source.width}
+        height={source.height}
         loading={loading}
         decoding={decoding}
         fetchPriority={fetchPriority}
       />
       {mountHighlightLayers
-        ? memberKeys.map((key) => (
+        ? memberImageIds.map((key) => (
             <img
               key={key}
               className={`${styles.layer} ${activeKey === key ? styles.layerVisible : ''}`}
-              src={membersMap[key]}
+              src={source.layers[key]}
               alt=""
               aria-hidden
-              width={1024}
-              height={1536}
+              width={source.width}
+              height={source.height}
               loading={loading}
               decoding={decoding}
             />
           ))
         : null}
-      <MembersHitmap onHover={handleHover} onSelect={handleSelect} />
+      <div
+        className={styles.Hitmap}
+        onPointerOver={handlePointerOver}
+        onPointerLeave={() => handleHover(null)}
+        onClick={handleClick}
+        aria-hidden="true"
+        dangerouslySetInnerHTML={{ __html: source.hitmap }}
+      />
     </figure>
   )
 }

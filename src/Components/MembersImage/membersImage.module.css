@@ -58,8 +58,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.Hitmap > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .Hitmap path {
-  fill: transparent;
+  fill: transparent !important;
   stroke: none;
   cursor: pointer;
   pointer-events: all;

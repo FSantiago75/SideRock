@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import {
   MembersImage,
+  OZZBORN_MEMBERS_IMAGE,
   type MembersImageMemberId,
 } from '../../../../Components/MembersImage'
 import {
@@ -261,6 +262,7 @@ export function OzzbornFormation() {
         <div className={styles.formationGlow} aria-hidden="true" />
         <div className={styles.formationPhotoWrap}>
           <MembersImage
+            source={OZZBORN_MEMBERS_IMAGE}
             className={styles.formationPhotoStack}
             activeId={spotlight.activeId}
             onHover={spotlight.hover}

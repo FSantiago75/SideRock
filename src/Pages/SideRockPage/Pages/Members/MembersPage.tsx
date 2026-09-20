@@ -1,5 +1,8 @@
 import type { CSSProperties } from 'react'
-import { MembersImage } from '../../../../Components/MembersImage'
+import {
+  MembersImage,
+  SIDE_ROCK_MEMBERS_IMAGE,
+} from '../../../../Components/MembersImage'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import background from '../../../../assets/sideRock/backgrounds/sideRockMembersAtmosphereV2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
@@ -63,6 +66,7 @@ export function MembersPage() {
         <div className={styles.experience}>
           <div className={styles.portrait}>
             <MembersImage
+              source={SIDE_ROCK_MEMBERS_IMAGE}
               className={styles.photoStack}
               activeId={spotlight.activeId}
               onHover={spotlight.hover}

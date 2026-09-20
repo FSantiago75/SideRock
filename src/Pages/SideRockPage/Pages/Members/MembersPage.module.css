@@ -78,8 +78,8 @@
   height: 100%;
   max-width: 118%;
   max-height: 100%;
-  aspect-ratio: 2 / 3;
-  scale: 1.544;
+  aspect-ratio: 1025 / 1536;
+  scale: 1.36;
   translate: var(--portrait-offset-x) var(--portrait-shift);
   transform-origin: center 82%;
   line-height: 0;
@@ -647,7 +647,7 @@
     width: auto;
     height: 100%;
     max-width: 128%;
-    scale: 1.32;
+    scale: 1.14;
   }
 
   .details {
