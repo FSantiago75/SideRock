@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState, type PointerEvent } from 'react'
 import {
   FaBolt,
+  FaAward,
   FaChevronLeft,
   FaChevronRight,
   FaLayerGroup,
@@ -86,7 +87,7 @@ function MemberCardBody({
             <FaLayerGroup />
           </span>
           <span>
-            <dt>No show</dt>
+            <dt>Na música</dt>
             <dd>{member.contribution}</dd>
           </span>
         </div>
@@ -95,8 +96,17 @@ function MemberCardBody({
             <FaBolt />
           </span>
           <span>
-            <dt>Presença</dt>
+            <dt>No palco</dt>
             <dd>{member.presence}</dd>
+          </span>
+        </div>
+        <div>
+          <span className={styles.factIcon} aria-hidden>
+            <FaAward />
+          </span>
+          <span>
+            <dt>Anos de experiência</dt>
+            <dd>{member.experience}</dd>
           </span>
         </div>
       </dl>

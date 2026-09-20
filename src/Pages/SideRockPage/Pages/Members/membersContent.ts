@@ -13,6 +13,7 @@ export type SideRockMember = {
   instrument: string
   contribution: string
   presence: string
+  experience: string
   Icon: IconType
 }
 
@@ -20,8 +21,8 @@ export const SIDE_ROCK_MEMBERS_COPY = {
   eyebrow: 'Formação completa',
   title: 'Integrantes',
   desktopGuide:
-    'Explore a formação. Passe o cursor para conhecer cada integrante e clique para fixar.',
-  mobileGuide: 'Toque em um integrante para fixar a seleção.',
+    'Conheça quem transforma repertório em presença e energia no palco. Passe o cursor e clique para fixar.',
+  mobileGuide: 'Toque em cada integrante e conheça seu papel no show.',
 } as const
 
 export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
@@ -29,48 +30,52 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     id: 'vocal',
     name: 'Marcelo',
     role: 'Vocalista',
-    signature: 'Voz, interpretação e conexão.',
+    signature: 'Três décadas de voz, técnica e presença.',
     description:
-      'Marcelo está à frente da experiência, interpretando diferentes vertentes do rock internacional com presença e versatilidade.',
+      'Há mais de 30 anos, Marcelo enfrenta repertórios exigentes e transforma técnica vocal em interpretação. À frente da Side Rock, atravessa estilos e gerações com potência, personalidade e conexão com o público.',
     instrument: 'Voz',
-    contribution: 'Interpretação e conexão',
-    presence: 'A frente da experiência',
+    contribution: 'Amplitude, potência e interpretação',
+    presence: 'Condução e conexão',
+    experience: '+30 anos de música',
     Icon: FaMicrophoneAlt,
   },
   {
     id: 'guitar',
     name: 'Victor',
     role: 'Guitarrista',
-    signature: 'Textura, peso e melodia.',
+    signature: 'Fidelidade construída em cada detalhe.',
     description:
-      'Victor conduz as guitarras entre riffs, bases e solos, conectando diferentes décadas do rock com precisão e identidade.',
+      'Com mais de 20 anos de experiência, Victor recria riffs, bases e solos com atenção aos timbres, efeitos e arranjos que tornam cada clássico reconhecível. Uma guitarra precisa, feita para quem conhece a música e para quem quer sentir seu impacto.',
     instrument: 'Guitarra',
-    contribution: 'Riffs, texturas e solos',
-    presence: 'Intensidade e precisão',
+    contribution: 'Timbres, riffs e solos fiéis',
+    presence: 'Precisão e intensidade',
+    experience: '+20 anos de música',
     Icon: FaGuitar,
   },
   {
     id: 'bass',
     name: 'Adriano',
     role: 'Baixista',
-    signature: 'A base que sustenta o show.',
+    signature: 'O peso que mantém tudo no lugar.',
     description:
-      'Adriano ocupa o centro da base rítmica com linhas de baixo firmes, peso e consistência para manter a banda em movimento.',
+      'Com mais de 20 anos de experiência, Adriano dá corpo ao repertório com linhas firmes, equilíbrio e consistência. Sua base sustenta os arranjos e faz a energia da banda chegar inteira ao público.',
     instrument: 'Baixo',
-    contribution: 'Peso e sustentação',
-    presence: 'Base firme do repertório',
+    contribution: 'Peso, equilíbrio e sustentação',
+    presence: 'Solidez e presença',
+    experience: '+20 anos de música',
     Icon: FaWaveSquare,
   },
   {
     id: 'drums',
     name: 'Toddynho',
     role: 'Baterista',
-    signature: 'Pulso, dinâmica e impacto.',
+    signature: 'Energia, velocidade e criatividade.',
     description:
-      'Toddynho conduz a dinâmica do repertório e transforma cada virada em energia para a banda e para o público.',
+      'Com mais de 20 anos de experiência, Toddynho conduz a dinâmica do show com precisão e inventividade. Seu pulso acompanha cada mudança do repertório e mantém a banda em movimento.',
     instrument: 'Bateria',
-    contribution: 'Pulso e dinâmica',
-    presence: 'Energia que conduz a banda',
+    contribution: 'Pulso, dinâmica e impacto',
+    presence: 'Energia e movimento',
+    experience: '+20 anos de música',
     Icon: FaDrum,
   },
 ] as const

@@ -4,7 +4,7 @@ import promotionalVideo2 from '../../../../assets/sideRock/media/booking/promoti
 import promotionalVideo2Poster from '../../../../assets/sideRock/media/booking/promotionalVideo2.webp'
 
 const BOOKING_MESSAGE =
-  'Olá, Vanessa! Gostaria de consultar disponibilidade e orçamento da Side Rock para um evento.'
+  'Olá, Vanessa! Gostaria de consultar a disponibilidade da Side Rock para um evento. Posso enviar a data, a cidade e mais informações?'
 
 export const SIDE_ROCK_BOOKING = {
   manager: 'Vanessa',
@@ -13,15 +13,15 @@ export const SIDE_ROCK_BOOKING = {
   instagramUrl: 'https://www.instagram.com/bandasiderock',
   intro: {
     eyebrow: 'Contratação',
-    title: 'Do primeiro contato ao palco.',
-    lead: 'Conte a data, a cidade e o perfil do evento. A Side Rock retorna com disponibilidade, formato e próximos passos de forma objetiva.',
-    primaryAction: 'Consultar data e orçamento',
-    secondaryAction: 'Ver apresentações',
-    managerLabel: 'Atendimento comercial',
+    title: 'O show certo para fazer o evento acontecer.',
+    lead: 'Conte para a gente a data, a cidade e o perfil do evento. Você recebe disponibilidade, formato e orçamento diretamente com quem cuida da agenda da Side Rock.',
+    primaryAction: 'Consultar disponibilidade',
+    secondaryAction: 'Assistir às apresentações',
+    managerLabel: 'Atendimento direto',
   },
   closing: {
-    copy: 'Quer levar a Side Rock ao seu evento?',
-    action: 'Consultar data e orçamento',
+    copy: 'Quer essa energia no seu evento?',
+    action: 'Falar com Vanessa',
   },
   videos: [
     {
@@ -39,24 +39,24 @@ export const SIDE_ROCK_BOOKING = {
   ],
   cards: [
     {
-      eyebrow: 'Formato',
-      title: 'Presença de palco',
-      copy: 'Uma apresentação de rock internacional construída para ocupar o palco com presença, execução consistente e leitura clara do repertório.',
+      eyebrow: 'Energia',
+      title: 'Uma banda que ocupa o palco',
+      copy: 'Quatro músicos, presença de palco e uma apresentação construída para manter o público conectado do começo ao fim.',
     },
     {
-      eyebrow: 'Aplicações',
-      title: 'Do clube ao festival',
-      copy: 'Casas de show, eventos particulares, festivais e programações culturais. Duração e condições são alinhadas para cada data.',
+      eyebrow: 'Versatilidade',
+      title: 'Do clube ao grande evento',
+      copy: 'Uma experiência preparada para casas de show, eventos particulares, festivais e programações culturais.',
     },
     {
-      eyebrow: 'Experiência',
-      title: 'Repertório reconhecível',
-      copy: 'Classic rock, hard rock e heavy metal para públicos de diferentes gerações, com uma entrega preparada para o palco.',
+      eyebrow: 'Repertório',
+      title: 'Clássicos escolhidos a dedo',
+      copy: 'Músicas que o público reconhece, canta e vive junto, interpretadas com respeito aos arranjos, timbres e momentos que fizeram cada clássico permanecer.',
     },
     {
       eyebrow: 'Atendimento',
-      title: 'Contato direto com a manager',
-      copy: 'Vanessa centraliza disponibilidade, orçamento e alinhamentos da data em um único canal.',
+      title: 'Contratação direta e sem complicação',
+      copy: 'Vanessa acompanha disponibilidade, orçamento e alinhamentos da apresentação em um único canal.',
     },
   ],
 } as const

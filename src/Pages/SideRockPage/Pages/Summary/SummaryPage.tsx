@@ -13,9 +13,9 @@ import styles from './SummaryPage.module.css'
 import { SIDE_ROCK_SUMMARY_CONTENT } from './summaryContent'
 
 const summaryFacts = [
-  { value: '5+', label: 'anos de banda' },
-  { value: '4', label: 'integrantes' },
-  { value: 'Ao vivo', label: 'formação completa' },
+  { value: '5+', label: 'anos de estrada' },
+  { value: '4', label: 'músicos no palco' },
+  { value: 'Ao vivo', label: 'energia de banda completa' },
 ] as const
 
 type SummaryPageStyle = CSSProperties & {
@@ -44,15 +44,16 @@ export function SummaryPage() {
                 <span className={styles.heroBrand}>Side Rock</span>
                 <span className={styles.heroDescriptor}>
                   <span>Rock internacional</span>
-                  <span>ao vivo.</span>
+                  <span>Energia ao vivo.</span>
                 </span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delayMs={120} from="up">
               <p className={styles.heroLead}>
-                Uma banda de covers com músicas de diferentes décadas e vertentes
-                do rock, apresentada por quatro músicos em formato completo.
+                Clássicos escolhidos a dedo, execução fiel e a energia de quatro
+                músicos preparados para transformar cada apresentação em uma
+                experiência.
               </p>
             </ScrollReveal>
 
@@ -65,13 +66,13 @@ export function SummaryPage() {
                   rel="noopener noreferrer"
                 >
                   <FaWhatsapp aria-hidden />
-                  Consultar data e orçamento
+                  Consultar disponibilidade
                 </a>
                 <Link
                   className={styles.secondaryAction}
                   to={sideRockPath('repertorio')}
                 >
-                  Ver repertório
+                  Conhecer o repertório
                   <HiArrowRight aria-hidden />
                 </Link>
               </div>
@@ -79,7 +80,7 @@ export function SummaryPage() {
 
             <ScrollReveal delayMs={200} from="none">
               <p className={styles.heroContact}>
-                Atendimento direto com <strong>Vanessa</strong> · Manager
+                Fale diretamente com <strong>Vanessa</strong> · Manager
               </p>
             </ScrollReveal>
 

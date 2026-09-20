@@ -9,15 +9,15 @@ export const SIDE_ROCK_SUMMARY_CONTENT = {
     mode: 'cutout' as const,
   },
   story: {
-    index: 'Sobre a Side Rock',
-    title: 'Uma identidade no palco.',
+    index: 'A experiência Side Rock',
+    title: 'Versatilidade para conquistar o público.',
     paragraphs: [
-      'A Side Rock reúne Marcelo, Victor, Adriano e Toddynho em um show de covers que atravessa décadas do rock internacional — do classic rock ao hard rock e ao heavy metal.',
-      'O repertório privilegia músicas reconhecidas e uma execução consistente, com identidade visual própria, para o público reconhecer o que ouve e a casa sentir a presença de uma banda no palco.',
+      'A Side Rock atravessa diferentes décadas do rock internacional com um repertório pensado para aproximar públicos, despertar memórias e manter a energia do começo ao fim.',
+      'Marcelo, Victor, Adriano e Toddynho unem interpretação, peso e precisão para respeitar a identidade de cada música sem perder a personalidade da banda no palco.',
     ],
     promise: {
-      eyebrow: 'No palco',
-      copy: 'Presença, repertório reconhecível e uma leitura profissional do show.',
+      eyebrow: 'A experiência',
+      copy: 'Para quem conhece cada detalhe. Para quem só quer sentir a energia.',
     },
   },
   repertoire: [
