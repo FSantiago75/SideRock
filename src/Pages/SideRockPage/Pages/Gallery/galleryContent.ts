@@ -15,9 +15,9 @@ export type GalleryAlbum = {
 }
 
 export const GALLERY_COPY = {
-  eyebrow: 'Arquivo visual',
+  eyebrow: 'A Side Rock em cena',
   title: 'Galeria',
-  lead: 'Momentos reais. Energia ao vivo.',
+  lead: 'O palco, a presença e a energia de uma banda feita para tocar ao vivo.',
   emptyTitle: 'Galeria em preparação',
   emptyBody: 'Os próximos registros da Side Rock serão publicados aqui.',
 } as const

@@ -27,17 +27,17 @@ export type RepertoireMovement = {
 }
 
 export const REPERTOIRE_INTRO = {
-  eyebrow: 'Amplitude musical',
+  eyebrow: 'Rock para cada momento',
   title: 'Repertório',
-  lead: 'Clássicos, grunge, hard rock e heavy metal com a identidade da Side Rock.',
+  lead: 'Clássicos escolhidos a dedo, tocados com a fidelidade que o público reconhece e a energia que faz todo mundo participar.',
 } as const
 
 export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
   {
     id: 'grandes-palcos',
     eyebrow: 'Classic rock · Hard rock',
-    title: 'Grandes clássicos',
-    body: 'Referências que atravessam gerações e representam o lado mais aberto do repertório.',
+    title: 'Clássicos que todo mundo canta',
+    body: 'Grandes refrões, músicas que atravessam gerações e um show que aproxima diferentes públicos.',
     tone: 'arena',
     bands: [
       { name: 'Bon Jovi', logo: bonJovi, logoScale: 'wide' },
@@ -48,9 +48,9 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
   },
   {
     id: 'alternativo-grunge',
-    eyebrow: 'Alternative rock · Grunge',
-    title: 'Alternativo e grunge',
-    body: 'O peso e a dinâmica dos anos 90 em uma parte importante da identidade da banda.',
+    eyebrow: 'Alternativo · Grunge',
+    title: 'A força dos anos 90',
+    body: 'Músicas que exigem técnica e domínio das mudanças de dinâmica. A Side Rock cuida dos detalhes sem perder a intensidade.',
     tone: 'alternative',
     bands: [
       { name: 'Pearl Jam', logo: pearlJam },
@@ -63,8 +63,8 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
   {
     id: 'heavy-metal',
     eyebrow: 'Heavy metal',
-    title: 'Heavy metal',
-    body: 'O lado mais pesado da Side Rock, com referências de técnica, intensidade e potência.',
+    title: 'Peso com precisão',
+    body: 'Riffs, viradas e solos executados com o peso e o cuidado que esses clássicos exigem.',
     tone: 'heavy',
     bands: [
       { name: 'Ozzy Osbourne', logo: ozzy },

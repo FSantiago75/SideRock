@@ -39,14 +39,14 @@ export function RepertoirePage() {
           aria-labelledby="repertoire-closing-title"
         >
           <ScrollReveal from="up">
-            <p className={styles.closingEyebrow}>Identidade Side Rock</p>
+            <p className={styles.closingEyebrow}>A experiência Side Rock</p>
             <h2 id="repertoire-closing-title">
-              Um repertório. Muitas possibilidades.
+              Seu evento merece mais do que uma banda tocando sucessos conhecidos.
             </h2>
             <p>
-              Do clássico ao heavy, cada influência amplia as possibilidades do
-              show. A Side Rock conecta diferentes linguagens em uma apresentação
-              coesa, conduzida por músicos versáteis e experientes.
+              A Side Rock vai além de tocar músicas familiares. Cada escolha ajuda
+              a construir um show com ritmo, variedade e momentos que o público
+              vive junto.
             </p>
             <div className={styles.closingActions}>
               <a
@@ -56,7 +56,7 @@ export function RepertoirePage() {
                 rel="noopener noreferrer"
               >
                 <FaWhatsapp aria-hidden />
-                Consultar data e orçamento
+                Consultar disponibilidade
               </a>
               <Link
                 className={styles.secondaryAction}
