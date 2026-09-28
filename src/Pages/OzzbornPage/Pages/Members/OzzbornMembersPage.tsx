@@ -3,6 +3,7 @@ import {
   MembersImage,
   OZZBORN_MEMBERS_IMAGE,
 } from '../../../../Components/MembersImage'
+import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import background from '../../../../assets/ozzborn/backgrounds/ozzbornMembersAtmosphere.png'
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'
@@ -58,7 +59,8 @@ export function OzzbornMembersPage() {
         <SectionIntro
           eyebrow={OZZBORN_MEMBERS_COPY.eyebrow}
           title={OZZBORN_MEMBERS_COPY.title}
-          reveal={false}
+          titleDelayMs={60}
+          leadDelayMs={130}
           lead={
             <>
               <span className={styles.desktopGuide}>
@@ -72,16 +74,22 @@ export function OzzbornMembersPage() {
         />
 
         <div className={styles.experience}>
-          <div className={styles.portrait}>
-            <MembersImage
-              source={OZZBORN_MEMBERS_IMAGE}
-              className={styles.photoStack}
-              activeId={spotlight.activeId}
-              onHover={spotlight.hover}
-              onSelect={(id) => id && spotlight.select(id)}
-              alt="Adriano, Toddynho, Marcelo e Victor, integrantes do Ozzborn"
-            />
-          </div>
+          <ScrollReveal
+            className={styles.portraitReveal}
+            from="scale"
+            delayMs={120}
+          >
+            <div className={styles.portrait}>
+              <MembersImage
+                source={OZZBORN_MEMBERS_IMAGE}
+                className={styles.photoStack}
+                activeId={spotlight.activeId}
+                onHover={spotlight.hover}
+                onSelect={(id) => id && spotlight.select(id)}
+                alt="Adriano, Toddynho, Marcelo e Victor, integrantes da Ozzborn"
+              />
+            </div>
+          </ScrollReveal>
 
           <OzzbornMemberDetails
             member={member}
@@ -95,12 +103,18 @@ export function OzzbornMembersPage() {
           />
         </div>
 
-        <OzzbornMemberSelector
-          activeId={spotlight.activeId}
-          isLocked={spotlight.isLocked}
-          onHover={spotlight.hover}
-          onSelect={spotlight.select}
-        />
+        <ScrollReveal
+          className={styles.selectorReveal}
+          from="up"
+          delayMs={280}
+        >
+          <OzzbornMemberSelector
+            activeId={spotlight.activeId}
+            isLocked={spotlight.isLocked}
+            onHover={spotlight.hover}
+            onSelect={spotlight.select}
+          />
+        </ScrollReveal>
       </article>
     </SideRockSectionPage>
   )

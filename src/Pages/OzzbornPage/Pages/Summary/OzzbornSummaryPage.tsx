@@ -16,8 +16,8 @@ import styles from './OzzbornSummaryPage.module.css'
 
 const summaryFacts = [
   { value: '3h', label: 'de apresentação' },
-  { value: '4', label: 'integrantes' },
-  { value: 'Ozzy + Sabbath', label: 'duas eras no palco' },
+  { value: '4', label: 'músicos no palco' },
+  { value: 'Ozzy + Sabbath', label: 'duas eras no repertório' },
 ] as const
 
 type SummaryPageStyle = CSSProperties & {
@@ -46,7 +46,7 @@ export function OzzbornSummaryPage() {
         <section className={styles.hero} aria-labelledby="ozzborn-title">
           <div className={styles.heroCopy}>
             <ScrollReveal from="up">
-              <p className={styles.kicker}>Tributo a Ozzy Osbourne · Jundiaí</p>
+              <p className={styles.kicker}>Tributo a Ozzy Osbourne · Jundiaí/SP</p>
             </ScrollReveal>
             <ScrollReveal delayMs={70} from="up">
               <h1 id="ozzborn-title" className={styles.heroTitle}>
@@ -59,23 +59,23 @@ export function OzzbornSummaryPage() {
             </ScrollReveal>
             <ScrollReveal delayMs={120} from="up">
               <p className={styles.heroLead}>
-                Um tributo construído com respeito aos timbres, arranjos e atmosferas que marcaram Ozzy Osbourne e Black Sabbath.
+                Um tributo construído com respeito aos timbres, aos arranjos e às atmosferas que marcaram a trajetória de Ozzy Osbourne, dos primeiros anos com o Black Sabbath aos grandes momentos da carreira solo.
               </p>
             </ScrollReveal>
             <ScrollReveal delayMs={160} from="up">
               <div className={styles.heroActions}>
                 <a className={styles.primaryAction} href={OZZBORN_BOOKING.whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <FaWhatsapp aria-hidden />
-                  Consultar data e orçamento
+                  Consultar disponibilidade
                 </a>
                 <Link className={styles.secondaryAction} to={ozzbornPath('repertorio')}>
-                  Ver repertório
+                  Conhecer o repertório
                   <HiArrowRight aria-hidden />
                 </Link>
               </div>
             </ScrollReveal>
             <ScrollReveal delayMs={200} from="none">
-              <p className={styles.heroContact}>Atendimento direto com <strong>Vanessa</strong> · Manager</p>
+              <p className={styles.heroContact}>Fale diretamente com <strong>Vanessa</strong> · Manager</p>
             </ScrollReveal>
             <ScrollReveal delayMs={220} from="up">
               <dl className={styles.heroFacts}>

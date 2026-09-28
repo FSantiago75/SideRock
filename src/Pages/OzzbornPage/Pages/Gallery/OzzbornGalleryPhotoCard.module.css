@@ -48,9 +48,17 @@
   display: block;
   width: 100%;
   height: auto;
-  transform: scale(1);
+  opacity: 0;
+  transform: scale(1.015);
   transform-origin: center;
-  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.frame[data-image-ready='true'] img {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .overlay {
@@ -126,8 +134,8 @@
       inset 0 0 0 1px rgba(241, 237, 230, 0.04);
   }
 
-  .card:hover .frame img,
-  .card:focus-visible .frame img {
+  .card:hover .frame[data-image-ready='true'] img,
+  .card:focus-visible .frame[data-image-ready='true'] img {
     transform: scale(1.02);
   }
 
@@ -182,13 +190,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card,
-  .frame img {
+  .card {
     transition: none;
   }
 
-  .card:hover .frame img,
-  .card:focus-visible .frame img {
+  .frame img,
+  .frame[data-image-ready='true'] img {
+    transform: none;
+    transition: opacity 240ms ease-out;
+  }
+
+  .card:hover .frame[data-image-ready='true'] img,
+  .card:focus-visible .frame[data-image-ready='true'] img {
     transform: none;
   }
 }

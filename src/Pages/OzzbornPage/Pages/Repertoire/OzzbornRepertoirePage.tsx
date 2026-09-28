@@ -13,6 +13,7 @@ import {
   OZZBORN_REPERTOIRE_CLOSING,
   OZZBORN_REPERTOIRE_ERAS,
   OZZBORN_REPERTOIRE_INTRO,
+  OZZBORN_REPERTOIRE_JOURNEY,
 } from './ozzbornRepertoireContent'
 import styles from './OzzbornRepertoirePage.module.css'
 
@@ -41,12 +42,12 @@ export function OzzbornRepertoirePage() {
         <header className={styles.intro}>
           <div className={styles.introCopy}>
             <ScrollReveal from="up">
-              <p className={styles.introEyebrow}>Repertório Ozzborn</p>
+              <p className={styles.introEyebrow}>{OZZBORN_REPERTOIRE_INTRO.eyebrow}</p>
             </ScrollReveal>
             <ScrollReveal delayMs={55} from="up">
               <h1>
-                Cinco eras.
-                <span>Um show</span>
+                {OZZBORN_REPERTOIRE_INTRO.titleLead}
+                <span>{OZZBORN_REPERTOIRE_INTRO.titleAccent}</span>
               </h1>
             </ScrollReveal>
             <ScrollReveal delayMs={110} from="up">
@@ -55,16 +56,16 @@ export function OzzbornRepertoirePage() {
           </div>
 
           <ScrollReveal className={styles.introJourney} delayMs={150} from="right">
-            <p className={styles.journeyLabel}>O que levamos ao palco</p>
+            <p className={styles.journeyLabel}>{OZZBORN_REPERTOIRE_JOURNEY.label}</p>
             <div className={styles.journeyRange}>
-              <strong>1970</strong>
+              <strong>{OZZBORN_REPERTOIRE_JOURNEY.startYear}</strong>
               <span className={styles.journeyLine} aria-hidden />
-              <strong>2010</strong>
+              <strong>{OZZBORN_REPERTOIRE_JOURNEY.endYear}</strong>
             </div>
             <p>
-              <span>Black Sabbath</span>
+              <span>{OZZBORN_REPERTOIRE_JOURNEY.origin}</span>
               <span aria-hidden>→</span>
-              <span>Ozzy Osbourne</span>
+              <span>{OZZBORN_REPERTOIRE_JOURNEY.destination}</span>
             </p>
           </ScrollReveal>
 
@@ -79,17 +80,6 @@ export function OzzbornRepertoirePage() {
             />
           ))}
         </div>
-
-        <ScrollReveal className={styles.curiosity} from="up">
-          <div className={styles.curiosityMark} aria-hidden>13</div>
-          <div className={styles.curiosityCopy}>
-            <span>Coincidência à altura do Ozzborn</span>
-            <p>
-              São 13 discos no nosso recorte — o mesmo número que dá nome a
-              <em> 13</em>, álbum lançado pelo Black Sabbath em 2013.
-            </p>
-          </div>
-        </ScrollReveal>
 
         <section
           className={styles.closing}
@@ -111,13 +101,13 @@ export function OzzbornRepertoirePage() {
                 rel="noopener noreferrer"
               >
                 <FaWhatsapp aria-hidden />
-                Consultar data e orçamento
+                {OZZBORN_REPERTOIRE_CLOSING.primaryAction}
               </a>
               <Link
                 className={styles.secondaryAction}
                 to={ozzbornPath('galeria')}
               >
-                Ver galeria
+                {OZZBORN_REPERTOIRE_CLOSING.secondaryAction}
                 <HiArrowRight aria-hidden />
               </Link>
             </div>

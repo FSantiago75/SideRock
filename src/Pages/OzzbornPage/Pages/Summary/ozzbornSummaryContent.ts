@@ -9,15 +9,15 @@ export const OZZBORN_SUMMARY_CONTENT = {
     mode: 'cutout' as const,
   },
   story: {
-    index: 'Sobre o Ozzborn',
+    index: 'Sobre a Ozzborn',
     title: 'Respeito em cada detalhe.',
     paragraphs: [
-      'O Ozzborn reúne Marcelo, Victor, Adriano e Toddynho em um tributo construído para respeitar a obra de Ozzy Osbourne — da carreira solo aos anos de Black Sabbath.',
-      'Timbres, arranjos, solos, percussões e bases programadas são tratados como parte essencial da experiência. No palco, cada músico segue a mesma direção para que peso, atmosfera e emoção cheguem ao público com consistência.',
+      'A Ozzborn reúne Marcelo, Victor, Adriano e Toddynho em um tributo dedicado à obra de Ozzy Osbourne, da carreira solo aos anos que ajudaram a transformar o Black Sabbath em uma referência do heavy metal.',
+      'Timbres, arranjos, solos e mudanças de dinâmica são estudados para preservar a identidade de cada música. O uso de VS completa camadas importantes das gravações e ajuda a levar ao palco uma experiência mais próxima do som que o público conhece.',
     ],
     promise: {
       eyebrow: 'No palco',
-      copy: 'Peso, precisão e uma experiência musical construída para honrar Ozzy.',
+      copy: 'Peso, precisão e uma experiência musical construída para honrar a obra de Ozzy Osbourne.',
     },
   },
   repertoire: [

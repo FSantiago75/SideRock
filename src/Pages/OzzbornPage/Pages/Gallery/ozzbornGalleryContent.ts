@@ -15,11 +15,11 @@ export type OzzbornGalleryAlbum = {
 }
 
 export const OZZBORN_GALLERY_COPY = {
-  eyebrow: 'Registros do Ozzborn',
+  eyebrow: 'A Ozzborn em cena',
   title: 'Galeria',
-  lead: 'Momentos de palco, bastidores e apresentações do tributo.',
+  lead: 'O palco, o peso e a fidelidade de um tributo feito para tocar ao vivo.',
   emptyTitle: 'Galeria em preparação',
-  emptyBody: 'Os próximos registros do Ozzborn serão publicados aqui.',
+  emptyBody: 'Os próximos registros da Ozzborn serão publicados aqui.',
 } as const
 
 const IMAGE_EXTENSIONS = /\.(?:avif|gif|jpeg|jpg|png|webp)$/i

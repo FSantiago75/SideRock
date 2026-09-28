@@ -224,6 +224,7 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(1.5rem, 2vw, 2.1rem);
   line-height: 1;
+  text-transform: uppercase;
 }
 
 .heroFacts dd {

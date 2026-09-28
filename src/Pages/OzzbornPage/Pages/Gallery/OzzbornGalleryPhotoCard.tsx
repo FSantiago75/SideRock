@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FiMaximize2 } from 'react-icons/fi'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import type { OzzbornGalleryPhoto } from './ozzbornGalleryContent'
@@ -16,6 +17,8 @@ export function OzzbornGalleryPhotoCard({
   staggerDelayMs = 0,
   onOpen,
 }: OzzbornGalleryPhotoCardProps) {
+  const [imageReady, setImageReady] = useState(false)
+
   return (
     <li className={styles.item}>
       <ScrollReveal className={styles.reveal} from="up" delayMs={staggerDelayMs}>
@@ -26,12 +29,20 @@ export function OzzbornGalleryPhotoCard({
           aria-label={`Ampliar ${photo.alt}`}
           onClick={() => onOpen(photo.id)}
         >
-          <span className={styles.frame}>
+          <span
+            className={styles.frame}
+            data-image-ready={imageReady ? 'true' : 'false'}
+          >
             <img
+              ref={(image) => {
+                if (image?.complete) setImageReady(true)
+              }}
               src={photo.src}
               alt={photo.alt}
               loading={priority ? 'eager' : 'lazy'}
               decoding="async"
+              onLoad={() => setImageReady(true)}
+              onError={() => setImageReady(true)}
             />
           </span>
           <span className={styles.overlay}>

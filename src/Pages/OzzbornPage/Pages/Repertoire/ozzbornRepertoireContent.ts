@@ -39,36 +39,30 @@ export type OzzbornRepertoireEra = {
 }
 
 export const OZZBORN_REPERTOIRE_INTRO = {
-  eyebrow: '13 discos · 5 eras · Uma trajetória',
-  title: 'Repertório',
-  lead: 'O Ozzborn transforma cinco décadas de Ozzy Osbourne e Black Sabbath em um show intenso, reconhecível e construído para conectar diferentes gerações.',
-  signature:
-    '13 discos. Cinco eras. Uma história construída para o palco.',
+  eyebrow: 'Repertório Ozzborn',
+  titleLead: 'Cinco eras.',
+  titleAccent: 'Um show.',
+  lead: 'A Ozzborn percorre cinco décadas de Ozzy Osbourne e Black Sabbath em um show construído com fidelidade aos timbres, aos arranjos e à identidade de cada fase.',
 } as const
 
-export const OZZBORN_REPERTOIRE_STATS = [
-  { value: '13', label: 'discos', highlight: true },
-  { value: '5', label: 'eras', highlight: false },
-  { value: '1970–2010', label: 'arco cronológico', highlight: false },
-  {
-    value: 'Black Sabbath + Ozzy Osbourne',
-    label: 'duas fases artísticas',
-    highlight: false,
-  },
-] as const
+export const OZZBORN_REPERTOIRE_JOURNEY = {
+  label: 'Uma história levada ao palco',
+  startYear: '1970',
+  endYear: '2010',
+  origin: 'Black Sabbath',
+  destination: 'Ozzy Osbourne',
+} as const
 
 export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
   {
     id: 'origem',
-    period: '1970–1972',
-    title: 'O nascimento do heavy metal',
+    period: '1970 a 1972',
+    title: 'Onde o peso começou',
     narrative:
-      'Começamos pelas raízes: peso, atmosfera e riffs que o público reconhece desde o primeiro impacto. É a base mais sombria e visceral do show do Ozzborn.',
+      'A jornada começa nas raízes do Black Sabbath, com riffs marcantes, atmosferas sombrias e o peso que ajudou a definir o heavy metal. A Ozzborn preserva a identidade dessa fase para que o público reconheça sua força desde os primeiros acordes.',
     showRole: [
       'Peso imediato e riffs reconhecíveis',
       'Uma abertura sombria e imponente',
-      'Representar o nascimento do heavy metal',
-      'Conectar o público à fase mais histórica e sombria da trajetória',
     ],
     tone: 'origin',
     albums: [
@@ -79,7 +73,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1970,
         cover: blackSabbath,
         concept:
-          'O surgimento da escuridão, da tensão e de uma nova linguagem musical.',
+          'O início de uma sonoridade sombria, pesada e diferente de tudo o que existia até então.',
       },
       {
         id: 'paranoid-1970',
@@ -88,7 +82,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1970,
         cover: paranoid,
         concept:
-          'A consolidação de uma sonoridade que atravessaria gerações.',
+          'Riffs inesquecíveis e uma identidade musical que atravessou gerações.',
       },
       {
         id: 'vol4-1972',
@@ -97,21 +91,19 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1972,
         cover: vol4,
         concept:
-          'Expansão, contraste e experimentação dentro das raízes do peso.',
+          'Mais contrastes, novas atmosferas e experimentação sem abandonar o peso das origens.',
       },
     ],
   },
   {
     id: 'renascimento',
-    period: '1980–1981',
+    period: '1980 a 1981',
     title: 'O renascimento de Ozzy',
     narrative:
-      'A carreira solo eleva a energia do espetáculo. O Ozzborn traduz essa virada com precisão, virtuosismo e a presença de palco que transformou Ozzy em um nome absoluto do metal.',
+      'A carreira solo abre um novo capítulo, com mais velocidade, virtuosismo e uma linguagem própria. A Ozzborn leva essa transformação ao palco com atenção aos riffs, aos solos e às dinâmicas que tornaram essa fase tão marcante.',
     showRole: [
       'Virtuosismo, velocidade e refrões marcantes',
-      'A virada de energia da carreira solo',
-      'Mostrar o nascimento de uma nova personalidade artística',
-      'Criar um salto de energia em relação à primeira era',
+      'Uma nova fase com identidade própria',
     ],
     tone: 'rebirth',
     albums: [
@@ -122,7 +114,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1980,
         cover: blizzardOfOzz,
         concept:
-          'Renascimento, liberdade criativa e o início de uma identidade solo definitiva.',
+          'O começo de uma nova identidade, com liberdade criativa, riffs marcantes e solos que se tornaram referência.',
       },
       {
         id: 'diary-of-a-madman-1981',
@@ -131,21 +123,19 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1981,
         cover: diaryOfAMadman,
         concept:
-          'Intensidade, complexidade e aprofundamento desse novo universo.',
+          'Mais intensidade, complexidade e profundidade em um dos momentos mais importantes da carreira solo.',
       },
     ],
   },
   {
     id: 'transformacao',
-    period: '1983–1988',
-    title: 'A década da transformação',
+    period: '1983 a 1988',
+    title: 'A força dos anos 80',
     narrative:
-      'Aqui o show cresce: mais teatralidade, guitarras em evidência e a energia exagerada dos anos 80. Uma fase escolhida para ampliar a força visual e musical do Ozzborn no palco.',
+      'Guitarras em evidência, refrões fortes e produções cada vez maiores transformam novamente a sonoridade de Ozzy. A Ozzborn recria os timbres, as camadas e a energia dessa fase sem perder os detalhes que tornam cada música reconhecível.',
     showRole: [
-      'Teatralidade e presença de palco',
-      'A energia intensa dos anos 80',
-      'Ampliar o espetáculo para além do peso das primeiras fases',
-      'Mostrar diferentes transformações preservando a continuidade artística',
+      'Guitarras em evidência e energia crescente',
+      'Timbres e arranjos que definiram uma década',
     ],
     tone: 'transformation',
     albums: [
@@ -156,7 +146,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1983,
         cover: barkAtTheMoon,
         concept:
-          'Transformação, teatralidade e uma nova criatura de palco.',
+          'Uma nova transformação sonora, marcada por guitarras afiadas, energia e identidade própria.',
       },
       {
         id: 'the-ultimate-sin-1986',
@@ -165,7 +155,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1986,
         cover: theUltimateSin,
         concept:
-          'Brilho, produção grandiosa e linguagem de arena.',
+          'Produção grandiosa, refrões fortes e uma sonoridade feita para grandes palcos.',
       },
       {
         id: 'no-rest-for-the-wicked-1988',
@@ -174,21 +164,19 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1988,
         cover: noRestForTheWicked,
         concept:
-          'Retomada do peso e abertura de um novo capítulo musical.',
+          'A retomada do peso e o início de outro capítulo importante da carreira.',
       },
     ],
   },
   {
     id: 'monumental',
-    period: '1991–1995',
-    title: 'Hinos para grandes palcos',
+    period: '1991 a 1995',
+    title: 'Peso, emoção e grandes hinos',
     narrative:
-      'Peso e emoção ocupam o mesmo palco. O Ozzborn usa essa era para criar grandes momentos de canto, conexão e impacto — a dimensão mais monumental da apresentação.',
+      'Nesta fase, peso e emoção dividem o mesmo espaço. A Ozzborn explora essas mudanças de intensidade para criar momentos de impacto, aproximação e canto, sempre preservando a personalidade de cada arranjo.',
     showRole: [
+      'Força e emoção na mesma apresentação',
       'Grandes momentos de conexão com o público',
-      'Força e emoção no mesmo espetáculo',
-      'Ampliar a conexão com diferentes gerações',
-      'Trazer a dimensão dos grandes hinos sem revelar quais são executados',
     ],
     tone: 'monumental',
     albums: [
@@ -199,7 +187,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1991,
         cover: noMoreTears,
         concept:
-          'Equilíbrio entre força, emoção e dimensão monumental.',
+          'Peso, emoção e grandes melodias reunidos em uma das fases mais reconhecidas da carreira.',
       },
       {
         id: 'ozzmosis-1995',
@@ -208,21 +196,19 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 1995,
         cover: ozzmosis,
         concept:
-          'Maturidade, densidade e continuidade de uma identidade consolidada.',
+          'Uma sonoridade mais madura e densa, sem perder a identidade construída ao longo dos anos.',
       },
     ],
   },
   {
     id: 'legado',
-    period: '2001–2010',
-    title: 'O legado continua',
+    period: '2001 a 2010',
+    title: 'Um legado que continua vivo',
     narrative:
-      'O show não vive apenas de nostalgia. A fase moderna mantém o peso, atualiza os timbres e prova que o legado de Ozzy continua funcionando com potência diante de qualquer público.',
+      'A fase moderna mostra que a obra de Ozzy não ficou presa ao passado. Timbres mais atuais e novas produções mantêm o peso e renovam a energia de uma trajetória que continua relevante para diferentes gerações.',
     showRole: [
       'Peso moderno sem perder a identidade',
-      'Um encerramento atual, forte e resistente',
-      'Conectar a identidade histórica a uma produção mais moderna',
-      'Encerrar a viagem cronológica reafirmando a longevidade de Ozzy',
+      'Um encerramento forte para a jornada',
     ],
     tone: 'legacy',
     albums: [
@@ -233,7 +219,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 2001,
         cover: downToEarth,
         concept:
-          'Reflexão, permanência e entrada em um novo século.',
+          'A entrada em um novo século com peso, reflexão e a identidade de Ozzy ainda bem presente.',
       },
       {
         id: 'black-rain-2007',
@@ -242,7 +228,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 2007,
         cover: blackRain,
         concept:
-          'Peso contemporâneo e uma visão de mundo mais sombria.',
+          'Peso contemporâneo, atmosfera sombria e uma produção conectada ao seu tempo.',
       },
       {
         id: 'scream-2010',
@@ -251,16 +237,18 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
         year: 2010,
         cover: scream,
         concept:
-          'Renovação de energia e continuidade do legado.',
+          'Energia renovada e a continuidade de um legado construído ao longo de décadas.',
       },
     ],
   },
 ] as const
 
 export const OZZBORN_REPERTOIRE_CLOSING = {
-  eyebrow: 'O repertório certo para cada palco',
-  title: 'Seu evento merece mais do que uma sequência de músicas.',
-  body: 'O Ozzborn entrega um show com dinâmica, identidade e impacto. Adaptamos o formato ao seu evento sem abrir mão da experiência que conecta fãs de todas as fases de Ozzy.',
+  eyebrow: 'Uma história feita para o palco',
+  title: 'Seu evento merece um tributo que respeita cada fase.',
+  body: 'A Ozzborn transforma décadas de história em um show com peso, dinâmica e fidelidade musical. Uma experiência feita para fãs que conhecem cada detalhe e para quem quer sentir de perto a força da obra de Ozzy Osbourne.',
+  primaryAction: 'Consultar disponibilidade',
+  secondaryAction: 'Ver a banda em ação',
 } as const
 
 export const OZZBORN_REPERTOIRE_ALBUM_COUNT = OZZBORN_REPERTOIRE_ERAS.reduce(

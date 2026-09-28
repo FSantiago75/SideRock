@@ -58,6 +58,19 @@
   min-height: 0;
 }
 
+.portraitReveal {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.selectorReveal {
+  width: 100%;
+  min-width: 0;
+  --reveal-distance: 8px;
+}
+
 .portrait {
   position: relative;
   display: flex;
@@ -583,26 +596,176 @@
   }
 }
 
-@media (max-height: 720px) and (min-width: 761px) {
+@media (max-height: 820px) and (min-width: 761px) {
   .page {
     padding-block: 0.7rem;
     gap: 0.55rem;
   }
 
+  .experience {
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 1.05fr);
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+  }
+
   .details {
+    align-self: stretch;
+    height: 100%;
     --member-card-pad: 0.95rem 1.15rem;
   }
 
   .detailsContent {
-    padding-block: 0.65rem;
+    align-content: center;
+    padding-block: 0.3rem;
   }
 
-  .memberFacts div {
-    padding-block: 0.4rem;
+  .signature {
+    margin-top: 0.4rem;
+  }
+
+  .description {
+    margin-top: 0.35rem;
+    line-height: 1.42;
+  }
+
+  .memberFacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.45rem;
+    border-bottom: 0;
+  }
+
+  .memberFacts > div {
+    grid-template-columns: 1.9rem minmax(0, 1fr);
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.45rem 0.55rem;
+    border-top: 0;
+  }
+
+  .memberFacts > div + div {
+    border-top: 0;
+  }
+
+  .memberFacts > div:nth-child(n + 3) {
+    border-top: 1px solid rgba(241, 237, 230, 0.075);
+  }
+
+  .memberFacts > div:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .memberFacts > div:nth-child(even) {
+    padding-right: 0;
+    border-left: 1px solid rgba(241, 237, 230, 0.075);
+  }
+
+  .factIcon {
+    width: 1.8rem;
+    font-size: 0.82rem;
+  }
+
+  .memberFacts dt {
+    font-size: 0.49rem;
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+  }
+
+  .memberFacts dd {
+    margin-top: 0.14rem;
+    font-size: clamp(0.64rem, 1.6vw, 0.74rem);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .detailsFooter {
+    flex: 0 0 auto;
+    gap: 1rem;
+    margin-top: 0.7rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(241, 237, 230, 0.08);
+  }
+
+  .rotationTrack {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 10rem;
+    min-width: 3.5rem;
+  }
+
+  .arrowControls {
+    flex: 0 0 auto;
+    margin-left: auto;
+    gap: 0.5rem;
   }
 
   .memberSelector button {
     padding-block: 0.5rem;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 761px) and (max-width: 1040px) {
+  .experience {
+    grid-template-columns: minmax(0, 0.9fr) minmax(21rem, 1.1fr);
+  }
+}
+
+@media (max-height: 640px) and (min-width: 761px) {
+  .page {
+    padding-block: 0.35rem;
+    gap: 0.3rem;
+  }
+
+  .details {
+    --member-card-pad: 0.5rem 1.15rem;
+  }
+
+  .detailsContent {
+    padding-block: 0.15rem;
+  }
+
+  .instrumentIcon {
+    width: 2.15rem;
+    font-size: 1.05rem;
+  }
+
+  .memberHeading h2 {
+    font-size: clamp(1.35rem, 7cqi, 2.15rem);
+  }
+
+  .memberHeading p {
+    margin-top: 0.15rem;
+  }
+
+  .signature {
+    margin-top: 0.2rem;
+    font-size: clamp(0.98rem, 3.8cqi, 1.2rem);
+    line-height: 1.15;
+  }
+
+  .description {
+    margin-top: 0.18rem;
+    font-size: 0.82rem;
+    line-height: 1.3;
+  }
+
+  .memberFacts {
+    margin-top: 0.28rem;
+  }
+
+  .memberFacts > div {
+    padding-block: 0.2rem;
+  }
+
+  .detailsFooter {
+    margin-top: 0.45rem;
+    padding-top: 0.45rem;
+  }
+
+  .arrowControls button {
+    width: 2.15rem;
+  }
+
+  .memberSelector button {
+    padding-block: 0.32rem;
   }
 }
 
@@ -667,8 +830,35 @@
     bottom: 2.2rem;
   }
 
+  .memberFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .memberFacts > div {
+    padding-inline: 0;
+    border-left: 0;
+  }
+
+  .memberFacts > div + div {
+    border-top: 1px solid rgba(241, 237, 230, 0.075);
+  }
+
   .detailsFooter {
-    margin-top: 0.15rem;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
+    border-top: 0;
+  }
+
+  .rotationTrack {
+    flex: 0 1 auto;
+    width: min(10rem, 38%);
+    max-width: none;
+    min-width: 0;
+  }
+
+  .arrowControls {
+    margin-left: 0;
   }
 
   .memberSelector {

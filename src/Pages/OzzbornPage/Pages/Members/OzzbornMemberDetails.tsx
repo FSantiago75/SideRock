@@ -3,8 +3,9 @@ import {
   FaBolt,
   FaChevronLeft,
   FaChevronRight,
-  FaLayerGroup,
+  FaClock,
   FaLock,
+  FaMusic,
   FaUnlockAlt,
 } from 'react-icons/fa'
 import styles from './OzzbornMembersPage.module.css'
@@ -83,10 +84,10 @@ function MemberCardBody({
         </div>
         <div>
           <span className={styles.factIcon} aria-hidden>
-            <FaLayerGroup />
+            <FaMusic />
           </span>
           <span>
-            <dt>No show</dt>
+            <dt>Na música</dt>
             <dd>{member.contribution}</dd>
           </span>
         </div>
@@ -95,8 +96,17 @@ function MemberCardBody({
             <FaBolt />
           </span>
           <span>
-            <dt>Presença</dt>
+            <dt>No palco</dt>
             <dd>{member.presence}</dd>
+          </span>
+        </div>
+        <div>
+          <span className={styles.factIcon} aria-hidden>
+            <FaClock />
+          </span>
+          <span>
+            <dt>Anos de experiência</dt>
+            <dd>{member.experience}</dd>
           </span>
         </div>
       </dl>
