@@ -8,6 +8,7 @@ type GalleryAlbumSectionProps = {
 }
 
 const MAX_STAGGER_INDEX = 7
+const INITIAL_STAGGER_DELAY_MS = 140
 const STAGGER_STEP_MS = 70
 
 export function GalleryAlbumSection({ photos, onOpen }: GalleryAlbumSectionProps) {
@@ -19,7 +20,10 @@ export function GalleryAlbumSection({ photos, onOpen }: GalleryAlbumSectionProps
             key={photo.id}
             photo={photo}
             priority={index < 4}
-            staggerDelayMs={Math.min(index, MAX_STAGGER_INDEX) * STAGGER_STEP_MS}
+            staggerDelayMs={
+              INITIAL_STAGGER_DELAY_MS +
+              Math.min(index, MAX_STAGGER_INDEX) * STAGGER_STEP_MS
+            }
             onOpen={onOpen}
           />
         ))}

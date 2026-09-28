@@ -3,6 +3,7 @@ import {
   MembersImage,
   SIDE_ROCK_MEMBERS_IMAGE,
 } from '../../../../Components/MembersImage'
+import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
 import background from '../../../../assets/sideRock/backgrounds/sideRockMembersAtmosphereV2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
@@ -50,7 +51,8 @@ export function MembersPage() {
         <SectionIntro
           eyebrow={SIDE_ROCK_MEMBERS_COPY.eyebrow}
           title={SIDE_ROCK_MEMBERS_COPY.title}
-          reveal={false}
+          titleDelayMs={60}
+          leadDelayMs={130}
           lead={
             <>
             <span className={styles.desktopGuide}>
@@ -64,16 +66,18 @@ export function MembersPage() {
         />
 
         <div className={styles.experience}>
-          <div className={styles.portrait}>
-            <MembersImage
-              source={SIDE_ROCK_MEMBERS_IMAGE}
-              className={styles.photoStack}
-              activeId={spotlight.activeId}
-              onHover={spotlight.hover}
-              onSelect={(id) => id && spotlight.select(id)}
-              alt="Adriano, Toddynho, Marcelo e Victor, integrantes da Side Rock"
-            />
-          </div>
+          <ScrollReveal className={styles.portraitReveal} from="scale" delayMs={120}>
+            <div className={styles.portrait}>
+              <MembersImage
+                source={SIDE_ROCK_MEMBERS_IMAGE}
+                className={styles.photoStack}
+                activeId={spotlight.activeId}
+                onHover={spotlight.hover}
+                onSelect={(id) => id && spotlight.select(id)}
+                alt="Adriano, Toddynho, Marcelo e Victor, integrantes da Side Rock"
+              />
+            </div>
+          </ScrollReveal>
 
           <MemberDetails
             member={member}
@@ -87,12 +91,14 @@ export function MembersPage() {
           />
         </div>
 
-        <MemberSelector
-          activeId={spotlight.activeId}
-          isLocked={spotlight.isLocked}
-          onHover={spotlight.hover}
-          onSelect={spotlight.select}
-        />
+        <ScrollReveal className={styles.selectorReveal} from="up" delayMs={280}>
+          <MemberSelector
+            activeId={spotlight.activeId}
+            isLocked={spotlight.isLocked}
+            onHover={spotlight.hover}
+            onSelect={spotlight.select}
+          />
+        </ScrollReveal>
       </article>
     </SideRockSectionPage>
   )

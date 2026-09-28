@@ -57,6 +57,19 @@
   min-height: 0;
 }
 
+.portraitReveal {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.selectorReveal {
+  width: 100%;
+  min-width: 0;
+  --reveal-distance: 12px;
+}
+
 .portrait {
   position: relative;
   display: flex;
@@ -113,7 +126,10 @@
   box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(16px);
   touch-action: pan-y;
-  animation: detailsEntrance 760ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    detailsEntrance 820ms 210ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
 
 .details::before {
@@ -539,8 +555,15 @@
 }
 
 @keyframes detailsEntrance {
-  from { opacity: 0; translate: 1.2rem 0; }
-  to { opacity: 1; translate: 0; }
+  from {
+    opacity: 0;
+    translate: 1.6rem 0;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0;
+  }
 }
 
 @keyframes cardSwapIn {

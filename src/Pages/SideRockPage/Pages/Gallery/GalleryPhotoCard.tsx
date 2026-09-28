@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FiMaximize2 } from 'react-icons/fi'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import type { GalleryPhoto } from './galleryContent'
@@ -16,6 +17,8 @@ export function GalleryPhotoCard({
   staggerDelayMs = 0,
   onOpen,
 }: GalleryPhotoCardProps) {
+  const [imageReady, setImageReady] = useState(false)
+
   return (
     <li className={styles.item}>
       <ScrollReveal className={styles.reveal} from="up" delayMs={staggerDelayMs}>
@@ -26,12 +29,20 @@ export function GalleryPhotoCard({
           aria-label={`Ampliar ${photo.alt}`}
           onClick={() => onOpen(photo.id)}
         >
-          <span className={styles.frame}>
+          <span
+            className={styles.frame}
+            data-image-ready={imageReady ? 'true' : 'false'}
+          >
             <img
+              ref={(image) => {
+                if (image?.complete) setImageReady(true)
+              }}
               src={photo.src}
               alt={photo.alt}
               loading={priority ? 'eager' : 'lazy'}
               decoding="async"
+              onLoad={() => setImageReady(true)}
+              onError={() => setImageReady(true)}
             />
           </span>
           <span className={styles.overlay}>

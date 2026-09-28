@@ -113,7 +113,7 @@
 }
 
 .bandItem { flex: 1 1 0; min-width: 0; }
-.bandReveal { width: 100%; min-width: 0; }
+.bandReveal { width: 100%; min-width: 0; height: 100%; }
 .bandLogo { min-height: 5.6rem; display: flex; align-items: center; justify-content: center; }
 .bandLogo img { display: block; width: auto; max-width: min(100%, var(--repertoire-logo-max-width, 10.75rem)); height: auto; max-height: var(--repertoire-logo-max-height, 5.35rem); object-fit: contain; filter: grayscale(1) brightness(1.65) contrast(0.8); opacity: 0.78; transition: filter 260ms ease, opacity 260ms ease, transform 260ms ease; }
 .bandLogo[data-logo-scale='wide'] img { max-width: min(100%, 12.5rem); }
