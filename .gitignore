@@ -25,3 +25,4 @@ dist-ssr
 *.md
 !docs/PROJETO_ATUAL.md
 !patterns.md
+!THIRD_PARTY_NOTICES.md

@@ -1,5 +1,8 @@
 import type { IconType } from 'react-icons'
-import { FaDrum, FaGuitar, FaMicrophoneAlt, FaWaveSquare } from 'react-icons/fa'
+import { VocalIcon } from '../../../../Components/InstrumentIcons/VocalIcon'
+import { ElectricGuitarIcon } from '../../../../Components/InstrumentIcons/ElectricGuitarIcon'
+import { BassGuitarIcon } from '../../../../Components/InstrumentIcons/BassGuitarIcon'
+import { DrumKitIcon } from '../../../../Components/InstrumentIcons/DrumKitIcon'
 import type { MembersImageMemberId } from '../../../../Components/MembersImage'
 
 export type MemberId = MembersImageMemberId
@@ -37,7 +40,7 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     contribution: 'Amplitude, potência e interpretação',
     presence: 'Condução e conexão',
     experience: '+30 anos de música',
-    Icon: FaMicrophoneAlt,
+    Icon: VocalIcon,
   },
   {
     id: 'guitar',
@@ -50,7 +53,7 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     contribution: 'Timbres, riffs e solos fiéis',
     presence: 'Precisão e intensidade',
     experience: '+20 anos de música',
-    Icon: FaGuitar,
+    Icon: ElectricGuitarIcon,
   },
   {
     id: 'bass',
@@ -63,7 +66,7 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     contribution: 'Peso, equilíbrio e sustentação',
     presence: 'Solidez e presença',
     experience: '+20 anos de música',
-    Icon: FaWaveSquare,
+    Icon: BassGuitarIcon,
   },
   {
     id: 'drums',
@@ -76,12 +79,14 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     contribution: 'Pulso, dinâmica e impacto',
     presence: 'Energia e movimento',
     experience: '+20 anos de música',
-    Icon: FaDrum,
+    Icon: DrumKitIcon,
   },
 ] as const
 
 export function getMemberById(id: MemberId): SideRockMember {
-  return SIDE_ROCK_MEMBERS.find((member) => member.id === id) ?? SIDE_ROCK_MEMBERS[0]
+  return (
+    SIDE_ROCK_MEMBERS.find((member) => member.id === id) ?? SIDE_ROCK_MEMBERS[0]
+  )
 }
 
 export function formatMemberIndex(index: number): string {

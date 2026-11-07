@@ -1,0 +1,65 @@
+.venues {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+.venues article {
+  flex: 0 0 min(80%, 21rem);
+  padding: 1.5rem;
+  border: 1px solid #ffffff29;
+  scroll-snap-align: start;
+}
+.venues h3 {
+  font:
+    1.7rem Georgia,
+    serif;
+}
+.venues p,
+.venues span {
+  color: #cec8c0;
+}
+.venues:focus-visible {
+  outline: 2px solid var(--summary-accent-hot);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .venues {
+    scroll-behavior: auto;
+  }
+}
+.venueImage {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid #ffffff18;
+  background: linear-gradient(135deg, #d32f350d, #ffffff04);
+}
+.venueImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.venues article[data-empty] {
+  border-style: dashed;
+}
+.venues article[data-empty] .venueCity,
+.venues article[data-empty] .venueName,
+.venues article[data-empty] .venueContext {
+  display: block;
+  min-height: 0.7rem;
+  background: #ffffff08;
+  border-radius: 2px;
+}
+.venues article[data-empty] .venueCity {
+  width: 35%;
+  margin-top: 1.25rem;
+}
+.venues article[data-empty] .venueName {
+  width: 75%;
+  margin-block: 1rem;
+}
+.venues article[data-empty] .venueContext {
+  width: 55%;
+}

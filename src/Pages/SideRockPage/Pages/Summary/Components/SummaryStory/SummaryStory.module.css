@@ -1,0 +1,18 @@
+.storyLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: center;
+}
+.storyLayout h2 {
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 4.5vw, 4.8rem);
+  max-width: 15ch;
+  line-height: 0.98;
+}
+@media (max-width: 960px) {
+  .storyLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

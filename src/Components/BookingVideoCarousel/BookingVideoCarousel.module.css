@@ -1,0 +1,227 @@
+.videoCaption span {
+  margin: 0;
+  color: var(--summary-accent-hot);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.videoCarousel {
+  width: min(100%, 46rem);
+}
+
+.videoRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 46rem);
+  outline: none;
+}
+
+.videoPagination {
+  display: none;
+}
+
+.videoRow:focus-visible {
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--summary-accent) 38%, transparent);
+}
+
+.videoCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--summary-accent) 28%, transparent);
+  background: rgba(8, 8, 8, 0.78);
+  box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.34);
+}
+
+.videoFrame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 9 / 16;
+  background: #020202;
+}
+
+.videoFrame video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border: 0;
+  object-fit: cover;
+  object-position: center;
+  background: #020202;
+  color-scheme: dark;
+}
+
+.videoFrame video::-webkit-media-controls-enclosure {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.videoFrame video::-webkit-media-controls-panel {
+  width: 100%;
+}
+
+.videoCaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+}
+
+.videoCaption a {
+  color: rgba(241, 237, 230, 0.76);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.92rem, 1.4vw, 1.2rem);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.videoCaption a:hover {
+  color: #fff;
+}
+
+.videoCaption a:focus-visible {
+  outline: 2px solid var(--summary-accent-hot);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .videoRow {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .videoRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .videoRow[data-animating='true'] {
+    scroll-snap-type: none;
+  }
+
+  .videoCard {
+    flex: 0 0 100%;
+    min-width: 100%;
+    scroll-snap-align: start;
+  }
+
+  .videoPagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    color: rgba(241, 237, 230, 0.44);
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .videoPagination > div {
+    display: flex;
+    align-items: center;
+    gap: 0.42rem;
+  }
+
+  .videoPagination button {
+    width: 1.65rem;
+    height: 0.22rem;
+    padding: 0;
+    border: 0;
+    background: rgba(241, 237, 230, 0.2);
+    cursor: pointer;
+    transition:
+      background-color 220ms ease,
+      transform 220ms ease;
+  }
+
+  .videoPagination .videoDotActive {
+    background: var(--summary-accent-hot);
+    transform: scaleY(1.6);
+  }
+
+  .videoPagination button:hover {
+    background: rgba(241, 237, 230, 0.42);
+  }
+
+  .videoPagination button:focus-visible {
+    outline: 1px solid var(--summary-paper);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 590px) {
+  .videoCaption {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0.75rem 0.85rem;
+  }
+}
+
+/* Off-screen video controls can be omitted by mobile browsers before playback. */
+.mobilePlay,
+.mobilePlayError {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .mobilePlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    border: 1px solid var(--summary-accent-hot);
+    border-radius: 50%;
+    background: #080808d9;
+    color: var(--summary-paper, #f1ede6);
+    box-shadow: 0 4px 24px #0008;
+    cursor: pointer;
+  }
+  .mobilePlay svg {
+    width: 21px;
+    height: 21px;
+    margin-left: 3px;
+  }
+  .mobilePlay:disabled {
+    opacity: 0.65;
+    cursor: progress;
+  }
+  .mobilePlay:focus-visible {
+    outline: 2px solid var(--summary-paper, #f1ede6);
+    outline-offset: 4px;
+  }
+  .mobilePlayError {
+    display: block;
+    position: absolute;
+    top: calc(50% + 44px);
+    left: 1rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0.75rem;
+    background: #080808e6;
+    color: #f1ede6;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}

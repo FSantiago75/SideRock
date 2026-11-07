@@ -1,140 +1,62 @@
-import type { CSSProperties } from 'react'
-import { FaWhatsapp } from 'react-icons/fa6'
-import { HiArrowRight } from 'react-icons/hi2'
-import { Link } from 'react-router-dom'
-import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
+import { useRef, type CSSProperties } from 'react'
+import { CompanyLegalBar } from '../../../../Components/CompanyLegalBar/CompanyLegalBar'
 import bg from '../../../../assets/sideRock/backgrounds/sideRockSummaryAtmosphereV2.png'
 import { SideRockSectionPage } from '../../Components/SectionPage/SideRockSectionPage'
-import { sideRockPath } from '../../sectionConstants'
-import { BandHeroVisual } from './BandHeroVisual'
-import { BookingSection } from './BookingSection'
-import { SIDE_ROCK_BOOKING } from './bookingContent'
+import { SIDE_ROCK_BOOKING } from './Content/bookingContent'
+import { SIDE_ROCK_VENUES } from './Content/venuesContent'
 import styles from './SummaryPage.module.css'
-import { SIDE_ROCK_SUMMARY_CONTENT } from './summaryContent'
-
-const summaryFacts = [
-  { value: '5+', label: 'anos de estrada' },
-  { value: '4', label: 'músicos no palco' },
-  { value: 'Ao vivo', label: 'energia de banda completa' },
-] as const
-
-type SummaryPageStyle = CSSProperties & {
-  '--summary-hero-image': string
-}
+import bookingStyles from './BookingSection.module.css'
+import layout from './Styles/SummaryLayout.module.css'
+import { SummaryHero } from './Components/SummaryHero/SummaryHero'
+import { SummaryStory } from './Components/SummaryStory/SummaryStory'
+import { SummaryLive } from './Components/SummaryLive/SummaryLive'
+import { SummaryMembers } from './Components/SummaryMembers/SummaryMembers'
+import { SummaryVenues } from './Components/SummaryVenues/SummaryVenues'
+import { SummaryRepertoire } from './Components/SummaryRepertoire/SummaryRepertoire'
+import { SummaryBooking } from './Components/SummaryBooking/SummaryBooking'
+import { SummaryFooter } from './Components/SummaryFooter/SummaryFooter'
 
 export function SummaryPage() {
-  const { heroPhoto, repertoire, story } = SIDE_ROCK_SUMMARY_CONTENT
-  const pageStyle: SummaryPageStyle = {
-    '--summary-hero-image': `url(${bg})`,
+  const articleRef = useRef<HTMLElement>(null)
+  const pageStyle = { '--summary-hero-image': `url(${bg})` } as CSSProperties
+
+  function goTo(id: string) {
+    const target = articleRef.current?.querySelector<HTMLElement>(`#${id}`)
+    target?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'instant'
+        : 'smooth',
+      block: 'start',
+    })
+    target?.focus({ preventScroll: true })
   }
 
   return (
     <SideRockSectionPage layout="flow">
-      <article className={styles.page} style={pageStyle}>
-        <section className={styles.hero} aria-labelledby="side-rock-title">
-          <div className={styles.heroCopy}>
-            <ScrollReveal from="up">
-              <p className={styles.kicker}>
-                Classic rock · Hard rock · Heavy metal
-              </p>
-            </ScrollReveal>
+      <article
+        ref={articleRef}
+        className={`${styles.page} ${layout.journey}`}
+        style={pageStyle}
+      >
+        <SummaryHero onExplore={() => goTo('ao-vivo')} />
 
-            <ScrollReveal delayMs={70} from="up">
-              <h1 id="side-rock-title" className={styles.heroTitle}>
-                <span className={styles.heroBrand}>Side Rock</span>
-                <span className={styles.heroDescriptor}>
-                  <span>Rock internacional</span>
-                  <span>Energia ao vivo.</span>
-                </span>
-              </h1>
-            </ScrollReveal>
+        <SummaryStory />
 
-            <ScrollReveal delayMs={120} from="up">
-              <p className={styles.heroLead}>
-                Clássicos escolhidos a dedo, execução fiel e a energia de quatro
-                músicos preparados para transformar cada apresentação em uma
-                experiência.
-              </p>
-            </ScrollReveal>
+        <SummaryLive />
 
-            <ScrollReveal delayMs={160} from="up">
-              <div className={styles.heroActions}>
-                <a
-                  className={styles.primaryAction}
-                  href={SIDE_ROCK_BOOKING.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaWhatsapp aria-hidden />
-                  Consultar disponibilidade
-                </a>
-                <Link
-                  className={styles.secondaryAction}
-                  to={sideRockPath('repertorio')}
-                >
-                  Conhecer o repertório
-                  <HiArrowRight aria-hidden />
-                </Link>
-              </div>
-            </ScrollReveal>
+        <SummaryMembers />
 
-            <ScrollReveal delayMs={200} from="none">
-              <p className={styles.heroContact}>
-                Fale diretamente com <strong>Vanessa</strong> · Manager
-              </p>
-            </ScrollReveal>
+        {SIDE_ROCK_VENUES.length > 0 && <SummaryVenues />}
 
-            <ScrollReveal delayMs={220} from="up">
-              <dl className={styles.heroFacts}>
-                {summaryFacts.map(({ value, label }) => (
-                  <div key={label}>
-                    <dt>{value}</dt>
-                    <dd>{label}</dd>
-                  </div>
-                ))}
-              </dl>
-            </ScrollReveal>
-          </div>
+        <SummaryRepertoire index={SIDE_ROCK_VENUES.length ? '05' : '04'} />
 
-          <ScrollReveal className={styles.heroVisual} from="scale" delayMs={90}>
-            <BandHeroVisual {...heroPhoto} />
-          </ScrollReveal>
-        </section>
-
-        <section className={styles.story} aria-labelledby="summary-title">
-          <ScrollReveal className={styles.storyHeading} from="left">
-            <p className={styles.sectionIndex}>{story.index}</p>
-            <h2 id="summary-title">{story.title}</h2>
-          </ScrollReveal>
-
-          <ScrollReveal className={styles.storyBody} from="right" delayMs={80}>
-            {story.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </ScrollReveal>
-
-          <ScrollReveal className={styles.promise} delayMs={120}>
-            <span>{story.promise.eyebrow}</span>
-            <strong>{story.promise.copy}</strong>
-          </ScrollReveal>
-        </section>
-
-        <BookingSection />
-
-        <section
-          className={styles.repertoire}
-          aria-label="Referências do repertório"
-        >
-          <div
-            className={styles.repertoireTrack}
-            tabIndex={0}
-            aria-label="Deslize para explorar as referências do repertório"
-          >
-            {repertoire.map((artist) => (
-              <span key={artist}>{artist}</span>
-            ))}
-          </div>
-        </section>
+        <SummaryBooking index={SIDE_ROCK_VENUES.length ? '06' : '05'} />
+        <CompanyLegalBar
+          location={SIDE_ROCK_BOOKING.location}
+          className={bookingStyles.legalBar}
+          textClassName={bookingStyles.legal}
+        />
+        <SummaryFooter />
       </article>
     </SideRockSectionPage>
   )

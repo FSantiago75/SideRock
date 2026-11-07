@@ -1,0 +1,198 @@
+.repertoirePreview {
+  border: 1px solid #ffffff2e;
+  background: #080808;
+}
+.atmosphereTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 1px solid #ffffff2e;
+}
+.atmosphereTabs button {
+  min-height: 56px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #bdb8b1;
+  background: transparent;
+  font: inherit;
+  line-height: 1.4;
+}
+.atmosphereTabs button {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+@media (hover: hover) {
+  .atmosphereTabs button[data-state='inactive']:hover {
+    background: #ffffff0d;
+    color: #fff;
+    border-bottom-color: #ff747a80;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atmosphereTabs button {
+    transition: none;
+  }
+}
+.atmosphereTabs button[data-state='active'] {
+  background: #d32f3520;
+  border-bottom-color: #ff5258;
+  color: #fff;
+}
+.atmospherePanel {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at 100% 0, #d32f3525, transparent 70%);
+}
+.atmospherePanel[data-tone='alternativo'] {
+  background: radial-gradient(ellipse at 100% 100%, #8b6a6325, transparent 70%);
+}
+.atmospherePanel[data-tone='metal'] {
+  background: radial-gradient(ellipse at 100% 50%, #d32f3538, transparent 70%);
+}
+.atmospherePanel[hidden] {
+  display: none;
+}
+.atmosphereMood {
+  color: #ff747a;
+  margin: 0 0 1rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+.atmospherePanel h3 {
+  margin: 0;
+  max-width: 23ch;
+  color: #f1ede6;
+  font:
+    clamp(1.9rem, 3.5vw, 3.4rem)/1.1 Georgia,
+    serif;
+  letter-spacing: -0.035em;
+}
+.repertoireExplore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.repertoireExplore > p {
+  color: #bdb8b1;
+  max-width: 48ch;
+  font-size: 0.88rem;
+}
+.repertoireExplore > a {
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .repertoireExplore {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .repertoireExplore > a {
+    width: 100%;
+  }
+  .atmosphereTabs button {
+    padding: 0.85rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .atmospherePanel {
+    min-height: 16rem;
+  }
+}
+.atmosphereTabs button {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 650;
+  padding: 1rem 0.5rem;
+}
+.atmospherePanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  min-height: 20rem;
+}
+.referenceArt {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #ffffff18;
+  background: radial-gradient(ellipse, #d32f3520, transparent 70%);
+}
+.referenceArt img {
+  width: 100%;
+  max-width: 16rem;
+  height: 9rem;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+.referenceArt figcaption {
+  color: #bdb8b1;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.atmosphereCopy {
+  min-width: 0;
+}
+.atmosphereCopy h3 {
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  max-width: 20ch;
+}
+.atmosphereCopy > p:last-child {
+  color: #cec8c0;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 45ch;
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .atmospherePanel {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    min-height: 0;
+  }
+  .referenceArt {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .referenceArt img {
+    height: 6.5rem;
+    max-width: 12rem;
+  }
+  .atmosphereMood {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+  .atmosphereCopy h3 {
+    font-size: 1.8rem;
+  }
+}
+.atmospherePanels {
+  display: grid;
+}
+.atmospherePanels > .atmospherePanel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 240ms ease,
+    visibility 0s linear 240ms;
+}
+.atmospherePanels > .atmospherePanel[data-state='active'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .atmospherePanels > .atmospherePanel {
+    transition: none;
+  }
+}

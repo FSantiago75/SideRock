@@ -1,3 +1,4 @@
+import { SIDE_ROCK_QUICK_WHATSAPP_URL } from '../../bookingContact'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa6'
 
 export const SIDE_ROCK_SOCIAL_LINKS = [
@@ -7,7 +8,7 @@ export const SIDE_ROCK_SOCIAL_LINKS = [
     Icon: FaInstagram,
   },
   {
-    href: 'https://wa.me/5511971632992',
+    href: SIDE_ROCK_QUICK_WHATSAPP_URL,
     label: 'WhatsApp para contratar a Side Rock',
     Icon: FaWhatsapp,
   },

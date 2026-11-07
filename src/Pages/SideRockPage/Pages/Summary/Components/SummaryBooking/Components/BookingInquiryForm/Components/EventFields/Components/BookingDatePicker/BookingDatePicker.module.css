@@ -1,0 +1,108 @@
+.dateTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 50px;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ffffff35;
+  background: #080808;
+  color: #f1ede6;
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+}
+.dateTrigger > svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: #ff747a;
+}
+.dateTrigger [data-placeholder] {
+  color: #a9a29b;
+}
+.dateTrigger[data-state='open'] {
+  border-color: #ff5258;
+}
+.calendarContent {
+  z-index: 100;
+  padding: 0.8rem;
+  max-width: calc(100vw - 24px);
+  box-sizing: border-box;
+  border: 1px solid #d32f35;
+  background: #131010;
+  color: #f1ede6;
+  box-shadow: 0 18px 50px #000b;
+}
+.calendarContent :global(.rdp-root) {
+  --rdp-accent-color: #ff747a;
+  --rdp-accent-background-color: #d32f3525;
+  --rdp-day_button-border-radius: 3px;
+  --rdp-today-color: #ff9095;
+  --rdp-disabled-opacity: 0.3;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.calendarContent :global(.rdp-day_button) {
+  color: inherit;
+}
+.calendarContent :global(.rdp-selected) {
+  background: #d32f35;
+  color: #fff;
+}
+.calendarContent :global(.rdp-day_button):hover {
+  background: #d32f3530;
+}
+.calendarContent :global(.rdp-month_caption) {
+  text-transform: capitalize;
+  font-size: 0.95rem;
+}
+.clearDate {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 0.75rem;
+  border: 1px solid #ffffff35;
+  background: #ffffff08;
+  color: #f1ede6;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.calendarContent button:focus-visible {
+  outline: 2px solid #ff747a;
+  outline-offset: 2px;
+}
+@media (max-width: 760px) {
+  .dateTrigger {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  .calendarContent {
+    padding: 0.5rem;
+  }
+  .calendarContent :global(.rdp-root) {
+    --rdp-day-width: 40px;
+    --rdp-day-height: 44px;
+    --rdp-day_button-width: 38px;
+  }
+}
+.calendarContent {
+  max-height: min(
+    calc(100dvh - 24px),
+    var(--radix-popover-content-available-height)
+  );
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d32f35 #131010;
+}
+@media (max-width: 360px) {
+  .calendarContent :global(.rdp-root) {
+    --rdp-day-width: 38px;
+    --rdp-day_button-width: 36px;
+  }
+}
