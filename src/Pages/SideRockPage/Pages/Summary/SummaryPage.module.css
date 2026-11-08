@@ -683,3 +683,7 @@
 .page > .legalBar {
   margin-top: 0;
 }
+
+.heroFacts dt.duration {
+  text-transform: none;
+}

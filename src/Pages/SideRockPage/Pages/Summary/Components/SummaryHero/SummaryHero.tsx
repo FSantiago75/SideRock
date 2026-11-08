@@ -41,11 +41,11 @@ export function SummaryHero({ onExplore }: { onExplore: () => void }) {
         <dl className={styles.heroFacts}>
           {[
             { value: '4', label: 'músicos no palco' },
-            { value: '≈ 2h', label: 'de apresentação' },
+            { value: '2h30', label: 'de apresentação' },
             { value: 'Jundiaí', label: 'e região' },
           ].map(({ value, label }) => (
             <div key={label}>
-              <dt>{value}</dt>
+              <dt className={value === '2h30' ? styles.duration : undefined}>{value}</dt>
               <dd>{label}</dd>
             </div>
           ))}

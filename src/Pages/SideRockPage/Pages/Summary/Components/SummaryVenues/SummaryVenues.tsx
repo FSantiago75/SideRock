@@ -1,4 +1,5 @@
 import { VenueCard } from './Components/VenueCard'
+import { PrivateEventsCard } from '../../../../../../Components/PrivateEventsCard/PrivateEventsCard'
 import { ScrollReveal } from '../../../../../../Components/ScrollReveal/ScrollReveal'
 import layout from '../../Styles/SummaryLayout.module.css'
 import { SIDE_ROCK_VENUES } from '../../Content/venuesContent'
@@ -28,6 +29,12 @@ export function SummaryVenues() {
           <VenueCard key={venue.id} venue={venue} />
         ))}
       </div>
+      <ScrollReveal>
+        <PrivateEventsCard
+          title="O palco também pode ser a sua festa."
+          description="Dos aniversários às festas particulares, a Side Rock já levou seu show para quem faz do rock parte da própria história. A mesma entrega dos palcos, perto de você e dos seus convidados."
+        />
+      </ScrollReveal>
     </section>
   )
 }

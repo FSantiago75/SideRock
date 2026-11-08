@@ -591,3 +591,7 @@
 .primaryAction:hover {
   color: #0c0714;
 }
+
+.heroFacts dt.duration {
+  text-transform: none;
+}

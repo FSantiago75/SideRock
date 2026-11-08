@@ -1,4 +1,5 @@
 import { VenueCard } from './Components/VenueCard'
+import { PrivateEventsCard } from '../../../../../../Components/PrivateEventsCard/PrivateEventsCard'
 import { ScrollReveal } from '../../../../../../Components/ScrollReveal/ScrollReveal'
 import layout from '../../Styles/SummaryLayout.module.css'
 import { OZZBORN_VENUES } from '../../Content/ozzbornVenuesContent'
@@ -28,6 +29,12 @@ export function OzzbornSummaryVenues() {
           <VenueCard key={venue.id} venue={venue} />
         ))}
       </div>
+      <ScrollReveal>
+        <PrivateEventsCard
+          title="Sua paixão por Ozzy dá o tom da festa."
+          description="Aniversários e festas particulares também têm espaço para a Ozzborn. O peso e a atmosfera de um show de Ozzy, recriados com cuidado para celebrar junto de quem compartilha essa paixão."
+        />
+      </ScrollReveal>
     </section>
   )
 }

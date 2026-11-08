@@ -8,7 +8,7 @@ import { OZZBORN_SUMMARY_CONTENT } from '../../Content/ozzbornSummaryContent'
 import styles from '../../OzzbornSummaryPage.module.css'
 
 const summaryFacts = [
-  { value: '3h', label: 'de apresentação' },
+  { value: '2h30', label: 'de apresentação' },
   { value: '4', label: 'músicos no palco' },
   { value: 'Ozzy + Sabbath', label: 'duas eras no repertório' },
 ] as const
@@ -71,7 +71,7 @@ export function OzzbornSummaryHero({ onExplore }: { onExplore: () => void }) {
           <dl className={styles.heroFacts}>
             {summaryFacts.map(({ value, label }) => (
               <div key={label}>
-                <dt>{value}</dt>
+                <dt className={value === '2h30' ? styles.duration : undefined}>{value}</dt>
                 <dd>{label}</dd>
               </div>
             ))}

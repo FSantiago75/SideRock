@@ -14,19 +14,19 @@ export type SideRockVenue = {
 export const SIDE_ROCK_VENUES: readonly SideRockVenue[] = [
   {
     id: 'palco-1',
-    name: 'The Best Beer Festival',
-    city: 'Campinas / SP',
-    address: 'Praça Arautos da Paz · Taquaral',
-    context: 'Prefeitura de Campinas',
-    image: '/images/venues/prefeituraCampinasWhite.png',
-  },
-  {
-    id: 'palco-2',
     name: 'Sexta no Centro',
     city: 'Jundiaí / SP',
     address: 'Praça Marechal Floriano Peixoto · Centro',
     context: 'Prefeitura de Jundiaí',
     image: '/images/venues/prefeituraJundiaiWhite.png',
+  },
+  {
+    id: 'palco-2',
+    name: 'The Best Beer Festival',
+    city: 'Campinas / SP',
+    address: 'Praça Arautos da Paz · Taquaral',
+    context: 'Prefeitura de Campinas',
+    image: '/images/venues/prefeituraCampinasWhite.png',
   },
   {
     id: 'palco-3',
