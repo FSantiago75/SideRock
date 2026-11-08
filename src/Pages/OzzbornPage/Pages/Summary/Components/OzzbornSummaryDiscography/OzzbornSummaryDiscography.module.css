@@ -1,0 +1,206 @@
+.discographyPreview {
+  border: 1px solid #ffffff2e;
+  background: #080808;
+}
+.chapterTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 1px solid #ffffff2e;
+}
+.chapterTabs button {
+  min-height: 56px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #bdb8b1;
+  background: transparent;
+  font: inherit;
+  line-height: 1.4;
+}
+.chapterTabs button {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+@media (hover: hover) {
+  .chapterTabs button[data-state='inactive']:hover {
+    background: #ffffff0d;
+    color: #fff;
+    border-bottom-color: #c4b5fd80;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapterTabs button {
+    transition: none;
+  }
+}
+.chapterTabs button[data-state='active'] {
+  background: #7c3aed20;
+  border-bottom-color: #c4b5fd;
+  color: #fff;
+}
+.chapterPanel {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at 100% 0, #7c3aed25, transparent 70%);
+}
+.chapterPanel[data-tone='carreira-solo'] {
+  background: radial-gradient(ellipse at 100% 100%, #6d28d925, transparent 70%);
+}
+.chapterPanel[data-tone='novas-fases'] {
+  background: radial-gradient(ellipse at 100% 50%, #7c3aed38, transparent 70%);
+}
+.chapterPanel[hidden] {
+  display: none;
+}
+.chapterPeriod {
+  color: #c4b5fd;
+  margin: 0 0 1rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+.chapterPanel h3 {
+  margin: 0;
+  max-width: 23ch;
+  color: #f1ede6;
+  font:
+    clamp(1.9rem, 3.5vw, 3.4rem)/1.1 Georgia,
+    serif;
+  letter-spacing: -0.035em;
+}
+.discographyExplore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.discographyExplore > p {
+  color: #bdb8b1;
+  max-width: 48ch;
+  font-size: 0.88rem;
+}
+.discographyExplore > a {
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .discographyExplore {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .discographyExplore > a {
+    width: 100%;
+  }
+  .chapterTabs button {
+    padding: 0.85rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .chapterPanel {
+    min-height: 16rem;
+  }
+}
+.chapterTabs button {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 650;
+  padding: 1rem 0.5rem;
+}
+.chapterPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  min-height: 20rem;
+}
+.chapterCopy {
+  min-width: 0;
+}
+.chapterCopy h3 {
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  max-width: 20ch;
+}
+.chapterCopy > p:last-child {
+  color: #cec8c0;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 45ch;
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .chapterPanel {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    min-height: 0;
+  }
+  .chapterPeriod {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+  .chapterCopy h3 {
+    font-size: 1.8rem;
+  }
+}
+.chapterPanels {
+  display: grid;
+}
+.chapterPanels > .chapterPanel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 240ms ease,
+    visibility 0s linear 240ms;
+}
+.chapterPanels > .chapterPanel[data-state='active'] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapterPanels > .chapterPanel {
+    transition: none;
+  }
+}
+
+.albumArt {
+  position: relative;
+  width: min(100%, 17rem);
+  margin: 0 auto;
+}
+.albumArt img {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid #ffffff2e;
+  box-shadow: 0 1rem 3rem #0007;
+}
+.albumArt img[data-secondary] {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.4rem;
+  width: 90%;
+  transform: rotate(7deg);
+  opacity: 0.65;
+}
+.albumArt figcaption {
+  margin-top: 1rem;
+  text-align: center;
+  color: #bdb8b1;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .albumArt {
+    width: min(100%, 13rem);
+  }
+  .chapterTabs button {
+    font-size: 0.78rem;
+  }
+}

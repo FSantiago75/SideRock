@@ -1,0 +1,262 @@
+.inquiryForm {
+  border: 1px solid
+    color-mix(in srgb, var(--summary-accent, #d32f35) 33.33%, transparent);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--summary-accent, #d32f35) 8.24%, transparent),
+    #070707
+  );
+  min-width: 0;
+}
+.formFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
+}
+.formFields label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: #f1ede6;
+}
+.formFields label > span {
+  display: contents;
+  color: #a9a29b;
+  font-size: 0.73rem;
+}
+.formFields input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.85rem;
+  border: 1px solid #ffffff35;
+  border-radius: 0;
+  background: #080808;
+  color: #f1ede6;
+  font: inherit;
+  font-size: 0.9rem;
+  color-scheme: dark;
+}
+.formFields input::placeholder {
+  color: #a9a29b;
+  opacity: 1;
+}
+.formFields input:focus-visible {
+  outline: 2px solid var(--summary-accent-hot);
+  outline-offset: 2px;
+}
+.formFields small {
+  color: #bdb8b1;
+  line-height: 1.45;
+  font-size: 0.72rem;
+}
+.formWide {
+  grid-column: 1/-1;
+}
+.inquiryForm > button {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+.formHint {
+  color: #bdb8b1;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+@media (max-width: 540px) {
+  .formFields {
+    grid-template-columns: 1fr;
+  }
+}
+.formControl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.formFields small.formError {
+  color: var(--summary-accent-selected, #ff9095);
+}
+.cepPanel {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 1rem;
+}
+.cepControls {
+  display: flex;
+  gap: 0.6rem;
+}
+.cepControls > input {
+  flex: 1;
+  width: 0;
+}
+.cepControls button {
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #f1ede660;
+  background: #ffffff0a;
+  color: #f1ede6;
+  font: inherit;
+  font-size: 0.78rem;
+}
+.cepControls button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.cepControls button:hover:not(:disabled) {
+  background: #ffffff15;
+}
+@media (max-width: 760px) {
+  .formFields input {
+    font-size: 1rem;
+  }
+}
+.formGroup {
+  border: 0;
+  padding: 0;
+  margin: 0 0 2rem;
+  min-width: 0;
+}
+.formGroup legend {
+  padding: 0;
+  margin-bottom: 1.25rem;
+  color: var(--summary-accent-soft, #ff747a);
+  font-size: 0.7rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.addressModes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.addressModes button {
+  min-height: 48px;
+  padding: 0.7rem;
+  border: 1px solid #ffffff35;
+  background: #ffffff05;
+  color: #cec8c0;
+  font: inherit;
+  font-size: 0.8rem;
+}
+.addressModes button[aria-pressed='true'] {
+  border-color: var(--summary-accent-hot, #ff5258);
+  color: #fff;
+  background: color-mix(
+    in srgb,
+    var(--summary-accent, #d32f35) 14.51%,
+    transparent
+  );
+}
+.formGroup small {
+  color: #bdb8b1;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.formGroup small.formError {
+  color: var(--summary-accent-selected, #ff9095);
+}
+.inquiryForm > button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.formAccordion {
+  margin-top: 0.75rem;
+  border: 1px solid #ffffff2e;
+  background: #08080855;
+}
+.formAccordion > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 72px;
+  padding: 1rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  list-style: none;
+  color: #f1ede6;
+}
+.formAccordion > summary::-webkit-details-marker {
+  display: none;
+}
+.formAccordion > summary strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+.formAccordion > summary small {
+  display: block;
+  margin-top: 0.4rem;
+  color: #bdb8b1;
+  font-size: 0.73rem;
+  line-height: 1.45;
+}
+.formAccordion > summary > svg {
+  flex-shrink: 0;
+  color: var(--summary-accent-soft, #ff747a);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.formAccordion[open] {
+  border-color: color-mix(
+    in srgb,
+    var(--summary-accent, #d32f35) 50.2%,
+    transparent
+  );
+}
+.formAccordion[open] > summary {
+  border-bottom: 1px solid #ffffff24;
+  background: color-mix(
+    in srgb,
+    var(--summary-accent, #d32f35) 6.27%,
+    transparent
+  );
+}
+.formAccordion[open] > summary > svg {
+  transform: rotate(180deg);
+}
+.formAccordion > summary:focus-visible {
+  outline: 2px solid var(--summary-accent-hot, #ff5258);
+  outline-offset: 3px;
+}
+.accordionBody {
+  padding: 1.25rem 1rem;
+}
+.accordionBody .cepPanel {
+  padding-top: 0;
+  margin-bottom: 1.25rem;
+}
+.accordionBody .cepPanel label {
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+}
+.accordionBody .cepPanel input {
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 0.85rem;
+  border: 1px solid #ffffff35;
+  background: #080808;
+  color: #f1ede6;
+  font: inherit;
+}
+.accordionBody small {
+  color: #bdb8b1;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.accordionBody .formError {
+  color: var(--summary-accent-selected, #ff9095);
+  font-size: 0.8rem;
+}
+@media (max-width: 760px) {
+  .accordionBody .cepPanel input {
+    font-size: 1rem;
+  }
+}

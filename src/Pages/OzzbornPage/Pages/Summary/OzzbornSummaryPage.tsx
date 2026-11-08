@@ -1,39 +1,41 @@
-import { useEffect, type CSSProperties } from 'react'
-import { FaWhatsapp } from 'react-icons/fa6'
-import { HiArrowRight } from 'react-icons/hi2'
-import { Link } from 'react-router-dom'
-import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
+import { useEffect, useRef, type CSSProperties } from 'react'
+import { CompanyLegalBar } from '../../../../Components/CompanyLegalBar/CompanyLegalBar'
 import atmosphere from '../../../../assets/ozzborn/backgrounds/ozzbornSummaryAtmosphere.png'
-import logo from '../../../../assets/ozzborn/branding/ozzbornLogoTransparent.png'
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'
 import { OzzbornNavbar } from '../../Components/NavBar/OzzbornNavbar'
-import { OZZBORN_SCROLLBAR, ozzbornPath } from '../../sectionConstants'
-import { OzzbornBandHeroVisual } from './OzzbornBandHeroVisual'
-import { OzzbornBookingSection } from './OzzbornBookingSection'
-import { OZZBORN_BOOKING } from './ozzbornBookingContent'
-import { OZZBORN_SUMMARY_CONTENT } from './ozzbornSummaryContent'
+import { OZZBORN_SCROLLBAR } from '../../sectionConstants'
+import { OZZBORN_BOOKING } from './Content/ozzbornBookingContent'
+import { OZZBORN_VENUES } from './Content/ozzbornVenuesContent'
 import styles from './OzzbornSummaryPage.module.css'
-
-const summaryFacts = [
-  { value: '3h', label: 'de apresentação' },
-  { value: '4', label: 'músicos no palco' },
-  { value: 'Ozzy + Sabbath', label: 'duas eras no repertório' },
-] as const
-
-type SummaryPageStyle = CSSProperties & {
-  '--summary-hero-image': string
-}
+import layout from './Styles/SummaryLayout.module.css'
+import details from './Styles/OzzbornSummaryDetails.module.css'
+import { OzzbornSummaryHero } from './Components/OzzbornSummaryHero/OzzbornSummaryHero'
+import { OzzbornSummaryStory } from './Components/OzzbornSummaryStory/OzzbornSummaryStory'
+import { OzzbornSummaryLive } from './Components/OzzbornSummaryLive/OzzbornSummaryLive'
+import { OzzbornSummaryMembers } from './Components/OzzbornSummaryMembers/OzzbornSummaryMembers'
+import { OzzbornSummaryVenues } from './Components/OzzbornSummaryVenues/OzzbornSummaryVenues'
+import { OzzbornSummaryDiscography } from './Components/OzzbornSummaryDiscography/OzzbornSummaryDiscography'
+import { OzzbornSummaryBooking } from './Components/OzzbornSummaryBooking/OzzbornSummaryBooking'
+import { OzzbornSummaryFooter } from './Components/OzzbornSummaryFooter/OzzbornSummaryFooter'
 
 export function OzzbornSummaryPage() {
-  const { heroPhoto, repertoire, story } = OZZBORN_SUMMARY_CONTENT
-  const pageStyle: SummaryPageStyle = {
+  const articleRef = useRef<HTMLElement>(null)
+  const pageStyle = {
     '--summary-hero-image': `url(${atmosphere})`,
-  }
-
+  } as CSSProperties
   useEffect(() => {
     document.title = 'Ozzborn — Tributo a Ozzy Osbourne em Jundiaí'
   }, [])
-
+  function goToShow() {
+    const target = articleRef.current?.querySelector<HTMLElement>('#ao-vivo')
+    target?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'instant'
+        : 'smooth',
+      block: 'start',
+    })
+    target?.focus({ preventScroll: true })
+  }
   return (
     <SideRockSectionPage
       layout="flow"
@@ -42,76 +44,26 @@ export function OzzbornSummaryPage() {
       accentHot="#c4b5fd"
       scrollbarTheme={OZZBORN_SCROLLBAR}
     >
-      <article className={styles.page} style={pageStyle}>
-        <section className={styles.hero} aria-labelledby="ozzborn-title">
-          <div className={styles.heroCopy}>
-            <ScrollReveal from="up">
-              <p className={styles.kicker}>Tributo a Ozzy Osbourne · Jundiaí/SP</p>
-            </ScrollReveal>
-            <ScrollReveal delayMs={70} from="up">
-              <h1 id="ozzborn-title" className={styles.heroTitle}>
-                <img className={styles.heroLogo} src={logo} alt="Ozzborn — Ozzy Tribute" />
-                <span className={styles.heroDescriptor}>
-                  <span>Fidelidade musical.</span>
-                  <span>Impacto ao vivo.</span>
-                </span>
-              </h1>
-            </ScrollReveal>
-            <ScrollReveal delayMs={120} from="up">
-              <p className={styles.heroLead}>
-                Um tributo construído com respeito aos timbres, aos arranjos e às atmosferas que marcaram a trajetória de Ozzy Osbourne, dos primeiros anos com o Black Sabbath aos grandes momentos da carreira solo.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delayMs={160} from="up">
-              <div className={styles.heroActions}>
-                <a className={styles.primaryAction} href={OZZBORN_BOOKING.whatsappUrl} target="_blank" rel="noopener noreferrer">
-                  <FaWhatsapp aria-hidden />
-                  Consultar disponibilidade
-                </a>
-                <Link className={styles.secondaryAction} to={ozzbornPath('repertorio')}>
-                  Conhecer o repertório
-                  <HiArrowRight aria-hidden />
-                </Link>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delayMs={200} from="none">
-              <p className={styles.heroContact}>Fale diretamente com <strong>Vanessa</strong> · Manager</p>
-            </ScrollReveal>
-            <ScrollReveal delayMs={220} from="up">
-              <dl className={styles.heroFacts}>
-                {summaryFacts.map(({ value, label }) => (
-                  <div key={label}><dt>{value}</dt><dd>{label}</dd></div>
-                ))}
-              </dl>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal className={styles.heroVisual} from="scale" delayMs={90}>
-            <OzzbornBandHeroVisual {...heroPhoto} />
-          </ScrollReveal>
-        </section>
-
-        <section className={styles.story} aria-labelledby="ozzborn-summary-title">
-          <ScrollReveal className={styles.storyHeading} from="left">
-            <p className={styles.sectionIndex}>{story.index}</p>
-            <h2 id="ozzborn-summary-title">{story.title}</h2>
-          </ScrollReveal>
-          <ScrollReveal className={styles.storyBody} from="right" delayMs={80}>
-            {story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </ScrollReveal>
-          <ScrollReveal className={styles.promise} delayMs={120}>
-            <span>{story.promise.eyebrow}</span>
-            <strong>{story.promise.copy}</strong>
-          </ScrollReveal>
-        </section>
-
-        <OzzbornBookingSection />
-
-        <section className={styles.repertoire} aria-label="Momentos do repertório Ozzborn">
-          <div className={styles.repertoireTrack} tabIndex={0} aria-label="Deslize para explorar momentos do repertório">
-            {repertoire.map((title) => <span key={title}>{title}</span>)}
-          </div>
-        </section>
+      <article
+        ref={articleRef}
+        className={`${styles.page} ${layout.journey}`}
+        style={pageStyle}
+      >
+        <OzzbornSummaryHero onExplore={goToShow} />
+        <OzzbornSummaryStory />
+        <OzzbornSummaryLive />
+        <OzzbornSummaryMembers />
+        {OZZBORN_VENUES.length > 0 && <OzzbornSummaryVenues />}
+        <OzzbornSummaryDiscography
+          index={OZZBORN_VENUES.length ? '05' : '04'}
+        />
+        <OzzbornSummaryBooking index={OZZBORN_VENUES.length ? '06' : '05'} />
+        <CompanyLegalBar
+          location={OZZBORN_BOOKING.location}
+          className={details.legalBar}
+          textClassName={details.legal}
+        />
+        <OzzbornSummaryFooter />
       </article>
     </SideRockSectionPage>
   )

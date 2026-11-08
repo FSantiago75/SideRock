@@ -1,4 +1,6 @@
 .page {
+  --section-intro-lead-size: 0.95rem;
+  --section-intro-lead-color: rgba(241, 237, 230, 0.76);
   --members-accent: var(--side-rock-accent);
   --members-accent-hot: var(--side-rock-accent-hot);
   --members-paper: var(--side-rock-paper);
@@ -24,10 +26,7 @@
   box-sizing: border-box;
   overflow-x: clip;
   overflow-y: hidden;
-  padding:
-    clamp(0.9rem, 2vw, 1.6rem)
-    var(--members-page-gutter)
-    1.1rem;
+  padding: clamp(0.9rem, 2vw, 1.6rem) var(--members-page-gutter) 1.1rem;
   color: var(--members-paper);
   background: #050505;
 }
@@ -39,8 +38,19 @@
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(5, 5, 5, 0.08) 0%, transparent 38%, rgba(5, 5, 5, 0.34) 70%, rgba(5, 5, 5, 0.62) 100%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.12), transparent 34%, rgba(5, 5, 5, 0.46) 100%),
+    linear-gradient(
+      90deg,
+      rgba(5, 5, 5, 0.08) 0%,
+      transparent 38%,
+      rgba(5, 5, 5, 0.34) 70%,
+      rgba(5, 5, 5, 0.62) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.12),
+      transparent 34%,
+      rgba(5, 5, 5, 0.46) 100%
+    ),
     var(--members-background) center / cover no-repeat;
 }
 
@@ -217,7 +227,10 @@
   text-transform: uppercase;
   background: rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: color 240ms ease, border-color 240ms ease, background-color 240ms ease;
+  transition:
+    color 240ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease;
 }
 
 .lockButton:hover,
@@ -331,8 +344,8 @@
   max-width: 38rem;
   margin: 0.7rem 0 0;
   overflow-wrap: anywhere;
-  color: rgba(241, 237, 230, 0.58);
-  font-size: clamp(0.8rem, 3.1cqi, 0.95rem);
+  color: rgba(241, 237, 230, 0.76);
+  font-size: clamp(0.9rem, 3.1cqi, 1rem);
   line-height: 1.58;
 }
 
@@ -380,7 +393,7 @@
   margin: 0.22rem 0 0;
   overflow-wrap: anywhere;
   color: rgba(241, 237, 230, 0.76);
-  font-size: clamp(0.7rem, 2.8cqi, 0.8rem);
+  font-size: clamp(0.8rem, 2.8cqi, 0.9rem);
   line-height: 1.35;
 }
 
@@ -419,7 +432,10 @@
   color: rgba(241, 237, 230, 0.66);
   background: rgba(0, 0, 0, 0.34);
   cursor: pointer;
-  transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease;
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
 }
 
 .arrowControls button:hover {
@@ -470,7 +486,11 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: linear-gradient(120deg, rgba(124, 58, 237, 0.13), rgba(4, 4, 4, 0.72));
+  background: linear-gradient(
+    120deg,
+    rgba(124, 58, 237, 0.13),
+    rgba(4, 4, 4, 0.72)
+  );
   opacity: 0;
   transition: opacity var(--member-selector-duration) var(--motion-fluid);
 }
@@ -553,33 +573,63 @@
 }
 
 @keyframes detailsEntrance {
-  from { opacity: 0; translate: 1.2rem 0; }
-  to { opacity: 1; translate: 0; }
+  from {
+    opacity: 0;
+    translate: 1.2rem 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0;
+  }
 }
 
 @keyframes cardSwapIn {
-  from { opacity: 0; translate: var(--swap-in-from) 0; }
-  to { opacity: 1; translate: 0; }
+  from {
+    opacity: 0;
+    translate: var(--swap-in-from) 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0;
+  }
 }
 
 @keyframes cardSwapOut {
-  from { opacity: 1; translate: 0; }
-  to { opacity: 0; translate: var(--swap-out-to) 0; }
+  from {
+    opacity: 1;
+    translate: 0;
+  }
+  to {
+    opacity: 0;
+    translate: var(--swap-out-to) 0;
+  }
 }
 
 @keyframes fadeSwapIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeSwapOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes rotationProgress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -931,3 +981,11 @@
   }
 }
 
+@media (max-width: 760px) and (orientation: portrait) {
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(241, 237, 230, 0.78);
+    overflow-wrap: normal;
+  }
+}

@@ -1,0 +1,33 @@
+import { VenueCard } from './Components/VenueCard'
+import { ScrollReveal } from '../../../../../../Components/ScrollReveal/ScrollReveal'
+import layout from '../../Styles/SummaryLayout.module.css'
+import { OZZBORN_VENUES } from '../../Content/ozzbornVenuesContent'
+import sectionStyles from './OzzbornSummaryVenues.module.css'
+
+export function OzzbornSummaryVenues() {
+  return (
+    <section
+      id="palcos"
+      tabIndex={-1}
+      className={layout.section}
+      aria-labelledby="venues-title"
+    >
+      <p className={layout.eyebrow}>04 / Palcos</p>
+      <ScrollReveal className={layout.sectionHeading}>
+        <div>
+          <h2 id="venues-title">Por onde já passamos.</h2>
+          <p>Casas e eventos que receberam a Ozzborn.</p>
+        </div>
+      </ScrollReveal>
+      <div
+        className={sectionStyles.venues}
+        tabIndex={0}
+        aria-label="Casas e eventos"
+      >
+        {OZZBORN_VENUES.map((venue) => (
+          <VenueCard key={venue.id} venue={venue} />
+        ))}
+      </div>
+    </section>
+  )
+}

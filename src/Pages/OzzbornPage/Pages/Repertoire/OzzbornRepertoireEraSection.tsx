@@ -1,6 +1,6 @@
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import type { OzzbornRepertoireEra } from './ozzbornRepertoireContent'
-import { OzzbornRepertoireAlbumGrid } from './OzzbornRepertoireAlbumCard'
+import { OzzbornRepertoireAlbumGrid } from './OzzbornRepertoireAlbumGrid'
 import styles from './OzzbornRepertoirePage.module.css'
 
 type OzzbornRepertoireEraSectionProps = {
@@ -20,7 +20,9 @@ export function OzzbornRepertoireEraSection({
       aria-labelledby={`${era.id}-title`}
     >
       <div className={styles.eraAtmosphere} aria-hidden />
-      <div className={styles.eraNumber} aria-hidden>0{index + 1}</div>
+      <div className={styles.eraNumber} aria-hidden>
+        0{index + 1}
+      </div>
 
       <div className={styles.eraInner}>
         <div className={styles.eraCopy}>
@@ -40,13 +42,6 @@ export function OzzbornRepertoireEraSection({
 
           <ScrollReveal delayMs={75} from="left">
             <p className={styles.eraNarrative}>{era.narrative}</p>
-          </ScrollReveal>
-
-          <ScrollReveal delayMs={105} from="left">
-            <p className={styles.eraRole}>
-              <span>No palco</span>
-              {era.showRole.slice(0, 2).join(' · ')}
-            </p>
           </ScrollReveal>
         </div>
 

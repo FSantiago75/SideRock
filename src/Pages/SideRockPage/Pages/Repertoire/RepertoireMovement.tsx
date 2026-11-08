@@ -1,3 +1,4 @@
+import { RepertoireTrackSample } from './RepertoireTrackSample'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { BandLogoGrid } from './BandLogoGrid'
 import type { RepertoireMovement as Movement } from './repertoireContent'
@@ -18,10 +19,7 @@ export function RepertoireMovement({ movement }: { movement: Movement }) {
             <p>{movement.eyebrow}</p>
           </ScrollReveal>
           <ScrollReveal delayMs={45} from="left">
-            <h2
-              id={`${movement.id}-title`}
-              className={styles.movementTitle}
-            >
+            <h2 id={`${movement.id}-title`} className={styles.movementTitle}>
               {movement.title}
             </h2>
           </ScrollReveal>
@@ -29,7 +27,14 @@ export function RepertoireMovement({ movement }: { movement: Movement }) {
             <p className={styles.movementBody}>{movement.body}</p>
           </ScrollReveal>
         </div>
-        <BandLogoGrid bands={movement.bands} movementTitle={movement.title} />
+        <div className={styles.movementMusic}>
+          <BandLogoGrid bands={movement.bands} movementTitle={movement.title} />
+          {movement.sampleTracks && (
+            <ScrollReveal delayMs={100} className={styles.trackSampleRow}>
+              <RepertoireTrackSample tracks={movement.sampleTracks} />
+            </ScrollReveal>
+          )}
+        </div>
       </div>
     </section>
   )

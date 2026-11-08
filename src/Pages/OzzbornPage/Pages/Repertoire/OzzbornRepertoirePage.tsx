@@ -1,4 +1,4 @@
-import { useEffect, type CSSProperties } from 'react'
+import { Fragment, useEffect, type CSSProperties } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import { HiArrowRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ import atmosphere from '../../../../assets/ozzborn/backgrounds/ozzbornRepertoire
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'
 import { OzzbornNavbar } from '../../Components/NavBar/OzzbornNavbar'
 import { OZZBORN_SCROLLBAR, ozzbornPath } from '../../sectionConstants'
-import { OZZBORN_BOOKING } from '../Summary/ozzbornBookingContent'
+import { OZZBORN_BOOKING } from '../Summary/Content/ozzbornBookingContent'
 import { OzzbornRepertoireEraSection } from './OzzbornRepertoireEraSection'
 import {
   OZZBORN_REPERTOIRE_CLOSING,
@@ -42,7 +42,9 @@ export function OzzbornRepertoirePage() {
         <header className={styles.intro}>
           <div className={styles.introCopy}>
             <ScrollReveal from="up">
-              <p className={styles.introEyebrow}>{OZZBORN_REPERTOIRE_INTRO.eyebrow}</p>
+              <p className={styles.introEyebrow}>
+                {OZZBORN_REPERTOIRE_INTRO.eyebrow}
+              </p>
             </ScrollReveal>
             <ScrollReveal delayMs={55} from="up">
               <h1>
@@ -51,12 +53,20 @@ export function OzzbornRepertoirePage() {
               </h1>
             </ScrollReveal>
             <ScrollReveal delayMs={110} from="up">
-              <p className={styles.introLead}>{OZZBORN_REPERTOIRE_INTRO.lead}</p>
+              <p className={styles.introLead}>
+                {OZZBORN_REPERTOIRE_INTRO.lead}
+              </p>
             </ScrollReveal>
           </div>
 
-          <ScrollReveal className={styles.introJourney} delayMs={150} from="right">
-            <p className={styles.journeyLabel}>{OZZBORN_REPERTOIRE_JOURNEY.label}</p>
+          <ScrollReveal
+            className={styles.introJourney}
+            delayMs={150}
+            from="right"
+          >
+            <p className={styles.journeyLabel}>
+              {OZZBORN_REPERTOIRE_JOURNEY.label}
+            </p>
             <div className={styles.journeyRange}>
               <strong>{OZZBORN_REPERTOIRE_JOURNEY.startYear}</strong>
               <span className={styles.journeyLine} aria-hidden />
@@ -68,16 +78,11 @@ export function OzzbornRepertoirePage() {
               <span>{OZZBORN_REPERTOIRE_JOURNEY.destination}</span>
             </p>
           </ScrollReveal>
-
         </header>
 
         <div className={styles.timeline}>
           {OZZBORN_REPERTOIRE_ERAS.map((era, index) => (
-            <OzzbornRepertoireEraSection
-              key={era.id}
-              era={era}
-              index={index}
-            />
+            <OzzbornRepertoireEraSection key={era.id} era={era} index={index} />
           ))}
         </div>
 
@@ -90,9 +95,15 @@ export function OzzbornRepertoirePage() {
               {OZZBORN_REPERTOIRE_CLOSING.eyebrow}
             </p>
             <h2 id="ozzborn-repertoire-closing-title">
-              {OZZBORN_REPERTOIRE_CLOSING.title}
+              {OZZBORN_REPERTOIRE_CLOSING.titleLines.map((line, index) => (
+                <Fragment key={line}>
+                  {index > 0 && ' '}
+                  <span className={styles.closingLine} data-line={index}>
+                    {line}
+                  </span>
+                </Fragment>
+              ))}
             </h2>
-            <p>{OZZBORN_REPERTOIRE_CLOSING.body}</p>
             <div className={styles.closingActions}>
               <a
                 className={styles.primaryAction}

@@ -1,0 +1,190 @@
+.journey {
+  --journey-header-height: 88px;
+}
+.textLink {
+  display: inline-flex;
+  width: fit-content;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  min-height: 48px;
+  padding: 0.9rem 1.15rem;
+  color: #f1ede6;
+  background: #ffffff0d;
+  border: 1px solid #f1ede670;
+  border-left: 3px solid var(--summary-accent-hot);
+  text-decoration: none;
+  font-size: 0.73rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.textLink svg {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+.textLink:hover {
+  color: #080808;
+  background: #f1ede6;
+  border-color: #f1ede6;
+}
+.section {
+  padding: clamp(2.75rem, 6vw, 6rem) var(--summary-page-gutter);
+  border-bottom: 1px solid #ffffff1a;
+  scroll-margin-top: calc(var(--side-rock-nav-clearance) + 1rem);
+  outline: none;
+}
+.section:focus-visible {
+  outline: 2px solid var(--summary-accent-hot);
+  outline-offset: -3px;
+}
+.eyebrow {
+  margin: 0 0 1.1rem;
+  color: var(--summary-accent-hot);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.section h2 {
+  margin: 0;
+  max-width: 20ch;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.section p {
+  line-height: 1.7;
+}
+.copy {
+  color: #cec8c0;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 65ch;
+}
+.copy p {
+  margin: 0 0 1rem;
+}
+.sectionHeading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.sectionHeading p {
+  color: #bdb8b1;
+  margin-bottom: 0;
+}
+.sectionHeading > .textLink {
+  flex-shrink: 0;
+}
+.journey button {
+  font-family: inherit;
+  cursor: pointer;
+}
+.journey a:focus-visible,
+.journey button:focus-visible {
+  outline: 2px solid var(--summary-accent-hot);
+  outline-offset: 3px;
+}
+@media (max-width: 1000px) {
+  .sectionHeading {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 760px) {
+  .section h2 {
+    max-width: 23ch;
+  }
+}
+.journey > .section {
+  position: relative;
+  border-bottom: 0;
+  border-top: 1px solid #ffffff18;
+  padding-top: clamp(3.5rem, 6vw, 6rem);
+}
+.journey > .section:nth-of-type(even) {
+  background-color: #0c0a10;
+}
+.journey > .section:nth-of-type(odd) {
+  background-color: #050505;
+}
+.journey > .section::before {
+  content: '';
+  position: absolute;
+  inset: -1px var(--summary-page-gutter) auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #7c3aed80 25%,
+    var(--summary-accent-hot) 50%,
+    #7c3aed80 75%,
+    transparent
+  );
+  pointer-events: none;
+}
+.journey > .section::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 7px;
+  height: 7px;
+  background: var(--summary-accent);
+  border: 1px solid #a78bfa;
+  box-shadow:
+    0 0 0 6px #08060b,
+    0 0 18px #7c3aed33;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+.section > .eyebrow,
+.chapterLabel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  color: #c4b5fd;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+.section > .eyebrow::after,
+.chapterLabel::after {
+  content: '';
+  width: clamp(3rem, 8vw, 7rem);
+  height: 1px;
+  background: linear-gradient(90deg, #7c3aed99, transparent);
+}
+@media (max-width: 760px) {
+  .journey > .section {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+  .section > .eyebrow,
+  .chapterLabel {
+    margin-bottom: 1.25rem;
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 480px) {
+  .sectionHeading > .textLink {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .textLink {
+    transition: none;
+  }
+}

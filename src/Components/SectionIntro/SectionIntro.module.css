@@ -52,8 +52,8 @@
 .lead {
   max-width: 32rem;
   margin: 0.35rem 0 0;
-  color: rgba(241, 237, 230, 0.56);
-  font-size: 0.82rem;
+  color: var(--section-intro-lead-color, rgba(241, 237, 230, 0.56));
+  font-size: var(--section-intro-lead-size, 0.82rem);
   line-height: 1.5;
 }
 
@@ -64,7 +64,7 @@
 
   .lead {
     margin-top: 0.2rem;
-    font-size: 0.74rem;
+    font-size: var(--section-intro-lead-size, 0.74rem);
   }
 }
 
@@ -81,6 +81,6 @@
 
   .lead {
     max-width: 22rem;
-    font-size: 0.74rem;
+    font-size: var(--section-intro-lead-size, 0.74rem);
   }
 }

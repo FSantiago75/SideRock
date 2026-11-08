@@ -1,0 +1,93 @@
+.manager span {
+  margin: 0;
+  color: var(--summary-accent-hot);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.manager {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  align-items: center;
+  max-width: 27rem;
+  margin-top: 2.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(241, 237, 230, 0.12);
+}
+
+.manager span {
+  grid-column: 1 / -1;
+}
+
+.manager strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.manager small {
+  justify-self: end;
+  color: rgba(241, 237, 230, 0.42);
+  font-size: 0.67rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.legalBar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 2.4rem;
+  margin: 0;
+  padding: 0.55rem var(--summary-page-gutter);
+  border-top: 1px solid rgba(241, 237, 230, 0.08);
+}
+
+.legal {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  color: rgba(241, 237, 230, 0.38);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  line-height: 1.55;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 590px) {
+  .legalBar {
+    padding-inline: 0.75rem;
+  }
+
+  .legal {
+    font-size: 0.52rem;
+    letter-spacing: 0.07em;
+  }
+
+  .manager {
+    grid-template-columns: 1fr;
+  }
+
+  .manager small {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 340px) {
+  .legal {
+    font-size: 0.48rem;
+    letter-spacing: 0.055em;
+  }
+}

@@ -1,6 +1,8 @@
 import type { IconType } from 'react-icons'
-import { FaDrum, FaGuitar, FaMicrophoneAlt } from 'react-icons/fa'
-import { GiGuitar } from 'react-icons/gi'
+import { VocalIcon } from '../../../../Components/InstrumentIcons/VocalIcon'
+import { ElectricGuitarIcon } from '../../../../Components/InstrumentIcons/ElectricGuitarIcon'
+import { BassGuitarIcon } from '../../../../Components/InstrumentIcons/BassGuitarIcon'
+import { DrumKitIcon } from '../../../../Components/InstrumentIcons/DrumKitIcon'
 import type { MembersImageMemberId } from '../../../../Components/MembersImage'
 
 export type OzzbornMemberId = MembersImageMemberId
@@ -23,7 +25,8 @@ export const OZZBORN_MEMBERS_COPY = {
   title: 'Integrantes',
   desktopGuide:
     'Conheça quem transforma fidelidade musical em peso, precisão e presença no palco. Passe o cursor e clique para fixar.',
-  mobileGuide: 'Toque em cada integrante e conheça seu papel na experiência Ozzborn.',
+  mobileGuide:
+    'Toque em cada integrante e conheça seu papel na experiência Ozzborn.',
 } as const
 
 export const OZZBORN_MEMBERS: readonly OzzbornMember[] = [
@@ -31,58 +34,60 @@ export const OZZBORN_MEMBERS: readonly OzzbornMember[] = [
     id: 'vocal',
     name: 'Marcelo',
     role: 'Vocalista',
-    signature: 'Três décadas de voz, técnica e presença.',
+    signature: 'A voz que aproxima o público de Ozzy.',
     description:
-      'Há mais de 30 anos, Marcelo enfrenta repertórios exigentes e transforma técnica vocal em interpretação. À frente da Ozzborn, trabalha timbre, intenção e presença para aproximar o público das diferentes fases de Ozzy Osbourne.',
+      'Marcelo trabalha o timbre, a intenção e a maneira de interpretar cada frase para trazer a identidade de Ozzy ao palco. Sua voz acompanha as mudanças de clima e intensidade do tributo.',
     instrument: 'Voz',
-    contribution: 'Timbre, interpretação e condução',
-    presence: 'Presença e conexão',
+    contribution: 'Timbre, intenção e interpretação',
+    presence: 'A identidade vocal do tributo',
     experience: '+30 anos de música',
-    Icon: FaMicrophoneAlt,
+    Icon: VocalIcon,
   },
   {
     id: 'guitar',
     name: 'Victor',
     role: 'Guitarrista',
-    signature: 'Fidelidade construída em cada detalhe.',
+    signature: 'A assinatura de cada fase na guitarra.',
     description:
-      'Com mais de 20 anos de experiência, Victor recria riffs, bases e solos com atenção aos timbres, efeitos e arranjos que marcaram as diferentes fases de Ozzy Osbourne e Black Sabbath. Sua guitarra é uma das bases da fidelidade musical da Ozzborn.',
+      'Dos riffs do Sabbath aos solos da carreira solo, Victor recria timbres e arranjos que marcaram a obra de Ozzy. Sua guitarra acompanha a identidade de cada fase com precisão.',
     instrument: 'Guitarra',
     contribution: 'Timbres, riffs e solos fiéis',
-    presence: 'Precisão e intensidade',
+    presence: 'A força das guitarras de cada fase',
     experience: '+20 anos de música',
-    Icon: FaGuitar,
+    Icon: ElectricGuitarIcon,
   },
   {
     id: 'bass',
     name: 'Adriano',
     role: 'Baixista',
-    signature: 'O peso que mantém tudo no lugar.',
+    signature: 'O peso de cada música, presente no baixo.',
     description:
-      'Com mais de 20 anos de experiência, Adriano sustenta o repertório com linhas firmes, equilíbrio e consistência. Seu baixo conecta bateria, guitarras e elementos sincronizados, mantendo os arranjos sólidos e próximos da identidade de cada música.',
+      'Com peso e definição, Adriano preserva as linhas de baixo que dão corpo às músicas. A ligação com a bateria e os sons de apoio mantém o tributo firme em cada mudança de intensidade.',
     instrument: 'Baixo',
-    contribution: 'Peso, equilíbrio e sustentação',
-    presence: 'Solidez e presença',
+    contribution: 'Peso, definição e fidelidade',
+    presence: 'Firmeza em cada mudança do show',
     experience: '+20 anos de música',
-    Icon: GiGuitar,
+    Icon: BassGuitarIcon,
   },
   {
     id: 'drums',
     name: 'Toddynho',
     role: 'Baterista',
-    signature: 'Energia, dinâmica e precisão.',
+    signature: 'Cada virada a serviço da música.',
     description:
-      'Com mais de 20 anos de experiência, Toddynho conduz as mudanças de energia do show com atenção às viradas, às percussões e à dinâmica de cada fase do repertório. Sua bateria mantém a banda e os elementos sincronizados trabalhando como uma única apresentação.',
+      'Toddynho recria ritmos, viradas e percussões com atenção a cada gravação. Sua bateria se integra aos sons de apoio e conduz o crescimento da apresentação com precisão.',
     instrument: 'Bateria',
-    contribution: 'Pulso, dinâmica e percussões',
-    presence: 'Impacto que conduz o show',
+    contribution: 'Ritmos, viradas e percussões',
+    presence: 'Precisão que conduz a experiência',
     experience: '+20 anos de música',
-    Icon: FaDrum,
+    Icon: DrumKitIcon,
   },
 ] as const
 
 export function getOzzbornMemberById(id: OzzbornMemberId): OzzbornMember {
-  return OZZBORN_MEMBERS.find((member) => member.id === id) ?? OZZBORN_MEMBERS[0]
+  return (
+    OZZBORN_MEMBERS.find((member) => member.id === id) ?? OZZBORN_MEMBERS[0]
+  )
 }
 
 export function formatOzzbornMemberIndex(index: number): string {

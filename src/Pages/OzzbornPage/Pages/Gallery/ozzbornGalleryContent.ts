@@ -1,6 +1,8 @@
 export type OzzbornGalleryPhoto = {
   id: string
   src: string
+  width: number
+  height: number
   albumId: string
   albumLabel: string
   fileName: string
@@ -24,8 +26,7 @@ export const OZZBORN_GALLERY_COPY = {
 
 const IMAGE_EXTENSIONS = /\.(?:avif|gif|jpeg|jpg|png|webp)$/i
 const GALLERY_MARKER = '/assets/ozzborn/gallery/'
-const LEADING_DATE =
-  /^(?:\d{4}-\d{2}-\d{2}|\d{8}|\d{4}-\d{2}|\d{4})[-_]?/i
+const LEADING_DATE = /^(?:\d{4}-\d{2}-\d{2}|\d{8}|\d{4}-\d{2}|\d{4})[-_]?/i
 const LEADING_INDEX = /^\d+\s*[-_.]\s*/
 const ALBUM_LABEL_OVERRIDES: Record<string, string> = {
   estudio: 'Estúdio',
@@ -37,6 +38,11 @@ const imageModules = import.meta.glob<string>(
     eager: true,
     import: 'default',
   },
+)
+
+const imageDimensions = import.meta.glob<{ width: number; height: number }>(
+  '../../../../assets/ozzborn/gallery/**/*.{avif,gif,jpeg,jpg,png,webp}',
+  { eager: true, import: 'default', query: '?dimensions' },
 )
 
 function toGalleryRelativePath(modulePath: string): string | null {
@@ -121,6 +127,7 @@ function buildCatalog(modules: Record<string, string>): {
     const label = toPhotoLabel(fileName)
     const photo: OzzbornGalleryPhoto = {
       id: relativePath,
+      ...imageDimensions[modulePath],
       src,
       albumId,
       albumLabel,

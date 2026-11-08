@@ -1,5 +1,8 @@
 import type { IconType } from 'react-icons'
-import { FaDrum, FaGuitar, FaMicrophoneAlt, FaWaveSquare } from 'react-icons/fa'
+import { VocalIcon } from '../../../../Components/InstrumentIcons/VocalIcon'
+import { ElectricGuitarIcon } from '../../../../Components/InstrumentIcons/ElectricGuitarIcon'
+import { BassGuitarIcon } from '../../../../Components/InstrumentIcons/BassGuitarIcon'
+import { DrumKitIcon } from '../../../../Components/InstrumentIcons/DrumKitIcon'
 import type { MembersImageMemberId } from '../../../../Components/MembersImage'
 
 export type MemberId = MembersImageMemberId
@@ -30,58 +33,60 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     id: 'vocal',
     name: 'Marcelo',
     role: 'Vocalista',
-    signature: 'Três décadas de voz, técnica e presença.',
+    signature: 'Uma voz que dá identidade ao show.',
     description:
-      'Há mais de 30 anos, Marcelo enfrenta repertórios exigentes e transforma técnica vocal em interpretação. À frente da Side Rock, atravessa estilos e gerações com potência, personalidade e conexão com o público.',
+      'O timbre próximo ao de Axl Rose faz de Guns N’ Roses um dos destaques da Side Rock. Marcelo atravessa o restante do repertório com alcance, potência e personalidade.',
     instrument: 'Voz',
-    contribution: 'Amplitude, potência e interpretação',
-    presence: 'Condução e conexão',
+    contribution: 'Alcance, potência e interpretação',
+    presence: 'Uma voz que marca o show',
     experience: '+30 anos de música',
-    Icon: FaMicrophoneAlt,
+    Icon: VocalIcon,
   },
   {
     id: 'guitar',
     name: 'Victor',
     role: 'Guitarrista',
-    signature: 'Fidelidade construída em cada detalhe.',
+    signature: 'Dos solos marcantes às passagens mais delicadas.',
     description:
-      'Com mais de 20 anos de experiência, Victor recria riffs, bases e solos com atenção aos timbres, efeitos e arranjos que tornam cada clássico reconhecível. Uma guitarra precisa, feita para quem conhece a música e para quem quer sentir seu impacto.',
+      'Victor combina precisão e sensibilidade para interpretar o rock em suas diferentes intensidades. Riffs, solos e timbres recebem o cuidado que torna cada clássico reconhecível.',
     instrument: 'Guitarra',
-    contribution: 'Timbres, riffs e solos fiéis',
-    presence: 'Precisão e intensidade',
+    contribution: 'Riffs, solos e atenção aos timbres',
+    presence: 'Expressão e intensidade',
     experience: '+20 anos de música',
-    Icon: FaGuitar,
+    Icon: ElectricGuitarIcon,
   },
   {
     id: 'bass',
     name: 'Adriano',
     role: 'Baixista',
-    signature: 'O peso que mantém tudo no lugar.',
+    signature: 'Um baixo que se faz ouvir.',
     description:
-      'Com mais de 20 anos de experiência, Adriano dá corpo ao repertório com linhas firmes, equilíbrio e consistência. Sua base sustenta os arranjos e faz a energia da banda chegar inteira ao público.',
+      'Presente e bem definido, o baixo de Adriano dá peso aos riffs e corpo à música. Suas linhas unem a banda com firmeza e mantêm cada passagem consistente, do começo ao fim.',
     instrument: 'Baixo',
-    contribution: 'Peso, equilíbrio e sustentação',
-    presence: 'Solidez e presença',
+    contribution: 'Peso, definição e consistência',
+    presence: 'Um som que preenche o palco',
     experience: '+20 anos de música',
-    Icon: FaWaveSquare,
+    Icon: BassGuitarIcon,
   },
   {
     id: 'drums',
     name: 'Toddynho',
     role: 'Baterista',
-    signature: 'Energia, velocidade e criatividade.',
+    signature: 'Criatividade para dar força a cada virada.',
     description:
-      'Com mais de 20 anos de experiência, Toddynho conduz a dinâmica do show com precisão e inventividade. Seu pulso acompanha cada mudança do repertório e mantém a banda em movimento.',
+      'Toddynho combina ritmos complexos, viradas criativas e precisão. Sua bateria conduz os contrastes do repertório, das passagens mais contidas aos momentos de maior peso.',
     instrument: 'Bateria',
-    contribution: 'Pulso, dinâmica e impacto',
-    presence: 'Energia e movimento',
+    contribution: 'Ritmos, viradas e precisão',
+    presence: 'Energia que conduz o show',
     experience: '+20 anos de música',
-    Icon: FaDrum,
+    Icon: DrumKitIcon,
   },
 ] as const
 
 export function getMemberById(id: MemberId): SideRockMember {
-  return SIDE_ROCK_MEMBERS.find((member) => member.id === id) ?? SIDE_ROCK_MEMBERS[0]
+  return (
+    SIDE_ROCK_MEMBERS.find((member) => member.id === id) ?? SIDE_ROCK_MEMBERS[0]
+  )
 }
 
 export function formatMemberIndex(index: number): string {

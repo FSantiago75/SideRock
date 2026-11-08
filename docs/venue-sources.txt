@@ -1,0 +1,94 @@
+# Fontes dos locais de apresentação
+
+Pesquisa em 08/11/2026. Dados públicos de estabelecimentos; apresentações informadas pelo usuário. Imagens originalmente baixadas sem edição. Ajustes posteriores e origens em maior resolução estão registrados abaixo. Layout dos cards preservado; personalização das prefeituras fica para etapa posterior.
+
+## Endereços e identificação
+
+- **The Best Beer Festival**: https://gazetaregional.com.br/festival-the-best-beer-o-festival-de-cerveja-e-gastronomia-que-vai-agitar-campinas/
+  - Praça Arautos da Paz, edição de janeiro de 2024 com Side Rock. Não usar endereço da sede da prefeitura.
+- **Sexta no Centro**: https://jundiai.sp.gov.br/noticias/2024/04/05/26o-enredanca-tem-seus-primeiros-passos-em-edicao-animada-da-sexta-no-centro/
+  - Praça do Coreto; nome oficial da praça corroborado em https://sampi.net.br/jundiai/noticias/amp/2824801/cultura/2024/04/sexta-no-centro-esta-de-volta-com-musica-danca-e-gastronomia.
+- **Tennessee Campinas / Itupeva**: https://www.tennesseehd.com.br/fale-conosco
+  - Campinas: site lista 3140; bio oficial https://www.instagram.com/tennesseeharleydavidson/ lista 3214, corroborado em https://minhasinscricoes.com.br/evento/NashvilleRockNRun2025. Adotado 3214. Itupeva concorda em 999A.
+- **Dinossauros**: https://www.waze.com/live-map/directions/br/sp/dinossauros-rock-bar?to=place.ChIJHzbdBgInz5QRmIjaybKguAg
+  - Corroborado por https://ticketmetal.com/locais/dinossauros-rock-bar-jundiai-sp.
+- **Tex Beer**: https://www.urbanbbq.com.br/
+  - Endereço de operação na Tex; corroborado em https://tocaonde.com.br/events/204889-mayara-manga-tex-beer-brewing-co-itupeva.
+- **Jumpbarbecue**: https://www.jundiaionline.com.br/guia/gastronomia/restaurantes-269
+  - Endereço corroborado em https://tribunadejundiai.com.br/entretenimento/jumpbarbecue-jundiai-queen-studio-54-shows/.
+- **El Toro**: https://www.instagram.com/eltoroitatiba/
+  - Bio oficial: 842; concorda com https://circuitodasfrutasoficial.sp.gov.br/local/el-toro-casa-do-churrasco/. Waze lista 910: priorizado o estabelecimento.
+- **OficinaBar**: https://turismopiracicaba.com.br/gastronomia/oficinabar/
+  - Bio oficial também lista Rua Riachuelo 1138.
+- **Vitão Rock Bar**: https://www.locaisdobrasil.com.br/encontre/bares/carapicuiba-sp/vitao-rock-bar/631613b26c74b7fce2adca0f
+  - Corroborado em https://www.findglocal.com/BR/Carapicu%C3%ADba/364764046925539/Vit%C3%A3o-Rock-Bar.
+- **Hangar 111**: https://www.waze.com/live-map/directions/br/sp/hangar-111-music-bar-jundiai?to=place.ChIJ819u_Ggnz5QRpGzONZ7GVCw
+  - Endereço do palco, não endereço cadastral do CNPJ. Perfil oficial identificado por https://spinoff.com.br/bastidores/fiuk-show-cancelado-sp/.
+- **Box 1200**: https://shop.box1200.com.br/contato
+  - Número corroborado no guia público de mototurismo: https://www.caragua.tur.br/wp-content/uploads/2025/10/Guia-de-Mototurismo.pdf.
+- **The Bricks Brewpub**: https://quegostoso.tur.br/2025/05/22/em-jundiai-the-bricks-faz-breja-artesanal-otima/
+  - Identidade confirmada na agenda da própria banda: https://www.bandasiderock.com/agenda. Endereço corroborado em https://www.jundiaionline.com.br/guia/gastronomia/cervejarias-1659.
+- **Holy Water**: https://www.jundiaishopping.com.br/gastronomia/cervejaria-holy-water-em-breve/
+  - Unidade do JundiaíShopping, Piso Jundiaí.
+- **Quintal Caxambu**: https://turismo.jundiai.sp.gov.br/gastronomia/restaurantes-rurais/quintal-caxambu/
+  - Bio oficial também informa 5021.
+- **Rock Forever**: Pendente
+  - Existem programa, produtora e festivais homônimos. Logo enviada pelo usuário em 08/11/2026; cidade e endereço continuam pendentes.
+- **Elixir Myst**: Pendente
+  - Usuário informou Pátio Cica, Jundiaí. Não foi localizado perfil com correspondência segura; Logo enviada pelo usuário em 08/11/2026; endereço da operação ainda não confirmado.
+
+## Arquivos de imagem
+
+- `elToro.jpg`: https://www.instagram.com/eltoroitatiba/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/194076048_509422573706734_2474052753790133836_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=101&ig_cache_key=GJBdkQvu3YsvUc8BAEzmPBnfmVUibkULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy41MDAuQzMifQ%3D%3D&_nc_ohc=hVG2hg1mibsQ7kNvwG7RfcL&_nc_oc=Adq9CTKnG0BRlw7B0M7Zpqg-k_Vk-9rKl9J1mWEheUqiqKY7RAgz2aCbJxVD1fLRsmsmCDh9C924PV8y33nHcsSB&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQRejLanifmuae0RXCTsLuBhTsoORh4i3h9q5zZPJFzxig&oe=6AF6A775
+- `vitao-rock-bar.jpg`: https://www.instagram.com/vitaorockbaroficial/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/12269906_440296746160554_1741615852_a.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ig_cache_key=GFI5uwCqkSaTcpABAOzyzmcAAAAAYUULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4yMDAuQzMifQ%3D%3D&_nc_ohc=vBt3orBYCq0Q7kNvwFERXAZ&_nc_oc=Ado33P5dHABvZ8-am1kFIxGBgxvrvqN2Tr8su1mcrW0Nk2LhskrikZi5bpVzbY6s9OsENQRuLlC1RAjiuqq62Ab-&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQT_YPaM_0v2cbm3GsCz3H_cXHc6FoZH7SkCJtIS-Y-caQ&oe=6AF6B3C2
+- `quintal-caxambu.jpg`: https://www.instagram.com/quintalcaxambu/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/418000821_325293723807572_3340295048468118180_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=108&ig_cache_key=GLUv6hhU79pY2icBAKQ68CCmHFsubkULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy41OTEuQzMifQ%3D%3D&_nc_ohc=f-TDtbnUpwQQ7kNvwHGjxLW&_nc_oc=AdqgiBe_PoNqME7Rpimg6eGLgahlN7q9yeoFZ1y-Kmudkeglzxs03-G8X5JsYXrWWgEkAp60imZ_h2Zuvp872xum&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQSdHW7ni_uSYrn9yuVzDgdCXB6n6sxYOObSbZu3KY1eXA&oe=6AF6A3A1
+- `oficinabar.jpg`: https://www.instagram.com/oficinabar/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/37030924_674933126176827_1626664411764621312_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=102&ig_cache_key=GAwMNQI7oDsd2WUCAAAAAACqEpMWbkULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4zODQuQzMifQ%3D%3D&_nc_ohc=rXSBR4P7e8MQ7kNvwGRUvtR&_nc_oc=AdqXCzcv7PMsIen1qdCovcsSctx_mrrWUggwXAaHsN-ohkGzN-Dv3pg0S4siH0aPpnv9KtqDGHyikLzQK_8RwRg3&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQSrTuIe-W4W2nsGk_iF62HdHVYnjTNx6tVM5-rpbqrIRg&oe=6AF6AE5E
+- `the-bricks.jpg`: https://www.instagram.com/thebricksbrewpub/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/451134411_992437418927488_4158191478276857803_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=111&ig_cache_key=GMvD4xqAJdHXnYYDAMufv1Ie3bQ5bkULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=jPGXNK6vVMoQ7kNvwEwMNrr&_nc_oc=AdohRW6LhnU9rhA6HYKI_uQF8Yf54hrxINNTE7qPi9D6huI5v0m0Vmrvdi6p1fia6BZuCv3Cqjjw0raIpAJ9wnV8&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQQltS_VV6IZlUEhC7DDvmuN6-qBMOHI8aPWs96lxDKGgw&oe=6AF68FE2
+- `holy-water.jpg`: https://www.instagram.com/holywaterjundiai/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/452578401_970329074890852_5795465085321353623_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=101&ig_cache_key=GGHM_Rpk_NJXgnIDAJcZwhbKoG1QbkULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=EjslNtcHH_sQ7kNvwEjhma8&_nc_oc=AdqQ_Mr2TsZOlHruLgqBiLfYr2a8pnq3Cucdm6_DkZhnZyncNqDjxf5Q18U6TsiOl_w6ASo58oLUk7sAkuY_UAl0&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQQkRf_5pZaK82fJFzZlr6NzXmk_PBagMo2oFuScX0p5_w&oe=6AF680C9
+- `tennessee.jpg`: https://www.instagram.com/tennesseeharleydavidson/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.82787-19/671811048_18566145487067600_5804702788131393867_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=105&ig_cache_key=GOgFCyjQ2Zqaz-VBAEuRSmFuco5QbmNDAQAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=06JcV4PQ9vIQ7kNvwGpKpPU&_nc_oc=Adqkl_Oe5kwbhOHut4kjutegie9Tqmqa4AfN2F72EoEXFExQLfzLV1AosiR7leeM5-5OnLsrg-N2xGr7Plb4lBS5&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=HkK1_LURu-Yxeg3ovwWyXw&_nc_ss=7c689&oh=00_AQRQS9lgUbG8FvWvfwji5TbZJExUHE9KgHJeUR1SQbCe2w&oe=6AF68748
+- `dinossauros.jpg`: https://linktr.ee/Dinossaurosrockbar
+  - Arquivo de origem: https://ugc.production.linktr.ee/2c5c1e59-0dc1-4678-b21a-cd90f63ed6b7_8efbd912-d160-474f-bf9e-3b76355461fc.jpeg?io=true&size=avatar-v3_0
+- `jumpbarbecue.jpg`: https://linktr.ee/jumpbarbecuej
+  - Arquivo de origem: https://ugc.production.linktr.ee/d9c95cca-b60d-4bd9-acfe-18db6ffe1d09_WhatsApp-Image-2023-08-10-at-14.32.51.jpeg?io=true&size=avatar-v3_0
+- `box1200.png`: https://shop.box1200.com.br/contato
+  - Arquivo de origem: https://images.tcdn.com.br/files/1309818/themes/11/img/settings/logoBoxPNG.png?f0d73bb4b14a14e4cd3336be1ccea511
+- `tex-beer.png`: https://www.texbeer.com.br/
+  - Arquivo de origem: https://cdn.awsli.com.br/2517/2517638/arquivos/logo-footer.png
+- `hangar-111.jpg`: https://www.instagram.com/hangar_111_musicbar/
+  - Arquivo de origem: https://scontent.cdninstagram.com/v/t51.2885-19/469612838_1094549389060867_7223164164061761663_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=104&ig_cache_key=GCa5-RsDK4ajfOMDAH_QO4mJ1T1kbkULAAAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43NTAuQzMifQ%3D%3D&_nc_ohc=Erw0K69EO-IQ7kNvwHYjtrl&_nc_oc=AdoARHYDh8fHz9a35TfowHCYhQvaD8kbrd1BondG9gUM2yHMt8CseOP_LjEj2aTThhltOAocLGYTcVppzR4rqh_q&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_ss=7c689&oh=00_AQQAVWTQjOYZiRhT0bbi6aD607Yc7i8sW63-DsBGkmdJjg&oe=6AF6B81D
+
+## Bandeiras
+
+- `bandeira-campinas.svg`: [Wikimedia Commons — Flag of Campinas](https://commons.wikimedia.org/wiki/File:Flag_of_Campinas.svg), Giro720, baseada na bandeira municipal. Sem modificações. Página indica domínio público governamental brasileiro e CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/).
+- `bandeira-jundiai.svg`: [Wikimedia Commons — BandeiraJundiai](https://commons.wikimedia.org/wiki/File:BandeiraJundiai.svg), ViniciusBR11 / Prefeitura de Jundiaí. Domínio público governamental brasileiro. Sem modificações.
+
+As bandeiras ilustram o município dos eventos, sem alegar patrocínio ou endosso. Logos de redes sociais podem ser versões pequenas; substituir pelo arquivo de melhor resolução quando disponibilizado.
+
+
+## Revisão de qualidade — 08/11/2026
+
+- `holyWaterOriginal.png`: arquivo original transparente, 1684 × 2382, do site oficial https://holywaterbeer.com/site-assets/holy-water/logo-holy-water.png (https://holywaterbeer.com/). Substitui a miniatura de 150 px.
+- `dinossauros-original.jpg`: 1031 × 1031; arquivo sem redução do perfil oficial Linktree.
+- `jumpbarbecueOriginal.jpg`: 600 × 600; arquivo sem redução do perfil oficial Linktree. Foto e fundo completos preservados.
+- `tennessee-transparent.png`, `theBricksTransparent.png`, `vitaoRockBarTransparent.png`: versões com recorte assistido por IA do branco externo, derivadas dos arquivos públicos de perfil registrados acima. Não são novos arquivos originais encontrados na web. Arquivos baixados preservados para comparação.
+- `elixir-myst.png`, `rock-forever.png`: imagens enviadas pelo usuário; fundos completos preservados.
+- Mantidos os fundos de bandeiras, fotos completas e artes fechadas. Quintal Caxambu: recorte experimental aprovado posteriormente pelo usuário e aplicado em quintalCaxambuTransparent.png; original preservado.
+- El Toro, OficinaBar, Hangar 111 e Quintal Caxambu ainda têm fonte pública de 150 × 150; nenhuma versão maior com identificação segura foi encontrada. Layout limita a imagem à dimensão original para evitar ampliação, respeitando a proporção.
+
+- Elixir Myst: fundo preto removido a pedido do usuário, com recorte assistido por IA. Original enviado preservado em elixir-myst.png; versão aplicada em elixirMystTransparent.png.
+
+- Revisão final: Quintal Caxambu aprovado pelo usuário; Tex Beer e Dinossauros com recorte assistido por IA aplicado (branco externo removido, badge interno do Dinossauros preservado). Rock Forever removido da lista a pedido do usuário. Harley com imageScale 1.35 nos dois projetos. Hangar: original maior enviado pelo usuário, preservado em hangar111Original.png; recortes gerados rejeitados por alterar traços; arquivo original aplicado com composição screen no card, eliminando visualmente o preto sem modificar a imagem.
+
+- Elixir Myst: endereço informado pelo usuário: Rua Cica, 201, Vila Arens / Vila Progresso, Jundiaí / SP. Referência fornecida: https://www.instagram.com/elixir_myst/. Removido o contexto Pátio Cica do card.
+
+- Prefeituras: logos enviadas pelo usuário, adaptadas com fundo transparente e texto branco por edição assistida por IA (prefeituraCampinasWhite.png e prefeituraJundiaiWhite.png). Brasões e faixa colorida preservados na composição. Arquivos originais mantidos. Tex Beer (tagline) e Tennessee (nome abaixo do brasão) receberam texto branco nas variantes texBeerWhite.png e tennesseeWhite.png, nos dois projetos. Glow mantido suave.
+
+
+Limpeza final: somente as 15 imagens atualmente referenciadas foram mantidas em public/images/venues, com nomes camelCase. Versões experimentais, bandeiras substituídas e originais sem uso nessa pasta foram removidos; referências históricas acima documentam as etapas anteriores.

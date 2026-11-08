@@ -22,22 +22,23 @@ export type RepertoireMovement = {
   eyebrow: string
   title: string
   body: string
+  sampleTracks?: readonly string[]
   tone: 'arena' | 'alternative' | 'heavy'
   bands: readonly BandReference[]
 }
 
 export const REPERTOIRE_INTRO = {
-  eyebrow: 'Rock para cada momento',
+  eyebrow: 'O som da Side Rock',
   title: 'Repertório',
-  lead: 'Clássicos escolhidos a dedo, tocados com a fidelidade que o público reconhece e a energia que faz todo mundo participar.',
+  lead: 'Clássicos do rock internacional, do hard rock ao grunge e ao metal. Refrões conhecidos, solos marcantes e peso na medida de cada música.',
 } as const
 
 export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
   {
     id: 'grandes-palcos',
     eyebrow: 'Classic rock · Hard rock',
-    title: 'Clássicos que todo mundo canta',
-    body: 'Grandes refrões, músicas que atravessam gerações e um show que aproxima diferentes públicos.',
+    title: 'Clássicos para cantar junto',
+    body: 'Guns N’ Roses em destaque, com refrões conhecidos, solos marcantes e a energia dos clássicos do hard rock.',
     tone: 'arena',
     bands: [
       { name: 'Bon Jovi', logo: bonJovi, logoScale: 'wide' },
@@ -45,12 +46,18 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
       { name: 'Whitesnake', logo: whitesnake, logoScale: 'wide' },
       { name: 'Simple Minds', logo: simpleMinds },
     ],
+    sampleTracks: [
+      "It's My Life",
+      'Welcome to the Jungle',
+      'Is This Love',
+      "Don't You",
+    ],
   },
   {
     id: 'alternativo-grunge',
     eyebrow: 'Alternativo · Grunge',
     title: 'A força dos anos 90',
-    body: 'Músicas que exigem técnica e domínio das mudanças de dinâmica. A Side Rock cuida dos detalhes sem perder a intensidade.',
+    body: 'Atmosfera, contrastes e vozes marcantes. O grunge e o alternativo mudam o clima do show sem perder a intensidade.',
     tone: 'alternative',
     bands: [
       { name: 'Pearl Jam', logo: pearlJam },
@@ -59,17 +66,46 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
       { name: 'Stone Temple Pilots', logo: stoneTemplePilots },
       { name: 'HIM', logo: him },
     ],
+    sampleTracks: [
+      'Black',
+      'Man in the Box',
+      'Like a Stone',
+      'Plush',
+      'Wicked Game',
+    ],
   },
   {
     id: 'heavy-metal',
     eyebrow: 'Heavy metal',
     title: 'Peso com precisão',
-    body: 'Riffs, viradas e solos executados com o peso e o cuidado que esses clássicos exigem.',
+    body: 'Metallica e Megadeth trazem riffs pesados, solos e viradas que colocam a precisão dos quatro músicos em evidência.',
     tone: 'heavy',
     bands: [
-      { name: 'Ozzy Osbourne', logo: ozzy },
       { name: 'Metallica', logo: metallica, logoScale: 'wide' },
       { name: 'Megadeth', logo: megadeth, logoScale: 'wide' },
+      { name: 'Ozzy Osbourne', logo: ozzy },
+    ],
+    sampleTracks: [
+      'Enter Sandman',
+      'Symphony of Destruction',
+      'Bark at the Moon',
     ],
   },
 ] as const
+
+export const REPERTOIRE_CLOSING = {
+  eyebrow: 'A experiência Side Rock',
+  titleLines: [
+    'Seu evento merece mais do',
+    'que uma banda tocando',
+    'sucessos conhecidos.',
+  ],
+  mobileTitleLines: [
+    'Seu evento merece mais',
+    'do que uma banda',
+    'tocando sucessos',
+    'conhecidos.',
+  ],
+  primaryAction: 'Consultar data e orçamento',
+  secondaryAction: 'Ver a banda em ação',
+} as const

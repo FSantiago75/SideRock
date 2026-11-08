@@ -1,0 +1,32 @@
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 5vw, 6rem);
+  align-items: start;
+}
+.surface {
+  background: linear-gradient(125deg, #d32f350b, #0c0b0b 65%);
+}
+.manager {
+  color: #bdb8b1;
+  font-size: 0.8rem;
+}
+@media (max-width: 760px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 961px) {
+  .bookingIntro {
+    position: sticky;
+    top: calc(var(--side-rock-nav-clearance) + 2rem);
+  }
+}
+.bookingLayout > * {
+  min-width: 0;
+}
+@media (max-width: 960px) {
+  .bookingLayout {
+    grid-template-columns: 1fr;
+  }
+}

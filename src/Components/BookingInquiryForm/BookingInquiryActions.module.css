@@ -1,0 +1,59 @@
+.primaryAction {
+  display: inline-flex;
+  min-height: 2.9rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--summary-accent) 64%, transparent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.primaryAction {
+  background: var(--summary-accent);
+}
+
+.primaryAction:hover {
+  transform: translateY(-2px);
+}
+
+.primaryAction:hover {
+  border-color: var(--summary-accent-hot);
+  background: var(--summary-accent-hot);
+}
+
+.primaryAction:focus-visible {
+  outline: 2px solid var(--summary-accent-hot);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .primaryAction {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction {
+    transition: none;
+  }
+
+  .primaryAction:hover {
+    transform: none;
+  }
+}
+
+.primaryAction:hover {
+  color: var(--summary-action-hover-color, #fff);
+}

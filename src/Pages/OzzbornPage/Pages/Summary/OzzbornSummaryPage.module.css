@@ -14,8 +14,7 @@
   max-width: 100%;
   box-sizing: border-box;
   color: var(--summary-paper);
-  background:
-    linear-gradient(180deg, transparent 0%, #050505 64%);
+  background: linear-gradient(180deg, transparent 0%, #050505 64%);
 }
 
 .hero {
@@ -29,10 +28,7 @@
   min-height: calc(100svh - var(--side-rock-nav-clearance) - 1.5rem);
   margin: 0;
   overflow: hidden;
-  padding:
-    clamp(0.9rem, 2vw, 1.6rem)
-    var(--summary-page-gutter)
-    2rem;
+  padding: clamp(0.9rem, 2vw, 1.6rem) var(--summary-page-gutter) 2rem;
   box-sizing: border-box;
 }
 
@@ -43,7 +39,12 @@
   inset: 0;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.24)),
-    linear-gradient(90deg, rgba(3, 3, 3, 0.9) 0%, rgba(3, 3, 3, 0.46) 48%, rgba(3, 3, 3, 0.2) 100%),
+    linear-gradient(
+      90deg,
+      rgba(3, 3, 3, 0.9) 0%,
+      rgba(3, 3, 3, 0.46) 48%,
+      rgba(3, 3, 3, 0.2) 100%
+    ),
     linear-gradient(180deg, rgba(3, 3, 3, 0.2), rgba(3, 3, 3, 0.62) 92%),
     var(--summary-hero-image) center / cover no-repeat;
   transform: scale(1.015);
@@ -55,7 +56,12 @@
   z-index: -1;
   inset: auto 0 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--summary-accent), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--summary-accent),
+    transparent
+  );
   box-shadow: 0 0 1.5rem rgba(124, 58, 237, 0.32);
 }
 
@@ -75,7 +81,6 @@
 }
 
 .kicker,
-.sectionIndex,
 .repertoire > p {
   margin: 0;
   color: rgba(241, 237, 230, 0.62);
@@ -102,9 +107,7 @@
   height: auto;
   margin-left: -0.45rem;
   object-fit: contain;
-  filter:
-    saturate(0.88)
-    contrast(1.08)
+  filter: saturate(0.88) contrast(1.08)
     drop-shadow(0 0 1.6rem rgba(124, 58, 237, 0.2));
 }
 
@@ -253,8 +256,20 @@
   z-index: 2;
   pointer-events: none;
   background:
-    linear-gradient(90deg, #050505 0%, transparent 18%, transparent 82%, rgba(5, 5, 5, 0.68) 100%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.4), transparent 24%, transparent 68%, #050505 97%);
+    linear-gradient(
+      90deg,
+      #050505 0%,
+      transparent 18%,
+      transparent 82%,
+      rgba(5, 5, 5, 0.68) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.4),
+      transparent 24%,
+      transparent 68%,
+      #050505 97%
+    );
 }
 
 .bandVisual img {
@@ -268,7 +283,12 @@
   filter: contrast(1.06) saturate(0.82);
   transform: scale(var(--band-photo-scale));
   transform-origin: var(--band-photo-position);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 100%);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 10%,
+    #000 100%
+  );
   mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 100%);
 }
 
@@ -276,9 +296,7 @@
   object-fit: contain;
   -webkit-mask-image: none;
   mask-image: none;
-  filter:
-    contrast(1.04)
-    saturate(0.88)
+  filter: contrast(1.04) saturate(0.88)
     drop-shadow(0 2rem 2.2rem rgba(0, 0, 0, 0.72));
 }
 
@@ -303,7 +321,12 @@
 }
 
 .bandHalo {
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.46), rgba(38, 17, 58, 0.1) 42%, transparent 68%);
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.46),
+    rgba(38, 17, 58, 0.1) 42%,
+    transparent 68%
+  );
   filter: blur(22px);
 }
 
@@ -341,65 +364,6 @@
   letter-spacing: 0.08em;
 }
 
-.story {
-  display: grid;
-  grid-template-columns: minmax(17rem, 0.8fr) minmax(20rem, 1.15fr) minmax(15rem, 0.65fr);
-  gap: clamp(1.5rem, 4vw, 4.5rem);
-  width: 100%;
-  box-sizing: border-box;
-  margin-inline: auto;
-  padding: clamp(4rem, 8vw, 8rem) var(--summary-page-gutter);
-}
-
-.storyHeading h2 {
-  margin: 0.9rem 0 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.2rem, 3.6vw, 4.3rem);
-  font-weight: 500;
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-}
-
-.storyBody {
-  color: rgba(241, 237, 230, 0.66);
-  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
-  line-height: 1.8;
-}
-
-.storyBody p {
-  margin: 0;
-}
-
-.storyBody p + p {
-  margin-top: 1.25rem;
-}
-
-.promise {
-  align-self: center;
-  padding: 1.25rem;
-  border: 1px solid rgba(124, 58, 237, 0.3);
-  background: linear-gradient(145deg, rgba(124, 58, 237, 0.1), rgba(0, 0, 0, 0.42));
-}
-
-.promise span {
-  display: block;
-  color: var(--summary-accent-hot);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.promise strong {
-  display: block;
-  margin-top: 0.75rem;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
-  font-weight: 500;
-  line-height: 1.2;
-}
-
 .repertoire {
   display: block;
   width: 100%;
@@ -429,8 +393,20 @@
   -webkit-overflow-scrolling: touch;
   cursor: grab;
   outline: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 4%,
+    #000 96%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 4%,
+    #000 96%,
+    transparent
+  );
 }
 
 .heroContact {
@@ -484,14 +460,6 @@
   .heroTitle {
     font-size: clamp(3rem, 5.7vw, 5rem);
   }
-
-  .story {
-    grid-template-columns: minmax(17rem, 0.8fr) minmax(20rem, 1.2fr);
-  }
-
-  .promise {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 760px) {
@@ -541,17 +509,20 @@
   }
 
   .bandVisual img {
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  }
-
-  .story {
-    grid-template-columns: 1fr;
-    padding-block: 4rem;
-  }
-
-  .promise {
-    grid-column: auto;
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
   }
 
   .repertoire {
@@ -587,10 +558,6 @@
   .bandVisual {
     min-height: 29rem;
   }
-
-  .storyHeading h2 {
-    font-size: clamp(2.25rem, 11vw, 3.3rem);
-  }
 }
 
 @media (max-width: 360px) {
@@ -609,4 +576,18 @@
   .secondaryAction:hover {
     transform: none;
   }
+}
+
+.secondaryAction {
+  border-color: rgba(241, 237, 230, 0.48);
+  color: #f1ede6;
+  background: rgba(255, 255, 255, 0.05);
+}
+.secondaryAction:hover {
+  color: #080808;
+  border-color: #f1ede6;
+  background: #f1ede6;
+}
+.primaryAction:hover {
+  color: #0c0714;
 }

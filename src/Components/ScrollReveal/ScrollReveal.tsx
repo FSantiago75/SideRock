@@ -14,6 +14,7 @@ type ScrollRevealProps = {
   className?: string
   delayMs?: number
   from?: RevealFrom
+  ready?: boolean
 }
 
 type RevealStyle = CSSProperties & {
@@ -30,14 +31,17 @@ function getScrollRoot(node: Element): Element | null {
 }
 
 function shouldRevealNode(node: Element, root: Element | null): boolean {
-  const rootRect = (root ?? node.ownerDocument.documentElement).getBoundingClientRect()
+  const rootRect = (
+    root ?? node.ownerDocument.documentElement
+  ).getBoundingClientRect()
   const viewTop = rootRect.top
   const viewBottom = rootRect.bottom - rootRect.height * ROOT_MARGIN_BOTTOM
   const rect = node.getBoundingClientRect()
 
   if (rect.bottom <= viewTop) return true
 
-  const overlap = Math.min(rect.bottom, viewBottom) - Math.max(rect.top, viewTop)
+  const overlap =
+    Math.min(rect.bottom, viewBottom) - Math.max(rect.top, viewTop)
   if (overlap <= 0) return false
   return overlap / Math.max(rect.height, 1) >= REVEAL_RATIO
 }
@@ -52,13 +56,14 @@ export function ScrollReveal({
   className,
   delayMs = 0,
   from = 'up',
+  ready = true,
 }: ScrollRevealProps) {
   const nodeRef = useRef<HTMLDivElement>(null)
   const [state, setState] = useState<RevealState>(getInitialRevealState)
 
   useEffect(() => {
     const node = nodeRef.current
-    if (!node) return
+    if (!node || !ready) return
     if (typeof IntersectionObserver === 'undefined') {
       const frame = window.requestAnimationFrame(() => setState('in'))
       return () => window.cancelAnimationFrame(frame)
@@ -98,7 +103,7 @@ export function ScrollReveal({
     })
 
     return cleanup
-  }, [])
+  }, [ready])
 
   const style: RevealStyle = {
     '--reveal-delay': `${delayMs}ms`,

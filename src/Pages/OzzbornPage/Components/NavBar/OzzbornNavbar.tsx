@@ -1,3 +1,4 @@
+import { OZZBORN_QUICK_WHATSAPP_URL } from '../../bookingContact'
 import { NavLink } from 'react-router-dom'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa6'
 import { SocialIcon } from '../../../SideRockPage/Components/NavBar/Components/SocialIcon/SocialIcon'
@@ -13,19 +14,22 @@ import styles from './OzzbornNavbar.module.css'
 const socialLinks = [
   {
     href: 'https://www.instagram.com/ozzborntributo',
-    label: 'Instagram do Ozzborn',
+    label: 'Instagram da Ozzborn',
     Icon: FaInstagram,
   },
   {
-    href: 'https://wa.me/5511971632992',
-    label: 'WhatsApp para contratar o Ozzborn',
+    href: OZZBORN_QUICK_WHATSAPP_URL,
+    label: 'WhatsApp para contratar a Ozzborn',
     Icon: FaWhatsapp,
   },
 ] as const
 
 export function OzzbornNavbar() {
   return (
-    <nav className={`${sharedStyles.root} ${styles.theme}`} aria-label="Ozzborn">
+    <nav
+      className={`${sharedStyles.root} ${styles.theme}`}
+      aria-label="Ozzborn"
+    >
       <NavLink className={sharedStyles.mobileBrand} to={ozzbornPath('resumo')}>
         Ozzborn
       </NavLink>
@@ -35,7 +39,9 @@ export function OzzbornNavbar() {
           {OZZBORN_SECTION_ORDER.map((id, index) => (
             <div key={id} className={styles.tabItem}>
               {index > 0 ? (
-                <span className={tabStyles.separator} aria-hidden="true">●</span>
+                <span className={tabStyles.separator} aria-hidden="true">
+                  ●
+                </span>
               ) : null}
               <NavLink
                 className={({ isActive }) =>
