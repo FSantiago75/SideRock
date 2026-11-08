@@ -92,6 +92,9 @@
   .videoCard {
     width: 100%;
     box-sizing: border-box;
+  }
+
+  .videoCarousel[data-variant='default'] .videoCard {
     animation: videoFadeIn 180ms ease-out;
   }
 
@@ -149,6 +152,17 @@
   }
 }
 
+@keyframes videoFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .videoCarousel[data-variant='default'] .videoCard {
+    animation: none;
+  }
+}
+
 @media (max-width: 590px) {
   .videoCaption {
     align-items: flex-start;
@@ -157,16 +171,25 @@
   }
 }
 
-@keyframes videoFadeIn {
-  from {
-    opacity: 0;
+@media (max-width: 760px) {
+  /* Reserve room for the navigation, caption and pagination on short screens. */
+  .videoCarousel[data-variant='story'] {
+    width: min(
+      100%,
+      calc(
+        max(12rem, 100svh - var(--side-rock-nav-clearance, 88px) - 8rem) *
+          0.5625
+      )
+    );
+    margin-inline: auto;
   }
-  to {
-    opacity: 1;
+
+  .videoCarousel[data-variant='story'] .videoFrame video {
+    object-fit: contain;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .videoCard {
-    animation: none;
+
+  .videoCarousel[data-variant='story'] .videoCaption {
+    gap: 0.35rem;
+    padding: 0.65rem 0.75rem;
   }
 }

@@ -196,3 +196,12 @@
     transition: none;
   }
 }
+@media (max-width: 760px) {
+  .referenceArt img {
+    height: clamp(4rem, 13svh, 6.5rem);
+  }
+
+  .atmospherePanel {
+    gap: 1rem;
+  }
+}

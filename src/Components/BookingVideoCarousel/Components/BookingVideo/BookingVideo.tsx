@@ -1,4 +1,5 @@
 import type { SyntheticEvent } from 'react'
+import { VideoSlideTransition } from '../VideoSlideTransition/VideoSlideTransition'
 import styles from '../../BookingVideoCarousel.module.css'
 
 type BookingVideoProps = {
@@ -9,6 +10,8 @@ type BookingVideoProps = {
   onPlay: (event: SyntheticEvent<HTMLVideoElement>) => void
   onPause: () => void
   onEnded: () => void
+  transition?: { previousPoster: string; direction: 'next' | 'previous' }
+  onTransitionEnd: () => void
 }
 
 export function BookingVideo({
@@ -19,6 +22,8 @@ export function BookingVideo({
   onPlay,
   onPause,
   onEnded,
+  transition,
+  onTransitionEnd,
 }: BookingVideoProps) {
   return (
     <article className={styles.videoCard}>
@@ -37,6 +42,13 @@ export function BookingVideo({
         >
           <source src={src} type="video/mp4" />
         </video>
+        {transition ? (
+          <VideoSlideTransition
+            {...transition}
+            poster={poster}
+            onFinish={onTransitionEnd}
+          />
+        ) : null}
       </div>
       <div className={styles.videoCaption}>
         <span>Ao vivo</span>

@@ -24,17 +24,31 @@ export function useVideoCarousel(count: number) {
   const [isHovered, setIsHovered] = useState(false)
   const [isInteracting, setIsInteracting] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [transition, setTransition] = useState<{
+    from: number
+    direction: 'next' | 'previous'
+  } | null>(null)
 
   const goTo = useCallback(
     (index: number) => {
       if (!count) return
+      const nextIndex = (index + count) % count
+      if (nextIndex === activeIndex) return
+      setTransition(
+        isMobile && !reducedMotion
+          ? {
+              from: activeIndex,
+              direction: index > activeIndex ? 'next' : 'previous',
+            }
+          : null,
+      )
       rowRef.current
         ?.querySelectorAll('video')
         .forEach((video) => video.pause())
       setIsPlaying(false)
-      setActiveIndex((index + count) % count)
+      setActiveIndex(nextIndex)
     },
-    [count],
+    [activeIndex, count, isMobile, reducedMotion],
   )
 
   useEffect(() => {
@@ -48,7 +62,7 @@ export function useVideoCarousel(count: number) {
     )
       return
     const interval = window.setInterval(
-      () => goTo((activeIndex + 1) % count),
+      () => goTo(activeIndex + 1),
       AUTO_ADVANCE_MS,
     )
     return () => window.clearInterval(interval)
@@ -138,6 +152,8 @@ export function useVideoCarousel(count: number) {
   return {
     rowRef,
     activeIndex,
+    transition,
+    finishTransition: () => setTransition(null),
     isMobile,
     goTo,
     setIsHovered,

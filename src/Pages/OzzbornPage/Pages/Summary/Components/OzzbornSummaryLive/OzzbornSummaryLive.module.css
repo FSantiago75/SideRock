@@ -77,3 +77,13 @@
     margin-inline: auto;
   }
 }
+@media (max-width: 760px) {
+  .liveLayout {
+    gap: 1.5rem;
+  }
+
+  .liveLead,
+  .liveActions {
+    margin-top: 1.25rem;
+  }
+}

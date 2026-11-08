@@ -204,3 +204,12 @@
     font-size: 0.78rem;
   }
 }
+@media (max-width: 760px) {
+  .albumArt {
+    width: min(100%, 10rem, 25svh);
+  }
+
+  .chapterPanel {
+    gap: 1rem;
+  }
+}

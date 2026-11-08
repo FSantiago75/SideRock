@@ -130,3 +130,17 @@
 .venueImage img[data-blend='screen'] {
   filter: none;
 }
+@media (max-width: 760px) {
+  .venues article {
+    flex-basis: min(82%, 19rem);
+    padding: 1.1rem;
+  }
+
+  .venueImage {
+    aspect-ratio: 16 / 9;
+  }
+
+  .venueName {
+    font-size: 1.45rem;
+  }
+}

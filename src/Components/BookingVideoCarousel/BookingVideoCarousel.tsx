@@ -21,6 +21,8 @@ export function BookingVideoCarousel({
   const {
     rowRef,
     activeIndex,
+    transition,
+    finishTransition,
     isMobile,
     goTo,
     setIsHovered,
@@ -68,6 +70,15 @@ export function BookingVideoCarousel({
               onPlay={handlePlay}
               onPause={handlePlaybackStop}
               onEnded={handlePlaybackStop}
+              transition={
+                variant === 'story' && isMobile && transition
+                  ? {
+                      previousPoster: videos[transition.from].poster,
+                      direction: transition.direction,
+                    }
+                  : undefined
+              }
+              onTransitionEnd={finishTransition}
             />
           ),
         )}

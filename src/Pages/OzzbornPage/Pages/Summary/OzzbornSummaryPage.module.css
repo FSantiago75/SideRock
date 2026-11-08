@@ -595,3 +595,16 @@
 .heroFacts dt.duration {
   text-transform: none;
 }
+@media (max-width: 760px) {
+  .heroBrand {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+
+  .heroDescriptor {
+    font-size: clamp(1.6rem, 7.5vw, 2.5rem);
+  }
+
+  .bandVisual {
+    min-height: clamp(16rem, 45svh, 23rem);
+  }
+}
