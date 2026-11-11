@@ -80,7 +80,7 @@
   grid-row: 1;
   min-width: 0;
   overflow: clip;
-  touch-action: pan-y pinch-zoom;
+  touch-action: pinch-zoom;
   user-select: none;
 }
 

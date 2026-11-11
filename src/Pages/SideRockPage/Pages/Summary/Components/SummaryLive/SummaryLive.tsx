@@ -50,6 +50,8 @@ export function SummaryLive() {
           <BookingVideoCarousel
             videos={SIDE_ROCK_BOOKING.videos}
             variant="story"
+            autoAdvance={false}
+            nativeSwipe
           />
         </ScrollReveal>
       </div>

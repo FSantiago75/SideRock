@@ -14,7 +14,7 @@ const RESUME_AFTER_INTERACTION_MS = 1800
 const SWIPE_MIN_DISTANCE_PX = 48
 const NATIVE_CONTROLS_HEIGHT_PX = 64
 
-export function useVideoCarousel(count: number) {
+export function useVideoCarousel(count: number, autoAdvance: boolean) {
   const isMobile = useMediaQuery(`(max-width: ${VIEWPORT_MOBILE_MAX_PX}px)`)
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
   const rowRef = useRef<HTMLDivElement>(null)
@@ -53,6 +53,7 @@ export function useVideoCarousel(count: number) {
 
   useEffect(() => {
     if (
+      !autoAdvance ||
       count < 2 ||
       !isMobile ||
       reducedMotion ||
@@ -68,6 +69,7 @@ export function useVideoCarousel(count: number) {
     return () => window.clearInterval(interval)
   }, [
     activeIndex,
+    autoAdvance,
     count,
     goTo,
     isMobile,

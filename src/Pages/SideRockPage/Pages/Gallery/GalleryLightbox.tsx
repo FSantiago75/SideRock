@@ -159,7 +159,8 @@ export function GalleryLightbox({
   }
 
   function onPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
-    if (!canNavigate || destination || !event.isPrimary || event.button !== 0) return
+    if (!canNavigate || destination || !event.isPrimary) return
+    if (event.pointerType === 'mouse' && event.button !== 0) return
     event.currentTarget.setPointerCapture(event.pointerId)
     pointerStart.current = { id: event.pointerId, x: event.clientX, y: event.clientY }
     setDragging(true)

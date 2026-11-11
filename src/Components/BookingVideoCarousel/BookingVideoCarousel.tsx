@@ -12,11 +12,15 @@ type BookingVideoItem = {
 type BookingVideoCarouselProps = {
   videos: readonly BookingVideoItem[]
   variant?: 'default' | 'story'
+  autoAdvance?: boolean
+  nativeSwipe?: boolean
 }
 
 export function BookingVideoCarousel({
   videos,
   variant = 'default',
+  autoAdvance = true,
+  nativeSwipe = false,
 }: BookingVideoCarouselProps) {
   const {
     rowRef,
@@ -33,8 +37,9 @@ export function BookingVideoCarousel({
     handleTouchCancel,
     handlePlay,
     handlePlaybackStop,
-  } = useVideoCarousel(videos.length)
+  } = useVideoCarousel(videos.length, autoAdvance)
   const previousPoster = transition ? videos[transition.from]?.poster : undefined
+  const useNativeSwipe = nativeSwipe && isMobile
 
   return (
     <div className={styles.videoCarousel} data-variant={variant}>
@@ -42,6 +47,7 @@ export function BookingVideoCarousel({
         ref={rowRef}
         className={styles.videoRow}
         data-video-row
+        data-native-swipe={useNativeSwipe || undefined}
         role="region"
         aria-label="Apresentações ao vivo. Deslize para o próximo vídeo."
         onPointerEnter={(event) => {
@@ -59,11 +65,15 @@ export function BookingVideoCarousel({
         onPointerCancel={(event) => {
           if (event.pointerType !== 'touch') resumeAfterInteraction()
         }}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchCancel}
+        onTouchStart={useNativeSwipe ? undefined : handleTouchStart}
+        onTouchEnd={useNativeSwipe ? undefined : handleTouchEnd}
+        onTouchCancel={useNativeSwipe ? undefined : handleTouchCancel}
+        onScroll={useNativeSwipe ? (event) => {
+          const row = event.currentTarget
+          if (row.clientWidth) goTo(Math.round(row.scrollLeft / row.clientWidth))
+        } : undefined}
       >
-        {(isMobile ? videos.slice(activeIndex, activeIndex + 1) : videos).map(
+        {(isMobile && !useNativeSwipe ? videos.slice(activeIndex, activeIndex + 1) : videos).map(
           (video) => (
             <BookingVideo
               key={video.src}
@@ -72,7 +82,7 @@ export function BookingVideoCarousel({
               onPause={handlePlaybackStop}
               onEnded={handlePlaybackStop}
               transition={
-                variant === 'story' && isMobile && transition && previousPoster && video.poster
+                variant === 'story' && isMobile && !useNativeSwipe && transition && previousPoster && video.poster
                   ? {
                       previousPoster,
                       direction: transition.direction,
@@ -100,6 +110,11 @@ export function BookingVideoCarousel({
                   index === activeIndex ? styles.videoDotActive : undefined
                 }
                 onClick={() => {
+                  if (useNativeSwipe) {
+                    const row = rowRef.current
+                    row?.scrollTo({ left: index * row.clientWidth })
+                    return
+                  }
                   pauseForInteraction()
                   goTo(index)
                   resumeAfterInteraction()

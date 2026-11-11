@@ -95,6 +95,32 @@
     box-sizing: border-box;
   }
 
+  .videoRow[data-native-swipe] {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+
+  .videoRow[data-native-swipe]::-webkit-scrollbar {
+    display: none;
+  }
+
+  .videoRow[data-native-swipe] .videoCard {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .videoCarousel:has([data-native-swipe]) .videoPagination button {
+    width: clamp(0.65rem, 3vw, 1.65rem);
+    height: 1.5rem;
+    background-clip: content-box;
+    padding-block: 0.64rem;
+  }
+
   .videoCarousel[data-variant='default'] .videoCard {
     animation: videoFadeIn 180ms ease-out;
   }
