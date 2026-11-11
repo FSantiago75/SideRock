@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { HiOutlineChevronDown, HiOutlineFolder } from 'react-icons/hi2'
 import background from '../../../../assets/sideRock/backgrounds/sideRockStandardBackground.png'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import { SectionIntro } from '../../../../Components/SectionIntro/SectionIntro'
@@ -7,22 +8,28 @@ import { GalleryAlbumSection } from './GalleryAlbumSection'
 import { GalleryLightbox } from './GalleryLightbox'
 import {
   formatRecordCount,
+  GALLERY_ALBUMS,
   GALLERY_COPY,
   GALLERY_PHOTOS,
   getPhotoById,
 } from './galleryContent'
 import styles from './GalleryPage.module.css'
 
+const initialAlbumId = GALLERY_ALBUMS.find((album) => album.photos.length)?.id
+
 export function GalleryPage() {
+  const [openAlbumId, setOpenAlbumId] = useState(initialAlbumId)
   const [activePhotoId, setActivePhotoId] = useState<string | null>(null)
   const activePhoto = activePhotoId
     ? getPhotoById(activePhotoId, GALLERY_PHOTOS)
     : undefined
+  const activeAlbum = GALLERY_ALBUMS.find((album) => album.id === activePhoto?.albumId)
 
   return (
     <SideRockSectionPage
       layout="flow"
       background={background}
+      viewportSizedBackground
       backgroundGrayscale="0%"
       backgroundPosition="left center"
       backgroundOverlay="
@@ -47,21 +54,50 @@ export function GalleryPage() {
           <div className={styles.divider} aria-hidden />
         </ScrollReveal>
 
-        {GALLERY_PHOTOS.length === 0 ? (
-          <ScrollReveal from="up">
-            <section className={styles.empty} aria-labelledby="gallery-empty-title">
-              <h2 id="gallery-empty-title">{GALLERY_COPY.emptyTitle}</h2>
-              <p>{GALLERY_COPY.emptyBody}</p>
+        <div className={styles.folders}>
+          {GALLERY_ALBUMS.map((album, index) => (
+            <section
+              key={album.id}
+              className={styles.folder}
+              data-open={album.id === openAlbumId}
+            >
+              <button
+                type="button"
+                className={styles.folderHeader}
+                aria-expanded={album.id === openAlbumId}
+                aria-controls={`gallery-folder-${index}`}
+                onClick={() =>
+                  setOpenAlbumId((current) => current === album.id ? undefined : album.id)
+                }
+              >
+                <HiOutlineFolder className={styles.folderIcon} aria-hidden />
+                <span className={styles.folderName}>{album.label}</span>
+                <span className={styles.count}>{formatRecordCount(album.photos.length)}</span>
+                <HiOutlineChevronDown className={styles.folderChevron} aria-hidden />
+              </button>
+              <div
+                id={`gallery-folder-${index}`}
+                className={styles.folderPanel}
+                inert={album.id !== openAlbumId}
+              >
+                <div className={styles.folderClip}>
+                  <div className={styles.folderBody}>
+                    {album.photos.length ? (
+                      <GalleryAlbumSection photos={album.photos} onOpen={setActivePhotoId} />
+                    ) : (
+                      <p className={styles.folderEmpty}>Ainda não há fotos nesta pasta.</p>
+                    )}
+                  </div>
+                </div>
+              </div>
             </section>
-          </ScrollReveal>
-        ) : (
-          <GalleryAlbumSection photos={GALLERY_PHOTOS} onOpen={setActivePhotoId} />
-        )}
+          ))}
+        </div>
       </article>
 
-      {activePhoto ? (
+      {activePhoto && activeAlbum ? (
         <GalleryLightbox
-          photos={GALLERY_PHOTOS}
+          photos={activeAlbum.photos}
           activePhotoId={activePhoto.id}
           onClose={() => setActivePhotoId(null)}
           onNavigate={setActivePhotoId}

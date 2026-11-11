@@ -4,9 +4,9 @@ import styles from '../../BookingVideoCarousel.module.css'
 
 type BookingVideoProps = {
   src: string
-  poster: string
+  poster?: string
   title: string
-  href: string
+  href?: string
   onPlay: (event: SyntheticEvent<HTMLVideoElement>) => void
   onPause: () => void
   onEnded: () => void
@@ -42,7 +42,7 @@ export function BookingVideo({
         >
           <source src={src} type="video/mp4" />
         </video>
-        {transition ? (
+        {transition && poster ? (
           <VideoSlideTransition
             {...transition}
             poster={poster}
@@ -52,9 +52,13 @@ export function BookingVideo({
       </div>
       <div className={styles.videoCaption}>
         <span>Ao vivo</span>
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {title}
-        </a>
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {title}
+          </a>
+        ) : (
+          <strong className={styles.videoTitle}>{title}</strong>
+        )}
       </div>
     </article>
   )

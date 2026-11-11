@@ -28,7 +28,18 @@ const LEADING_DATE =
   /^(?:\d{4}-\d{2}-\d{2}|\d{8}|\d{4}-\d{2}|\d{4})[-_]?/i
 const LEADING_INDEX = /^\d+\s*[-_.]\s*/
 const ALBUM_LABEL_OVERRIDES: Record<string, string> = {
+  publico: 'Público',
   estudio: 'Estúdio',
+}
+
+const GALLERY_FOLDERS = ['Publico', 'Shows', 'Formação']
+
+const PHOTO_LABEL_OVERRIDES: Record<string, string> = {
+  'Marcelo e Leandro Dalle': 'Marcelo e Dalle',
+  'Dinossauro\'s publico': 'Público no Dinossauro’s',
+  'Dinossauro\'s  visão da plateia': 'Dinossauro’s — visão da plateia',
+  'Victor solando na jump': 'Victor solando na Jump',
+  'Vocal e Guitarra Jump': 'Vocal e guitarra na Jump',
 }
 
 const imageModules = import.meta.glob<string>(
@@ -60,7 +71,7 @@ function stripDecorators(value: string): string {
   return current
 }
 
-function toReadableLabel(slug: string, mode: 'title' | 'sentence'): string {
+function toAlbumTitle(slug: string): string {
   const words = slug
     .split(/[-_]+/)
     .map((part) => part.trim())
@@ -68,12 +79,9 @@ function toReadableLabel(slug: string, mode: 'title' | 'sentence'): string {
 
   if (words.length === 0) return slug
 
-  const formatted = words.map((word, index) => {
+  const formatted = words.map((word) => {
     const lower = word.toLocaleLowerCase('pt-BR')
-    if (mode === 'title' || index === 0) {
-      return lower.charAt(0).toLocaleUpperCase('pt-BR') + lower.slice(1)
-    }
-    return lower
+    return lower.charAt(0).toLocaleUpperCase('pt-BR') + lower.slice(1)
   })
 
   return formatted.join(' ')
@@ -81,13 +89,13 @@ function toReadableLabel(slug: string, mode: 'title' | 'sentence'): string {
 
 function toAlbumLabel(folderName: string): string {
   const slug = stripDecorators(folderName).toLocaleLowerCase('pt-BR')
-  return ALBUM_LABEL_OVERRIDES[slug] ?? toReadableLabel(slug, 'title')
+  return ALBUM_LABEL_OVERRIDES[slug] ?? toAlbumTitle(slug)
 }
 
 function toPhotoLabel(fileName: string): string {
   const stem = fileName.replace(IMAGE_EXTENSIONS, '')
   const slug = stripDecorators(stem)
-  return toReadableLabel(slug, 'sentence')
+  return PHOTO_LABEL_OVERRIDES[slug] ?? slug.replaceAll('_', ' ')
 }
 
 function compareLocale(left: string, right: string): number {
@@ -101,7 +109,9 @@ function buildCatalog(modules: Record<string, string>): {
   albums: readonly GalleryAlbum[]
   photos: readonly GalleryPhoto[]
 } {
-  const photosByAlbum = new Map<string, GalleryPhoto[]>()
+  const photosByAlbum = new Map<string, GalleryPhoto[]>(
+    GALLERY_FOLDERS.map((id) => [id, []]),
+  )
   const albumLabels = new Map<string, string>()
 
   for (const [modulePath, src] of Object.entries(modules)) {
@@ -139,7 +149,14 @@ function buildCatalog(modules: Record<string, string>): {
   }
 
   const albums = [...photosByAlbum.entries()]
-    .sort(([left], [right]) => compareLocale(left, right))
+    .sort(([left], [right]) => {
+      const leftOrder = GALLERY_FOLDERS.indexOf(left)
+      const rightOrder = GALLERY_FOLDERS.indexOf(right)
+      if (leftOrder === -1 && rightOrder === -1) return compareLocale(left, right)
+      if (leftOrder === -1) return 1
+      if (rightOrder === -1) return -1
+      return leftOrder - rightOrder
+    })
     .map(([albumId, albumPhotos]) => ({
       id: albumId,
       label: albumLabels.get(albumId) ?? toAlbumLabel(albumId),

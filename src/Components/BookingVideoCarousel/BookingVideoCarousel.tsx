@@ -4,9 +4,9 @@ import styles from './BookingVideoCarousel.module.css'
 
 type BookingVideoItem = {
   src: string
-  poster: string
+  poster?: string
   title: string
-  href: string
+  href?: string
 }
 
 type BookingVideoCarouselProps = {
@@ -34,6 +34,7 @@ export function BookingVideoCarousel({
     handlePlay,
     handlePlaybackStop,
   } = useVideoCarousel(videos.length)
+  const previousPoster = transition ? videos[transition.from]?.poster : undefined
 
   return (
     <div className={styles.videoCarousel} data-variant={variant}>
@@ -71,9 +72,9 @@ export function BookingVideoCarousel({
               onPause={handlePlaybackStop}
               onEnded={handlePlaybackStop}
               transition={
-                variant === 'story' && isMobile && transition
+                variant === 'story' && isMobile && transition && previousPoster && video.poster
                   ? {
-                      previousPoster: videos[transition.from].poster,
+                      previousPoster,
                       direction: transition.direction,
                     }
                   : undefined

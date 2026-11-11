@@ -40,25 +40,105 @@
   background: rgba(241, 237, 230, 0.1);
 }
 
-.empty {
-  max-width: 32rem;
-  padding: 0.5rem 0 4rem;
+.folders {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.6rem);
 }
 
-.empty h2 {
-  margin: 0;
+.folder {
+  min-width: 0;
+}
+
+.folderHeader {
+  width: 100%;
+  color: inherit;
+  border: 1px solid rgba(241, 237, 230, 0.14);
+  border-radius: 0.6rem;
+  background: rgba(8, 8, 8, 0.72);
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  min-height: clamp(4.5rem, 8vw, 5.5rem);
+  padding: 0.9rem clamp(1rem, 3vw, 1.8rem);
+  list-style: none;
+  cursor: pointer;
+}
+
+.folder[data-open='true'] > .folderHeader {
+  border-color: var(--gallery-accent);
+}
+
+.folderHeader:hover {
+  background: rgba(241, 237, 230, 0.05);
+}
+
+.folderHeader:focus-visible {
+  outline: 2px solid var(--gallery-accent-hot);
+  outline-offset: 2px;
+}
+
+.folderIcon,
+.folderChevron {
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.folderIcon {
+  color: var(--gallery-accent-hot);
+}
+
+.folderName {
+  flex: 1;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  overflow-wrap: anywhere;
 }
 
-.empty p {
-  margin: 0.85rem 0 0;
+.folderHeader .count {
+  margin: 0;
+  color: rgba(241, 237, 230, 0.65);
+}
+
+.folder[data-open='true'] .folderChevron {
+  transform: rotate(180deg);
+}
+
+.folderBody {
+  padding-block: clamp(1rem, 2vw, 1.6rem);
+}
+
+.folderPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.folder[data-open='true'] > .folderPanel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.folderClip {
+  min-height: 0;
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .folderChevron {
+    transition: transform 260ms var(--motion);
+  }
+
+  .folderPanel {
+    transition: grid-template-rows 380ms var(--motion), opacity 260ms ease;
+  }
+}
+
+.folderEmpty {
+  margin: 0;
+  padding: 0.3rem 0.4rem;
   color: rgba(241, 237, 230, 0.58);
-  font-size: 0.98rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 760px) {

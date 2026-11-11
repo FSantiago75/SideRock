@@ -13,6 +13,7 @@ type SideRockSectionPageProps = {
   backgroundGrayscale?: string
   backgroundOverlay?: string
   backgroundPosition?: string
+  viewportSizedBackground?: boolean
   layout?: 'artboard' | 'flow'
   children?: ReactNode
   navbar?: ReactNode
@@ -36,6 +37,7 @@ export function SideRockSectionPage({
   backgroundGrayscale = '20%',
   backgroundOverlay = 'transparent',
   backgroundPosition = 'center top',
+  viewportSizedBackground = false,
   layout = 'artboard',
   children,
   navbar,
@@ -66,7 +68,11 @@ export function SideRockSectionPage({
         <div className={styles.navOverlay}>
           {navbar ?? <SideRockNavbar />}
         </div>
-        <div className={styles.bgStack} data-layout={layout}>
+        <div
+          className={styles.bgStack}
+          data-layout={layout}
+          data-viewport-background={viewportSizedBackground || undefined}
+        >
           {background ? (
             <img className={styles.bgImg} src={background} alt="" />
           ) : null}

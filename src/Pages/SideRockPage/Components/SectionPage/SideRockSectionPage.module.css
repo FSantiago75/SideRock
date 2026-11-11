@@ -179,6 +179,12 @@
   min-height: 0;
 }
 
+.bgStack[data-layout='flow'][data-viewport-background] .bgImg,
+.bgStack[data-layout='flow'][data-viewport-background]::after {
+  inset: 0 0 auto;
+  height: 100svh;
+}
+
 .bgStack[data-layout='flow'] .inner {
   position: relative;
   inset: auto;
