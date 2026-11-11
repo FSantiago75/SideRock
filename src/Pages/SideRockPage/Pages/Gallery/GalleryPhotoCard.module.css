@@ -145,12 +145,6 @@
   }
 }
 
-@media (hover: none) {
-  .card:active {
-    border-color: color-mix(in srgb, var(--gallery-accent) 50%, transparent);
-  }
-}
-
 @media (max-width: 760px) {
   .item {
     margin-bottom: 0.42rem;

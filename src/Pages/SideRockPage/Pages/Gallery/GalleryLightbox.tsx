@@ -2,6 +2,7 @@ import {
   useEffect,
   useId,
   useRef,
+  useState,
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
 } from 'react'
@@ -23,6 +24,7 @@ type GalleryLightboxProps = {
 }
 
 const SWIPE_THRESHOLD_PX = 48
+const SLIDE_DURATION_MS = 240
 const FOCUSABLE_SELECTOR =
   'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
@@ -60,7 +62,10 @@ export function GalleryLightbox({
 }: GalleryLightboxProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
-  const pointerStart = useRef<{ x: number; y: number } | null>(null)
+  const pointerStart = useRef<{ id: number; x: number; y: number } | null>(null)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [dragging, setDragging] = useState(false)
+  const [destination, setDestination] = useState<string | null>(null)
   const activeIdRef = useRef(activePhotoId)
   const titleId = useId()
   const photo = photos.find((item) => item.id === activePhotoId) ?? photos[0]
@@ -72,6 +77,18 @@ export function GalleryLightbox({
   const previousId = getAdjacentPhotoId(photos, activePhotoId, -1)
   const nextId = getAdjacentPhotoId(photos, activePhotoId, 1)
   const canNavigate = total > 1 && previousId && nextId
+  const previousPhoto = photos.find((item) => item.id === previousId)
+  const nextPhoto = photos.find((item) => item.id === nextId)
+
+  useEffect(() => {
+    if (!destination) return
+    const timer = window.setTimeout(() => {
+      onNavigate(destination)
+      setDestination(null)
+      setDragOffset(0)
+    }, SLIDE_DURATION_MS)
+    return () => window.clearTimeout(timer)
+  }, [destination, onNavigate])
 
   useEffect(() => {
     const restoreScroll = lockPageScroll()
@@ -142,21 +159,40 @@ export function GalleryLightbox({
   }
 
   function onPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
-    if (event.pointerType === 'mouse' && event.button !== 0) return
-    pointerStart.current = { x: event.clientX, y: event.clientY }
+    if (!canNavigate || destination || !event.isPrimary || event.button !== 0) return
+    event.currentTarget.setPointerCapture(event.pointerId)
+    pointerStart.current = { id: event.pointerId, x: event.clientX, y: event.clientY }
+    setDragging(true)
+  }
+
+  function onPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
+    const start = pointerStart.current
+    if (start?.id !== event.pointerId) return
+    const width = event.currentTarget.clientWidth
+    setDragOffset(Math.max(-width, Math.min(width, event.clientX - start.x)))
+  }
+
+  function cancelDrag() {
+    pointerStart.current = null
+    setDragging(false)
+    setDragOffset(0)
   }
 
   function onPointerUp(event: ReactPointerEvent<HTMLDivElement>) {
     const start = pointerStart.current
-    pointerStart.current = null
-    if (!start || !canNavigate || !previousId || !nextId) return
-
+    if (start?.id !== event.pointerId) return
+    cancelDrag()
     const deltaX = event.clientX - start.x
     const deltaY = event.clientY - start.y
-    if (Math.abs(deltaX) < SWIPE_THRESHOLD_PX) return
-    if (Math.abs(deltaX) < Math.abs(deltaY)) return
-
-    onNavigate(deltaX > 0 ? previousId : nextId)
+    if (Math.abs(deltaX) < Math.max(SWIPE_THRESHOLD_PX, Math.abs(deltaY))) return
+    const target = deltaX > 0 ? previousId : nextId
+    if (!target) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      onNavigate(target)
+      return
+    }
+    setDragOffset(event.currentTarget.clientWidth * Math.sign(deltaX))
+    setDestination(target)
   }
 
   if (!photo || typeof document === 'undefined') return null
@@ -199,14 +235,7 @@ export function GalleryLightbox({
           </button>
         </header>
 
-        <div
-          className={styles.stage}
-          onPointerDown={onPointerDown}
-          onPointerUp={onPointerUp}
-          onPointerCancel={() => {
-            pointerStart.current = null
-          }}
-        >
+        <div className={styles.stage}>
           {canNavigate && previousId ? (
             <button
               type="button"
@@ -218,14 +247,39 @@ export function GalleryLightbox({
             </button>
           ) : null}
 
-          <figure className={styles.figure}>
-            <img src={photo.src} alt={photo.alt} />
-            <figcaption>
-              {photo.label}
-              <span aria-hidden> — </span>
-              {photo.albumLabel}
-            </figcaption>
-          </figure>
+          <div
+            className={styles.slideWindow}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={cancelDrag}
+            onLostPointerCapture={(event) => {
+              if (pointerStart.current?.id === event.pointerId) cancelDrag()
+            }}
+          >
+            <div
+              key={photo.id}
+              className={styles.slideTrack}
+              data-dragging={dragging}
+              style={{ transform: `translateX(${dragOffset}px)` }}
+            >
+              {[previousPhoto, photo, nextPhoto].map((slide, index) => slide && (
+                <figure
+                  key={index}
+                  className={styles.figure}
+                  style={{ translate: `${(index - 1) * 100}%` }}
+                  aria-hidden={index !== 1}
+                >
+                  <img src={slide.src} alt={index === 1 ? slide.alt : ''} draggable={false} />
+                  <figcaption>
+                    {slide.label}
+                    <span aria-hidden> — </span>
+                    {slide.albumLabel}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
 
           {canNavigate && nextId ? (
             <button

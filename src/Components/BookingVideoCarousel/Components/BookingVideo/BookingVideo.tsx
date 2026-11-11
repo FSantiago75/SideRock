@@ -40,7 +40,7 @@ export function BookingVideo({
           onPause={onPause}
           onEnded={onEnded}
         >
-          <source src={src} type="video/mp4" />
+          <source src={poster ? src : `${src}#t=0.001`} type="video/mp4" />
         </video>
         {transition && poster ? (
           <VideoSlideTransition

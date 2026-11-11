@@ -15,10 +15,8 @@ import {
 } from './galleryContent'
 import styles from './GalleryPage.module.css'
 
-const initialAlbumId = GALLERY_ALBUMS.find((album) => album.photos.length)?.id
-
 export function GalleryPage() {
-  const [openAlbumId, setOpenAlbumId] = useState(initialAlbumId)
+  const [closedAlbumIds, setClosedAlbumIds] = useState<readonly string[]>([])
   const [activePhotoId, setActivePhotoId] = useState<string | null>(null)
   const activePhoto = activePhotoId
     ? getPhotoById(activePhotoId, GALLERY_PHOTOS)
@@ -59,15 +57,17 @@ export function GalleryPage() {
             <section
               key={album.id}
               className={styles.folder}
-              data-open={album.id === openAlbumId}
+              data-open={!closedAlbumIds.includes(album.id)}
             >
               <button
                 type="button"
                 className={styles.folderHeader}
-                aria-expanded={album.id === openAlbumId}
+                aria-expanded={!closedAlbumIds.includes(album.id)}
                 aria-controls={`gallery-folder-${index}`}
                 onClick={() =>
-                  setOpenAlbumId((current) => current === album.id ? undefined : album.id)
+                  setClosedAlbumIds((current) => current.includes(album.id)
+                    ? current.filter((id) => id !== album.id)
+                    : [...current, album.id])
                 }
               >
                 <HiOutlineFolder className={styles.folderIcon} aria-hidden />
@@ -78,7 +78,7 @@ export function GalleryPage() {
               <div
                 id={`gallery-folder-${index}`}
                 className={styles.folderPanel}
-                inert={album.id !== openAlbumId}
+                inert={closedAlbumIds.includes(album.id)}
               >
                 <div className={styles.folderClip}>
                   <div className={styles.folderBody}>
