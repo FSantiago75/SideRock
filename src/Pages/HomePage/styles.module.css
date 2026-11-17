@@ -841,3 +841,9 @@
     transform: none;
   }
 }
+.experienceCard.unavailableCard {
+  filter: grayscale(1);
+  cursor: default;
+  pointer-events: none;
+}
+

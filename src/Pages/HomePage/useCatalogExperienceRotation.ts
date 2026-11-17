@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react'
 import { VIEWPORT_MOBILE_MAX_PX } from '../../utils/viewport'
 import { HOME_EXPERIENCES, type HomeExperienceId } from './homeExperiences'
+import { EXPERIENCE_AVAILABILITY } from '../../config/experiences'
+
+const availableExperiences = HOME_EXPERIENCES.filter(({ id }) => EXPERIENCE_AVAILABILITY[id])
 
 const ROTATION_INTERVAL_MS = 4000
 const TOUCH_CATALOG_QUERY = '(hover: none), (pointer: coarse)'
@@ -10,20 +13,21 @@ type UseCatalogExperienceRotationParams = {
   onChange: Dispatch<SetStateAction<HomeExperienceId | null>>
 }
 
-function getFirstExperienceId(): HomeExperienceId {
-  return HOME_EXPERIENCES[0].id
+function getFirstExperienceId(): HomeExperienceId | null {
+  return availableExperiences[0]?.id ?? null
 }
 
 function getNextExperienceId(
   currentId: HomeExperienceId | null,
-): HomeExperienceId {
-  const currentIndex = HOME_EXPERIENCES.findIndex(
+): HomeExperienceId | null {
+  if (!availableExperiences.length) return null
+  const currentIndex = availableExperiences.findIndex(
     (experience) => experience.id === currentId,
   )
   const nextIndex =
-    currentIndex < 0 ? 0 : (currentIndex + 1) % HOME_EXPERIENCES.length
+    currentIndex < 0 ? 0 : (currentIndex + 1) % availableExperiences.length
 
-  return HOME_EXPERIENCES[nextIndex].id
+  return availableExperiences[nextIndex].id
 }
 
 function shouldRotateCatalog(): boolean {

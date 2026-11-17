@@ -1,6 +1,7 @@
 import { memo, type CSSProperties, type FocusEvent, type PointerEvent } from 'react'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
+import { EXPERIENCE_AVAILABILITY } from '../../../config/experiences'
 import type { HomeExperience } from '../homeExperiences'
 import styles from '../styles.module.css'
 
@@ -41,17 +42,9 @@ function ExperienceCardComponent({
     onActivate(experience)
   }
 
-  return (
-    <Link
-      to={experience.path}
-      className={styles.experienceCard}
-      data-experience={experience.id}
-      data-active={isActive ? 'true' : undefined}
-      onPointerEnter={handlePointerEnter}
-      onFocus={handleFocus}
-      aria-label={`Conhecer ${experience.name}`}
-      style={style}
-    >
+  const available = EXPERIENCE_AVAILABILITY[experience.id]
+  const content = (
+    <>
       <span className={styles.cardGlow} aria-hidden />
 
       <div className={styles.cardVisual} aria-hidden>
@@ -67,14 +60,33 @@ function ExperienceCardComponent({
         <div className={styles.cardFooter}>
           <span className={styles.idealFor}>{experience.idealFor}</span>
           <span className={styles.cardCta}>
-            Conhecer
-            <span className={styles.arrow} aria-hidden>
+            {available ? 'Conhecer' : 'Em breve'}
+            {available && <span className={styles.arrow} aria-hidden>
               <HiArrowUpRight />
-            </span>
+            </span>}
           </span>
         </div>
       </div>
+    </>
+  )
+
+  return available ? (
+    <Link
+      to={experience.path}
+      className={styles.experienceCard}
+      data-experience={experience.id}
+      data-active={isActive ? 'true' : undefined}
+      onPointerEnter={handlePointerEnter}
+      onFocus={handleFocus}
+      aria-label={`Conhecer ${experience.name}`}
+      style={style}
+    >
+      {content}
     </Link>
+  ) : (
+    <article className={`${styles.experienceCard} ${styles.unavailableCard}`} style={style}>
+      {content}
+    </article>
   )
 }
 

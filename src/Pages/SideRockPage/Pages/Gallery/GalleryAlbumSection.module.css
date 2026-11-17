@@ -2,6 +2,28 @@
   min-width: 0;
 }
 
+.group + .group {
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+  padding-top: clamp(1rem, 3vw, 2rem);
+  border-top: 1px solid rgba(241, 237, 230, 0.15);
+}
+
+.guest {
+  margin-bottom: 0.85rem;
+}
+
+.guest h3 {
+  margin: 0;
+  font: 500 clamp(1.3rem, 3vw, 1.8rem) Georgia, serif;
+}
+
+.guest p {
+  margin: 0.25rem 0 0;
+  color: var(--gallery-accent-hot, #ff5258);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
 .photoGrid {
   columns: 2;
   column-gap: 0.42rem;

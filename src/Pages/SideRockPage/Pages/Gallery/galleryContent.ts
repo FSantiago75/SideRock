@@ -4,7 +4,8 @@ export type GalleryPhoto = {
   albumId: string
   albumLabel: string
   fileName: string
-  label: string
+  label?: string
+  guest?: { name: string; band?: string }
   alt: string
 }
 
@@ -33,6 +34,14 @@ const ALBUM_LABEL_OVERRIDES: Record<string, string> = {
 }
 
 const GALLERY_FOLDERS = ['Publico', 'Shows', 'Formação']
+
+const GUESTS: Record<string, NonNullable<GalleryPhoto['guest']>> = {
+  dalle: { name: 'Dalle', band: 'Camisa de Vênus' },
+  frazani: { name: 'Luciano Frazani', band: 'Holly Band' },
+  glauco: { name: 'Glauco', band: 'Aranhas Amplificadas' },
+  'kiko-zara': { name: 'Kiko Zara', band: 'RPM' },
+  'sergio-faga': { name: 'Sérgio Faga', band: 'Children of the Beast' },
+}
 
 const PHOTO_LABEL_OVERRIDES: Record<string, string> = {
   'Marcelo e Leandro Dalle': 'Marcelo e Dalle',
@@ -92,10 +101,10 @@ function toAlbumLabel(folderName: string): string {
   return ALBUM_LABEL_OVERRIDES[slug] ?? toAlbumTitle(slug)
 }
 
-function toPhotoLabel(fileName: string): string {
+function toPhotoLabel(fileName: string): string | undefined {
   const stem = fileName.replace(IMAGE_EXTENSIONS, '')
   const slug = stripDecorators(stem)
-  return PHOTO_LABEL_OVERRIDES[slug] ?? slug.replaceAll('_', ' ')
+  return !slug || /^\d+$/.test(slug) ? undefined : PHOTO_LABEL_OVERRIDES[slug] ?? slug.replaceAll('_', ' ')
 }
 
 function compareLocale(left: string, right: string): number {
@@ -129,6 +138,9 @@ function buildCatalog(modules: Record<string, string>): {
 
     const albumLabel = toAlbumLabel(albumId)
     const label = toPhotoLabel(fileName)
+    const guest = albumId === 'Agradecimentos' && segments.length > 2
+      ? GUESTS[segments[1]]
+      : undefined
     const photo: GalleryPhoto = {
       id: relativePath,
       src,
@@ -136,7 +148,8 @@ function buildCatalog(modules: Record<string, string>): {
       albumLabel,
       fileName,
       label,
-      alt: `Side Rock — ${albumLabel} — ${label}`,
+      guest,
+      alt: [label ?? guest?.name ?? 'Foto da Side Rock', albumLabel].join(' — '),
     }
 
     albumLabels.set(albumId, albumLabel)

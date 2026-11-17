@@ -7,6 +7,7 @@ import {
 } from './Pages/SideRockPage/sectionConstants'
 import {
   EXPERIENCE_ROUTES,
+  EXPERIENCE_AVAILABILITY,
   LEGACY_EXPERIENCE_ROUTES,
 } from './config/experiences'
 import {
@@ -91,14 +92,17 @@ function App() {
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path={EXPERIENCE_ROUTES.catalog} element={<HomePage />} />
-          <Route
-            path={ACOUSTIC_BASE_PATH}
-            element={<Navigate to={acousticPath('resumo')} replace />}
-          />
-          <Route path={acousticPath('resumo')} element={<AcousticSummaryPage />} />
-          <Route path={acousticPath('integrantes')} element={<AcousticShellPage />} />
-          <Route path={acousticPath('repertorio')} element={<AcousticRepertoirePage />} />
-          <Route path={acousticPath('galeria')} element={<AcousticGalleryPage />} />
+          {EXPERIENCE_AVAILABILITY.acoustic ? (
+            <>
+              <Route path={ACOUSTIC_BASE_PATH} element={<Navigate to={acousticPath('resumo')} replace />} />
+              <Route path={acousticPath('resumo')} element={<AcousticSummaryPage />} />
+              <Route path={acousticPath('integrantes')} element={<AcousticShellPage />} />
+              <Route path={acousticPath('repertorio')} element={<AcousticRepertoirePage />} />
+              <Route path={acousticPath('galeria')} element={<AcousticGalleryPage />} />
+            </>
+          ) : (
+            <Route path={`${ACOUSTIC_BASE_PATH}/*`} element={<Navigate to={EXPERIENCE_ROUTES.catalog} replace />} />
+          )}
           <Route
             path={OZZBORN_BASE_PATH}
             element={<Navigate to={ozzbornPath('resumo')} replace />}

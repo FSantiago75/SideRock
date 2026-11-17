@@ -1,6 +1,6 @@
 import { Menubar } from "radix-ui";
 import { useNavigate } from "react-router-dom";
-import { EXPERIENCE_ROUTES } from "../../config/experiences";
+import { EXPERIENCE_AVAILABILITY, EXPERIENCE_ROUTES } from "../../config/experiences";
 import styles from "./styles.module.css";
 
 const ButtonNavigation = () => {
@@ -12,7 +12,7 @@ const ButtonNavigation = () => {
 			</Menubar.Menu>
 
 			<Menubar.Menu>
-				<Menubar.Trigger onClick={() => navigate(EXPERIENCE_ROUTES.acoustic)} className={`${styles.Trigger} ${styles.Acoustic}`}>Acústico</Menubar.Trigger>
+				<Menubar.Trigger disabled={!EXPERIENCE_AVAILABILITY.acoustic} onClick={() => navigate(EXPERIENCE_ROUTES.acoustic)} className={`${styles.Trigger} ${styles.Acoustic}`}>Acústico</Menubar.Trigger>
 			</Menubar.Menu>
 
 			<Menubar.Menu>

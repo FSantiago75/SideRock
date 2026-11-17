@@ -272,11 +272,12 @@ export function GalleryLightbox({
                   aria-hidden={index !== 1}
                 >
                   <img src={slide.src} alt={index === 1 ? slide.alt : ''} draggable={false} />
-                  <figcaption>
-                    {slide.label}
-                    <span aria-hidden> — </span>
-                    {slide.albumLabel}
-                  </figcaption>
+                  {(slide.label || slide.guest) && (
+                    <figcaption>
+                      {[slide.guest?.name, slide.guest?.band, slide.label]
+                        .filter(Boolean).join(' · ')}
+                    </figcaption>
+                  )}
                 </figure>
               ))}
             </div>

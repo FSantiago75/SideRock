@@ -47,8 +47,7 @@ export function GalleryPhotoCard({
           </span>
           <span className={styles.overlay}>
             <span className={styles.meta}>
-              <span className={styles.album}>{photo.albumLabel}</span>
-              <span className={styles.label}>{photo.label}</span>
+              {photo.label && <span className={styles.label}>{photo.label}</span>}
             </span>
             <FiMaximize2 className={styles.icon} aria-hidden />
           </span>
