@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BookingVideo } from './Components/BookingVideo/BookingVideo'
 import { useVideoCarousel } from './Hooks/useVideoCarousel'
 import styles from './BookingVideoCarousel.module.css'
@@ -40,6 +41,7 @@ export function BookingVideoCarousel({
   } = useVideoCarousel(videos.length, autoAdvance)
   const previousPoster = transition ? videos[transition.from]?.poster : undefined
   const useNativeSwipe = nativeSwipe && isMobile
+  const [alignedIndex, setAlignedIndex] = useState<number | null>(0)
 
   return (
     <div className={styles.videoCarousel} data-variant={variant}>
@@ -70,7 +72,11 @@ export function BookingVideoCarousel({
         onTouchCancel={useNativeSwipe ? undefined : handleTouchCancel}
         onScroll={useNativeSwipe ? (event) => {
           const row = event.currentTarget
-          if (row.clientWidth) goTo(Math.round(row.scrollLeft / row.clientWidth))
+          if (!row.clientWidth) return
+          const index = Math.min(videos.length - 1, Math.max(0, Math.round(row.scrollLeft / row.clientWidth)))
+          const aligned = Math.abs(row.scrollLeft - index * row.clientWidth) <= 2
+          setAlignedIndex(aligned ? index : null)
+          if (aligned) goTo(index)
         } : undefined}
       >
         {(isMobile && !useNativeSwipe ? videos.slice(activeIndex, activeIndex + 1) : videos).map(
@@ -78,6 +84,7 @@ export function BookingVideoCarousel({
             <BookingVideo
               key={video.src}
               {...video}
+              showControls={!useNativeSwipe || videos[alignedIndex ?? -1] === video}
               onPlay={handlePlay}
               onPause={handlePlaybackStop}
               onEnded={handlePlaybackStop}

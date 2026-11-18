@@ -3,6 +3,7 @@ import { VideoSlideTransition } from '../VideoSlideTransition/VideoSlideTransiti
 import styles from '../../BookingVideoCarousel.module.css'
 
 type BookingVideoProps = {
+  showControls?: boolean
   src: string
   poster?: string
   title: string
@@ -15,6 +16,7 @@ type BookingVideoProps = {
 }
 
 export function BookingVideo({
+  showControls = true,
   src,
   poster,
   title,
@@ -29,7 +31,7 @@ export function BookingVideo({
     <article className={styles.videoCard}>
       <div className={styles.videoFrame}>
         <video
-          controls
+          controls={showControls}
           playsInline
           preload="metadata"
           poster={poster}
