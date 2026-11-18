@@ -1,3 +1,5 @@
+type GuestCredit = { name: string; band?: string; order?: number }
+
 export type GalleryPhoto = {
   id: string
   src: string
@@ -5,7 +7,7 @@ export type GalleryPhoto = {
   albumLabel: string
   fileName: string
   label?: string
-  guest?: { name: string; band?: string }
+  guest?: GuestCredit
   alt: string
 }
 
@@ -35,13 +37,10 @@ const ALBUM_LABEL_OVERRIDES: Record<string, string> = {
 
 const GALLERY_FOLDERS = ['Publico', 'Shows', 'Formação']
 
-const GUESTS: Record<string, NonNullable<GalleryPhoto['guest']>> = {
-  dalle: { name: 'Dalle', band: 'Camisa de Vênus' },
-  frazani: { name: 'Luciano Frazani', band: 'Holly Band' },
-  glauco: { name: 'Glauco', band: 'Aranhas Amplificadas' },
-  'kiko-zara': { name: 'Kiko Zara', band: 'RPM' },
-  'sergio-faga': { name: 'Sérgio Faga', band: 'Children of the Beast' },
-}
+const guestCredits = import.meta.glob<GuestCredit>(
+  '../../../../assets/sideRock/gallery/*/*/credito.json',
+  { eager: true, import: 'default' },
+)
 
 const PHOTO_LABEL_OVERRIDES: Record<string, string> = {
   'Marcelo e Leandro Dalle': 'Marcelo e Dalle',
@@ -138,8 +137,8 @@ function buildCatalog(modules: Record<string, string>): {
 
     const albumLabel = toAlbumLabel(albumId)
     const label = toPhotoLabel(fileName)
-    const guest = albumId === 'Agradecimentos' && segments.length > 2
-      ? GUESTS[segments[1]]
+    const guest = segments.length > 2
+      ? guestCredits[modulePath.slice(0, -relativePath.length) + `${albumId}/${segments[1]}/credito.json`]
       : undefined
     const photo: GalleryPhoto = {
       id: relativePath,
@@ -173,9 +172,14 @@ function buildCatalog(modules: Record<string, string>): {
     .map(([albumId, albumPhotos]) => ({
       id: albumId,
       label: albumLabels.get(albumId) ?? toAlbumLabel(albumId),
-      photos: [...albumPhotos].sort((left, right) =>
-        compareLocale(left.fileName, right.fileName),
-      ),
+      photos: [...albumPhotos].sort((left, right) => {
+        if (left.guest && right.guest) {
+          const order = (left.guest.order ?? Infinity) - (right.guest.order ?? Infinity)
+          return order || compareLocale(left.id, right.id)
+        }
+        if (left.guest || right.guest) return left.guest ? -1 : 1
+        return compareLocale(left.fileName, right.fileName)
+      }),
     }))
 
   return {

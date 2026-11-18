@@ -66,6 +66,7 @@
 
 .folder[data-open='true'] > .folderHeader {
   border-color: var(--gallery-accent);
+  border-radius: 0.6rem 0.6rem 0 0;
 }
 
 .folderHeader:hover {
@@ -110,6 +111,9 @@
 
 .folderBody {
   padding-block: clamp(1rem, 2vw, 1.6rem);
+  border-radius: 0 0 0.6rem 0.6rem;
+  background: linear-gradient(180deg, #36131755, #10090b40 9rem);
+  box-shadow: inset 0 0 0 1px #d32f3524;
 }
 
 .folderPanel {
