@@ -9,7 +9,7 @@ export const SIDE_ROCK_SUMMARY_CONTENT = {
     mode: 'cutout' as const,
   },
   story: {
-    title: 'Clássicos do rock. Identidade em cada interpretação.',
+    title: 'Identidade em cada apresentação.',
     copy: 'Guns N’ Roses é o carro-chefe da Side Rock, com o timbre de Marcelo remetendo à voz de Axl Rose. Com Victor na guitarra, Adriano no baixo e Toddynho na bateria, o show vai da atmosfera de Pearl Jam ao peso de Metallica e Megadeth. São músicas que os quatro gostam de tocar e que os desafiam a cuidar de cada detalhe, dos solos mais exigentes às passagens mais delicadas.',
   },
   live: {

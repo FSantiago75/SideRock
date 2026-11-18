@@ -7,7 +7,14 @@ type BookingVideoItem = {
   src: string
   poster?: string
   title: string
+  context?: string | null
   href?: string
+}
+
+function cardScrollPosition(row: HTMLElement, card: Element) {
+  const offset = row.scrollLeft + card.getBoundingClientRect().left -
+    row.getBoundingClientRect().left - row.clientLeft
+  return Math.max(0, Math.min(offset, row.scrollWidth - row.clientWidth))
 }
 
 type BookingVideoCarouselProps = {
@@ -72,11 +79,11 @@ export function BookingVideoCarousel({
         onTouchCancel={useNativeSwipe ? undefined : handleTouchCancel}
         onScroll={useNativeSwipe ? (event) => {
           const row = event.currentTarget
-          if (!row.clientWidth) return
-          const index = Math.min(videos.length - 1, Math.max(0, Math.round(row.scrollLeft / row.clientWidth)))
-          const aligned = Math.abs(row.scrollLeft - index * row.clientWidth) <= 2
-          setAlignedIndex(aligned ? index : null)
-          if (aligned) goTo(index)
+          const index = Array.from(row.children).findIndex(
+            (card) => Math.abs(row.scrollLeft - cardScrollPosition(row, card)) <= 2,
+          )
+          setAlignedIndex(index < 0 ? null : index)
+          if (index >= 0) goTo(index)
         } : undefined}
       >
         {(isMobile && !useNativeSwipe ? videos.slice(activeIndex, activeIndex + 1) : videos).map(
@@ -119,7 +126,8 @@ export function BookingVideoCarousel({
                 onClick={() => {
                   if (useNativeSwipe) {
                     const row = rowRef.current
-                    row?.scrollTo({ left: index * row.clientWidth })
+                    const card = row?.children[index]
+                    if (row && card) row.scrollTo({ left: cardScrollPosition(row, card) })
                     return
                   }
                   pauseForInteraction()

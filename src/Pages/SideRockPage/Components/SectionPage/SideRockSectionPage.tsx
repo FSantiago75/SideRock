@@ -70,6 +70,7 @@ export function SideRockSectionPage({
         </div>
         <div
           className={styles.bgStack}
+          data-side-rock-entrance={!navbar || undefined}
           data-layout={layout}
           data-viewport-background={viewportSizedBackground || undefined}
         >

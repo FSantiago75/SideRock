@@ -37,6 +37,7 @@ export function GalleryPage() {
     >
       <article className={styles.page}>
         <SectionIntro
+          titleMotion="rise"
           eyebrow={GALLERY_COPY.eyebrow}
           title={GALLERY_COPY.title}
           lead={GALLERY_COPY.lead}

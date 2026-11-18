@@ -5,12 +5,19 @@
   scroll-snap-type: x mandatory;
   padding-bottom: 1rem;
 }
-.venues article {
+.venueSlot {
   flex: 0 0 min(80%, 21rem);
+  display: grid;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.venues article {
+  height: 100%;
+  box-sizing: border-box;
   padding: 1.4rem;
   border: 1px solid #ffffff20;
   background: linear-gradient(155deg, #161616, #080808 70%);
-  scroll-snap-align: start;
   transition:
     border-color 240ms ease,
     background-color 240ms ease;
@@ -131,8 +138,11 @@
   filter: none;
 }
 @media (max-width: 760px) {
-  .venues article {
+  .venueSlot {
     flex-basis: min(82%, 19rem);
+  }
+
+  .venues article {
     padding: 1.1rem;
   }
 

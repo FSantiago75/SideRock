@@ -9,7 +9,7 @@ type GalleryAlbumSectionProps = {
 
 const MAX_STAGGER_INDEX = 7
 const INITIAL_STAGGER_DELAY_MS = 140
-const STAGGER_STEP_MS = 70
+const STAGGER_STEP_MS = 55
 
 export function GalleryAlbumSection({ photos, onOpen }: GalleryAlbumSectionProps) {
   const groups = new Map<GalleryPhoto['guest'], GalleryPhoto[]>()

@@ -136,11 +136,11 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .folderChevron {
-    transition: transform 260ms var(--motion);
+    transition: transform 420ms var(--motion);
   }
 
   .folderPanel {
-    transition: grid-template-rows 380ms var(--motion), opacity 260ms ease;
+    transition: grid-template-rows 420ms var(--motion), opacity 315ms ease;
   }
 }
 

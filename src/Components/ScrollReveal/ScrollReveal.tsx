@@ -15,6 +15,7 @@ type ScrollRevealProps = {
   delayMs?: number
   from?: RevealFrom
   ready?: boolean
+  respectClipping?: boolean
 }
 
 type RevealStyle = CSSProperties & {
@@ -24,26 +25,9 @@ type RevealStyle = CSSProperties & {
 type RevealState = 'idle' | 'ready' | 'in'
 
 const REVEAL_RATIO = 0.1
-const ROOT_MARGIN_BOTTOM = 0.06
 
 function getScrollRoot(node: Element): Element | null {
   return node.closest('main')
-}
-
-function shouldRevealNode(node: Element, root: Element | null): boolean {
-  const rootRect = (
-    root ?? node.ownerDocument.documentElement
-  ).getBoundingClientRect()
-  const viewTop = rootRect.top
-  const viewBottom = rootRect.bottom - rootRect.height * ROOT_MARGIN_BOTTOM
-  const rect = node.getBoundingClientRect()
-
-  if (rect.bottom <= viewTop) return true
-
-  const overlap =
-    Math.min(rect.bottom, viewBottom) - Math.max(rect.top, viewTop)
-  if (overlap <= 0) return false
-  return overlap / Math.max(rect.height, 1) >= REVEAL_RATIO
 }
 
 function getInitialRevealState(): RevealState {
@@ -57,6 +41,7 @@ export function ScrollReveal({
   delayMs = 0,
   from = 'up',
   ready = true,
+  respectClipping = false,
 }: ScrollRevealProps) {
   const nodeRef = useRef<HTMLDivElement>(null)
   const [state, setState] = useState<RevealState>(getInitialRevealState)
@@ -71,39 +56,27 @@ export function ScrollReveal({
 
     const target = node
     const root = getScrollRoot(target)
-    let frame = 0
+    const rootHeight = root?.clientHeight ?? document.documentElement.clientHeight
 
     const observer = new IntersectionObserver(
-      () => {
-        revealIfVisible()
+      ([entry]) => {
+        if (!entry) return
+        const visible = entry.isIntersecting && entry.intersectionRatio >= REVEAL_RATIO
+        const above = entry.rootBounds && entry.boundingClientRect.bottom <= entry.rootBounds.top
+        if (!visible && (respectClipping || !above)) return
+        observer.disconnect()
+        setState('in')
       },
       {
         root,
         threshold: REVEAL_RATIO,
-        rootMargin: '0px 0px -6% 0px',
+        rootMargin: `0px 0px -${rootHeight * 0.06}px 0px`,
       },
     )
 
-    function cleanup() {
-      window.cancelAnimationFrame(frame)
-      observer.disconnect()
-      root?.removeEventListener('scroll', revealIfVisible)
-    }
-
-    function revealIfVisible() {
-      if (!shouldRevealNode(target, root)) return
-      cleanup()
-      setState('in')
-    }
-
-    frame = window.requestAnimationFrame(() => {
-      observer.observe(target)
-      root?.addEventListener('scroll', revealIfVisible, { passive: true })
-      revealIfVisible()
-    })
-
-    return cleanup
-  }, [ready])
+    observer.observe(target)
+    return () => observer.disconnect()
+  }, [ready, respectClipping])
 
   const style: RevealStyle = {
     '--reveal-delay': `${delayMs}ms`,

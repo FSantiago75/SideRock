@@ -25,8 +25,12 @@ export function SummaryVenues() {
         tabIndex={0}
         aria-label="Casas e eventos"
       >
-        {SIDE_ROCK_VENUES.map((venue) => (
-          <VenueCard key={venue.id} venue={venue} />
+        {SIDE_ROCK_VENUES.map((venue, index) => (
+          <div className={sectionStyles.venueSlot} key={venue.id}>
+            <ScrollReveal from="right" delayMs={(index % 3) * 65} respectClipping>
+              <VenueCard venue={venue} />
+            </ScrollReveal>
+          </div>
         ))}
       </div>
       <ScrollReveal>

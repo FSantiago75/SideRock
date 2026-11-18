@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { RouteFallback } from './Components/RouteFallback/RouteFallback'
+import { sideRockSectionLoaders } from './Pages/SideRockPage/sectionLoaders'
 import {
   SIDE_ROCK_BASE_PATH,
   sideRockPath,
@@ -62,26 +63,10 @@ const OzzbornGalleryPage = lazy(() =>
     default: module.OzzbornGalleryPage,
   })),
 )
-const SummaryPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Summary/SummaryPage').then((module) => ({
-    default: module.SummaryPage,
-  })),
-)
-const MembersPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Members/MembersPage').then(
-    (module) => ({ default: module.MembersPage }),
-  ),
-)
-const RepertoirePage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Repertoire/RepertoirePage').then((module) => ({
-    default: module.RepertoirePage,
-  })),
-)
-const GalleryPage = lazy(() =>
-  import('./Pages/SideRockPage/Pages/Gallery/GalleryPage').then((module) => ({
-    default: module.GalleryPage,
-  })),
-)
+const SummaryPage = lazy(sideRockSectionLoaders.resumo)
+const MembersPage = lazy(sideRockSectionLoaders.integrantes)
+const RepertoirePage = lazy(sideRockSectionLoaders.repertorio)
+const GalleryPage = lazy(sideRockSectionLoaders.galeria)
 const NotFound = lazy(() =>
   import('./Pages/NotFound').then((module) => ({ default: module.NotFound })),
 )

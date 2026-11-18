@@ -919,7 +919,7 @@
   }
 
   .memberSelector button {
-    flex: 0 0 min(48%, 11.5rem);
+    flex: 0 0 calc((100% - 0.5rem) / 2);
     scroll-snap-align: start;
   }
 }
@@ -933,9 +933,6 @@
     height: min(66svh, 34rem);
   }
 
-  .memberSelector button {
-    flex-basis: 56%;
-  }
 }
 
 @media (max-width: 360px) {

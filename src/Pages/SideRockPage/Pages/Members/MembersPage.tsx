@@ -49,6 +49,7 @@ export function MembersPage() {
     <SideRockSectionPage layout="flow">
       <article className={styles.page} style={pageStyle}>
         <SectionIntro
+          titleMotion="rise"
           eyebrow={SIDE_ROCK_MEMBERS_COPY.eyebrow}
           title={SIDE_ROCK_MEMBERS_COPY.title}
           titleDelayMs={60}

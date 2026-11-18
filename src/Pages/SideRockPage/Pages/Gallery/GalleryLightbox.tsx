@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useId,
   useRef,
@@ -61,6 +62,8 @@ export function GalleryLightbox({
   onNavigate,
 }: GalleryLightboxProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const exitRef = useRef<Animation | null>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const pointerStart = useRef<{ id: number; x: number; y: number } | null>(null)
   const [dragOffset, setDragOffset] = useState(0)
@@ -79,6 +82,23 @@ export function GalleryLightbox({
   const canNavigate = total > 1 && previousId && nextId
   const previousPhoto = photos.find((item) => item.id === previousId)
   const nextPhoto = photos.find((item) => item.id === nextId)
+
+  const close = useCallback(() => {
+    const root = rootRef.current
+    if (exitRef.current) return
+    if (!root?.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      onClose()
+      return
+    }
+    const exit = root.animate(
+      [{ opacity: getComputedStyle(root).opacity }, { opacity: 0 }],
+      { duration: 240, easing: 'ease-out', fill: 'forwards' },
+    )
+    exitRef.current = exit
+    void exit.finished.then(() => {
+      if (root.isConnected) onClose()
+    }, () => undefined)
+  }, [onClose])
 
   useEffect(() => {
     if (!destination) return
@@ -117,7 +137,7 @@ export function GalleryLightbox({
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         event.preventDefault()
-        onClose()
+        close()
         return
       }
 
@@ -135,7 +155,7 @@ export function GalleryLightbox({
 
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
-  }, [nextId, onClose, onNavigate, previousId])
+  }, [close, nextId, onNavigate, previousId])
 
   function trapFocus(event: ReactKeyboardEvent<HTMLDivElement>) {
     if (event.key !== 'Tab' || !dialogRef.current) return
@@ -201,12 +221,12 @@ export function GalleryLightbox({
   const counter = `${String(currentIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`
 
   return createPortal(
-    <div className={styles.root} onKeyDown={trapFocus}>
+    <div ref={rootRef} className={styles.root} onKeyDown={trapFocus}>
       <button
         type="button"
         className={styles.backdrop}
         aria-label="Fechar visualizador"
-        onClick={onClose}
+        onClick={close}
       />
 
       <div
@@ -230,7 +250,7 @@ export function GalleryLightbox({
             type="button"
             className={styles.iconButton}
             aria-label="Fechar"
-            onClick={onClose}
+            onClick={close}
           >
             <FiX aria-hidden />
           </button>

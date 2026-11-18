@@ -10,6 +10,7 @@ import { sideRockPath } from '../../sectionConstants'
 import { SIDE_ROCK_BOOKING } from '../Summary/Content/bookingContent'
 import styles from './RepertoirePage.module.css'
 import { RepertoireMovement } from './RepertoireMovement'
+import { RepertoirePlayer } from './RepertoirePlayer'
 import {
   REPERTOIRE_INTRO,
   REPERTOIRE_MOVEMENTS,
@@ -25,12 +26,17 @@ export function RepertoirePage() {
     <SideRockSectionPage layout="flow">
       <article className={styles.page} style={pageStyle}>
         <SectionIntro
+          titleMotion="wipe"
           eyebrow={REPERTOIRE_INTRO.eyebrow}
           title={REPERTOIRE_INTRO.title}
           lead={REPERTOIRE_INTRO.lead}
           titleDelayMs={45}
           leadDelayMs={110}
         />
+
+        <ScrollReveal from="up" delayMs={160}>
+          <RepertoirePlayer />
+        </ScrollReveal>
 
         <div className={styles.movements}>
           {REPERTOIRE_MOVEMENTS.map((movement) => (

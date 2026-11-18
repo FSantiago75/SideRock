@@ -29,12 +29,12 @@ export function SummaryHero({ onExplore }: { onExplore: () => void }) {
             internacional e a interpretação vocal de Marcelo à frente do show.
           </p>
         </ScrollReveal>
-        <div className={styles.heroActions}>
+        <ScrollReveal delayMs={170} from="up" className={styles.heroActions}>
           <BookingAction />
           <button className={styles.secondaryAction} onClick={onExplore}>
             Conheça o show <HiArrowRight aria-hidden />
           </button>
-        </div>
+        </ScrollReveal>
         <p className={styles.heroContact}>
           Fale diretamente com <strong>Vanessa</strong> · Manager
         </p>
@@ -51,9 +51,9 @@ export function SummaryHero({ onExplore }: { onExplore: () => void }) {
           ))}
         </dl>
       </div>
-      <div className={styles.heroVisual}>
+      <ScrollReveal className={styles.heroVisual} delayMs={100} from="scale">
         <BandHeroVisual {...SIDE_ROCK_SUMMARY_CONTENT.heroPhoto} />
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

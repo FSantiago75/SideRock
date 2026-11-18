@@ -194,3 +194,44 @@
   padding-inline: 0;
   padding-bottom: 0;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .bgStack[data-side-rock-entrance] {
+    animation: sideRockPageArrival 750ms cubic-bezier(0.25, 0.65, 0.35, 1) both;
+  }
+
+  .bgStack[data-side-rock-entrance] :global([data-reveal='in']) {
+    animation: sideRockReveal var(--side-rock-reveal-time, 750ms) cubic-bezier(0.25, 0.65, 0.35, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+    transition: none;
+  }
+
+  .bgStack[data-side-rock-entrance] :global([data-reveal]) {
+    --arrival-x: 0px;
+    --arrival-y: 0px;
+    --arrival-scale: 1;
+  }
+
+  .bgStack[data-side-rock-entrance] :global([data-from='up']) { --arrival-y: 24px; }
+  .bgStack[data-side-rock-entrance] :global([data-from='left']) { --arrival-x: -24px; }
+  .bgStack[data-side-rock-entrance] :global([data-from='right']) { --arrival-x: 24px; }
+  .bgStack[data-side-rock-entrance] :global([data-from='scale']) { --arrival-scale: 0.97; }
+
+  @media (max-width: 760px) {
+    .bgStack[data-side-rock-entrance] :global([data-reveal='in']) {
+      animation-delay: min(var(--reveal-delay, 0ms), 220ms);
+    }
+  }
+}
+
+@keyframes sideRockReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--arrival-x, 0px), var(--arrival-y, 0px), 0) scale(var(--arrival-scale, 1));
+  }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sideRockPageArrival {
+  from { opacity: 0.12; }
+  to { opacity: 1; }
+}

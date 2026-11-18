@@ -7,6 +7,7 @@ type BookingVideoProps = {
   src: string
   poster?: string
   title: string
+  context?: string | null
   href?: string
   onPlay: (event: SyntheticEvent<HTMLVideoElement>) => void
   onPause: () => void
@@ -20,6 +21,7 @@ export function BookingVideo({
   src,
   poster,
   title,
+  context,
   href,
   onPlay,
   onPause,
@@ -52,8 +54,9 @@ export function BookingVideo({
           />
         ) : null}
       </div>
-      <div className={styles.videoCaption}>
-        <span>Ao vivo</span>
+      <div className={styles.videoCaption} data-split-caption={Boolean(context) || undefined} data-story-caption={context !== undefined || undefined}>
+        {context && <strong className={styles.videoTitle}>{context}</strong>}
+        {context === undefined && <span>Ao vivo</span>}
         {href ? (
           <a href={href} target="_blank" rel="noopener noreferrer">
             {title}

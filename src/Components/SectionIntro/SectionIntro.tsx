@@ -12,6 +12,7 @@ type SectionIntroProps = {
   reveal?: boolean
   titleDelayMs?: number
   leadDelayMs?: number
+  titleMotion?: 'rise' | 'wipe'
 }
 
 function joinClassNames(...classNames: Array<string | undefined>) {
@@ -28,6 +29,7 @@ export function SectionIntro({
   reveal = true,
   titleDelayMs = 70,
   leadDelayMs = 120,
+  titleMotion,
 }: SectionIntroProps) {
   const rootClassName = joinClassNames(styles.root, className)
 
@@ -44,7 +46,7 @@ export function SectionIntro({
   }
 
   return (
-    <header className={rootClassName}>
+    <header className={rootClassName} data-title-motion={titleMotion}>
       <ScrollReveal from="up">
         <p className={styles.eyebrow}>{eyebrow}</p>
       </ScrollReveal>
