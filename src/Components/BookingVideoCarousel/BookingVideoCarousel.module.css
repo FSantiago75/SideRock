@@ -90,7 +90,7 @@
 }
 
 .videoCaption[data-split-caption] > :last-child {
-  color: #ff7075;
+  color: var(--video-song-color, #ff7075);
   font-size: clamp(0.73rem, 2.25vw, 0.95rem);
   line-height: 1.2;
   text-align: right;

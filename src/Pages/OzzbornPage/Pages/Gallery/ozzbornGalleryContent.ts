@@ -1,3 +1,5 @@
+type GuestCredit = { name: string; band?: string; order?: number }
+
 export type OzzbornGalleryPhoto = {
   id: string
   src: string
@@ -6,7 +8,8 @@ export type OzzbornGalleryPhoto = {
   albumId: string
   albumLabel: string
   fileName: string
-  label: string
+  label?: string
+  guest?: GuestCredit
   alt: string
 }
 
@@ -26,11 +29,20 @@ export const OZZBORN_GALLERY_COPY = {
 
 const IMAGE_EXTENSIONS = /\.(?:avif|gif|jpeg|jpg|png|webp)$/i
 const GALLERY_MARKER = '/assets/ozzborn/gallery/'
-const LEADING_DATE = /^(?:\d{4}-\d{2}-\d{2}|\d{8}|\d{4}-\d{2}|\d{4})[-_]?/i
+const LEADING_DATE =
+  /^(?:\d{4}-\d{2}-\d{2}|\d{8}|\d{4}-\d{2}|\d{4})[-_]?/i
 const LEADING_INDEX = /^\d+\s*[-_.]\s*/
 const ALBUM_LABEL_OVERRIDES: Record<string, string> = {
+  publico: 'Público',
   estudio: 'Estúdio',
 }
+
+const GALLERY_FOLDERS = ['Shows', 'Formação', 'Ensaios', 'Público', 'Participações']
+
+const guestCredits = import.meta.glob<GuestCredit>(
+  '../../../../assets/ozzborn/gallery/*/*/credito.json',
+  { eager: true, import: 'default' },
+)
 
 const imageModules = import.meta.glob<string>(
   '../../../../assets/ozzborn/gallery/**/*.{avif,gif,jpeg,jpg,png,webp}',
@@ -66,7 +78,7 @@ function stripDecorators(value: string): string {
   return current
 }
 
-function toReadableLabel(slug: string, mode: 'title' | 'sentence'): string {
+function toAlbumTitle(slug: string): string {
   const words = slug
     .split(/[-_]+/)
     .map((part) => part.trim())
@@ -74,12 +86,9 @@ function toReadableLabel(slug: string, mode: 'title' | 'sentence'): string {
 
   if (words.length === 0) return slug
 
-  const formatted = words.map((word, index) => {
+  const formatted = words.map((word) => {
     const lower = word.toLocaleLowerCase('pt-BR')
-    if (mode === 'title' || index === 0) {
-      return lower.charAt(0).toLocaleUpperCase('pt-BR') + lower.slice(1)
-    }
-    return lower
+    return lower.charAt(0).toLocaleUpperCase('pt-BR') + lower.slice(1)
   })
 
   return formatted.join(' ')
@@ -87,13 +96,13 @@ function toReadableLabel(slug: string, mode: 'title' | 'sentence'): string {
 
 function toAlbumLabel(folderName: string): string {
   const slug = stripDecorators(folderName).toLocaleLowerCase('pt-BR')
-  return ALBUM_LABEL_OVERRIDES[slug] ?? toReadableLabel(slug, 'title')
+  return ALBUM_LABEL_OVERRIDES[slug] ?? toAlbumTitle(slug)
 }
 
-function toPhotoLabel(fileName: string): string {
+function toPhotoLabel(fileName: string): string | undefined {
   const stem = fileName.replace(IMAGE_EXTENSIONS, '')
   const slug = stripDecorators(stem)
-  return toReadableLabel(slug, 'sentence')
+  return !slug || /^\d+$/.test(slug) ? undefined : slug.replaceAll('_', ' ')
 }
 
 function compareLocale(left: string, right: string): number {
@@ -125,15 +134,19 @@ function buildCatalog(modules: Record<string, string>): {
 
     const albumLabel = toAlbumLabel(albumId)
     const label = toPhotoLabel(fileName)
+    const guest = segments.length > 2
+      ? guestCredits[modulePath.slice(0, -relativePath.length) + `${albumId}/${segments[1]}/credito.json`]
+      : undefined
     const photo: OzzbornGalleryPhoto = {
       id: relativePath,
-      ...imageDimensions[modulePath],
       src,
+      ...imageDimensions[modulePath],
       albumId,
       albumLabel,
       fileName,
       label,
-      alt: `Ozzborn — ${albumLabel} — ${label}`,
+      guest,
+      alt: [label ?? guest?.name ?? 'Foto da Ozzborn', albumLabel].join(' — '),
     }
 
     albumLabels.set(albumId, albumLabel)
@@ -146,13 +159,25 @@ function buildCatalog(modules: Record<string, string>): {
   }
 
   const albums = [...photosByAlbum.entries()]
-    .sort(([left], [right]) => compareLocale(left, right))
+    .sort(([left], [right]) => {
+      const leftOrder = GALLERY_FOLDERS.indexOf(left)
+      const rightOrder = GALLERY_FOLDERS.indexOf(right)
+      if (leftOrder === -1 && rightOrder === -1) return compareLocale(left, right)
+      if (leftOrder === -1) return 1
+      if (rightOrder === -1) return -1
+      return leftOrder - rightOrder
+    })
     .map(([albumId, albumPhotos]) => ({
       id: albumId,
       label: albumLabels.get(albumId) ?? toAlbumLabel(albumId),
-      photos: [...albumPhotos].sort((left, right) =>
-        compareLocale(left.fileName, right.fileName),
-      ),
+      photos: [...albumPhotos].sort((left, right) => {
+        if (left.guest && right.guest) {
+          const order = (left.guest.order ?? Infinity) - (right.guest.order ?? Infinity)
+          return order || compareLocale(left.id, right.id)
+        }
+        if (left.guest || right.guest) return left.guest ? -1 : 1
+        return compareLocale(left.fileName, right.fileName)
+      }),
     }))
 
   return {
@@ -163,10 +188,8 @@ function buildCatalog(modules: Record<string, string>): {
 
 const catalog = buildCatalog(imageModules)
 
-export const OZZBORN_GALLERY_ALBUMS: readonly OzzbornGalleryAlbum[] =
-  catalog.albums
-export const OZZBORN_GALLERY_PHOTOS: readonly OzzbornGalleryPhoto[] =
-  catalog.photos
+export const OZZBORN_GALLERY_ALBUMS: readonly OzzbornGalleryAlbum[] = catalog.albums
+export const OZZBORN_GALLERY_PHOTOS: readonly OzzbornGalleryPhoto[] = catalog.photos
 
 export function formatOzzbornRecordCount(count: number): string {
   return count === 1 ? '1 registro' : `${count} registros`

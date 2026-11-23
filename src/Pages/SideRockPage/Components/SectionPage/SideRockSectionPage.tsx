@@ -17,6 +17,7 @@ type SideRockSectionPageProps = {
   layout?: 'artboard' | 'flow'
   children?: ReactNode
   navbar?: ReactNode
+  animateEntrance?: boolean
   accent?: string
   accentHot?: string
   scrollbarTheme?: ScrollbarTheme
@@ -41,6 +42,7 @@ export function SideRockSectionPage({
   layout = 'artboard',
   children,
   navbar,
+  animateEntrance = !navbar,
   accent = '#d32f35',
   accentHot = '#ff5258',
   scrollbarTheme = SIDE_ROCK_SCROLLBAR,
@@ -70,7 +72,7 @@ export function SideRockSectionPage({
         </div>
         <div
           className={styles.bgStack}
-          data-side-rock-entrance={!navbar || undefined}
+          data-side-rock-entrance={animateEntrance || undefined}
           data-layout={layout}
           data-viewport-background={viewportSizedBackground || undefined}
         >

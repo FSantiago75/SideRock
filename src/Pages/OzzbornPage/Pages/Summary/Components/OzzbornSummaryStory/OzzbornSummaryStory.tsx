@@ -12,12 +12,14 @@ export function OzzbornSummaryStory() {
       aria-labelledby="band-title"
     >
       <p className={layout.eyebrow}>01 / O tributo</p>
-      <ScrollReveal className={sectionStyles.storyLayout}>
-        <h2 id="band-title">{OZZBORN_SUMMARY_CONTENT.story.title}</h2>
-        <div className={layout.copy}>
+      <div className={sectionStyles.storyLayout}>
+        <ScrollReveal from="up">
+          <h2 id="band-title">{OZZBORN_SUMMARY_CONTENT.story.title}</h2>
+        </ScrollReveal>
+        <ScrollReveal from="up" delayMs={140} className={layout.copy}>
           <p>{OZZBORN_SUMMARY_CONTENT.story.copy}</p>
-        </div>
-      </ScrollReveal>
+        </ScrollReveal>
+      </div>
     </section>
   )
 }

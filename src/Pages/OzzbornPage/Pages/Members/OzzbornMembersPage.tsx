@@ -49,6 +49,7 @@ export function OzzbornMembersPage() {
 
   return (
     <SideRockSectionPage
+      animateEntrance
       layout="flow"
       navbar={<OzzbornNavbar />}
       accent="#7c3aed"
@@ -57,6 +58,7 @@ export function OzzbornMembersPage() {
     >
       <article className={styles.page} style={pageStyle}>
         <SectionIntro
+          titleMotion="rise"
           eyebrow={OZZBORN_MEMBERS_COPY.eyebrow}
           title={OZZBORN_MEMBERS_COPY.title}
           titleDelayMs={60}

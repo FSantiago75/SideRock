@@ -1,11 +1,11 @@
 import { OZZBORN_QUICK_WHATSAPP_URL } from '../../bookingContact'
 import { NavLink } from 'react-router-dom'
+import { OzzbornTab } from './OzzbornTab'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa6'
 import { SocialIcon } from '../../../SideRockPage/Components/NavBar/Components/SocialIcon/SocialIcon'
 import sharedStyles from '../../../SideRockPage/Components/NavBar/SideRockNavbar.module.css'
 import tabStyles from '../../../SideRockPage/Components/NavBar/Components/Tabs/Tabs.module.css'
 import {
-  OZZBORN_SECTION_LABELS,
   OZZBORN_SECTION_ORDER,
   ozzbornPath,
 } from '../../sectionConstants'
@@ -43,18 +43,7 @@ export function OzzbornNavbar() {
                   ●
                 </span>
               ) : null}
-              <NavLink
-                className={({ isActive }) =>
-                  `${tabStyles.tab} ${isActive ? tabStyles.tabActive : ''}`
-                }
-                to={ozzbornPath(id)}
-                end
-              >
-                <span className={tabStyles.tabLabel}>
-                  {OZZBORN_SECTION_LABELS[id]}
-                </span>
-                <span className={tabStyles.activeLine} aria-hidden="true" />
-              </NavLink>
+              <OzzbornTab id={id} />
             </div>
           ))}
         </div>

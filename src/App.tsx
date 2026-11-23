@@ -1,3 +1,4 @@
+import { ozzbornSectionLoaders } from './Pages/OzzbornPage/sectionLoaders'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { RouteFallback } from './Components/RouteFallback/RouteFallback'
@@ -43,26 +44,10 @@ const AcousticRepertoirePage = lazy(() =>
     default: module.AcousticRepertoirePage,
   })),
 )
-const OzzbornSummaryPage = lazy(() =>
-  import('./Pages/OzzbornPage/Pages/Summary/OzzbornSummaryPage').then((module) => ({
-    default: module.OzzbornSummaryPage,
-  })),
-)
-const OzzbornMembersPage = lazy(() =>
-  import('./Pages/OzzbornPage/Pages/Members/OzzbornMembersPage').then((module) => ({
-    default: module.OzzbornMembersPage,
-  })),
-)
-const OzzbornRepertoirePage = lazy(() =>
-  import('./Pages/OzzbornPage/Pages/Repertoire/OzzbornRepertoirePage').then((module) => ({
-    default: module.OzzbornRepertoirePage,
-  })),
-)
-const OzzbornGalleryPage = lazy(() =>
-  import('./Pages/OzzbornPage/Pages/Gallery/OzzbornGalleryPage').then((module) => ({
-    default: module.OzzbornGalleryPage,
-  })),
-)
+const OzzbornSummaryPage = lazy(ozzbornSectionLoaders.resumo)
+const OzzbornMembersPage = lazy(ozzbornSectionLoaders.integrantes)
+const OzzbornRepertoirePage = lazy(ozzbornSectionLoaders.repertorio)
+const OzzbornGalleryPage = lazy(ozzbornSectionLoaders.galeria)
 const SummaryPage = lazy(sideRockSectionLoaders.resumo)
 const MembersPage = lazy(sideRockSectionLoaders.integrantes)
 const RepertoirePage = lazy(sideRockSectionLoaders.repertorio)

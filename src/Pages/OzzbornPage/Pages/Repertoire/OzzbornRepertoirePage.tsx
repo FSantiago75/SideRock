@@ -2,6 +2,8 @@ import { Fragment, useEffect, type CSSProperties } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import { HiArrowRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
+import { RepertoirePlayer } from '../../../../Components/RepertoirePlayer/RepertoirePlayer'
+import { OZZBORN_TRACKS } from './ozzbornTracks'
 import { ScrollReveal } from '../../../../Components/ScrollReveal/ScrollReveal'
 import atmosphere from '../../../../assets/ozzborn/backgrounds/ozzbornRepertoireJourney.png'
 import { SideRockSectionPage } from '../../../SideRockPage/Components/SectionPage/SideRockSectionPage'
@@ -32,6 +34,7 @@ export function OzzbornRepertoirePage() {
 
   return (
     <SideRockSectionPage
+      animateEntrance
       layout="flow"
       navbar={<OzzbornNavbar />}
       accent="#7c3aed"
@@ -47,7 +50,7 @@ export function OzzbornRepertoirePage() {
               </p>
             </ScrollReveal>
             <ScrollReveal delayMs={55} from="up">
-              <h1>
+              <h1 className={styles.animatedTitle}>
                 {OZZBORN_REPERTOIRE_INTRO.titleLead}
                 <span>{OZZBORN_REPERTOIRE_INTRO.titleAccent}</span>
               </h1>
@@ -79,6 +82,11 @@ export function OzzbornRepertoirePage() {
             </p>
           </ScrollReveal>
         </header>
+
+        <ScrollReveal from="up" delayMs={160}>
+          <RepertoirePlayer tracks={OZZBORN_TRACKS} title="Ouça a Ozzborn"
+            description="Gravações do tributo a Ozzy Osbourne e Black Sabbath." />
+        </ScrollReveal>
 
         <div className={styles.timeline}>
           {OZZBORN_REPERTOIRE_ERAS.map((era, index) => (

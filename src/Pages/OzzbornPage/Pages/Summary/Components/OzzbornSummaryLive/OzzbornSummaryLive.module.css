@@ -87,3 +87,20 @@
     margin-top: 1.25rem;
   }
 }
+.pendingVideos {
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid #7c3aed66;
+  background: linear-gradient(145deg, #22132c, #08060c);
+}
+
+.pendingVideos h3 {
+  margin: 0;
+  color: #f1ede6;
+  font: 500 clamp(1.5rem, 4vw, 2rem) Georgia, serif;
+}
+
+.pendingVideos p {
+  color: #d0c9da;
+  line-height: 1.65;
+  margin-block: 1rem 1.5rem;
+}

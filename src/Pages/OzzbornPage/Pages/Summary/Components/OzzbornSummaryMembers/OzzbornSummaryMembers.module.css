@@ -145,3 +145,22 @@
     font-size: 1.35rem;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .membersTeaser:global([data-reveal='in']) li > svg {
+    animation: instrumentGlow 4.8s ease-in-out infinite;
+  }
+
+  .teaserLineup li:nth-child(2) { --instrument-delay: 1.2s; }
+  .teaserLineup li:nth-child(3) { --instrument-delay: 2.4s; }
+  .teaserLineup li:nth-child(4) { --instrument-delay: 3.6s; }
+
+  .membersTeaser:global([data-reveal='in']) li > svg {
+    animation-delay: var(--instrument-delay, 0ms);
+  }
+}
+
+@keyframes instrumentGlow {
+  0%, 24%, 100% { transform: none; filter: none; }
+  10% { transform: scale(1.08); filter: drop-shadow(0 0 0.55rem currentColor); }
+}

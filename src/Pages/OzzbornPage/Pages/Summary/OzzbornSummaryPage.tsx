@@ -38,6 +38,7 @@ export function OzzbornSummaryPage() {
   }
   return (
     <SideRockSectionPage
+      animateEntrance
       layout="flow"
       navbar={<OzzbornNavbar />}
       accent="#7c3aed"

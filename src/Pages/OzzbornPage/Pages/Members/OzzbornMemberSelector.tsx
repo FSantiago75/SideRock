@@ -30,7 +30,8 @@ export function OzzbornMemberSelector({
     }
 
     const targetLeft =
-      activeButton.offsetLeft - (selector.clientWidth - activeButton.clientWidth) / 2
+      selector.scrollLeft + activeButton.getBoundingClientRect().left -
+      selector.getBoundingClientRect().left
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     selector.scrollTo({

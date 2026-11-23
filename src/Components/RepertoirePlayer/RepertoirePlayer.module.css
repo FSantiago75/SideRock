@@ -3,9 +3,9 @@
   margin: clamp(1.8rem, 4vw, 3.5rem) auto;
   padding: clamp(1rem, 4vw, 2.65rem);
   box-sizing: border-box;
-  border: 1px solid #7d282d;
+  border: 1px solid color-mix(in srgb, var(--side-rock-accent, #c52b31) 65%, #151015);
   border-radius: 0.7rem;
-  background: radial-gradient(ellipse at top left, #331217, transparent 68%), #0d090a;
+  background: radial-gradient(ellipse at top left, color-mix(in srgb, var(--side-rock-accent, #c52b31) 24%, #080808), transparent 68%), #0d090a;
   color: #f1ede6;
 }
 
@@ -38,7 +38,7 @@
 
 .deck .artist {
   margin-bottom: 0.4rem;
-  color: #ff8186;
+  color: var(--side-rock-accent-hot, #ff8186);
   font-weight: 700;
 }
 
@@ -60,13 +60,13 @@
 }
 
 .wave span[data-played='true'] {
-  background: #ff5258;
+  background: var(--side-rock-accent-hot, #ff5258);
 }
 
 .timeline input {
   width: 100%;
   margin: 0.3rem 0;
-  accent-color: #ff5258;
+  accent-color: var(--side-rock-accent-hot, #ff5258);
 }
 
 .times,
@@ -106,7 +106,7 @@
 .controls button:nth-child(2) {
   width: 3.5rem;
   height: 3.5rem;
-  background: #c52b31;
+  background: var(--side-rock-accent, #c52b31);
 }
 
 .controls button:disabled {
@@ -135,8 +135,8 @@
 }
 
 .queue button[aria-current='true'] {
-  border-color: #ad363c;
-  background: #8b26352e;
+  border-color: var(--side-rock-accent, #ad363c);
+  background: color-mix(in srgb, var(--side-rock-accent, #c52b31) 18%, transparent);
 }
 
 .queue small {
@@ -146,7 +146,7 @@
 }
 
 .section :is(button, input):focus-visible {
-  outline: 2px solid #ff8186;
+  outline: 2px solid var(--side-rock-accent-hot, #ff8186);
   outline-offset: 3px;
 }
 

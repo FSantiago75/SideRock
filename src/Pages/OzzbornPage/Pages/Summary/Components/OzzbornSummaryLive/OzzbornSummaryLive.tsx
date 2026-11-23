@@ -41,16 +41,29 @@ export function OzzbornSummaryLive() {
               <strong>Vanessa · Manager</strong>
               <small>Jundiaí / SP</small>
             </div>
-            <p className={sectionStyles.liveGuide}>
-              Continue a rolagem para conhecer as apresentações.
-            </p>
+            {OZZBORN_BOOKING.videos.length > 0 && (
+              <p className={sectionStyles.liveGuide}>
+                Continue a rolagem para conhecer as apresentações.
+              </p>
+            )}
           </ScrollReveal>
         </div>
         <ScrollReveal className={sectionStyles.liveProof}>
-          <BookingVideoCarousel
-            videos={OZZBORN_BOOKING.videos}
-            variant="story"
-          />
+          {OZZBORN_BOOKING.videos.length ? (
+            <BookingVideoCarousel
+              videos={OZZBORN_BOOKING.videos}
+              variant="story"
+              autoAdvance={false}
+              nativeSwipe
+            />
+          ) : (
+            <div className={sectionStyles.pendingVideos}>
+              <h3>O peso da Ozzborn ao vivo.</h3>
+              <p>Os próximos vídeos do tributo chegam em breve. Acompanhe as apresentações no Instagram.</p>
+              <a className={styles.secondaryAction} href={OZZBORN_BOOKING.instagramUrl}
+                target="_blank" rel="noopener noreferrer">Ver a Ozzborn no Instagram <HiArrowRight aria-hidden /></a>
+            </div>
+          )}
         </ScrollReveal>
       </div>
     </section>
