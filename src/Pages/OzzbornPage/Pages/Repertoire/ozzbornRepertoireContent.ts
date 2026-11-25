@@ -192,8 +192,9 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
 ] as const
 
 const OZZBORN_CLOSING_LINES = [
-  'Leve a Ozzborn',
-  'para o seu palco',
+  'Seu evento merece um',
+  'tributo que respeita',
+  'cada fase',
 ] as const
 
 export const OZZBORN_REPERTOIRE_CLOSING = {
