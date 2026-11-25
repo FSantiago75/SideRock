@@ -27,25 +27,6 @@ export const CATALOG_NEUTRAL_THEME = {
 
 export const HOME_EXPERIENCES = [
   {
-    id: 'acoustic',
-    name: 'Acústico',
-    path: EXPERIENCE_ROUTES.acoustic,
-    image: AcousticImage,
-    eyebrow: 'Próximo e versátil',
-    description:
-      'Música nacional e internacional em um formato intimista, elegante e pronto para se adaptar ao seu evento.',
-    idealFor: 'Bares, celebrações e ambientes intimistas',
-    theme: {
-      accent: '#df7a22',
-      scrollbar: {
-        start: '#c47732',
-        end: '#69401f',
-        hoverStart: '#e39a55',
-        hoverEnd: '#8a5428',
-      },
-    },
-  },
-  {
     id: 'side-rock',
     name: 'Side Rock',
     path: EXPERIENCE_ROUTES.sideRock,
@@ -80,6 +61,25 @@ export const HOME_EXPERIENCES = [
         end: '#432257',
         hoverStart: '#a963cf',
         hoverEnd: '#62327d',
+      },
+    },
+  },
+  {
+    id: 'acoustic',
+    name: 'Acústico',
+    path: EXPERIENCE_ROUTES.acoustic,
+    image: AcousticImage,
+    eyebrow: 'Próximo e versátil',
+    description:
+      'Música nacional e internacional em um formato intimista, elegante e pronto para se adaptar ao seu evento.',
+    idealFor: 'Bares, celebrações e ambientes intimistas',
+    theme: {
+      accent: '#df7a22',
+      scrollbar: {
+        start: '#c47732',
+        end: '#69401f',
+        hoverStart: '#e39a55',
+        hoverEnd: '#8a5428',
       },
     },
   },

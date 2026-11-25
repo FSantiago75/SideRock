@@ -147,3 +147,12 @@ O impacto deve vir de fotografia, composição, escala, contraste, movimento con
 - Os mockups em `src/SiderockAssets/MVPStyles/` são referências visuais.
 - Os fundos atualmente usados em `src/SiderockAssets/Bgs2/` permanecem enquanto a nova composição em camadas não estiver pronta.
 - Assets de referência diretamente relacionados à evolução desses sistemas podem permanecer mesmo quando ainda não fazem parte do bundle de produção.
+
+## 10. Prévias de compartilhamento
+
+- `build/plugins/socialPreview.ts` centraliza títulos, descrições, imagens e URLs canônicas do catálogo, Side Rock e Ozzborn.
+- As imagens de compartilhamento estão em `public/images/sharing/`, em JPEG 1200 × 630. Para alterar a arte, substitua a imagem correspondente e faça um novo build.
+- O build gera o HTML do catálogo e duas variantes em `dist/sharing/`. As regras específicas em `vercel.json` entregam a variante da banda antes do fallback geral. Preserve essa ordem ao alterar as rotas.
+- As quatro abas de cada banda compartilham a prévia e a URL canônica do resumo. Os metadados já estão no HTML, sem depender de JavaScript ou de identificar o robô do WhatsApp.
+- O domínio público padrão é `https://side-rock.vercel.app`. Ao trocar de domínio, configure `VITE_SITE_URL` na hospedagem antes de gerar um novo build, para atualizar os endereços absolutos das imagens e dos links.
+- A validação local verifica HTML sem JavaScript, arquivos gerados, imagens e metadados. A prévia real no WhatsApp precisa ser conferida após a publicação; este ajuste não publica o site automaticamente.

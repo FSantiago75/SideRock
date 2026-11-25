@@ -1,5 +1,10 @@
 {
   "rewrites": [
+    { "source": "/side-rock", "destination": "/sharing/sideRock.html" },
+    { "source": "/side-rock/:path*", "destination": "/sharing/sideRock.html" },
+    { "source": "/ozzborn", "destination": "/sharing/ozzborn.html" },
+    { "source": "/ozzborn/:path*", "destination": "/sharing/ozzborn.html" },
+    { "source": "/ozzborns", "destination": "/sharing/ozzborn.html" },
     {
       "source": "/(.*)",
       "destination": "/index.html"

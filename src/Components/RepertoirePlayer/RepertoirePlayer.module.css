@@ -9,13 +9,11 @@
   color: #f1ede6;
 }
 
-.heading h2,
 .deck h3 {
   margin: 0;
   font: 500 clamp(1.65rem, 4vw, 3rem) Georgia, serif;
 }
 
-.heading p,
 .deck p,
 .empty {
   margin: 0.5rem 0 0;
@@ -33,7 +31,6 @@
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: clamp(1.25rem, 4vw, 3rem);
-  margin-top: 1.5rem;
 }
 
 .deck .artist {

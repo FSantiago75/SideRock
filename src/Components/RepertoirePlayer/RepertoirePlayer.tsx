@@ -1,4 +1,4 @@
-import { useId, useRef, useState, type SyntheticEvent } from 'react'
+import { useRef, useState, type SyntheticEvent } from 'react'
 import { HiBackward, HiForward, HiPause, HiPlay } from 'react-icons/hi2'
 import type { RepertoireTrack } from './types'
 import styles from './RepertoirePlayer.module.css'
@@ -10,16 +10,13 @@ function formatTime(seconds: number) {
 
 type RepertoirePlayerProps = {
   tracks: readonly RepertoireTrack[]
-  title: string
-  description: string
+  label: string
 }
 
 export function RepertoirePlayer({
   tracks,
-  title,
-  description,
+  label,
 }: RepertoirePlayerProps) {
-  const titleId = useId()
   const audio = useRef<HTMLAudioElement>(null)
   const [selected, setSelected] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -55,11 +52,7 @@ export function RepertoirePlayer({
   }
 
   return (
-    <section className={styles.section} aria-labelledby={titleId}>
-      <div className={styles.heading}>
-        <h2 id={titleId}>{title}</h2>
-        <p>{description}</p>
-      </div>
+    <section className={styles.section} aria-label={label}>
       {!track ? (
         <p className={styles.empty}>As primeiras faixas chegam em breve</p>
       ) : (

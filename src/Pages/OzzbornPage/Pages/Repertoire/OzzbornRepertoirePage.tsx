@@ -84,8 +84,7 @@ export function OzzbornRepertoirePage() {
         </header>
 
         <ScrollReveal from="up" delayMs={160}>
-          <RepertoirePlayer tracks={OZZBORN_TRACKS} title="Ouça a Ozzborn"
-            description="Gravações do tributo a Ozzy Osbourne e Black Sabbath" />
+          <RepertoirePlayer tracks={OZZBORN_TRACKS} label="Faixas da Ozzborn" />
         </ScrollReveal>
 
         <div className={styles.timeline}>
