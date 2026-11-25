@@ -1,6 +1,6 @@
 import AcousticImage from '../../assets/general/sideRockAcoustic.png'
 import SideRockImage from '../../assets/general/sideRock.jpg'
-import OzzbornImage from '../../assets/general/sideRockOzzborn.png'
+import OzzbornImage from '../../assets/ozzborn/branding/ozzbornHomeLogo.jpeg'
 import { EXPERIENCE_ROUTES } from '../../config/experiences'
 
 export type CatalogScrollbarTheme = {
