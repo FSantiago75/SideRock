@@ -20,7 +20,7 @@ export const ACOUSTIC_FORMATS = {
   trio: {
     label: 'Trio',
     cue: 'Mais energia',
-    formation: 'Marcelo · Victor · Toddynho na bateria',
+    formation: 'Marcelo · Victor · Todynho na bateria',
     title: 'Mais pulsação. Mais impacto no palco.',
     lead: 'A proximidade do acústico com uma base rítmica mais presente para festas e ocasiões que pedem movimento.',
     statement: 'Mais energia que som ambiente.',

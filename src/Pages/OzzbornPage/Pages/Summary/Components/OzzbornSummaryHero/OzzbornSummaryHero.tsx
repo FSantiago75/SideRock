@@ -29,8 +29,8 @@ export function OzzbornSummaryHero({ onExplore }: { onExplore: () => void }) {
               alt="Ozzborn — Ozzy Tribute"
             />
             <span className={styles.heroDescriptor}>
-              <span>Fidelidade musical.</span>
-              <span>Impacto ao vivo.</span>
+              <span>Fidelidade musical</span>
+              <span>Impacto ao vivo</span>
             </span>
           </h1>
         </ScrollReveal>

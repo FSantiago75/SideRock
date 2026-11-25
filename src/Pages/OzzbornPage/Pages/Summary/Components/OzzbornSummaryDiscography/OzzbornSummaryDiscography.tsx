@@ -22,7 +22,7 @@ export function OzzbornSummaryDiscography({ index }: { index: string }) {
       <p className={layout.eyebrow}>{index} / Repertório</p>
       <ScrollReveal className={layout.sectionHeading}>
         <div>
-          <h2 id="discography-title">Cada fase, uma nova intensidade.</h2>
+          <h2 id="discography-title">Cada fase, uma nova intensidade</h2>
           <p>
             Uma prévia da discografia que dá vida ao tributo. Escolha um
             capítulo para conhecer o clima.

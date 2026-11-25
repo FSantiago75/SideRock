@@ -86,7 +86,7 @@ export function GalleryPage() {
                     {album.photos.length ? (
                       <GalleryAlbumSection photos={album.photos} onOpen={setActivePhotoId} />
                     ) : (
-                      <p className={styles.folderEmpty}>Ainda não há fotos nesta pasta.</p>
+                      <p className={styles.folderEmpty}>Ainda não há fotos nesta pasta</p>
                     )}
                   </div>
                 </div>

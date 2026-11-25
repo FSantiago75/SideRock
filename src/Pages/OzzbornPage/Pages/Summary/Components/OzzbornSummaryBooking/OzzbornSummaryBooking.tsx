@@ -20,7 +20,7 @@ export function OzzbornSummaryBooking({ index }: { index: string }) {
             <p className={`${layout.eyebrow} ${layout.chapterLabel}`}>
               {index} / Contratação
             </p>
-            <h2 id="booking-title">Leve a Ozzborn ao seu palco.</h2>
+            <h2 id="booking-title">Leve a Ozzborn ao seu palco</h2>
             <p className={layout.copy}>
               Conte um pouco sobre seu evento e leve sua consulta pronta para o
               WhatsApp. Vanessa conversa com você sobre disponibilidade e

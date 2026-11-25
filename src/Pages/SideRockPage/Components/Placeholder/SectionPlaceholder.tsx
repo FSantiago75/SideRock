@@ -7,7 +7,7 @@ type Props = {
 export function SectionPlaceholder({ title }: Props) {
   return (
     <div className={styles.placeholder}>
-      <span className={styles.srOnly}>Secção {title} — conteúdo em breve.</span>
+      <span className={styles.srOnly}>Secção {title} — conteúdo em breve</span>
       <span aria-hidden>{title}</span>
       <span aria-hidden> · em breve</span>
     </div>

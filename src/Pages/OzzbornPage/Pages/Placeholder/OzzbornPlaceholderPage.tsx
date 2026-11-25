@@ -27,7 +27,7 @@ export function OzzbornPlaceholderPage({ section }: OzzbornPlaceholderPageProps)
         <ScrollReveal className={styles.content} from="up">
           <p className={styles.eyebrow}>Ozzborn · próxima etapa</p>
           <h1 id="ozzborn-placeholder-title">{label}</h1>
-          <p>Esta área foi preservada para construirmos com cuidado, página por página, a partir do novo molde do Ozzborn.</p>
+          <p>Esta área foi preservada para construirmos com cuidado, página por página, a partir do novo molde do Ozzborn</p>
         </ScrollReveal>
       </section>
     </SideRockSectionPage>

@@ -16,8 +16,8 @@ export function OzzbornSummaryVenues() {
       <p className={layout.eyebrow}>04 / Palcos</p>
       <ScrollReveal className={layout.sectionHeading}>
         <div>
-          <h2 id="venues-title">Por onde já passamos.</h2>
-          <p>Casas e eventos que receberam a Ozzborn.</p>
+          <h2 id="venues-title">Por onde já passamos</h2>
+          <p>Casas e eventos que receberam a Ozzborn</p>
         </div>
       </ScrollReveal>
       <div
@@ -35,7 +35,7 @@ export function OzzbornSummaryVenues() {
       </div>
       <ScrollReveal>
         <PrivateEventsCard
-          title="Sua paixão por Ozzy dá o tom da festa."
+          title="Sua paixão por Ozzy dá o tom da festa"
           description="Aniversários e festas particulares também têm espaço para a Ozzborn. O peso e a atmosfera de um show de Ozzy, recriados com cuidado para celebrar junto de quem compartilha essa paixão."
         />
       </ScrollReveal>

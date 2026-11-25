@@ -19,7 +19,7 @@ export function SummaryHero({ onExplore }: { onExplore: () => void }) {
             <span className={styles.heroBrand}>Side Rock</span>
             <span className={styles.heroDescriptor}>
               <span>Rock internacional</span>
-              <span>Energia ao vivo.</span>
+              <span>Energia ao vivo</span>
             </span>
           </h1>
         </ScrollReveal>

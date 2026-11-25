@@ -16,8 +16,8 @@ export function SummaryVenues() {
       <p className={layout.eyebrow}>04 / Palcos</p>
       <ScrollReveal className={layout.sectionHeading}>
         <div>
-          <h2 id="venues-title">Por onde já passamos.</h2>
-          <p>Casas e eventos que receberam a Side Rock.</p>
+          <h2 id="venues-title">Por onde já passamos</h2>
+          <p>Casas e eventos que receberam a Side Rock</p>
         </div>
       </ScrollReveal>
       <div
@@ -35,7 +35,7 @@ export function SummaryVenues() {
       </div>
       <ScrollReveal>
         <PrivateEventsCard
-          title="O palco também pode ser a sua festa."
+          title="O palco também pode ser a sua festa"
           description="Dos aniversários às festas particulares, a Side Rock já levou seu show para quem faz do rock parte da própria história. A mesma entrega dos palcos, perto de você e dos seus convidados."
         />
       </ScrollReveal>

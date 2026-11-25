@@ -42,7 +42,7 @@ export function SummaryLive() {
               <small>Jundiaí / SP</small>
             </div>
             <p className={sectionStyles.liveGuide}>
-              Continue a rolagem para conhecer as apresentações.
+              Continue a rolagem para conhecer as apresentações
             </p>
           </ScrollReveal>
         </div>

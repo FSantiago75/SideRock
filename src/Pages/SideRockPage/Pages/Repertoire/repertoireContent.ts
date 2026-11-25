@@ -30,7 +30,7 @@ export type RepertoireMovement = {
 export const REPERTOIRE_INTRO = {
   eyebrow: 'O som da Side Rock',
   title: 'Repertório',
-  lead: 'Clássicos do rock internacional, do hard rock ao grunge e ao metal. Refrões conhecidos, solos marcantes e peso na medida de cada música.',
+  lead: 'Clássicos do rock internacional, do hard rock ao grunge e ao metal. Refrões conhecidos, solos marcantes e peso na medida de cada música',
 } as const
 
 export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
@@ -98,13 +98,13 @@ export const REPERTOIRE_CLOSING = {
   titleLines: [
     'Seu evento merece mais do',
     'que uma banda tocando',
-    'sucessos conhecidos.',
+    'sucessos conhecidos',
   ],
   mobileTitleLines: [
     'Seu evento merece mais',
     'do que uma banda',
     'tocando sucessos',
-    'conhecidos.',
+    'conhecidos',
   ],
   primaryAction: 'Consultar data e orçamento',
   secondaryAction: 'Ver a banda em ação',

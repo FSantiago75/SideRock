@@ -16,10 +16,10 @@ export function OzzbornSummaryMembers() {
       <p className={layout.eyebrow}>03 / Integrantes</p>
       <ScrollReveal className={sectionStyles.membersTeaser}>
         <div className={sectionStyles.teaserCopy}>
-          <h2 id="members-title">Quem dá voz e peso à Ozzborn.</h2>
+          <h2 id="members-title">Quem dá voz e peso à Ozzborn</h2>
           <p>
             Explore a formação interativa e conheça o papel de cada músico no
-            show.
+            show
           </p>
           <Link className={layout.textLink} to={ozzbornPath('integrantes')}>
             Explorar os integrantes <HiArrowRight aria-hidden />

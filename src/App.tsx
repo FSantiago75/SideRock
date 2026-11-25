@@ -2,6 +2,7 @@ import { ozzbornSectionLoaders } from './Pages/OzzbornPage/sectionLoaders'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { RouteFallback } from './Components/RouteFallback/RouteFallback'
+import { RouteFavicon } from './Components/RouteFavicon/RouteFavicon'
 import { sideRockSectionLoaders } from './Pages/SideRockPage/sectionLoaders'
 import {
   SIDE_ROCK_BASE_PATH,
@@ -59,6 +60,7 @@ const NotFound = lazy(() =>
 function App() {
   return (
     <BrowserRouter>
+      <RouteFavicon />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path={EXPERIENCE_ROUTES.catalog} element={<HomePage />} />

@@ -88,7 +88,7 @@ export function OzzbornMembersPage() {
                 activeId={spotlight.activeId}
                 onHover={spotlight.hover}
                 onSelect={(id) => id && spotlight.select(id)}
-                alt="Adriano, Toddynho, Marcelo e Victor, integrantes da Ozzborn"
+                alt="Adriano, Todynho, Marcelo e Victor, integrantes da Ozzborn"
               />
             </div>
           </ScrollReveal>

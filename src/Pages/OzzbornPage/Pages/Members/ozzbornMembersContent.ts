@@ -34,7 +34,7 @@ export const OZZBORN_MEMBERS: readonly OzzbornMember[] = [
     id: 'vocal',
     name: 'Marcelo',
     role: 'Vocalista',
-    signature: 'A voz que aproxima o público de Ozzy.',
+    signature: 'A voz que aproxima o público de Ozzy',
     description:
       'Marcelo trabalha o timbre, a intenção e a maneira de interpretar cada frase para trazer a identidade de Ozzy ao palco. Sua voz acompanha as mudanças de clima e intensidade do tributo.',
     instrument: 'Voz',
@@ -47,7 +47,7 @@ export const OZZBORN_MEMBERS: readonly OzzbornMember[] = [
     id: 'guitar',
     name: 'Victor',
     role: 'Guitarrista',
-    signature: 'A assinatura de cada fase na guitarra.',
+    signature: 'A assinatura de cada fase na guitarra',
     description:
       'Dos riffs do Sabbath aos solos da carreira solo, Victor recria timbres e arranjos que marcaram a obra de Ozzy. Sua guitarra acompanha a identidade de cada fase com precisão.',
     instrument: 'Guitarra',
@@ -60,7 +60,7 @@ export const OZZBORN_MEMBERS: readonly OzzbornMember[] = [
     id: 'bass',
     name: 'Adriano',
     role: 'Baixista',
-    signature: 'O peso de cada música, presente no baixo.',
+    signature: 'O peso de cada música, presente no baixo',
     description:
       'Com peso e definição, Adriano preserva as linhas de baixo que dão corpo às músicas. A ligação com a bateria e os sons de apoio mantém o tributo firme em cada mudança de intensidade.',
     instrument: 'Baixo',
@@ -71,11 +71,11 @@ export const OZZBORN_MEMBERS: readonly OzzbornMember[] = [
   },
   {
     id: 'drums',
-    name: 'Toddynho',
+    name: 'Todynho',
     role: 'Baterista',
-    signature: 'Cada virada a serviço da música.',
+    signature: 'Cada virada a serviço da música',
     description:
-      'Toddynho recria ritmos, viradas e percussões com atenção a cada gravação. Sua bateria se integra aos sons de apoio e conduz o crescimento da apresentação com precisão.',
+      'Todynho recria ritmos, viradas e percussões com atenção a cada gravação. Sua bateria se integra aos sons de apoio e conduz o crescimento da apresentação com precisão.',
     instrument: 'Bateria',
     contribution: 'Ritmos, viradas e percussões',
     presence: 'Precisão que conduz a experiência',

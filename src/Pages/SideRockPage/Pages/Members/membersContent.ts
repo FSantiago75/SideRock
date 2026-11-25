@@ -33,7 +33,7 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     id: 'vocal',
     name: 'Marcelo',
     role: 'Vocalista',
-    signature: 'Uma voz que dá identidade ao show.',
+    signature: 'Uma voz que dá identidade ao show',
     description:
       'O timbre próximo ao de Axl Rose faz de Guns N’ Roses um dos destaques da Side Rock. Marcelo atravessa o restante do repertório com alcance, potência e personalidade.',
     instrument: 'Voz',
@@ -46,7 +46,7 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     id: 'guitar',
     name: 'Victor',
     role: 'Guitarrista',
-    signature: 'Dos solos marcantes às passagens mais delicadas.',
+    signature: 'Dos solos marcantes às passagens mais delicadas',
     description:
       'Victor combina precisão e sensibilidade para interpretar o rock em suas diferentes intensidades. Riffs, solos e timbres recebem o cuidado que torna cada clássico reconhecível.',
     instrument: 'Guitarra',
@@ -59,7 +59,7 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
     id: 'bass',
     name: 'Adriano',
     role: 'Baixista',
-    signature: 'Um baixo que se faz ouvir.',
+    signature: 'Um baixo que se faz ouvir',
     description:
       'Presente e bem definido, o baixo de Adriano dá peso aos riffs e corpo à música. Suas linhas unem a banda com firmeza e mantêm cada passagem consistente, do começo ao fim.',
     instrument: 'Baixo',
@@ -70,11 +70,11 @@ export const SIDE_ROCK_MEMBERS: readonly SideRockMember[] = [
   },
   {
     id: 'drums',
-    name: 'Toddynho',
+    name: 'Todynho',
     role: 'Baterista',
-    signature: 'Criatividade para dar força a cada virada.',
+    signature: 'Criatividade para dar força a cada virada',
     description:
-      'Toddynho combina ritmos complexos, viradas criativas e precisão. Sua bateria conduz os contrastes do repertório, das passagens mais contidas aos momentos de maior peso.',
+      'Todynho combina ritmos complexos, viradas criativas e precisão. Sua bateria conduz os contrastes do repertório, das passagens mais contidas aos momentos de maior peso.',
     instrument: 'Bateria',
     contribution: 'Ritmos, viradas e precisão',
     presence: 'Energia que conduz o show',

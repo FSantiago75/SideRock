@@ -5,7 +5,7 @@ Este documento registra o contexto confirmado pelo responsável pelo projeto. El
 ## 1. A banda Side Rock
 
 - A Side Rock é uma banda de covers de classic rock, hard rock e heavy metal.
-- Integrantes: **Toddynho, Adriano, Victor e Marcelo**. Formas como Tod, Adr, Vic e Mar são apenas abreviações informais.
+- Integrantes: **Todynho, Adriano, Victor e Marcelo**. Formas como Tod, Adr, Vic e Mar são apenas abreviações informais.
 - Marcelo é o líder da banda, vocalista e padrasto de Felipe. Canta todo o repertório com alto nível técnico e artístico, reconhecido por músicos e também por ouvintes estrangeiros.
 - A banda principal existe há mais de cinco anos. Durante boa parte desse período, trabalhou sem nicho, público próprio, casas recorrentes ou segurança comercial, com poucos shows e retorno financeiro muito baixo.
 - A Side Rock não quer ser percebida como “banda de boteco” nem permanecer um projeto de garagem. O objetivo é ampliar reconhecimento, público, presença social e volume/qualidade das contratações.

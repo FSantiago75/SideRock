@@ -75,7 +75,7 @@ export function MembersPage() {
                 activeId={spotlight.activeId}
                 onHover={spotlight.hover}
                 onSelect={(id) => id && spotlight.select(id)}
-                alt="Adriano, Toddynho, Marcelo e Victor, integrantes da Side Rock"
+                alt="Adriano, Todynho, Marcelo e Victor, integrantes da Side Rock"
               />
             </div>
           </ScrollReveal>

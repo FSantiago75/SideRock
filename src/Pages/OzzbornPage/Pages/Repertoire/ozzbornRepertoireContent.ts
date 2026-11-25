@@ -34,9 +34,9 @@ export type OzzbornRepertoireEra = {
 
 export const OZZBORN_REPERTOIRE_INTRO = {
   eyebrow: 'Repertório Ozzborn',
-  titleLead: 'Cinco eras.',
-  titleAccent: 'Um show.',
-  lead: 'Do Black Sabbath à carreira solo, uma jornada por cinco eras de Ozzy, com os timbres, o peso e as atmosferas que dão identidade a cada fase.',
+  titleLead: 'Cinco eras',
+  titleAccent: 'Um show',
+  lead: 'Do Black Sabbath à carreira solo, uma jornada por cinco eras de Ozzy, com os timbres, o peso e as atmosferas que dão identidade a cada fase',
 } as const
 
 export const OZZBORN_REPERTOIRE_JOURNEY = {
@@ -194,7 +194,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
 const OZZBORN_CLOSING_LINES = [
   'Seu evento merece um',
   'tributo que respeita',
-  'cada fase.',
+  'cada fase',
 ] as const
 
 export const OZZBORN_REPERTOIRE_CLOSING = {

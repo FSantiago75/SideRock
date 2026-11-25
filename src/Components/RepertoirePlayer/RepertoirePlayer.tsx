@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useRef, useState, type SyntheticEvent } from 'react'
 import { HiBackward, HiForward, HiPause, HiPlay } from 'react-icons/hi2'
 import type { RepertoireTrack } from './types'
 import styles from './RepertoirePlayer.module.css'
@@ -28,6 +28,11 @@ export function RepertoirePlayer({
   const [error, setError] = useState(false)
   const track = tracks[selected]
 
+  function syncPlayback({ currentTarget }: SyntheticEvent<HTMLAudioElement>) {
+    setDuration(Number.isFinite(currentTarget.duration) ? currentTarget.duration : 0)
+    setPosition(currentTarget.currentTime)
+  }
+
   function play(player: HTMLAudioElement) {
     setError(false)
     const requestedSource = player.src
@@ -56,7 +61,7 @@ export function RepertoirePlayer({
         <p>{description}</p>
       </div>
       {!track ? (
-        <p className={styles.empty}>As primeiras faixas chegam em breve.</p>
+        <p className={styles.empty}>As primeiras faixas chegam em breve</p>
       ) : (
         <div className={styles.layout}>
           <div className={styles.deck}>
@@ -67,11 +72,14 @@ export function RepertoirePlayer({
               ref={audio}
               src={tracks[0]?.src}
               preload="metadata"
-              onLoadedMetadata={({ currentTarget }) => {
-                setDuration(Number.isFinite(currentTarget.duration) ? currentTarget.duration : 0)
+              onLoadedMetadata={syncPlayback}
+              onDurationChange={syncPlayback}
+              onCanPlay={syncPlayback}
+              onTimeUpdate={syncPlayback}
+              onPlay={(event) => {
+                syncPlayback(event)
+                setPlaying(true)
               }}
-              onTimeUpdate={({ currentTarget }) => setPosition(currentTarget.currentTime)}
-              onPlay={() => setPlaying(true)}
               onPause={() => setPlaying(false)}
               onError={() => { setPlaying(false); setError(true) }}
               onEnded={() => {

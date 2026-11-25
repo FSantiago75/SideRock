@@ -43,7 +43,7 @@ export function OzzbornSummaryLive() {
             </div>
             {OZZBORN_BOOKING.videos.length > 0 && (
               <p className={sectionStyles.liveGuide}>
-                Continue a rolagem para conhecer as apresentações.
+                Continue a rolagem para conhecer as apresentações
               </p>
             )}
           </ScrollReveal>
@@ -58,7 +58,7 @@ export function OzzbornSummaryLive() {
             />
           ) : (
             <div className={sectionStyles.pendingVideos}>
-              <h3>O peso da Ozzborn ao vivo.</h3>
+              <h3>O peso da Ozzborn ao vivo</h3>
               <p>Os próximos vídeos do tributo chegam em breve. Acompanhe as apresentações no Instagram.</p>
               <a className={styles.secondaryAction} href={OZZBORN_BOOKING.instagramUrl}
                 target="_blank" rel="noopener noreferrer">Ver a Ozzborn no Instagram <HiArrowRight aria-hidden /></a>

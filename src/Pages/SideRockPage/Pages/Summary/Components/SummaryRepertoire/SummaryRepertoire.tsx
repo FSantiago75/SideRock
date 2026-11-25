@@ -22,7 +22,7 @@ export function SummaryRepertoire({ index }: { index: string }) {
       <p className={layout.eyebrow}>{index} / Repertório</p>
       <ScrollReveal className={layout.sectionHeading}>
         <div>
-          <h2 id="repertoire-title">Refrões, intensidade e peso.</h2>
+          <h2 id="repertoire-title">Refrões, intensidade e peso</h2>
           <p>
             Três vertentes que dão identidade ao show. Escolha uma para conhecer
             o clima.
