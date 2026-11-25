@@ -58,9 +58,11 @@ export function RepertoirePlayer({
       ) : (
         <div className={styles.layout}>
           <div className={styles.deck}>
-            <p className={styles.artist}>{track.artist}</p>
-            <h3>{track.title}</h3>
-            {track.description && <p>{track.description}</p>}
+            <div key={track.id} className={styles.trackInfo}>
+              <p className={styles.artist}>{track.artist}</p>
+              <h3>{track.title}</h3>
+              {track.description && <p>{track.description}</p>}
+            </div>
             <audio
               ref={audio}
               src={tracks[0]?.src}
@@ -106,7 +108,7 @@ export function RepertoirePlayer({
                 if (!player) return
                 if (playing) player.pause()
                 else play(player)
-              }}>{playing ? <HiPause /> : <HiPlay />}</button>
+              }}><span key={String(playing)} className={styles.stateIcon}>{playing ? <HiPause /> : <HiPlay />}</span></button>
               <button type="button" aria-label="Próxima faixa" disabled={selected + 1 === tracks.length} onClick={() => select(selected + 1)}><HiForward /></button>
             </div>
             {error && <p role="alert">Não foi possível reproduzir esta faixa. Tente novamente.</p>}
@@ -119,7 +121,7 @@ export function RepertoirePlayer({
                     if (selected === index && playing) audio.current?.pause()
                     else select(index)
                   }}>
-                  <span>{selected === index && playing ? <HiPause /> : <HiPlay />}</span>
+                  <span key={String(selected === index && playing)} className={styles.stateIcon}>{selected === index && playing ? <HiPause /> : <HiPlay />}</span>
                   <span><strong>{item.title}</strong><small>{item.artist}</small></span>
                 </button>
               </li>

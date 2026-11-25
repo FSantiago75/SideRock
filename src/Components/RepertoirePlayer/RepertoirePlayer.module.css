@@ -39,6 +39,15 @@
   font-weight: 700;
 }
 
+.trackInfo {
+  animation: track-enter 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes track-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .timeline {
   margin-top: 1rem;
 }
@@ -54,6 +63,7 @@
   flex: 1;
   border-radius: 3px;
   background: #74676a;
+  transition: height 600ms cubic-bezier(0.22, 1, 0.36, 1), background-color 275ms ease;
 }
 
 .wave span[data-played='true'] {
@@ -90,6 +100,39 @@
   background: #ffffff08;
   color: inherit;
   cursor: pointer;
+  transition: background-color 350ms ease, border-color 350ms ease, transform 250ms ease;
+}
+
+.section :is(button, input) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.section :is(button, input):focus:not(:focus-visible) {
+  outline: none;
+}
+
+.controls button:enabled:active,
+.queue button:active {
+  transform: scale(0.97);
+}
+
+.stateIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  animation: icon-enter 300ms ease-out both;
+}
+
+@keyframes icon-enter {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .controls button:enabled:hover,
+  .queue button:hover {
+    border-color: var(--side-rock-accent-hot, #ff8186);
+    transform: translateY(-2px);
+  }
 }
 
 .controls button {
@@ -150,5 +193,19 @@
 @media (max-width: 760px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trackInfo,
+  .stateIcon {
+    animation: none;
+  }
+
+  .wave span,
+  .controls button,
+  .queue button {
+    transition: none;
+    transform: none;
   }
 }
