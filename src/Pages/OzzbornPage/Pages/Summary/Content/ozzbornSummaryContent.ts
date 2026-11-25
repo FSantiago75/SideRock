@@ -9,12 +9,12 @@ export const OZZBORN_SUMMARY_CONTENT = {
     mode: 'cutout' as const,
   },
   story: {
-    title: 'A história de Ozzy viva no palco',
-    copy: 'A Ozzborn percorre a obra de Ozzy Osbourne em uma apresentação que cresce a cada música. Dos timbres de guitarra e baixo aos efeitos e sons de fundo, cada detalhe é trabalhado para recriar a força e a atmosfera das gravações originais. Um cuidado que ganha vida no palco e aproxima o público da experiência de um show de Ozzy.',
+    title: 'Do Sabbath à carreira solo',
+    copy: 'A Ozzborn reúne músicas do Black Sabbath e da carreira solo de Ozzy Osbourne. O trabalho do tributo está nos detalhes: a maneira de cantar, os timbres dos instrumentos e os arranjos. Bases sincronizadas acrescentam efeitos e sons de apoio presentes nas gravações.',
   },
   live: {
     title: 'A Ozzborn no seu palco',
-    copy: 'Voz, timbres e arranjos trabalham juntos para trazer a experiência de um show de Ozzy ao palco. Conheça a Ozzborn em apresentação e ouça os detalhes dessa interpretação.',
+    copy: 'Assista aos trechos dos shows e ouça como a banda interpreta o repertório de Ozzy. São registros para conhecer o som e a apresentação da Ozzborn.',
   },
   repertoire: [
     'Black Sabbath',

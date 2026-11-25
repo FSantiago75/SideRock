@@ -36,7 +36,7 @@ export const OZZBORN_REPERTOIRE_INTRO = {
   eyebrow: 'Repertório Ozzborn',
   titleLead: 'Cinco eras',
   titleAccent: 'Um show',
-  lead: 'Do Black Sabbath à carreira solo, uma jornada por cinco eras de Ozzy, com os timbres, o peso e as atmosferas que dão identidade a cada fase',
+  lead: 'Ouça as gravações da Ozzborn e conheça as cinco fases da discografia de Ozzy que orientam o tributo',
 } as const
 
 export const OZZBORN_REPERTOIRE_JOURNEY = {
@@ -53,7 +53,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
     period: '1970 a 1972',
     title: 'Onde o peso começou',
     narrative:
-      'Riffs sombrios e o peso do Black Sabbath abrem a jornada. A Ozzborn recria essa atmosfera para envolver o público desde os primeiros acordes.',
+      'Os primeiros discos do Black Sabbath são a referência para esta parte do repertório, com os riffs e o som da banda no início da trajetória de Ozzy.',
     tone: 'origin',
     albums: [
       {
@@ -84,7 +84,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
     period: '1980 a 1981',
     title: 'O renascimento de Ozzy',
     narrative:
-      'A carreira solo traz guitarras em destaque, solos marcantes e novos contrastes. Uma fase que amplia a intensidade do tributo.',
+      'Blizzard of Ozz e Diary of a Madman representam o começo da carreira solo. Os arranjos de guitarra dessa fase recebem atenção especial no tributo.',
     tone: 'rebirth',
     albums: [
       {
@@ -108,7 +108,7 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
     period: '1983 a 1988',
     title: 'A força dos anos 80',
     narrative:
-      'Refrões fortes, guitarras afiadas e energia crescente. Os anos 80 ganham vida com atenção aos timbres e arranjos que tornaram essa fase inconfundível.',
+      'De Bark at the Moon a No Rest for the Wicked, o repertório acompanha as mudanças de guitarra e produção dos anos 80. Shot in the Dark está entre as músicas dessa fase.',
     tone: 'transformation',
     albums: [
       {
@@ -137,9 +137,9 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
   {
     id: 'monumental',
     period: '1991 a 1995',
-    title: 'Peso, emoção e grandes hinos',
+    title: 'Os clássicos dos anos 90',
     narrative:
-      'O peso encontra grandes melodias. A Ozzborn explora esses contrastes para alternar impacto, emoção e momentos de canto com o público.',
+      'No More Tears e Ozzmosis são as referências dos anos 90. Essa parte da discografia reúne as baladas e as guitarras mais pesadas que também fazem parte da proposta do tributo.',
     tone: 'monumental',
     albums: [
       {
@@ -161,9 +161,9 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
   {
     id: 'legado',
     period: '2001 a 2010',
-    title: 'Um legado que continua vivo',
+    title: 'Ozzy nos anos 2000',
     narrative:
-      'Novas texturas e guitarras mais pesadas mostram outras faces de Ozzy. A apresentação mantém sua identidade e ganha força até o encerramento.',
+      'Down to Earth, Black Rain e Scream completam o percurso pela discografia. Os timbres e os sons de apoio desses discos ampliam as referências para a banda.',
     tone: 'legacy',
     albums: [
       {
@@ -192,17 +192,16 @@ export const OZZBORN_REPERTOIRE_ERAS: readonly OzzbornRepertoireEra[] = [
 ] as const
 
 const OZZBORN_CLOSING_LINES = [
-  'Seu evento merece um',
-  'tributo que respeita',
-  'cada fase',
+  'Leve a Ozzborn',
+  'para o seu palco',
 ] as const
 
 export const OZZBORN_REPERTOIRE_CLOSING = {
-  eyebrow: 'Uma história feita para o palco',
+  eyebrow: 'Ozzy na programação da sua casa',
   title: OZZBORN_CLOSING_LINES.join(' '),
   titleLines: OZZBORN_CLOSING_LINES,
   primaryAction: 'Consultar data e orçamento',
-  secondaryAction: 'Ver a banda em ação',
+  secondaryAction: 'Ver fotos dos shows',
 } as const
 
 export const OZZBORN_REPERTOIRE_ALBUM_COUNT = OZZBORN_REPERTOIRE_ERAS.reduce(

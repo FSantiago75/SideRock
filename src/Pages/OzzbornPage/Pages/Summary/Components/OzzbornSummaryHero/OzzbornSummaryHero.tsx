@@ -36,9 +36,9 @@ export function OzzbornSummaryHero({ onExplore }: { onExplore: () => void }) {
         </ScrollReveal>
         <ScrollReveal delayMs={120} from="up">
           <p className={styles.heroLead}>
-            Um tributo construído com respeito aos timbres, aos arranjos e às
-            atmosferas que marcaram a trajetória de Ozzy Osbourne, dos primeiros
-            anos com o Black Sabbath aos grandes momentos da carreira solo.
+            Um tributo a Ozzy Osbourne, dos clássicos do Black Sabbath à carreira
+            solo. Quatro músicos, 2h30 de show e atenção aos timbres e arranjos
+            das gravações originais.
           </p>
         </ScrollReveal>
         <ScrollReveal delayMs={160} from="up">

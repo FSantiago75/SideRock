@@ -22,10 +22,10 @@ export function OzzbornSummaryDiscography({ index }: { index: string }) {
       <p className={layout.eyebrow}>{index} / Repertório</p>
       <ScrollReveal className={layout.sectionHeading}>
         <div>
-          <h2 id="discography-title">Cada fase, uma nova intensidade</h2>
+          <h2 id="discography-title">As fases de Ozzy no repertório</h2>
           <p>
-            Uma prévia da discografia que dá vida ao tributo. Escolha um
-            capítulo para conhecer o clima.
+            Conheça os discos que servem de referência para o tributo. Escolha
+            uma fase para ver os álbuns.
           </p>
         </div>
       </ScrollReveal>

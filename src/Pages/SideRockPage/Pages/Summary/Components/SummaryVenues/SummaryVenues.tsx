@@ -36,7 +36,7 @@ export function SummaryVenues() {
       <ScrollReveal>
         <PrivateEventsCard
           title="O palco também pode ser a sua festa"
-          description="Dos aniversários às festas particulares, a Side Rock já levou seu show para quem faz do rock parte da própria história. A mesma entrega dos palcos, perto de você e dos seus convidados."
+          description="A Side Rock também toca em aniversários e festas particulares. Converse com Vanessa sobre a data e o local da sua festa."
         />
       </ScrollReveal>
     </section>

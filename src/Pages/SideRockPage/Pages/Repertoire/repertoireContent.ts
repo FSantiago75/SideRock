@@ -30,7 +30,7 @@ export type RepertoireMovement = {
 export const REPERTOIRE_INTRO = {
   eyebrow: 'O som da Side Rock',
   title: 'Repertório',
-  lead: 'Clássicos do rock internacional, do hard rock ao grunge e ao metal. Refrões conhecidos, solos marcantes e peso na medida de cada música',
+  lead: 'Ouça as faixas da Side Rock e conheça as bandas e músicas que fazem parte do show',
 } as const
 
 export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
@@ -38,7 +38,7 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
     id: 'grandes-palcos',
     eyebrow: 'Classic rock · Hard rock',
     title: 'Clássicos para cantar junto',
-    body: 'Guns N’ Roses em destaque, com refrões conhecidos, solos marcantes e a energia dos clássicos do hard rock.',
+    body: 'Guns N’ Roses divide o repertório com Bon Jovi, Whitesnake e Simple Minds. Baladas e músicas para cantar junto fazem parte dessa seleção.',
     tone: 'arena',
     bands: [
       { name: 'Bon Jovi', logo: bonJovi, logoScale: 'wide' },
@@ -57,7 +57,7 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
     id: 'alternativo-grunge',
     eyebrow: 'Alternativo · Grunge',
     title: 'A força dos anos 90',
-    body: 'Atmosfera, contrastes e vozes marcantes. O grunge e o alternativo mudam o clima do show sem perder a intensidade.',
+    body: 'Pearl Jam, Alice in Chains e outras bandas do alternativo entram no show com músicas como Black, Man in the Box e Like a Stone.',
     tone: 'alternative',
     bands: [
       { name: 'Pearl Jam', logo: pearlJam },
@@ -77,8 +77,8 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
   {
     id: 'heavy-metal',
     eyebrow: 'Heavy metal',
-    title: 'Peso com precisão',
-    body: 'Metallica e Megadeth trazem riffs pesados, solos e viradas que colocam a precisão dos quatro músicos em evidência.',
+    title: 'O lado mais pesado do show',
+    body: 'Metallica, Megadeth e Ozzy Osbourne completam a seleção com músicas como Enter Sandman, Symphony of Destruction e Bark at the Moon.',
     tone: 'heavy',
     bands: [
       { name: 'Metallica', logo: metallica, logoScale: 'wide' },
@@ -94,7 +94,7 @@ export const REPERTOIRE_MOVEMENTS: readonly RepertoireMovement[] = [
 ] as const
 
 export const REPERTOIRE_CLOSING = {
-  eyebrow: 'A experiência Side Rock',
+  eyebrow: 'Na programação da sua casa',
   titleLines: [
     'Seu evento merece mais do',
     'que uma banda tocando',
@@ -107,5 +107,5 @@ export const REPERTOIRE_CLOSING = {
     'conhecidos',
   ],
   primaryAction: 'Consultar data e orçamento',
-  secondaryAction: 'Ver a banda em ação',
+  secondaryAction: 'Ver fotos dos shows',
 } as const

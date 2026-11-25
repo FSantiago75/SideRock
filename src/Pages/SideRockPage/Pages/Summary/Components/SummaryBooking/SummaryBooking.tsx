@@ -21,9 +21,9 @@ export function SummaryBooking({ index }: { index: string }) {
             </p>
             <h2 id="booking-title">Leve a Side Rock ao seu palco</h2>
             <p className={layout.copy}>
-              Conte um pouco sobre seu evento e leve sua consulta pronta para o
-              WhatsApp. Vanessa conversa com você sobre disponibilidade e
-              orçamento.
+              Informe a data e o local do evento para consultar disponibilidade e
+              orçamento com Vanessa. Você confere os dados antes de enviar a
+              mensagem pelo WhatsApp.
             </p>
             <a
               className={layout.textLink}

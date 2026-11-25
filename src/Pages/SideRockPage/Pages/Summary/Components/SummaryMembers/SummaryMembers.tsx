@@ -16,13 +16,12 @@ export function SummaryMembers() {
       <p className={layout.eyebrow}>03 / Integrantes</p>
       <ScrollReveal className={sectionStyles.membersTeaser}>
         <div className={sectionStyles.teaserCopy}>
-          <h2 id="members-title">Quem dá voz e peso à Side Rock</h2>
+          <h2 id="members-title">Quem toca na Side Rock</h2>
           <p>
-            Explore a formação interativa e conheça o papel de cada músico no
-            show
+            Conheça a trajetória e o papel de cada um dos quatro músicos
           </p>
           <Link className={layout.textLink} to={sideRockPath('integrantes')}>
-            Explorar os integrantes <HiArrowRight aria-hidden />
+            Conhecer os integrantes <HiArrowRight aria-hidden />
           </Link>
         </div>
         <div className={sectionStyles.teaserLineup}>

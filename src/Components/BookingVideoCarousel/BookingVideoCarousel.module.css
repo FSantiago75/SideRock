@@ -78,6 +78,10 @@
   color: #fff;
 }
 
+.videoCarousel[data-variant='story'] .videoFrame video {
+  object-fit: contain;
+}
+
 .videoCaption[data-split-caption] {
   column-gap: 0.45rem;
   padding-inline: clamp(0.55rem, 1.5vw, 0.9rem);
@@ -233,10 +237,6 @@
       )
     );
     margin-inline: auto;
-  }
-
-  .videoCarousel[data-variant='story'] .videoFrame video {
-    object-fit: contain;
   }
 
   .videoCarousel[data-variant='story'] .videoCaption {

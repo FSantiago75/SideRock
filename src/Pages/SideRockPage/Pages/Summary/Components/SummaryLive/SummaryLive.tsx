@@ -33,7 +33,7 @@ export function SummaryLive() {
                 className={styles.secondaryAction}
                 to={sideRockPath('galeria')}
               >
-                Explorar a galeria <HiArrowRight aria-hidden />
+                Ver fotos dos shows <HiArrowRight aria-hidden />
               </Link>
             </div>
             <div className={bookingStyles.manager}>

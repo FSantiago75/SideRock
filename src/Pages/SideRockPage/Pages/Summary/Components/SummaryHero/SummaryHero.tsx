@@ -25,8 +25,8 @@ export function SummaryHero({ onExplore }: { onExplore: () => void }) {
         </ScrollReveal>
         <ScrollReveal delayMs={120} from="up">
           <p className={styles.heroLead}>
-            Do hard rock ao grunge e ao metal. Quatro músicos, clássicos do rock
-            internacional e a interpretação vocal de Marcelo à frente do show.
+            Quatro músicos e um repertório que vai de Guns N’ Roses a Pearl Jam,
+            Metallica e Megadeth. Rock internacional para casas de show e eventos.
           </p>
         </ScrollReveal>
         <ScrollReveal delayMs={170} from="up" className={styles.heroActions}>

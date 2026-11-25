@@ -12,7 +12,7 @@ const previews = {
   },
   sideRock: {
     title: 'Side Rock — Rock internacional, energia ao vivo',
-    description: 'Clássicos do rock com identidade em cada apresentação. Ouça a Side Rock, conheça a formação e leve essa energia para o seu evento.',
+    description: 'Guns N’ Roses, Pearl Jam, Metallica e outros clássicos do rock internacional. Ouça a banda, confira os shows e consulte uma data.',
     path: `${EXPERIENCE_ROUTES.sideRock}/resumo`,
     image: '/images/sharing/side-rock.jpg',
     alt: 'Emblema da Side Rock com caveira e coroa em fundo preto e vermelho',
@@ -20,7 +20,7 @@ const previews = {
   },
   ozzborn: {
     title: 'Ozzborn — Tributo a Ozzy Osbourne',
-    description: 'A identidade de Ozzy em um tributo com peso e presença no palco. Ouça a Ozzborn, confira os shows e conheça a banda.',
+    description: 'Do Black Sabbath à carreira solo de Ozzy Osbourne. Ouça as gravações do tributo, confira os vídeos e consulte disponibilidade.',
     path: `${EXPERIENCE_ROUTES.ozzborn}/resumo`,
     image: '/images/sharing/ozzborn.jpg',
     alt: 'Logo da Ozzborn com asas de morcego em fundo preto e roxo',

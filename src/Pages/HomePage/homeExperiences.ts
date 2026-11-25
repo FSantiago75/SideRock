@@ -33,8 +33,8 @@ export const HOME_EXPERIENCES = [
     image: SideRockImage,
     eyebrow: 'Clássicos para cantar junto',
     description:
-      'Várias gerações do rock reunidas em um show completo, reconhecível e feito para movimentar a casa.',
-    idealFor: 'Casas de rock, eventos e grandes noites',
+      'Guns N’ Roses, Pearl Jam, Metallica e outros clássicos do rock internacional em um show de quatro músicos.',
+    idealFor: 'Casas de rock, festas e eventos',
     theme: {
       accent: '#c52b31',
       scrollbar: {
@@ -50,9 +50,9 @@ export const HOME_EXPERIENCES = [
     name: 'Ozzborn',
     path: EXPERIENCE_ROUTES.ozzborn,
     image: OzzbornImage,
-    eyebrow: 'Tributo com presença',
+    eyebrow: 'Tributo a Ozzy Osbourne',
     description:
-      'Um projeto de nicho com identidade visual, repertório e presença de palco para transformar o show em espetáculo.',
+      'Dos clássicos do Black Sabbath à carreira solo de Ozzy, com atenção aos timbres e arranjos das gravações originais.',
     idealFor: 'Tributos, festivais e eventos temáticos',
     theme: {
       accent: '#9a3ad1',

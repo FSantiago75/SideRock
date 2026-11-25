@@ -1,7 +1,3 @@
-import promotionalVideo from '../../../../assets/sideRock/media/booking/promotionalVideo.web.mp4'
-import promotionalVideoPoster from '../../../../assets/sideRock/media/booking/promotionalVideo.webp'
-import promotionalVideo2 from '../../../../assets/sideRock/media/booking/promotionalVideo2.web.mp4'
-import promotionalVideo2Poster from '../../../../assets/sideRock/media/booking/promotionalVideo2.webp'
 import { getAcousticBookingUrl, type AcousticFormatId } from './acousticSummaryContent'
 
 export function getAcousticBooking(format: AcousticFormatId) {
@@ -22,10 +18,7 @@ export function getAcousticBooking(format: AcousticFormatId) {
       copy: 'Quer levar o Side Rock Acústico ao seu evento?',
       action: 'Consultar data e orçamento',
     },
-    videos: [
-      { src: promotionalVideo, poster: promotionalVideoPoster, title: 'Side Rock ao vivo', href: 'https://www.instagram.com/reel/DHl9VzfxAWq/' },
-      { src: promotionalVideo2, poster: promotionalVideo2Poster, title: 'Side Rock ao vivo', href: 'https://www.instagram.com/bandasiderock/reel/DKvypJ1tOzX/' },
-    ],
+    videos: [],
     cards: [
       { eyebrow: 'Formato', title: format === 'duo' ? 'Proximidade em primeiro plano' : 'Mais pulsação no ambiente', copy: format === 'duo' ? 'Voz e violão para ocasiões que pedem música presente sem ocupar o evento inteiro.' : 'A bateria acrescenta energia e impacto sem perder a proposta compacta.' },
       { eyebrow: 'Aplicações', title: 'Do bar à celebração', copy: 'Bares, casamentos, aniversários, eventos corporativos e festas particulares.' },

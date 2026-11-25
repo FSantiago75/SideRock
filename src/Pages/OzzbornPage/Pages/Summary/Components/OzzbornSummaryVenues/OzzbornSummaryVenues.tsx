@@ -35,8 +35,8 @@ export function OzzbornSummaryVenues() {
       </div>
       <ScrollReveal>
         <PrivateEventsCard
-          title="Sua paixão por Ozzy dá o tom da festa"
-          description="Aniversários e festas particulares também têm espaço para a Ozzborn. O peso e a atmosfera de um show de Ozzy, recriados com cuidado para celebrar junto de quem compartilha essa paixão."
+          title="Ozzborn também na sua festa"
+          description="O tributo também pode fazer parte de aniversários e festas particulares. Consulte a data com Vanessa e conte como será o seu evento."
         />
       </ScrollReveal>
     </section>
