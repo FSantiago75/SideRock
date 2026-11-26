@@ -156,11 +156,19 @@
 
 .queue {
   display: grid;
-  align-content: start;
+  /* Let the deck set the row height; a growing queue scrolls within it. */
+  contain: size;
+  min-height: 0;
+  align-content: safe center;
+  grid-auto-rows: max-content;
   gap: 0.4rem;
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
   list-style: none;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--side-rock-accent-hot, #ff8186) transparent;
 }
 
 .queue button {
@@ -193,6 +201,12 @@
 @media (max-width: 760px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .queue {
+    contain: none;
+    align-content: start;
+    overflow: visible;
   }
 }
 
